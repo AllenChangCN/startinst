@@ -1,78 +1,85 @@
 <template>
-  <section class="container">
-    <div>
-      <app-logo/>
-      <h1 class="title">
-        pageagg.com
-      </h1>
-      <h2 class="subtitle">
-        Nuxt.js project
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green">Documentation</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey">GitHub</a>
+  <div class="example">
+    <md-speed-dial :class="topPosition" md-direction="bottom">
+      <md-speed-dial-target class="md-primary">
+        <md-icon>my_location</md-icon>
+      </md-speed-dial-target>
+
+      <md-speed-dial-content>
+        <md-button class="md-icon-button">
+          <md-icon>directions</md-icon>
+        </md-button>
+
+        <md-button class="md-icon-button">
+          <md-icon>streetview</md-icon>
+        </md-button>
+      </md-speed-dial-content>
+    </md-speed-dial>
+
+    <md-speed-dial :class="bottomPosition">
+      <md-speed-dial-target>
+        <md-icon>add</md-icon>
+      </md-speed-dial-target>
+
+      <md-speed-dial-content>
+        <md-button class="md-icon-button">
+          <md-icon>note</md-icon>
+        </md-button>
+
+        <md-button class="md-icon-button">
+          <md-icon>event</md-icon>
+        </md-button>
+      </md-speed-dial-content>
+    </md-speed-dial>
+
+    <div class="demo-option">
+      <div>
+        <label for="top">Top</label>
+        <select id="top" v-model="topPosition">
+          <option value="md-top-left">Left</option>
+          <option value="md-top-center">Center</option>
+          <option value="md-top-right">Right</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="bottom">Bottom</label>
+        <select id="bottom" v-model="bottomPosition">
+          <option value="md-bottom-left">Left</option>
+          <option value="md-bottom-center">Center</option>
+          <option value="md-bottom-right">Right</option>
+        </select>
       </div>
     </div>
-    <md-card>
-      <md-card-header>
-        <div class="md-title">Card without hover effect</div>
-      </md-card-header>
-
-      <md-card-content>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio itaque ea, nostrum odio. Dolores, sed accusantium quasi non.
-      </md-card-content>
-
-      <md-card-actions>
-        <md-button>Action</md-button>
-        <md-button>Action</md-button>
-      </md-card-actions>
-    </md-card>
-  </section>
+  </div>
 </template>
 
 <script>
-import AppLogo from '~/components/AppLogo.vue'
-
-export default {
-  components: {
-    AppLogo
+  export default {
+    name: 'PositionDirection',
+    data: () => ({
+      topPosition: 'md-top-left',
+      bottomPosition: 'md-bottom-left'
+    })
   }
-}
 </script>
 
-<style>
-.container {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
+<style lang="scss" scoped>
+  .example {
+    min-height: 300px;
+  }
 
-.title {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* 1 */
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
+  .demo-option {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
+  div {
+    margin: 0 6px;
+    display: flex;
+    flex-direction: column;
+  }
+  }
 </style>

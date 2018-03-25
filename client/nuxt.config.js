@@ -1,27 +1,36 @@
 module.exports = {
+    css: [
+        '~assets/css/icon.css',
+        '~assets/css/material_theme_default.css'
+    ],
   /*
   ** Headers of the page
   */
   head: {
     title: 'PageAgg',
     meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Nuxt.js project' }
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { hid: 'description', name: 'description', content: 'Nuxt.js project' }
     ],
+
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+    ],
+
   },
+
   /*
   ** Customize the progress bar color
   */
   loading: { color: '#3B8070' },
-  /*
-  ** Build configuration
-  */
+  plugins: ['~/plugins/vue-material'],
 
-  build: {
+    /*
+    ** Build configuration
+    */
+
+    build: {
     /*
     ** Run ESLint on save
     */
@@ -34,9 +43,9 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
-    }
-  }
-}
-module.exports = {
-    plugins: ['~/plugins/vue-material']
+    },
+        router: {
+            base: '/app/'
+        }
+  },
 }
