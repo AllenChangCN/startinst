@@ -3,7 +3,7 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: 'web',
+    title: 'PageAgg',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -20,6 +20,7 @@ module.exports = {
   /*
   ** Build configuration
   */
+
   build: {
     /*
     ** Run ESLint on save
@@ -35,4 +36,7 @@ module.exports = {
       }
     }
   }
+}
+module.exports = {
+    plugins: ['~/plugins/vue-material']
 }
