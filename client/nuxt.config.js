@@ -24,28 +24,30 @@ module.exports = {
   ** Customize the progress bar color
   */
   loading: { color: '#3B8070' },
-  plugins: ['~/plugins/vue-material'],
+  plugins: [
+    '~/plugins/vue-material'
+  ],
 
     /*
     ** Build configuration
     */
 
     build: {
-    /*
-    ** Run ESLint on save
-    */
-    extend (config, { isDev, isClient }) {
-      if (isDev && isClient) {
-        config.module.rules.push({
-          enforce: 'pre',
-          test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
-          exclude: /(node_modules)/
-        })
-      }
-    },
+        /*
+        ** Run ESLint on save
+        */
+        extend (config, { isDev, isClient }) {
+          if (isDev && isClient) {
+            config.module.rules.push({
+              enforce: 'pre',
+              test: /\.(js|vue)$/,
+              loader: 'eslint-loader',
+              exclude: /(node_modules)/
+            })
+          }
+        },
         router: {
-            base: '/app/'
+            base: '/client/'
         }
   },
 }
