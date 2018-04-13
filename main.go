@@ -1,6 +1,9 @@
 package main
 
-import ("github.com/gin-gonic/gin")
+import (
+	"github.com/gin-gonic/gin"
+	"./app/resources"
+)
 
 func main() {
 	r := gin.Default()
@@ -13,8 +16,9 @@ func main() {
 				"message": "pong",
 			})
 		})
+		u := resources.UserResource{}
 		// user
-		v1.GET("/", FetchAllUsers)
+		v1.GET("/gg", u.FetchAllUsers)
 		//v1.GET("/:id", FetchSingleUser)
 		//v1.PUT("/:id", UpdateUser)
 		//v1.DELETE("/:id", DeleteUser)
