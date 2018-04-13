@@ -1,6 +1,6 @@
 package: github.com/tenstone/pageagg.com
-ignore:
-- golang.org/x/crypto/ssh/terminal
+#ignore:
+#- golang.org/x/crypto/ssh/terminal
 import:
 - package: github.com/gin-gonic/gin
   version: ^1.2.0

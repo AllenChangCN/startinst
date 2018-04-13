@@ -59,4 +59,5 @@ typings/
 .idea
 yarn.lock
 glide.lock
+vendor
 

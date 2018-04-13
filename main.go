@@ -3,11 +3,15 @@ package main
 import (
 	"github.com/gin-gonic/gin"
 	"./app/resources"
+	"./app/util"
 )
 
 func main() {
+	util.LoadEnvVars()
 	r := gin.Default()
-	gin.SetMode(gin.DebugMode)  // ReleaseMode
+	util.UseJSONLogFormat()
+	gin.SetMode(util.GetEnv("APP_MODE", gin.ReleaseMode)) // ReleaseMode
+
 	v1 := r.Group("/api/v1/test")
 	{
 		// test
@@ -19,9 +23,6 @@ func main() {
 		u := resources.UserResource{}
 		// user
 		v1.GET("/gg", u.FetchAllUsers)
-		//v1.GET("/:id", FetchSingleUser)
-		//v1.PUT("/:id", UpdateUser)
-		//v1.DELETE("/:id", DeleteUser)
 	}
-	r.Run()
+	r.Run(":" + util.GetEnv("PORT", "8080"))
 }
