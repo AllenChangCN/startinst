@@ -11,11 +11,7 @@ type UserResource struct {
 }
 
 func (r *UserResource) FetchAllUsers(c *gin.Context) {
-
-	//id, idString := util.SnowflakeID()
-	//fmt.Print(id)
-	//fmt.Print(idString)
-	log.Info("hhhh")
+	log.Info("asdf")
 	c.JSON(200, "H")
 	return
 }

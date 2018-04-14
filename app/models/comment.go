@@ -13,6 +13,5 @@ const (
 
 type Comment struct {
 	gorm.Model
-	ID   uint64
 	Type int
 }

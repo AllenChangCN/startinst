@@ -5,13 +5,19 @@ import (
 	"./app/resources"
 	"./app/util"
 	"./app/middleware"
+	_ "./app/models"
 )
 
 func main() {
+	// 加载 .env
 	util.LoadEnvVars()
 	r := gin.Default()
+	// 设置日志格式
 	util.UseJSONLogFormat()
 	gin.SetMode(util.GetEnv("APP_MODE", gin.ReleaseMode)) // ReleaseMode
+
+	// 注册模型
+
 
 	r.Use(middleware.JSONLogMiddleware())
 	r.Use(gin.Recovery())

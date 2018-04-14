@@ -13,7 +13,6 @@ const (
 
 type Favorite struct {
 	gorm.Model
-	ID   uint64
 	User User
 	Type uint
 }
