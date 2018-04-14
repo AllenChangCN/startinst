@@ -1,7 +1,7 @@
 module.exports = {
     css: [
-        '~assets/css/icon.css',
-        '~assets/css/material_theme_default.css'
+      'element-ui/lib/theme-chalk/reset.css',
+      'element-ui/lib/theme-chalk/index.css'
     ],
   /*
   ** Headers of the page
@@ -25,7 +25,7 @@ module.exports = {
   */
   loading: { color: '#3B8070' },
   plugins: [
-    '~/plugins/vue-material'
+    '~/plugins/element-ui'
   ],
 
     /*
