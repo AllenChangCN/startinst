@@ -2,9 +2,9 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
-	"./app/resources"
 	"./app/util"
 	"./app/middleware"
+	"./app/routes"
 	_ "./app/models"
 )
 
@@ -16,26 +16,14 @@ func main() {
 	util.UseJSONLogFormat()
 	gin.SetMode(util.GetEnv("APP_MODE", gin.ReleaseMode)) // ReleaseMode
 
-	// 注册模型
-
-
+	// 注册Middleware
 	r.Use(middleware.JSONLogMiddleware())
 	r.Use(gin.Recovery())
 	r.Use(middleware.RequestID(middleware.RequestIDOptions{AllowSetting: false}))
-	//r.Use(middleware.Auth())
 	r.Use(middleware.CORS(middleware.CORSOptions{}))
 
-	v1 := r.Group("/api/v1/test")
-	{
-		// test
-		v1.GET("/ping", func(c *gin.Context) {
-			c.JSON(200, gin.H{
-				"message": "pong",
-			})
-		})
-		u := resources.UserResource{}
-		// user
-		v1.GET("/gg", u.FetchAllUsers)
-	}
+	// 注册路由
+	routes.Register(r)
+
 	r.Run(":" + util.GetEnv("PORT", "8080"))
 }

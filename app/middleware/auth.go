@@ -16,18 +16,30 @@ func Auth() gin.HandlerFunc {
 		match := r.FindStringSubmatch(authHeader)
 
 		if len(match) == 0 {
+			c.JSON(401, gin.H{
+				"errmsg":  "auth error",
+				"errcode": -1,
+			})
 			c.AbortWithStatus(401)
 			return
 		}
 		tokenString := match[1]
 
 		if len(tokenString) == 0 {
+			c.JSON(401, gin.H{
+				"errmsg":  "auth error",
+				"errcode": -1,
+			})
 			c.AbortWithStatus(401)
 			return
 		}
 
 		user, err := dao.GetUserByAuthToken(tokenString)
 		if err != nil {
+			c.JSON(401, gin.H{
+				"errmsg":  "auth error",
+				"errcode": -1,
+			})
 			c.AbortWithStatus(401)
 			return
 		}
