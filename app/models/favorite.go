@@ -6,13 +6,14 @@ import (
 )
 
 const (
-	COMMENT_TYPE_PAGE   = 0
-	COMMENT_TYPE_WIDGET = 1
-	COMMENT_TYPE_ITEM   = 2
+	FAVORITE_TYPE_PAGE   = 0
+	FAVORITE_TYPE_WIDGET = 1
+	FAVORITE_TYPE_ITEM   = 2
 )
 
-type Comment struct {
+type Favorite struct {
 	gorm.Model
 	ID   uint64
-	Type int
+	User User
+	Type uint
 }

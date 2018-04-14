@@ -6,12 +6,11 @@ import (
 	"time"
 )
 
-type Page struct {
+type Home struct {
 	gorm.Model
 	ID        uint64
-	Title     string
-	Desc      string
-	Tags      []Tag `gorm:"many2many:page_tags;"`
+	UserID    uint64
+	PageIndex uint // 0 为默认，倒序排列
 	CreatedAt time.Time
 	UpdatedAt time.Time
 	DeletedAT time.Time

@@ -6,13 +6,13 @@ import (
 	"time"
 )
 
-type Page struct {
+type Tag struct {
 	gorm.Model
 	ID        uint64
-	Title     string
-	Desc      string
-	Tags      []Tag `gorm:"many2many:page_tags;"`
+	Type      uint
 	CreatedAt time.Time
 	UpdatedAt time.Time
 	DeletedAT time.Time
 }
+
+// 多表关联，user_tags/page_tags/widget_tags

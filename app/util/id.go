@@ -78,7 +78,7 @@ func SnowflakeID() (id uint64, idString string) {
 		return
 	}
 	id = uint64(node.Generate())
-	log.Info("snowflake id generated.")
+	//log.Info("snowflake id generated.")
 	idString = DecimalToAny(id, 62)
 	return
 }

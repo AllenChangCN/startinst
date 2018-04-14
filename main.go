@@ -4,6 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"./app/resources"
 	"./app/util"
+	"./app/middleware"
 )
 
 func main() {
@@ -11,6 +12,12 @@ func main() {
 	r := gin.Default()
 	util.UseJSONLogFormat()
 	gin.SetMode(util.GetEnv("APP_MODE", gin.ReleaseMode)) // ReleaseMode
+
+	r.Use(middleware.JSONLogMiddleware())
+	r.Use(gin.Recovery())
+	r.Use(middleware.RequestID(middleware.RequestIDOptions{AllowSetting: false}))
+	//r.Use(middleware.Auth())
+	r.Use(middleware.CORS(middleware.CORSOptions{}))
 
 	v1 := r.Group("/api/v1/test")
 	{

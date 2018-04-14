@@ -2,8 +2,9 @@ package resources
 
 import (
 	"github.com/gin-gonic/gin"
-	"fmt"
-	"../util"
+	log "github.com/sirupsen/logrus"
+	//"fmt"
+	//"../util"
 )
 
 type UserResource struct {
@@ -11,9 +12,10 @@ type UserResource struct {
 
 func (r *UserResource) FetchAllUsers(c *gin.Context) {
 
-	id, idString := util.SnowflakeID()
-	fmt.Print(id)
-	fmt.Print(idString)
-	c.JSON(200, idString)
+	//id, idString := util.SnowflakeID()
+	//fmt.Print(id)
+	//fmt.Print(idString)
+	log.Info("hhhh")
+	c.JSON(200, "H")
 	return
 }

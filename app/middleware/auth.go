@@ -7,6 +7,7 @@ import (
 	"github.com/sbecker/gin-api-demo/dao"
 )
 
+// https://github.com/appleboy/gin-jwt
 func Auth() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		authHeader := c.Request.Header.Get("Authorization")
