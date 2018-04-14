@@ -2,7 +2,6 @@ package routes
 
 import (
 	"github.com/gin-gonic/gin"
-	"../middleware"
 )
 
 func Register(r *gin.Engine) {
@@ -12,10 +11,10 @@ func Register(r *gin.Engine) {
 	Auth(auth)
 
 	// User
-	user := r.Group("/api/v1/user", middleware.Auth())
+	user := r.Group("/api/v1/user")
 	User(user)
 
 	// Page
-	page := r.Group("/api/v1/page", middleware.Auth())
+	page := r.Group("/api/v1/page")
 	Page(page)
 }

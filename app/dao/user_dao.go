@@ -1,9 +1,8 @@
 package dao
 
 import (
+	"github.com/tenstone/pageagg.com/app/models"
 	"errors"
-
-	"github.com/sbecker/gin-api-demo/models"
 )
 
 // fake database
