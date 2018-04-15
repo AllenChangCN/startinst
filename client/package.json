@@ -17,11 +17,11 @@
     "css-loader": "^0.28.11",
     "element-ui": "^2.3.4",
     "node-sass": "^4.8.3",
-    "nuxt": "^1.0.0",
+    "nuxt": "^1.4.0",
     "sass-loader": "^6.0.7",
     "vue-i18n": "^7.5.0",
-    "vue-material": "^1.0.0-beta-8",
     "vue-style-loader": "^4.1.0",
+    "vuedraggable": "^2.16.0",
     "vuelidate": "^0.6.2"
   },
   "devDependencies": {
