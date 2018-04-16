@@ -3,7 +3,7 @@
   <div style="margin-top: 15px;">
     <el-input placeholder="请输入关键字"
               v-model="keywords"
-              @keyup.enter="search(keywords, searchURL)"
+              v-on:keyup.native.13="search(keywords, searchURL)"
               class="input-with-select">
       <el-select v-model="searchURL"
                  slot="prepend"
@@ -26,11 +26,12 @@
 
       data: () => {
         return {
-          searchURL: 'https://www.baidu.com/s?wd=',
+          searchURL: 'https://www.google.com/search?q=',
           keywords: '',
           searchOptions: [
             {value: 'https://www.baidu.com/s?wd=', label: 'Baidu'},
-            {value: 'https://www.google.com/search?q=', label: 'Google'}
+            {value: 'https://www.google.com/search?q=', label: 'Google'},
+            {value: 'https://cn.bing.com/search?q=', label: 'Bing'}
           ]
         }
       },
