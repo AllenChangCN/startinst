@@ -1,4 +1,4 @@
-package com.tenstone.pagepots;
+package backend.src.test.java.com.pagepots;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,4 +1,4 @@
-package com.tenstone.pagepots.controller;
+package com.pagepots.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 

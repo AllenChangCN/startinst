@@ -1,4 +1,4 @@
-package com.tenstone.pagepots.controller;
+package com.pagepots.controller;
 
 
 import org.springframework.beans.factory.annotation.Value;
@@ -14,5 +14,9 @@ public class HelloController {
     @RequestMapping(value = "/",method = RequestMethod.GET)
     public String say(){
         return "hello spring boot";
+    }
+    @RequestMapping(value = "/abc",method = RequestMethod.GET)
+    public String good(){
+        return "abc";
     }
 }
