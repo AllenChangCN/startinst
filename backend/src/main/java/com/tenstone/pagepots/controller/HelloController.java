@@ -1,4 +1,4 @@
-package com.tenstone.pageagg.controller;
+package com.tenstone.pagepots.controller;
 
 
 import org.springframework.beans.factory.annotation.Value;

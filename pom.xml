@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.tenstone</groupId>
-	<artifactId>pageagg</artifactId>
-	<version>0.1</version>
+	<artifactId>pagepots</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>pageagg</name>
-	<description>pageagg is a project like bookmarks.</description>
+	<name>pagepots</name>
+	<description>pagepots is a project like bookmarks.</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -47,16 +47,20 @@
 			<artifactId>spring-boot-starter-cache</artifactId>
 		</dependency>
 		<!-- redis 引入 -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-redis</artifactId>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>org.springframework.boot</groupId>-->
+			<!--<artifactId>spring-boot-starter-redis</artifactId>-->
+		<!--</dependency>-->
 		<!--devtools-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<optional>true</optional>
 		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>javax.servlet</groupId>-->
+			<!--<artifactId>javax.servlet-api</artifactId>-->
+		<!--</dependency>-->
 	</dependencies>
 
 	<build>
