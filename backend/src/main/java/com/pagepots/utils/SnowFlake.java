@@ -36,28 +36,40 @@ public class SnowFlake {
     private final static long DATACENTER_LEFT = SEQUENCE_BIT + MACHINE_BIT;
     private final static long TIMESTMP_LEFT = DATACENTER_LEFT + DATACENTER_BIT;
 
-    //数据中心
+    /**
+     * 数据中心Id
+     */
+    @Value("${pagepots.server.datacenterid}")
     private long datacenterId;
-    //机器标识
+    /**
+     * 机器Id
+     */
+    @Value("${pagepots.server.machineid}")
     private long machineId;
-    //序列号
+    /**
+     *  序列号
+     */
     private long sequence = 0L;
-    //上一次时间戳
+    /**
+     * 上一次时间戳
+     */
     private long lastStmp = -1L;
 
-    private SnowFlake(long datacenterId, long machineId) {
-        if (datacenterId > MAX_DATACENTER_NUM || datacenterId < 0) {
+    private SnowFlake() {
+        if (this.datacenterId > MAX_DATACENTER_NUM || this.datacenterId < 0) {
             throw new IllegalArgumentException("datacenterId can't be greater than MAX_DATACENTER_NUM or less than 0");
         }
-        if (machineId > MAX_MACHINE_NUM || machineId < 0) {
+        if (this.machineId > MAX_MACHINE_NUM || this.machineId < 0) {
             throw new IllegalArgumentException("machineId can't be greater than MAX_MACHINE_NUM or less than 0");
         }
-        this.datacenterId = datacenterId;
-        this.machineId = machineId;
     }
 
-    public static long SnowFlake(){
-        SnowFlake snowFlake = new SnowFlake(2, 3);
+    /**
+     * 返回一个ID
+     * @return long
+     */
+    public static long getId(){
+        SnowFlake snowFlake = new SnowFlake();
         return snowFlake.nextId();
     }
 
@@ -109,7 +121,7 @@ public class SnowFlake {
      * @param args
      */
     public static void main(String[] args) {
-        SnowFlake snowFlake = new SnowFlake(2, 3);
+        SnowFlake snowFlake = new SnowFlake();
 
         for (int i = 0; i < (1 << 12); i++) {
             System.out.println(snowFlake.nextId());

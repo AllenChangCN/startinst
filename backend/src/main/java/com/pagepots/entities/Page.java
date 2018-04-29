@@ -1,6 +1,7 @@
 package com.pagepots.entities;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Page {
@@ -9,13 +10,18 @@ public class Page {
      * 页面ID
      */
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
 
     /**
      * 用户ID
      */
-    private Long userId;
+    @OneToOne
+    private User user;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable
+    private Set<Tag> tags;
 
     /**
      * 页面名称
@@ -25,5 +31,7 @@ public class Page {
     /**
      * 是否在首页展示及展示顺序；0不展示，1-10为顺序；不超过10
      */
-    private Integer index;
+    private Long sort;
+
+    private Boolean shared;
 }
