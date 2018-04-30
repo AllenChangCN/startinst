@@ -26,3 +26,10 @@ pagepots:
     machineid: 1
 
 
+logging:
+  level:
+    org.springframework:
+      data: DEBUG
+      security: DEBUG
+
+
