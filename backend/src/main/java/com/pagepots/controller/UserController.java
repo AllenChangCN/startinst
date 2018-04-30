@@ -1,6 +1,6 @@
 package com.pagepots.controller;
 
-import com.pagepots.utils.SnowFlake;
+import com.pagepots.utils.SnowFlakeUtil;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -12,6 +12,6 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     @GetMapping(value = "hello")
     public Long hello(){
-        return SnowFlake.getId();
+        return SnowFlakeUtil.getId();
     }
 }

@@ -25,7 +25,6 @@ pagepots:
     datacenterid: 1
     machineid: 1
 
-
 logging:
   level:
     org.springframework:

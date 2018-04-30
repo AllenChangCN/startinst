@@ -3,9 +3,9 @@ package com.pagepots.utils;
 import org.springframework.beans.factory.annotation.Value;
 
 /**
- * SnowFlake 生成ID
+ * SnowFlakeUtil 生成ID
  */
-public class SnowFlake {
+public class SnowFlakeUtil {
 
     /**
      * 起始的时间戳
@@ -55,7 +55,7 @@ public class SnowFlake {
      */
     private long lastStmp = -1L;
 
-    private SnowFlake() {
+    private SnowFlakeUtil() {
         if (this.datacenterId > MAX_DATACENTER_NUM || this.datacenterId < 0) {
             throw new IllegalArgumentException("datacenterId can't be greater than MAX_DATACENTER_NUM or less than 0");
         }
@@ -69,8 +69,8 @@ public class SnowFlake {
      * @return long
      */
     public static long getId(){
-        SnowFlake snowFlake = new SnowFlake();
-        return snowFlake.nextId();
+        SnowFlakeUtil snowFlakeUtil = new SnowFlakeUtil();
+        return snowFlakeUtil.nextId();
     }
 
     /**
@@ -121,10 +121,10 @@ public class SnowFlake {
      * @param args
      */
     public static void main(String[] args) {
-        SnowFlake snowFlake = new SnowFlake();
+        SnowFlakeUtil snowFlakeUtil = new SnowFlakeUtil();
 
         for (int i = 0; i < (1 << 12); i++) {
-            System.out.println(snowFlake.nextId());
+            System.out.println(snowFlakeUtil.nextId());
         }
 
     }
