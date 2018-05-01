@@ -1,32 +1,39 @@
 package com.pagepots.entities;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 public class User{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
-    private String username = "user";
+    private String username;
 
-    private String password = "123";
+    private String password;
 
     private String email;
+
+    private Date createTime;
 
     @ManyToMany(cascade = CascadeType.ALL,targetEntity = Role.class)
     @JoinTable
     private List<Role> roles = new ArrayList<>();
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -38,12 +45,8 @@ public class User{
         this.password = password;
     }
 
-    public List<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
 }

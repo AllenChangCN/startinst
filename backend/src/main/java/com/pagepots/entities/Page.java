@@ -31,7 +31,16 @@ public class Page {
     /**
      * 是否在首页展示及展示顺序；0不展示，1-10为顺序；不超过10
      */
-    private Long sort;
+    private Long sortValue;
 
-    private Boolean shared;
+    /**
+     * 允许公共编辑
+     */
+    private Boolean allowPublicEdit;
+
+    /**
+     * 允许地址栏搜索
+     */
+    private Boolean addressBarSearch;
+
 }

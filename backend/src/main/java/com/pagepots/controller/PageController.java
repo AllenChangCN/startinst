@@ -1,8 +1,9 @@
 package com.pagepots.controller;
 
 import com.pagepots.domain.HttpResponse;
-import com.pagepots.utils.HttpJsonResultUtil;
+import com.pagepots.utils.HttpResponseUtil;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,15 +14,16 @@ import java.util.List;
  * @author liuyuancheng
  */
 @RestController
-@RequestMapping("/api/page")
+@RequestMapping("/api/pages")
 public class PageController {
+
     /**
-     * 起始页
-     *
-     * @return String
+     * 返回一个页面的内容
+     * @param id
+     * @return HttpResponse
      */
-    @GetMapping("/start-page")
-    public HttpResponse startPage(){
-        return HttpJsonResultUtil.success(new ArrayList<List>());
+    @GetMapping("/{id}/show")
+    public HttpResponse showPage(@PathVariable("id") Long id){
+        return HttpResponseUtil.success(id);
     }
 }

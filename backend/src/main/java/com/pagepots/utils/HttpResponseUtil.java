@@ -5,7 +5,7 @@ import com.pagepots.domain.HttpResponse;
 /**
  * @author liuyuancheng
  */
-public class HttpJsonResultUtil {
+public class HttpResponseUtil {
 
     public static HttpResponse success(Object object) {
         HttpResponse result = new HttpResponse();
