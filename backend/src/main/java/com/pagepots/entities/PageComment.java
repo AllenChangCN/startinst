@@ -4,10 +4,13 @@ import javax.persistence.*;
 import java.util.Set;
 
 /**
- * Tag用于描述Page
+ * 评论
+ *
+ * @author liuyuancheng
  */
 @Entity
-public class Tag {
+@Table(name = "page_comments")
+public class PageComment {
 
     /**
      * 页面ID
@@ -15,8 +18,5 @@ public class Tag {
     @Id
     @GeneratedValue
     private Long id;
-
-    @ManyToMany(mappedBy = "tags")
-    private Set<Page> pages;
 
 }

@@ -4,7 +4,7 @@ package com.pagepots.entities;
 import javax.persistence.*;
 
 @Entity
-//@Table(indexes = {@Index(name = "pageid",columnList = "page_id",unique = false)})
+@Table(name="widgets")
 public class Widget {
 
     /**

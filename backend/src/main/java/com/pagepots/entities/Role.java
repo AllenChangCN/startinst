@@ -1,9 +1,6 @@
 package com.pagepots.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +12,8 @@ import java.util.List;
  * Aug 16, 2016
  */
 @Entity
+@Table(name = "roles")
+
 public class Role {
 
     @GeneratedValue

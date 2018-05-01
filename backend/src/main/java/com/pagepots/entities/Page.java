@@ -4,6 +4,8 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
+@Table(name = "pages")
+
 public class Page {
 
     /**
@@ -21,7 +23,7 @@ public class Page {
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable
-    private Set<Tag> tags;
+    private Set<PageTag> pageTags;
 
     /**
      * 页面名称
@@ -42,5 +44,10 @@ public class Page {
      * 允许地址栏搜索
      */
     private Boolean addressBarSearch;
+
+    /**
+     * 页面评分
+     */
+    private Short rating;
 
 }

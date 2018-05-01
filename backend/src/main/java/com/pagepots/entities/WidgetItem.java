@@ -1,16 +1,14 @@
 package com.pagepots.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.util.Set;
 
 /**
  * Tag用于描述Page
  */
 @Entity
-public class Item {
+@Table(name = "widget_items")
+public class WidgetItem {
 
     /**
      * 页面ID
@@ -22,5 +20,10 @@ public class Item {
     private Boolean valid;
 
     private String imgUrl;
+
+    /**
+     * 对应的网站Id
+     */
+    private Site siteId;
 
 }

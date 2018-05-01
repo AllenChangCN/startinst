@@ -1,16 +1,11 @@
 package com.pagepots.entities;
 
 import javax.persistence.*;
-import java.util.Set;
 
-/**
- * 评论
- *
- * @author liuyuancheng
- */
 @Entity
-@Table(name = "comments")
-public class Comment {
+@Table(name = "page_favorites")
+
+public class PageFavorite {
 
     /**
      * 页面ID
@@ -19,4 +14,9 @@ public class Comment {
     @GeneratedValue
     private Long id;
 
+    @ManyToOne
+    private User user;
+
+    @ManyToOne
+    private Page page;
 }

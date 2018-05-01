@@ -3,10 +3,16 @@ package com.pagepots.entities;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
+/**
+ * Page的评分
+ * @author liuyuancheng
+ */
 @Entity
-public class Favorite {
+@Table(name = "page_ratings")
+
+public class PageRating {
 
     /**
      * 页面ID
@@ -15,9 +21,8 @@ public class Favorite {
     @GeneratedValue
     private Long id;
 
-    @ManyToOne
-    private User user;
+    private Boolean valid;
 
-    @ManyToOne
-    private Page page;
+    private String imgUrl;
+
 }
