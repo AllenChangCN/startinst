@@ -3,6 +3,9 @@ package com.pagepots.controller;
 import com.pagepots.domain.HttpResponse;
 import com.pagepots.utils.HttpResponseUtil;
 import com.pagepots.utils.SnowFlakeUtil;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
@@ -18,23 +21,20 @@ import java.util.List;
 @RequestMapping(value = "/api/users")
 public class UserController {
 
-    /**
-     * 用户信息
-     * @return HttpResponse
-     */
+
+    @ApiImplicitParam(name = "user_id", value = "用户ID", required = true, dataType = "Integer")
+    @ApiOperation(value = "获取用户信息")
     @GetMapping(value = "/{user_id}/user-info")
     public HttpResponse info(@PathVariable("user_id") Long userId){
         return HttpResponseUtil.success(userId);
     }
 
-    /**
-     * 起始页,包含页面相关的很多信息
-     *
-     * @return String
-     */
-    @GetMapping("/{user_id}/start-page")
+
+    @ApiOperation(value = "登录用户的首页")
+    @ApiImplicitParam(name = "user_id", required = true, dataType = "Integer")
+    @GetMapping("/{user_id}/home")
     public HttpResponse startPage(@PathVariable("user_id") Long userId){
-        return HttpResponseUtil.success(new ArrayList<List>());
+        return HttpResponseUtil.success();
     }
 
 }
