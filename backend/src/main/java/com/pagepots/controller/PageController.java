@@ -17,7 +17,7 @@ import java.util.List;
  * @author liuyuancheng
  */
 
-@Api(value = "Page资源API")
+@Api(value = "Page资源API",description = "")
 @RestController
 @RequestMapping("/api/pages")
 public class PageController {

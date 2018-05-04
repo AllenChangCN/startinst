@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author liuyuancheng
  */
 
-@Api(value = "Discover资源API")
+@Api(value = "Discover资源API",description = "")
 @RestController
 @RequestMapping("/api/discovers")
 public class DiscoverController {

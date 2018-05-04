@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * @author liuyuancheng
  */
-@Api(value = "用户资源API")
+@Api(value = "用户资源API",description = "")
 @RestController
 @RequestMapping(value = "/api/users")
 public class UserController {

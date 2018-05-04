@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
  */
 
 
-@Api(value = "Widget资源API")
+@Api(value = "Widget资源API",description = "")
 @RestController
 @RequestMapping(value = "/api/widgets")
 public class WidgetController {
