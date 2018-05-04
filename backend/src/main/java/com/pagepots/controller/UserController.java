@@ -25,7 +25,7 @@ public class UserController {
 
     @ApiImplicitParam(name = "user_id", value = "用户ID", required = true, dataType = "Integer")
     @ApiOperation(value = "获取用户信息")
-    @GetMapping(value = "/{user_id}/user-info")
+    @GetMapping(value = "/{user_id}/info")
     public HttpResponse info(@PathVariable("user_id") Long userId){
         return HttpResponseUtil.success(userId);
     }

@@ -33,14 +33,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
 		<!-- cache 引入 -->
 		<!--用户认证-->
         <dependency>
@@ -52,11 +44,25 @@
 			<artifactId>spring-security-oauth2</artifactId>
 			<version>2.3.2.RELEASE</version>
 		</dependency>
-
 		<!-- redis 引入 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
+		<!--Mysql-->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<!--OTS-->
+		<dependency>
+			<groupId>com.aliyun.openservices</groupId>
+			<artifactId>ots-public</artifactId>
+			<version>2.2.4</version>
 		</dependency>
 		<!--devtools-->
 		<dependency>
@@ -66,15 +72,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
 		<!--<dependency>-->
 			<!--<groupId>javax.servlet</groupId>-->

@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  * 用户资源
  * @author liuyuancheng
  */
-@Api(value="用户认证API",tags={""})
+@Api(value="用户认证API")
 @RestController
 @RequestMapping(value = "/api/auth")
 public class AuthController {

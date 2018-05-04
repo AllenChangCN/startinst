@@ -22,10 +22,17 @@ import java.util.List;
 @RequestMapping("/api/pages")
 public class PageController {
 
-    @ApiOperation(value="返回一个页面的内容")
+    @ApiOperation(value="页面的内容")
     @ApiImplicitParam(value = "页面ID",required = true,dataType = "Long")
     @GetMapping("{page_id}")
     public HttpResponse showPage(@PathVariable("page_id") Long pageId){
         return HttpResponseUtil.success(pageId);
+    }
+
+    @ApiOperation(value="页面编辑日志")
+    @ApiImplicitParam(value = "页面编辑日志",required = true,dataType = "Long")
+    @GetMapping("{page_id}/edit-logs")
+    public HttpResponse showLog(@PathVariable("page_id") Long pageId){
+        return HttpResponseUtil.success();
     }
 }
