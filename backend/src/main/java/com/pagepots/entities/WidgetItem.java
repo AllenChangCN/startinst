@@ -24,6 +24,6 @@ public class WidgetItem {
     /**
      * 对应的网站Id
      */
-    private Site siteId;
+//    private Site siteId;
 
 }

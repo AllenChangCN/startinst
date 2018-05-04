@@ -5,6 +5,7 @@ import java.util.Set;
 
 /**
  * Tag用于描述Page
+ * @author liuyuancheng
  */
 @Entity
 @Table(name = "page_tags")
@@ -18,7 +19,7 @@ public class PageTag {
     @GeneratedValue
     private Long id;
 
-    @ManyToMany(mappedBy = "page_tags")
-    private Set<Page> pages;
+//    @ManyToMany(mappedBy = "page_tags")
+//    private Set<Page> pages;
 
 }
