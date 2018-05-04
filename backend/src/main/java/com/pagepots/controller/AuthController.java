@@ -1,5 +1,6 @@
 package com.pagepots.controller;
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  * 用户资源
  * @author liuyuancheng
  */
+@Api(value="用户认证API",tags={""})
 @RestController
 @RequestMapping(value = "/api/auth")
 public class AuthController {

@@ -3,6 +3,7 @@ package com.pagepots.controller;
 import com.pagepots.domain.HttpResponse;
 import com.pagepots.utils.HttpResponseUtil;
 import com.pagepots.utils.SnowFlakeUtil;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
@@ -14,9 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 用户资源
  * @author liuyuancheng
  */
+@Api(value = "用户资源API")
 @RestController
 @RequestMapping(value = "/api/users")
 public class UserController {

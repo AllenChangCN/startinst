@@ -2,15 +2,17 @@ package com.pagepots.controller;
 
 import com.pagepots.domain.HttpResponse;
 import com.pagepots.utils.HttpResponseUtil;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * 发现
  * @author liuyuancheng
  */
+
+@Api(value = "Discover资源API")
 @RestController
 @RequestMapping("/api/discovers")
 public class DiscoverController {
