@@ -13,14 +13,14 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * @author liuyuancheng
  */
-@Api(value = "Talk资源API")
+@Api(value = "Chat资源API",description = "聊天信息")
 @RestController
-@RequestMapping(value = "/api/talks")
-public class TalkController {
+@RequestMapping(value = "/api/chats")
+public class ChatController {
 
     @ApiImplicitParam(name = "page_id", value = "用户ID", required = true, dataType = "Integer")
-    @ApiOperation(value = "获取页面Talk列表")
-    @GetMapping(value = "/page/{page_id}")
+    @ApiOperation(value = "获取页面Chats列表")
+    @GetMapping(value = "/chats/{page_id}")
     public HttpResponse info(@PathVariable("page_id") Long pageId){
         return HttpResponseUtil.success(pageId);
     }

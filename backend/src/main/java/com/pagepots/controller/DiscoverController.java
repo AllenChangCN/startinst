@@ -23,6 +23,12 @@ public class DiscoverController {
         return HttpResponseUtil.success();
     }
 
+    @ApiOperation(value = "页面信息")
+    @GetMapping(value = "page/site/detail")
+    public HttpResponse pageInfo(){
+        return HttpResponseUtil.success();
+    }
+
     @ApiOperation(value = "发现热门站点")
     @GetMapping(value = "hot-site")
     public HttpResponse hotSite(){

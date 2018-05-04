@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * @author liuyuancheng
  */
-@Api(value = "页面跳转")
+@Api(value = "页面跳转",description = "页面跳转中继，完成统计")
 @Controller
 @RequestMapping(value = "/link-jump")
 public class LinkJumpController {

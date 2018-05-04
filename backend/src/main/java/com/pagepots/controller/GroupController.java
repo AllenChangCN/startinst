@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * @author liuyuancheng
  */
-@Api(value = "用户组资源API")
+@Api(value = "Group资源API",description = "用户组")
 @RestController
 @RequestMapping(value = "/api/groups")
 public class GroupController {
