@@ -1,7 +1,6 @@
 module.exports = {
     css: [
-      'element-ui/lib/theme-chalk/reset.css',
-      'element-ui/lib/theme-chalk/index.css'
+
     ],
   /*
   ** Headers of the page
@@ -15,7 +14,8 @@ module.exports = {
     ],
 
     link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { href:'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons',type:'stylesheet'},
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
     ],
 
   },
@@ -25,7 +25,7 @@ module.exports = {
   */
   loading: { color: '#3B8070' },
   plugins: [
-    '~/plugins/element-ui'
+    '~/plugins/vuetify'
   ],
 
     /*

@@ -14,15 +14,17 @@
   },
   "dependencies": {
     "babel-loader": "^7.1.4",
+    "babel-polyfill": "^6.26.0",
     "css-loader": "^0.28.11",
-    "element-ui": "^2.3.4",
+    "material-design-icons-iconfont": "^3.0.3",
     "node-sass": "^4.8.3",
     "nuxt": "^1.4.0",
     "sass-loader": "^6.0.7",
     "vue-i18n": "^7.5.0",
     "vue-style-loader": "^4.1.0",
     "vuedraggable": "^2.16.0",
-    "vuelidate": "^0.6.2"
+    "vuelidate": "^0.6.2",
+    "vuetify": "^1.0.17"
   },
   "devDependencies": {
     "ava": "^0.19.1",
