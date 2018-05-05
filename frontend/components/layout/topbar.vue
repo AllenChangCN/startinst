@@ -1,6 +1,6 @@
 <template>
   <v-toolbar color="amber" app absolute clipped-left>
-    <v-toolbar-side-icon @click.native="$store.commit('toggle_drawer')"></v-toolbar-side-icon>
+    <v-toolbar-side-icon @click.native="$store.commit('toggle_drawer')"/>
     <!--Logo-->
     <span class="title ml-3 mr-5"><nuxt-link to="/" style="color: black;text-decoration: none;">StartInst.</nuxt-link></span>
       <!--搜索框-->
@@ -29,10 +29,13 @@
         type="text"
         label="Search"
         prepend-icon="search"
-      ></v-text-field>
+      />
     <div style="width: 26px;"></div>
     <v-tooltip bottom>
-      <v-btn flat icon slot="activator">
+      <v-btn flat icon slot="activator" @click.native="$store.commit('show_global_snackbar',{
+      text:'页面创建成功',
+      show:true
+      })">
         <v-icon>add</v-icon>
       </v-btn>
       <span>创建页面</span>
@@ -87,13 +90,13 @@
         <v-list>
           <v-list-tile>
             <v-list-tile-action>
-              <v-switch v-model="message" color="purple"></v-switch>
+              <v-switch color="purple"></v-switch>
             </v-list-tile-action>
             <v-list-tile-title>Enable messages</v-list-tile-title>
           </v-list-tile>
           <v-list-tile>
             <v-list-tile-action>
-              <v-switch v-model="hints" color="purple"></v-switch>
+              <v-switch color="purple"></v-switch>
             </v-list-tile-action>
             <v-list-tile-title>Enable hints</v-list-tile-title>
           </v-list-tile>
@@ -114,8 +117,6 @@
     import { mapMutations } from 'vuex'
     export default {
       name: "search",
-      drawer: null,
-
       data: () => {
         return {
           search_sheet: false,
@@ -138,6 +139,7 @@
         search: (keywords, search_url) => {
           window.open(search_url + keywords, '_blank')
         }
+
       }
     }
 </script>

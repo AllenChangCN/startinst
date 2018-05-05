@@ -5,8 +5,16 @@ import mutations from './mutations'
 const createStore = () => {
   return new Vuex.Store({
     state: {
-      counter: 0,
-      drawer: false
+      layout:{
+        drawer: false,
+        global_snackbar:{
+          text:"默认通知",
+          show:false,
+          timeout:600,
+          success: true
+        }
+      }
+
     },
     mutations
   })

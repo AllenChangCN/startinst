@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-navigation-drawer
-      v-model="$store.state.drawer"
+      v-model="$store.state.layout.drawer"
       clipped
       fixed
       class="grey lighten-4"
@@ -31,7 +31,7 @@
             v-else-if="item.divider"
             :key="i"
             dark
-            class="my-3"></v-divider>
+            class="my-3"/>
           <v-list-tile
             v-else
             :key="i">
