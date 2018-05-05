@@ -34,6 +34,7 @@
             class="my-3"/>
           <v-list-tile
             v-else
+            :to="item.path"
             :key="i">
             <v-list-tile-action>
               <v-icon>{{ item.icon }}</v-icon>
@@ -71,11 +72,17 @@
           { divider: true},
 
           { heading: '帮助' },
-          { icon: 'question_answer', text: '在线社区',path: '' },
-          { icon: 'keyboard', text: '键盘快捷键' ,path: ''},
-          { icon: 'extension', text: '浏览器插件' ,path: ''}
+          { icon: 'question_answer', text: '在线社区',path: '/help/discuss' },
+          { icon: 'keyboard', text: '键盘快捷键' ,path: '/help/shortcut'},
+          { icon: 'extension', text: '浏览器插件' ,path: '/help/extension'}
         ]
       }),
+      methods:{
+        goTo:(path)=>{
+          console.log(this.$route);
+          this.app.router.push({path:path});
+        }
+      }
     }
 </script>
 
