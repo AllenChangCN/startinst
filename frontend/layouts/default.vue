@@ -1,71 +1,114 @@
 <template>
-
-  <div>
-    <el-container>
-      <el-header>
-        <div>
-          <el-row :gutter="20">
-            <el-col :span="4">
-              <div class="grid-content bg-purple">
-                <h1 style="margin-top: 20px;">pagepots.com</h1>
-              </div>
-            </el-col>
-            <el-col :span="15">
-              <div class="grid-content bg-purple">
-                <search/>
-              </div>
-            </el-col>
-            <el-col :span="5">
-              <div class="grid-content bg-purple">
-                <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
-                  <el-submenu index="2">
-                    <template slot="title"><i class="el-icon-view"></i> 探索</template>
-                    <el-menu-item index="2-1">选项1</el-menu-item>
-                    <el-menu-item index="2-2">选项2</el-menu-item>
-                    <el-menu-item index="2-3">选项3</el-menu-item>
-                  </el-submenu>
-                  <el-menu-item index="3">我的</el-menu-item>
-                </el-menu>
-              </div>
-            </el-col>
-          </el-row>
-        </div>
-      </el-header>
-      <el-main>
-        <div class="line"></div>
-        <div style="min-height: 680px;">
-          <nuxt/>
-        </div>
-        <div class="line"></div>
-      </el-main>
-      <el-footer>
-        footer
-      </el-footer>
-    </el-container>
-
-  </div>
+  <v-app id="inspire">
+    <v-navigation-drawer
+      v-model="drawer"
+      clipped
+      fixed
+      class="grey lighten-4"
+      hide-overlay
+      app
+      stateless
+    >
+      <v-list
+        dense
+        class="grey lighten-4"
+      >
+        <template v-for="(item, i) in items">
+          <v-layout
+            v-if="item.heading"
+            :key="i"
+            row
+            align-center
+          >
+            <v-flex xs6>
+              <v-subheader v-if="item.heading">
+                {{ item.heading }}
+              </v-subheader>
+            </v-flex>
+            <v-flex xs6 class="text-xs-right">
+            </v-flex>
+          </v-layout>
+          <v-divider
+            v-else-if="item.divider"
+            :key="i"
+            dark
+            class="my-3"
+          ></v-divider>
+          <v-list-tile
+            v-else
+            :key="i"
+          >
+            <v-list-tile-action>
+              <v-icon>{{ item.icon }}</v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title class="grey--text">
+                {{ item.text }}
+              </v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </template>
+      </v-list>
+    </v-navigation-drawer>
+    <v-toolbar color="amber" app absolute clipped-left>
+      <v-toolbar-side-icon @click.native="drawer = !drawer"></v-toolbar-side-icon>
+      <span class="title ml-3 mr-5">StartInst.</span>
+      <v-text-field
+        solo-inverted
+        flat
+        label="Search"
+        prepend-icon="search"
+      ></v-text-field>
+      <v-spacer></v-spacer>
+    </v-toolbar>
+    <v-content>
+      <v-container fluid fill-height class="grey lighten-4">
+        <v-layout justify-center align-center>
+            <nuxt/>
+        </v-layout>
+      </v-container>
+    </v-content>
+  </v-app>
 </template>
+
 <script>
-  import search from "../components/search"
-
   export default {
-    data() {
-      return {
-        activeIndex: null
-      }
-    },
-    methods: {
-      handleSelect: () => {
+    data: () => ({
+      drawer: null,
+      items: [
 
-      }
-    },
-    components: {
-      search
+        { heading: '发现'},
+        { icon: 'home', text: '首页' ,path: ''},
+        { icon: 'explore', text: '发现页面' ,path: ''},
+        { icon: 'dashboard', text: '热门应用',path: '' },
+        { divider: true },
+
+        { heading: '我的' },
+        { icon: 'feedback', text: '消息中心',path: '' },
+        { icon: 'class', text: '页面管理' ,path: ''},
+        { icon: 'settings', text: '个人设置' ,path: ''},
+        { divider: true},
+
+        { heading: '帮助' },
+        { icon: 'question_answer', text: '在线社区',path: '' },
+        { icon: 'keyboard', text: '快捷键' ,path: ''},
+        { icon: 'extension', text: '浏览器插件' ,path: ''}
+      ]
+    }),
+    props: {
+      source: String
     }
   }
 </script>
+
 <style>
-  .input-with-select .el-input-group__prepend {
-    background-color: #fff;
+  #keep main .container {
+    height: 660px;
+  }
+  .navigation-drawer__border {
+    display: none;
+  }
+  .text {
+    font-weight: 400;
   }
 </style>

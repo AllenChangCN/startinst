@@ -2,7 +2,7 @@
   <v-layout>
     <v-flex xs12 sm6 offset-sm3>
       <v-card>
-        <v-card-media src="/static/doc-images/cards/desert.jpg" height="200px">
+        <v-card-media src="" height="200px">
         </v-card-media>
         <v-card-title primary-title>
           <div>
@@ -18,7 +18,6 @@
     </v-flex>
   </v-layout>
 </template>
-
 <script>
   export default {
     data () {
