@@ -8,6 +8,9 @@ const mutations = {
   },
   show_global_snackbar(state,params){
     state.layout.global_snackbar = params;
+  },
+  toggle_editpage_dialog(state,params){
+    state.layout.dialog.page_edit = params
   }
 };
 

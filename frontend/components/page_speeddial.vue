@@ -17,6 +17,7 @@
         dark
         fab
         icon
+
         hover>
         <v-icon>edit</v-icon>
         <v-icon>clear</v-icon>
@@ -27,6 +28,11 @@
           slot="activator"
           dark
           small
+          @click.native="$store.commit('toggle_editpage_dialog',{
+            visible:true,
+            title:'页面设置',
+            page_id:9
+          })"
           color="blue darken-2">
           <v-icon>settings</v-icon>
         </v-btn>
@@ -49,6 +55,11 @@
           slot="activator"
           dark
           small
+          @click.native="$store.commit('show_global_snackbar',{
+            show:true,
+            text:'页面已删除',
+            success: true
+          })"
           color="red">
           <v-icon>delete</v-icon>
         </v-btn>

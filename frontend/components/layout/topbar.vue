@@ -44,9 +44,9 @@
       />
       <div style="width: 26px;"></div>
       <v-tooltip bottom>
-        <v-btn flat icon slot="activator" @click.native="$store.commit('show_global_snackbar',{
-          text:'页面创建成功',
-          show:true
+        <v-btn flat icon slot="activator" @click.native="$store.commit('toggle_editpage_dialog',{
+          visible:true,
+          title:'添加页面',
         })">
           <v-icon>add</v-icon>
         </v-btn>
@@ -124,11 +124,14 @@
       &nbsp;
       &nbsp;
     </v-toolbar>
+
+    <edit_page_dialog/>
   </div>
 
 </template>
 <script>
     import { mapMutations,store } from 'vuex'
+    import edit_page_dialog from '../page/edit_page'
     export default {
       name: "search",
       data: () => {
@@ -158,7 +161,9 @@
         search: (keywords, active_seacher_url) => {
           window.open(active_seacher_url + keywords, '_blank')
         }
-
+      },
+      components: {
+        edit_page_dialog
       }
     }
 </script>

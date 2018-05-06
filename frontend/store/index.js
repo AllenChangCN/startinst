@@ -17,8 +17,14 @@ const createStore = () => {
         seacher: {
           title:"Google",
           url:"https://www.google.com/search?q="
+        },
+        dialog: {
+          page_edit:{
+            visible:false,title:"添加页面",page_id:0
+          },
+          notification:false
         }
-      }
+      },
 
     },
     mutations
