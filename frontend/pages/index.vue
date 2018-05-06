@@ -12,7 +12,7 @@
 
     }),
     mounted(){
-      this.$store.commit('set_layout_title','StartInst.')
+      this.$store.commit('set_layout_title','王的导航')
     },
     components: {
       page_speeddial,page_display

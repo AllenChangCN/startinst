@@ -44,7 +44,7 @@
             column_idx:2,
             name:'',
             data: [
-              {idx: 2, title: 'test2',type:'note',description:'描述',content:'<h2>一去二三里</h2>烟村四五家，亭台六七座'},
+              {idx: 2, title: 'test2',type:'note',description:'描述',content:'<h2>一去二三里</h2>烟村四五家，亭台六七座<br/>支持MarkDown'},
               {idx: 3, title: 'test2',type:'bookmark',description:'描述',}
             ]},
           {
