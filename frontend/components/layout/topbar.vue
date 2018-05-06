@@ -4,38 +4,49 @@
     <!--Logo-->
     <span class="title ml-3 mr-5"><nuxt-link to="/" style="color: black;text-decoration: none;">{{$store.state.layout.title}}</nuxt-link></span>
       <!--搜索框-->
-      <v-bottom-sheet v-model="search_sheet">
-        <v-btn slot="activator" large flat>{{engine}} &nbsp;<v-icon>expand_more</v-icon></v-btn>
+      <v-dialog v-model="search_sheet"
+                transition="dialog-bottom-transition"
+                max-width="600"
+      >
+        <v-btn slot="activator" large flat>{{$store.state.layout.seacher.title}} &nbsp;<v-icon>expand_more</v-icon></v-btn>
         <v-list>
           <v-subheader>选择搜索引擎</v-subheader>
           <v-list-tile
             v-for="tile in tiles"
             :key="tile.title"
-            @click="search_sheet = false"
+            @click="search_sheet=false"
           >
             <v-list-tile-avatar>
               <v-avatar size="32px" tile>
                 <!--<img :src="`/static/doc-images/bottom-sheets/${tile.img}`" :alt="tile.title">-->
               </v-avatar>
             </v-list-tile-avatar>
-            <v-list-tile-title>{{ tile.title }}</v-list-tile-title>
+            <v-list-tile-content>
+              <v-list-tile-title>{{ tile.title }}</v-list-tile-title>
+              <v-list-tile-sub-title>{{ tile.url }}</v-list-tile-sub-title>
+            </v-list-tile-content>
+            <v-list-tile-action/>
+            <v-list-tile-action>
+              <v-icon v-if="tile.active">check</v-icon>
+            </v-list-tile-action>
           </v-list-tile>
         </v-list>
-      </v-bottom-sheet>
-
+      </v-dialog>
       <v-text-field
         solo-inverted
         flat
         type="text"
         label="Search"
+        v-model="keywords"
         prepend-icon="search"
+        @keyup.13="search(keywords, $store.state.layout.seacher.url)"
       />
     <div style="width: 26px;"></div>
     <v-tooltip bottom>
-      <v-btn flat icon slot="activator" @click.native="$store.commit('show_global_snackbar',{
-      text:'页面创建成功',
-      show:true
-      })">
+        <v-btn flat icon slot="activator" @click.native="$store.commit('show_global_snackbar',{
+          text:'页面创建成功',
+          show:true
+        })">
         <v-icon>add</v-icon>
       </v-btn>
       <span>创建页面</span>
@@ -86,23 +97,23 @@
             </v-list-tile-action>
           </v-list-tile>
         </v-list>
-        <v-divider></v-divider>
+        <v-divider/>
         <v-list>
           <v-list-tile>
             <v-list-tile-action>
-              <v-switch color="purple"></v-switch>
+              <v-switch color="purple"/>
             </v-list-tile-action>
             <v-list-tile-title>Enable messages</v-list-tile-title>
           </v-list-tile>
           <v-list-tile>
             <v-list-tile-action>
-              <v-switch color="purple"></v-switch>
+              <v-switch color="purple"/>
             </v-list-tile-action>
             <v-list-tile-title>Enable hints</v-list-tile-title>
           </v-list-tile>
         </v-list>
         <v-card-actions>
-          <v-spacer></v-spacer>
+          <v-spacer/>
           <v-btn flat @click="menu = false">Cancel</v-btn>
           <v-btn color="primary" flat @click="menu = false">Save</v-btn>
         </v-card-actions>
@@ -114,32 +125,35 @@
   </v-toolbar>
 </template>
 <script>
-    import { mapMutations } from 'vuex'
+    // import { mapMutations } from 'vuex'
     export default {
       name: "search",
       data: () => {
         return {
           search_sheet: false,
-          engine: "Google",
           tiles:[
-            { img: 'inbox.png', title: 'Google' ,url: 'https://www.google.com/search?q='},
-            { img: 'inbox.png', title: 'Baidu' ,url: 'https://www.baidu.com/s?wd='},
-            { img: 'keep.png', title: 'StartInst' },
+            { img: 'inbox.png', title: 'GOOGLE' ,url: 'https://www.google.com/search?q=',active:true},
+            { img: 'inbox.png', title: 'BAIDU' ,url: 'https://www.baidu.com/s?wd=',active:false},
+            { img: 'keep.png', title: 'STARTINST' ,url:'https://startinst.com',active:false},
           ],
-          search_url: 'https://www.google.com/search?q=',
-          keywords: '',
-
+          keywords: ''
         }
       },
       mounted() {
-        this.engine = "Google";
-        this.search_url = 'https://www.google.com/search?q=';
       },
       methods: {
-        search: (keywords, search_url) => {
-          window.open(search_url + keywords, '_blank')
-        }
+        search: (keywords, active_seacher_url) => {
+          window.open(active_seacher_url + keywords, '_blank')
+        },
+        switch_seacher_chosen:() => {
+          // this.search_sheet = false;
 
+          // this.$store.commit('show_global_snackbar',{
+          //   text:"默认通知",
+          //   show:true,
+          //   success: true
+          // });
+        }
       }
     }
 </script>

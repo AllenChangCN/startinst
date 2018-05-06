@@ -13,6 +13,10 @@ const createStore = () => {
           show:false,
           timeout:600,
           success: true
+        },
+        seacher: {
+          title:"Google",
+          url:"https://www.google.com/search?q="
         }
       }
 
