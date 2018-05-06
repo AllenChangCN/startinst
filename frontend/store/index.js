@@ -6,6 +6,7 @@ const createStore = () => {
   return new Vuex.Store({
     state: {
       layout:{
+        title: "StartInst.",
         drawer: false,
         global_snackbar:{
           text:"默认通知",

@@ -18,7 +18,10 @@
 
 <script>
     export default {
-        name: "extension"
+      name: "extension",
+      mounted(){
+        this.$store.commit('set_layout_title','键盘快捷键')
+      },
     }
 </script>
 

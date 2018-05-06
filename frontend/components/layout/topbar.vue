@@ -2,7 +2,7 @@
   <v-toolbar color="amber" app absolute clipped-left>
     <v-toolbar-side-icon @click.native="$store.commit('toggle_drawer')"/>
     <!--Logo-->
-    <span class="title ml-3 mr-5"><nuxt-link to="/" style="color: black;text-decoration: none;">StartInst.</nuxt-link></span>
+    <span class="title ml-3 mr-5"><nuxt-link to="/" style="color: black;text-decoration: none;">{{$store.state.layout.title}}</nuxt-link></span>
       <!--搜索框-->
       <v-bottom-sheet v-model="search_sheet">
         <v-btn slot="activator" large flat>{{engine}} &nbsp;<v-icon>expand_more</v-icon></v-btn>

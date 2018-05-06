@@ -11,9 +11,8 @@
     data: () => ({
 
     }),
-
-    computed: {
-
+    mounted(){
+      this.$store.commit('set_layout_title','StartInst.')
     },
     components: {
       page_speeddial

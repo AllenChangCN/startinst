@@ -62,13 +62,14 @@
         items: [
 
           { heading: '发现'},
-          { icon: 'explore', text: '发现页面' ,path: ''},
-          { icon: 'apps', text: '热门应用',path: '' },
+          { icon: 'home', text: '首页' ,path: '/'},
+          { icon: 'explore', text: '发现页面' ,path: '/discover/inst-page'},
+          { icon: 'apps', text: '热门应用',path: '/discover/hot-apps' },
           { divider: true },
 
           { heading: '我的' },
-          { icon: 'class', text: '页面管理' ,path: ''},
-          { icon: 'settings', text: '通用设置' ,path: ''},
+          { icon: 'class', text: '页面管理' ,path: '/mine/page-mgr'},
+          { icon: 'settings', text: '通用设置' ,path: '/mine/settings'},
           { divider: true},
 
           { heading: '帮助' },
