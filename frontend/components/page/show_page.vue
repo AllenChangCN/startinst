@@ -51,7 +51,7 @@
             column_idx:3,
             name:'',
             data: [
-              {idx: 1, title: 'test1',type:'bookmark',description:'描述',},
+              {idx: 1, title: 'test1',type:'note',description:'',},
               {idx: 2, title: 'test2',type:'bookmark',description:'描述',},
               {idx: 3, title: 'test2',type:'bookmark',description:'描述',},
               {idx: 4, title: 'test2',type:'bookmark',description:'描述',}
