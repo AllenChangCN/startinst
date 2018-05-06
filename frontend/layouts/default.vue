@@ -4,14 +4,12 @@
     <nav_drawer/>
     <topbar/>
     <global_snackbar/>
+    <!--主体页面-->
     <v-content>
-      <v-container fluid fill-height class="grey lighten-4">
-        <v-layout justify-center align-center>
-            <nuxt/>
-        </v-layout>
-      </v-container>
+      <v-layout>
+          <nuxt/>
+      </v-layout>
     </v-content>
-
   </v-app>
 </template>
 

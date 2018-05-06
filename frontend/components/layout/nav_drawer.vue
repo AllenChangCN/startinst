@@ -7,6 +7,7 @@
       class="grey lighten-4"
       hide-overlay
       app
+      absolute
       :stateless="true"
       width="200"
     >

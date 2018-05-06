@@ -1,28 +1,23 @@
 <template>
   <div>
-    <el-card class="box-card">
-      <div slot="header" class="clearfix">
-        <span>卡片名称</span>
-        <el-dropdown style="float: right; padding: 3px 0">
-        <span class="el-dropdown-link">
-           操作<i class="el-icon-arrow-down el-icon--right"></i>
-        </span>
-          <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item><i class="el-icon-edit"></i> 改名</el-dropdown-item>
-            <el-dropdown-item><i class="el-icon-sort"></i> 排序</el-dropdown-item>
-            <el-dropdown-item><i class="el-icon-document"></i> 复制</el-dropdown-item>
-            <el-dropdown-item><i class="el-icon-setting"></i> 设置</el-dropdown-item>
-            <el-dropdown-item divided><i class="el-icon-edit-outline"></i> 编辑</el-dropdown-item>
-            <el-dropdown-item><i class="el-icon-circle-close-outline"></i> 删除</el-dropdown-item>
-          </el-dropdown-menu>
-        </el-dropdown>
-      </div>
-      <draggable v-model="list">
-        <div v-for="element in list" :key="element.id">
-          {{element.title}}{{element.name}}
-        </div>
-      </draggable>
-    </el-card>
+
+        <v-card>
+          <v-card-title primary-title>
+            <div>
+              <div class="headline">Top western road trips</div>
+              <span class="grey--text">1,000 miles of wonder</span>
+            </div>
+          </v-card-title>
+          <v-card-actions>
+            <v-btn flat>Share</v-btn>
+            <v-btn flat color="purple">Explore</v-btn>
+            <v-spacer></v-spacer>
+            <v-btn icon @click.native="show = !show">
+              <v-icon>keyboard_arrow_up</v-icon>
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+
   </div>
 </template>
 
