@@ -7,7 +7,7 @@
     <!--主体页面-->
     <v-content>
       <v-layout>
-          <nuxt/>
+          <nuxt style="width: 100%;"/>
       </v-layout>
     </v-content>
   </v-app>

@@ -4,16 +4,15 @@
       v-model="$store.state.layout.drawer"
       clipped
       fixed
-      class="grey lighten-4"
+      class="grey lighten-5"
       hide-overlay
       app
-      absolute
       :stateless="true"
       width="200"
     >
       <v-list
         dense
-        class="grey lighten-4">
+        class="grey lighten-5">
         <template v-for="(item, i) in items">
           <v-layout
             v-if="item.heading"
@@ -48,7 +47,7 @@
           </v-list-tile>
         </template>
       </v-list>
-      <v-footer class="pa-3" inset absolute>
+      <v-footer class="pa-3 grey lighten-5" inset absolute>
         <p class="grey--text">&copy; StartInst. {{ new Date().getFullYear() }} 服务条款</p>
       </v-footer>
     </v-navigation-drawer>

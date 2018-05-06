@@ -1,9 +1,13 @@
 <template>
-  <v-container>
-    <v-layout>
-      <v-flex xs12 sm6 v-for="widget_column in widgets" :key="widget_column.column_idx">
-        <div v-for="widget in widget_column.data" :key="widget.id">
-          <bookmark/>
+  <v-container
+    grid-list-lg
+    align-start
+    fluid
+  >
+    <v-layout wrap>
+      <v-flex lg3 v-for="widget_column in widgets" :key="widget_column.column_idx">
+        <div v-for="widget in widget_column.data" :key="widget.idx">
+          <widget :data="widget"/>
         </div>
       </v-flex>
     </v-layout>
@@ -11,12 +15,12 @@
 </template>
 
 <script>
-  import bookmark from "../widget/bookmark"
+  import widget from "../widget/widget"
 
   export default {
     name: "page",
     components: {
-      bookmark
+      widget
     },
     data: () => ({
       widgets: [
@@ -24,25 +28,35 @@
             column_idx:1,
             name:'',
             data:[
-              {id: 1, name: 'test1'},
-              {id: 2, name: 'test2'},
+              {idx: 1, title: '岁吧点点', type:'bookmark', content:"asdf"},
+              {idx: 2, title: 'test2',type:'bookmark',content:"asdf"},
             ]},
           {
             column_idx:2,
             name:'',
             data: [
-              {id: 1, name: 'test1'},
-              {id: 2, name: 'test2'},
-              {id: 2, name: 'test2'}
+              {idx: 1, title: 'test1',type:'bookmark',},
+              {idx: 2, title: 'test2',type:'note',},
+              {idx: 2, title: 'test2',type:'bookmark',}
             ]},
           {
             column_idx:3,
             name:'',
             data: [
-              {id: 1, name: 'test1'},
-              {id: 2, name: 'test2'},
-              {id: 3, name: 'test2'},
-              {id: 4, name: 'test2'}
+              {idx: 1, title: 'test1',type:'bookmark',},
+              {idx: 2, title: 'test2',type:'bookmark',},
+              {idx: 3, title: 'test2',type:'bookmark',},
+              {idx: 4, title: 'test2',type:'bookmark',}
+          ]},
+          {
+          column_idx:4,
+          name:'',
+          data: [
+            {idx: 1, title: 'test1',type:'bookmark',},
+            {idx: 2, title: 'test2',type:'bookmark',},
+            {idx: 3, title: 'test2',type:'bookmark',},
+            {idx: 4, title: 'test2',type:'bookmark',},
+            {idx: 4, title: 'test2',type:'bookmark',},
           ]},
 
       ]

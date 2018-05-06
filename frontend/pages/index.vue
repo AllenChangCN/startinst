@@ -1,9 +1,8 @@
 <template>
-  <div class="text-xs-center">
+  <div>
     <page_display/>
     <page_speeddial/>
   </div>
-
 </template>
 <script>
   import page_speeddial from "../components/page_speeddial"
