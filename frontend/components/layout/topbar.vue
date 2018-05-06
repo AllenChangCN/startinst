@@ -36,6 +36,7 @@
       <v-text-field
         solo-inverted
         flat
+        autofocus
         type="text"
         label="Search"
         v-model="keywords"
@@ -103,7 +104,7 @@
               </v-list-tile-action>
               <v-list-tile-title>新标签打开页面</v-list-tile-title>
             </v-list-tile>
-            <v-list-tile to="/" avatar>
+            <v-list-tile to="/mine/account-settings">
               <v-list-tile-action>
                 <v-icon>settings</v-icon>
               </v-list-tile-action>
@@ -111,7 +112,7 @@
                 <v-list-tile-title>账号安全设置</v-list-tile-title>
               </v-list-tile-content>
             </v-list-tile>
-            <v-list-tile to="/login" avatar>
+            <v-list-tile @click.native="logout()" to="/logout">
               <v-list-tile-action>
                 <v-icon>transfer_within_a_station
                 </v-icon>
@@ -129,12 +130,16 @@
     </v-toolbar>
 
     <edit_page_dialog/>
+    <signin/>
+    <signup/>
   </div>
 
 </template>
 <script>
     import { mapMutations,store } from 'vuex'
     import edit_page_dialog from '../page/edit_page'
+    import signin from '../layout/signin'
+    import signup from '../layout/signup'
     export default {
       name: "search",
       data: () => {
@@ -169,10 +174,12 @@
         },
         search: (keywords, active_seacher_url) => {
           window.open(active_seacher_url + keywords, '_blank')
+        },
+        logout:function(){
         }
       },
       components: {
-        edit_page_dialog
+        edit_page_dialog,signin,signup
       }
     }
 </script>
