@@ -13,7 +13,7 @@
       <v-btn
         slot="activator"
         v-model="fab"
-        color="black darken-2"
+        color="black darken-1"
         dark
         fab
         icon
