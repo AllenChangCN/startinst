@@ -37,7 +37,7 @@
             data: [
               {idx: 1, title: 'test1',type:'bookmark',},
               {idx: 2, title: 'test2',type:'note',},
-              {idx: 2, title: 'test2',type:'bookmark',}
+              {idx: 3, title: 'test2',type:'bookmark',}
             ]},
           {
             column_idx:3,
@@ -56,7 +56,7 @@
             {idx: 2, title: 'test2',type:'bookmark',},
             {idx: 3, title: 'test2',type:'bookmark',},
             {idx: 4, title: 'test2',type:'bookmark',},
-            {idx: 4, title: 'test2',type:'bookmark',},
+            {idx: 5, title: 'test2',type:'bookmark',},
           ]},
 
       ]

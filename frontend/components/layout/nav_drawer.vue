@@ -12,7 +12,8 @@
     >
       <v-list
         dense
-        class="grey lighten-5">
+        class="grey lighten-5"
+      >
         <template v-for="(item, i) in items">
           <v-layout
             v-if="item.heading"
@@ -60,29 +61,22 @@
       name: "nav_drawer",
       data: () => ({
         items: [
+          { heading: '导航菜单' },
 
-          { heading: '发现'},
-          { icon: 'home', text: '首页' ,path: '/'},
+          { icon: 'home', text: '我的首页' ,path: '/'},
           { icon: 'explore', text: '发现页面' ,path: '/discover/inst-page'},
           { icon: 'apps', text: '热门应用',path: '/discover/hot-apps' },
+          { icon: 'extension', text: '浏览器插件' ,path: '/help/extension'},
+
           { divider: true },
 
-          { heading: '我的' },
-          { icon: 'class', text: '页面管理' ,path: '/mine/page-mgr'},
-          { icon: 'settings', text: '通用设置' ,path: '/mine/settings'},
-          { divider: true},
-
-          { heading: '帮助' },
-          { icon: 'question_answer', text: '在线社区',path: '/help/discuss' },
           { icon: 'keyboard', text: '键盘快捷键' ,path: '/help/shortcut'},
-          { icon: 'extension', text: '浏览器插件' ,path: '/help/extension'}
+          { icon: 'question_answer', text: '在线社区',path: '/help/discuss' },
+
         ]
       }),
       methods:{
-        goTo:(path)=>{
-          console.log(this.$route);
-          this.app.router.push({path:path});
-        }
+
       }
     }
 </script>

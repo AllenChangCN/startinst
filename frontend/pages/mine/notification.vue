@@ -8,7 +8,7 @@
     export default {
       name: "extension",
       mounted(){
-        this.$store.commit('set_layout_title','通用设置')
+        this.$store.commit('set_layout_title','消息通知')
       },
     }
 </script>

@@ -81,6 +81,8 @@
 
   export default {
     name: 'FormValidation',
+    layout:'empty',
+
     mixins: [validationMixin],
     data: () => ({
       form: {

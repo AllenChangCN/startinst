@@ -28,15 +28,12 @@
           slot="activator"
           dark
           small
-          @click.native="$store.commit('toggle_editpage_dialog',{
-            visible:true,
-            title:'页面设置',
-            page_id:9
-          })"
-          color="blue darken-2">
-          <v-icon>settings</v-icon>
+          color="blue darken-2"
+
+        >
+          <v-icon>exposure_plus_1</v-icon>
         </v-btn>
-        <span>页面设置</span>
+        <span>添加Widget</span>
       </v-tooltip>
       <v-tooltip left>
         <v-btn
@@ -44,11 +41,19 @@
           slot="activator"
           dark
           small
-          color="indigo">
-          <v-icon>share</v-icon>
+          color="indigo"
+
+          @click.native="$store.commit('toggle_editpage_dialog',{
+            visible:true,
+            title:'页面设置',
+            page_id:9
+          })"
+        >
+          <v-icon>settings</v-icon>
         </v-btn>
-        <span>分享页面</span>
+        <span>页面设置</span>
       </v-tooltip>
+
       <v-tooltip left>
         <v-btn
           fab

@@ -44,22 +44,19 @@
       />
       <div style="width: 26px;"></div>
       <v-tooltip bottom>
-        <v-btn flat icon slot="activator" @click.native="$store.commit('toggle_editpage_dialog',{
-          visible:true,
-          title:'添加页面',
-        })">
+        <v-btn flat icon slot="activator" @click.native="add_new_page()">
           <v-icon>add</v-icon>
         </v-btn>
         <span>创建页面</span>
       </v-tooltip>
       <v-tooltip bottom>
-        <v-btn flat icon slot="activator">
+        <v-btn flat icon slot="activator" to="/mine/page-mgr">
           <v-icon>bookmark_border</v-icon>
         </v-btn>
         <span>我的页面</span>
       </v-tooltip>
       <v-tooltip bottom>
-        <v-btn flat icon slot="activator">
+        <v-btn flat icon slot="activator" to="/mine/notification">
           <v-icon>notifications_none</v-icon>
         </v-btn>
         <span>消息通知 (2)</span>
@@ -104,20 +101,26 @@
               <v-list-tile-action>
                 <v-switch color="purple"/>
               </v-list-tile-action>
-              <v-list-tile-title>Enable messages</v-list-tile-title>
+              <v-list-tile-title>新标签打开页面</v-list-tile-title>
             </v-list-tile>
-            <v-list-tile>
+            <v-list-tile to="/" avatar>
               <v-list-tile-action>
-                <v-switch color="purple"/>
+                <v-icon>settings</v-icon>
               </v-list-tile-action>
-              <v-list-tile-title>Enable hints</v-list-tile-title>
+              <v-list-tile-content>
+                <v-list-tile-title>账号安全设置</v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
+            <v-list-tile to="/login" avatar>
+              <v-list-tile-action>
+                <v-icon>transfer_within_a_station
+                </v-icon>
+              </v-list-tile-action>
+              <v-list-tile-content>
+                <v-list-tile-title>退出登录</v-list-tile-title>
+              </v-list-tile-content>
             </v-list-tile>
           </v-list>
-          <v-card-actions>
-            <v-spacer/>
-            <v-btn flat @click="menu = false">Cancel</v-btn>
-            <v-btn color="primary" flat @click="menu = false">Save</v-btn>
-          </v-card-actions>
         </v-card>
       </v-menu>
       &nbsp;
@@ -149,6 +152,12 @@
         this.engine_switcher = false;
       },
       methods: {
+        add_new_page:function () {
+          this.$store.commit('toggle_editpage_dialog',{
+            visible:true,
+            title:'添加页面',
+          });
+       },
         switch_seacher_chosen:function (){
           this.engine_switcher = false;
           this.$store.commit('show_global_snackbar',{
