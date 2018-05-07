@@ -4,7 +4,6 @@
   </div>
 </template>
 <script>
-  import page_speeddial from "../components/page/page_speeddial"
   import page_display from "../components/page/show_page"
   export default {
     data: () => ({

@@ -7,18 +7,29 @@
         >
         <div slot="header" id="title">
           <div style="display: flex;">
-            <div style="flex: 100%;">
+            <div style="flex:1">
               <b><v-icon>title</v-icon> / 王的导航</b>
             </div>
-            <div>1,2,3</div>
-            <v-tooltip bottom>
-              <v-icon slot="activator" small @click.stop="settingsClick()" color="blue">settings</v-icon>
-              <span>页面设置</span>
-            </v-tooltip>
-            <v-tooltip bottom>
-              <v-icon slot="activator" small @click.stop="settingsClick()" color="red">share</v-icon>
-              <span>页面分享</span>
-            </v-tooltip>
+            <div style="flex: 1;text-align: center;">
+              <v-tooltip bottom>
+                <v-icon slot="activator" @click.stop="settingsClick()">radio_button_checked</v-icon>
+                <span>王的导航</span>
+              </v-tooltip>
+              <v-tooltip bottom>
+                <v-icon slot="activator" @click.stop="settingsClick()">radio_button_unchecked</v-icon>
+                <span>天地一体</span>
+              </v-tooltip>
+            </div>
+            <div style="flex: 1;text-align: right;margin-right: 20px;">
+              <v-tooltip bottom>
+                <v-icon slot="activator" @click.stop="settingsClick()">settings</v-icon>
+                <span>页面设置</span>
+              </v-tooltip>
+              <v-tooltip bottom>
+                <v-icon slot="activator" @click.stop="settingsClick()">share</v-icon>
+                <span>页面分享</span>
+              </v-tooltip>
+            </div>
           </div>
         </div>
         <v-card>
@@ -46,4 +57,5 @@
 <style>
   #page_head .expansion-panel__header{padding: 6px 16px;}
   #page_head .material-icons{margin: 0 3px;}
+  #page_head .material-icons:hover{color: #000;}
 </style>
