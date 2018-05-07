@@ -34,7 +34,7 @@
             column_idx:1,
             name:'',
             data:[
-              {idx: 1, title: 'test1',type:'ad',description:'描述',},
+              {idx: 1, title: 'test1',type:'ad',description:'先保存在终端，然后再统一上传，减少并发',},
               {idx: 1, title: '岁吧点点', description:'',type:'bookmark', content:[
                 {idx:1,icon:'',title:'百度搜索引擎',url:'https://www.baidu.com'},
                 ]},

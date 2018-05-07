@@ -1,7 +1,6 @@
 <template>
   <div>
     <page_display/>
-    <page_speeddial/>
   </div>
 </template>
 <script>
@@ -15,7 +14,7 @@
       this.$store.commit('set_layout_title','StartInst.')
     },
     components: {
-      page_speeddial,page_display
+      page_display
     },
     watch: {
 
