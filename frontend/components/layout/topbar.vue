@@ -36,7 +36,7 @@
       <v-text-field
         solo-inverted
         flat
-        autofocus
+        autocomplete="false"
         type="text"
         label="Search"
         v-model="keywords"

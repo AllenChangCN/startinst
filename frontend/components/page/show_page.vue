@@ -5,6 +5,9 @@
     fluid
   >
     <v-layout wrap>
+      <v-flex lg12>
+        <page_head/>
+      </v-flex>
       <!--遍历列-->
       <v-flex lg3 v-for="widget_column in widgets" :key="widget_column.column_idx">
         <!--遍历Widget-->
@@ -18,11 +21,12 @@
 
 <script>
   import widget from "../widget/widget"
+  import page_head from "./page_head"
 
   export default {
     name: "page",
     components: {
-      widget
+      widget,page_head
     },
     data: () => ({
       widgets: [
