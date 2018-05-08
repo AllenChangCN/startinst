@@ -33,7 +33,9 @@ const createStore = () => {
           }
         }
       },
-
+      page:{
+        sort_mode:true
+      }
     },
     mutations
   })

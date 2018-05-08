@@ -33,14 +33,18 @@
                 <span>键盘"→"键</span>
               </v-tooltip>
             </div>
-            <div style="width: 80px;text-align: right">
+            <div style="width: 90px;text-align: right">
+              <v-tooltip bottom>
+                <v-icon slot="activator" size="20px" @click.stop="$store.commit('toggle_page_sortmode')">sort</v-icon>
+                <span>Widget排序</span>
+              </v-tooltip>
               <v-tooltip bottom>
                 <v-icon slot="activator" small @click.stop="settingsClick()">settings</v-icon>
                 <span>页面设置</span>
               </v-tooltip>
               <v-tooltip bottom>
-                <v-icon slot="activator" small @click.stop="settingsClick()">share</v-icon>
-                <span>页面分享</span>
+                <v-icon slot="activator" small @click.stop="settingsClick()">favorite</v-icon>
+                <span>收藏页面</span>
               </v-tooltip>
 
             </div>

@@ -1,11 +1,31 @@
 <template>
-  <div class="widget">
+  <!--Widget排序模式-->
+  <div class="widget sortmode" v-if="$store.state.page.sort_mode">
+    <v-card v-if="data.type==='ad'" class="ad">
+      <v-card-title><v-icon size="19px">monetization_on</v-icon> &nbsp;&nbsp;<b>赞助商</b></v-card-title>
+    </v-card>
+    <v-card v-else>
+      <v-card-title>
+        <div style="width: 100%;">
+          <div style="display: flex;">
+            <div style="flex: 100%;">
+              <v-icon v-if="data.type==='note'" size="19px">event_note</v-icon>
+              <v-icon v-if="data.type==='bookmark'" size="19px">bookmark_border</v-icon>
+              &nbsp;<b>{{data.title}}</b>
+            </div>
+          </div>
+        </div>
+      </v-card-title>
+    </v-card>
+  </div>
+  <!--正常模式-->
+  <div class="widget" v-else>
     <!--广告Widget-->
     <v-card v-if="data.type==='ad'">
       <v-card-title><v-icon size="19px">monetization_on</v-icon> &nbsp;&nbsp;<b>赞助商</b></v-card-title>
     </v-card>
-    <!--书签Widget+笔记Widget-->
     <v-card v-else @mouseenter="widgetEnter()" @mouseleave="widgetLeave()">
+      <!--Widget标题-->
       <v-card-title>
         <div style="width: 100%;">
           <div style="display: flex;">
@@ -41,6 +61,9 @@
                   <v-list-tile @click="widgetMenu()">
                     <v-list-tile-title><v-icon size="small">edit</v-icon> 编辑</v-list-tile-title>
                   </v-list-tile>
+                  <v-list-tile @click="widgetMenu()">
+                    <v-list-tile-title><v-icon size="small">input</v-icon> 复制到</v-list-tile-title>
+                  </v-list-tile>
                 </v-list>
               </v-menu>
             </div>
@@ -50,9 +73,11 @@
       </v-card-title>
       <v-card-text v-if="data.type==='bookmark'"> <!-- 书签 -->
         <div v-if="data.content">
-          <div v-for="item in data.content" :key="item.idx">
-            <a :href="item.url" target="_blank">{{ item.title }}</a>
-          </div>
+          <draggable v-model="data.content" :options="{group:'people'}" @start="drag=true" @end="drag=false">
+            <div v-for="item in data.content" :key="item.idx">
+              <a :href="item.url" target="_blank">{{ item.title }}</a>
+            </div>
+          </draggable>
         </div>
         <div v-else>
           暂无书签
@@ -111,4 +136,6 @@
   .widget .material-icons:hover{color: black;}
   .widget .tooltip--right .material-icons:hover{cursor: pointer;}
   .widget_menu_list .list__tile{height: 23px;font-size: 14px;padding: 0 8px;}
+  .sortmode {cursor: move;}
+  .sortmode .ad{cursor: not-allowed}
 </style>

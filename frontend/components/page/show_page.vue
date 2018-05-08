@@ -9,10 +9,16 @@
         <page_head/>
       </v-flex>
       <!--遍历列-->
-      <v-flex lg3 v-for="widget_column in widgets" :key="widget_column.column_idx">
+      <v-flex lg3 v-for="widget_column in widgets" :key="widget_column.column_idx"
+              @mouseenter="columnEnter(widget_column.column_idx)"
+              @mouseleave="columnLeave()"
+      >
         <!--遍历Widget-->
         <div v-for="widget in widget_column.data" :key="widget.idx" style="margin-bottom: 13px;">
           <widget :data="widget" :column_idx="widget_column.column_idx"/>
+        </div>
+        <div v-if="column_over_idx===widget_column.column_idx" style="text-align: center;">
+            <v-btn flat icon><v-icon size="44px" class="grey--text lighten-4">add</v-icon></v-btn>
         </div>
       </v-flex>
     </v-layout>
@@ -28,7 +34,17 @@
     components: {
       widget,page_head
     },
+    methods: {
+      columnEnter:function (column_idx) {
+        this.column_over_idx = column_idx;
+      },
+      columnLeave:function () {
+        this.column_over_idx = null;
+      },
+
+    },
     data: () => ({
+      column_over_idx: null,
       widgets: [
           {
             column_idx:1,
@@ -37,6 +53,7 @@
               {idx: 1, title: 'test1',type:'ad',description:'先保存在终端，然后再统一上传，减少并发',},
               {idx: 2, title: '岁吧点点', description:'',type:'bookmark', content:[
                 {idx:1,icon:'',title:'百度搜索引擎',url:'https://www.baidu.com'},
+                {idx:2,icon:'',title:'谷歌搜索引擎',url:'https://www.baidu.com'},
                 ]},
               {idx: 2, title: 'test2',description:'描述2',type:'bookmark',content:[
                 {idx:1, icon:'',title: '腾讯网',url:'http://www.qq.com'},

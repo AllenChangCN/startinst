@@ -11,6 +11,9 @@ const mutations = {
   },
   toggle_editpage_dialog(state,params){
     state.layout.dialog.page_edit = params
+  },
+  toggle_page_sortmode(state){
+    state.page.sort_mode = !state.page.sort_mode;
   }
 };
 
