@@ -4,7 +4,10 @@
   <!--Widget排序模式-->
   <div class="widget sortmode" v-if="$store.state.page.current.sort_mode">
     <v-card v-if="data.type==='ad'" class="ad">
-      <v-card-title><v-icon size="19px">monetization_on</v-icon> &nbsp;&nbsp;<b>赞助商</b></v-card-title>
+      <v-card-title>
+        <v-icon size="19px">monetization_on</v-icon> &nbsp;&nbsp;<b>赞助商</b>
+
+      </v-card-title>
     </v-card>
     <v-card v-else>
       <v-card-title>
@@ -26,7 +29,11 @@
   <div class="widget" v-else>
     <!--广告Widget-->
     <v-card v-if="data.type==='ad'">
-      <v-card-title><v-icon size="19px">monetization_on</v-icon> &nbsp;&nbsp;<b>赞助商</b></v-card-title>
+      <v-card-title>
+        <v-icon size="19px">monetization_on</v-icon> &nbsp;&nbsp;<b>赞助商</b>
+        <span style="font-size: 11px;"
+              class="grey--text" >&nbsp; | &nbsp;感谢支持我们，关闭本站AdBlock</span>
+      </v-card-title>
     </v-card>
     <v-card v-else @mouseenter="widgetEnter()" @mouseleave="widgetLeave()">
       <!--Widget标题-->
