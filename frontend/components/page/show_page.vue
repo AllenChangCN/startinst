@@ -12,7 +12,7 @@
       <v-flex lg3 v-for="widget_column in widgets" :key="widget_column.column_idx">
         <!--遍历Widget-->
         <div v-for="widget in widget_column.data" :key="widget.idx" style="margin-bottom: 13px;">
-          <widget :data="widget"/>
+          <widget :data="widget" :column_idx="widget_column.column_idx"/>
         </div>
       </v-flex>
     </v-layout>
@@ -35,13 +35,13 @@
             name:'',
             data:[
               {idx: 1, title: 'test1',type:'ad',description:'先保存在终端，然后再统一上传，减少并发',},
-              {idx: 1, title: '岁吧点点', description:'',type:'bookmark', content:[
+              {idx: 2, title: '岁吧点点', description:'',type:'bookmark', content:[
                 {idx:1,icon:'',title:'百度搜索引擎',url:'https://www.baidu.com'},
                 ]},
               {idx: 2, title: 'test2',description:'描述2',type:'bookmark',content:[
                 {idx:1, icon:'',title: '腾讯网',url:'http://www.qq.com'},
                 {idx:2,icon:'',title: '腾讯网2',url:'http://www.qq.com'},
-                {idx:2,icon:'',title: '腾讯网3',url:'http://www.qq.com'},
+                {idx:3,icon:'',title: '腾讯网3',url:'http://www.qq.com'},
                 ]},
             ]},
           {
@@ -61,15 +61,15 @@
               {idx: 4, title: 'test2',type:'bookmark',description:'描述',}
           ]},
           {
-          column_idx:4,
-          name:'',
-          data: [
-            {idx: 1, title: 'test1',type:'bookmark',description:'描述',},
-            {idx: 2, title: 'test2',type:'bookmark',description:'描述',},
-            {idx: 3, title: 'test2',type:'bookmark',description:'描述',},
-            {idx: 4, title: 'test2',type:'bookmark',description:'描述',},
-            {idx: 5, title: 'test2',type:'bookmark',description:'描述',},
-          ]},
+            column_idx:4,
+            name:'',
+            data: [
+              {idx: 1, title: 'test1',type:'bookmark',description:'描述',},
+              {idx: 2, title: 'test2',type:'bookmark',description:'描述',},
+              {idx: 3, title: 'test2',type:'bookmark',description:'描述',},
+              {idx: 4, title: 'test2',type:'bookmark',description:'描述',},
+              {idx: 5, title: 'test2',type:'bookmark',description:'描述',},
+            ]},
 
       ]
     })

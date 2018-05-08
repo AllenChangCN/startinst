@@ -3,32 +3,46 @@
       id="page_head"
     >
       <v-expansion-panel-content
-        :hide-actions="false"
+        hide-actions
         >
         <div slot="header" id="title">
           <div style="display: flex;">
-            <div style="flex:1">
-              <b><v-icon>title</v-icon> / 王的导航</b>
+            <div style="flex:5">
+              <b><v-icon small>title</v-icon> / 王的导航</b>
+              <span style="font-size: 11px;" class="grey--text" >&nbsp; | &nbsp;查看更多</span>
             </div>
-            <div style="flex: 1;text-align: center;">
+            <div style="flex: 5;text-align: right;">
               <v-tooltip bottom>
-                <v-icon slot="activator" @click.stop="settingsClick()">radio_button_checked</v-icon>
+                <v-icon slot="activator" small @click.stop="settingsClick()">arrow_back</v-icon>
+                <span>键盘"←"键</span>
+              </v-tooltip>
+              <v-tooltip bottom>
+                <v-icon slot="activator" small @click.stop="settingsClick()">radio_button_checked</v-icon>
                 <span>王的导航</span>
               </v-tooltip>
               <v-tooltip bottom>
-                <v-icon slot="activator" @click.stop="settingsClick()">radio_button_unchecked</v-icon>
+                <v-icon slot="activator" small @click.stop="settingsClick()">radio_button_unchecked</v-icon>
                 <span>天地一体</span>
               </v-tooltip>
-            </div>
-            <div style="flex: 1;text-align: right;margin-right: 20px;">
               <v-tooltip bottom>
-                <v-icon slot="activator" @click.stop="settingsClick()">settings</v-icon>
+                <v-icon slot="activator" small @click.stop="settingsClick()">radio_button_unchecked</v-icon>
+                <span>天地一体</span>
+              </v-tooltip>
+              <v-tooltip bottom>
+                <v-icon slot="activator" small @click.stop="settingsClick()">arrow_forward</v-icon>
+                <span>键盘"→"键</span>
+              </v-tooltip>
+            </div>
+            <div style="width: 80px;text-align: right">
+              <v-tooltip bottom>
+                <v-icon slot="activator" small @click.stop="settingsClick()">settings</v-icon>
                 <span>页面设置</span>
               </v-tooltip>
               <v-tooltip bottom>
-                <v-icon slot="activator" @click.stop="settingsClick()">share</v-icon>
+                <v-icon slot="activator" small @click.stop="settingsClick()">share</v-icon>
                 <span>页面分享</span>
               </v-tooltip>
+
             </div>
           </div>
         </div>
