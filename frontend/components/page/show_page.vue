@@ -16,8 +16,9 @@
         <!--遍历Widget-->
         <draggable v-model="widgets"
                    :list="widget_column.data"
-                   :options="{group:''}"
+                   :options="{group:'widgets', animation: 100}"
                    @start="drag=true"
+                   @change="log"
                    @end="drag=false">
           <div v-for="widget in widget_column.data" :key="widget.idx" style="margin-bottom: 13px;">
             <widget :data="widget" :column_idx="widget_column.column_idx"/>
@@ -63,13 +64,26 @@
       widget,page_head,draggable, Sortable
     },
     methods: {
-      columnEnter:function (column_idx) {
+      columnEnter:function (column_idx) {   // 显示添加Widget的按钮
         this.column_over_idx = column_idx;
       },
-      columnLeave:function () {
+      columnLeave:function () {   // 隐藏添加Widget的按钮
         this.column_over_idx = null;
       },
-
+      add: function(){
+        this.list.push(  {idx: 2, title: 'test2',type:'bookmark',description:'描述'});
+      },
+      replace: function(){
+        this.list=[  {idx: 2, title: 'test2',type:'bookmark',description:'描述',},]
+      },
+      clone: function(el){
+        return {
+          name : el.name + ' cloned'
+        }
+      },
+      log: function (evt){
+        console.log(evt)
+      }
     },
     data: () => ({
       column_over_idx: null,
