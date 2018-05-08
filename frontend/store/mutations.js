@@ -14,6 +14,9 @@ const mutations = {
   },
   toggle_page_sortmode(state){
     state.page.sort_mode = !state.page.sort_mode;
+  },
+  toggle_page_editable(state){
+    state.page.editable = !state.page.editable;
   }
 };
 

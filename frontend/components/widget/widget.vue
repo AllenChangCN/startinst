@@ -1,4 +1,6 @@
 <template>
+
+
   <!--Widget排序模式-->
   <div class="widget sortmode" v-if="$store.state.page.sort_mode">
     <v-card v-if="data.type==='ad'" class="ad">
@@ -18,6 +20,8 @@
       </v-card-title>
     </v-card>
   </div>
+
+
   <!--正常模式-->
   <div class="widget" v-else>
     <!--广告Widget-->

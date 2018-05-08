@@ -4,7 +4,34 @@
     align-start
     fluid
   >
-    <v-layout wrap>
+
+
+    <!--排序模式-->
+    <v-layout wrap v-if="$store.state.page.sort_mode">
+      <v-flex lg12>
+        <page_head/>
+      </v-flex>
+      <!--遍历列-->
+      <v-flex lg3 v-for="widget_column in widgets" :key="widget_column.column_idx"
+              @mouseenter="columnEnter(widget_column.column_idx)"
+              @mouseleave="columnLeave()"
+      >
+        <!--遍历Widget-->
+        <draggable v-model="widget_column.content" @start="drag=true" @end="drag=false">
+          <div v-for="widget in widget_column.data" :key="widget.idx" style="margin-bottom: 13px;">
+            <widget :data="widget" :column_idx="widget_column.column_idx"/>
+          </div>
+        </draggable>
+        <div v-if="column_over_idx===widget_column.column_idx" style="text-align: center;">
+          <v-btn flat icon><v-icon size="44px" class="grey--text lighten-4">add</v-icon></v-btn>
+        </div>
+      </v-flex>
+    </v-layout>
+
+
+
+    <!--正常展示模式-->
+    <v-layout wrap v-if="!$store.state.page.sort_mode">
       <v-flex lg12>
         <page_head/>
       </v-flex>
@@ -28,11 +55,13 @@
 <script>
   import widget from "../widget/widget"
   import page_head from "./page_head"
+  import draggable from 'vuedraggable'
+  import Sortable from 'sortablejs'
 
   export default {
     name: "page",
     components: {
-      widget,page_head
+      widget,page_head,draggable, Sortable
     },
     methods: {
       columnEnter:function (column_idx) {

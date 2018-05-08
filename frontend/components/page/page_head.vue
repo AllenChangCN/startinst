@@ -12,28 +12,36 @@
               <span style="font-size: 11px;" class="grey--text" >&nbsp; | &nbsp;查看更多</span>
             </div>
             <div style="flex: 5;text-align: right;">
-              <v-tooltip bottom>
+              <v-btn
+                small
+                color="primary"
+                id="exit_sortmode"
+                depressed
+                @click.stop="$store.commit('toggle_page_sortmode')"
+                v-if="$store.state.page.sort_mode"
+              > <v-icon small color="white">close</v-icon>关闭排序模式</v-btn>
+              <v-tooltip bottom v-if="!$store.state.page.sort_mode">
                 <v-icon slot="activator" small @click.stop="settingsClick()">arrow_back</v-icon>
                 <span>键盘"←"键</span>
               </v-tooltip>
-              <v-tooltip bottom>
+              <v-tooltip bottom v-if="!$store.state.page.sort_mode">
                 <v-icon slot="activator" small @click.stop="settingsClick()">radio_button_checked</v-icon>
                 <span>王的导航</span>
               </v-tooltip>
-              <v-tooltip bottom>
+              <v-tooltip bottom v-if="!$store.state.page.sort_mode">
                 <v-icon slot="activator" small @click.stop="settingsClick()">radio_button_unchecked</v-icon>
                 <span>天地一体</span>
               </v-tooltip>
-              <v-tooltip bottom>
+              <v-tooltip bottom v-if="!$store.state.page.sort_mode">
                 <v-icon slot="activator" small @click.stop="settingsClick()">radio_button_unchecked</v-icon>
                 <span>天地一体</span>
               </v-tooltip>
-              <v-tooltip bottom>
+              <v-tooltip bottom v-if="!$store.state.page.sort_mode">
                 <v-icon slot="activator" small @click.stop="settingsClick()">arrow_forward</v-icon>
                 <span>键盘"→"键</span>
               </v-tooltip>
             </div>
-            <div style="width: 90px;text-align: right">
+            <div style="width: 90px;text-align: right" v-if="!$store.state.page.sort_mode">
               <v-tooltip bottom>
                 <v-icon slot="activator" size="20px" @click.stop="$store.commit('toggle_page_sortmode')">sort</v-icon>
                 <span>Widget排序</span>
@@ -76,4 +84,6 @@
   #page_head .expansion-panel__header{padding: 6px 16px;}
   #page_head .material-icons{margin: 0 3px;}
   #page_head .material-icons:hover{color: #000;}
+  #page_head #exit_sortmode{padding: 0;height: 20px;margin: 0;}
+  #page_head .btn__content{}
 </style>
