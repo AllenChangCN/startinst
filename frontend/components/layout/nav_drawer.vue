@@ -59,6 +59,9 @@
 <script>
     export default {
       name: "nav_drawer",
+      mounted(){
+        this.addEvent();
+      },
       data: () => ({
         items: [
           { heading: '导航菜单' },
@@ -77,7 +80,22 @@
         ]
       }),
       methods:{
+        addEvent:function(){
+          let that = this;
+          window.addEventListener('keyup', function(event) {
+            if (event.keyCode === 77&& event.altKey) {  // Tab
+              event.preventDefault();
+              that.$store.commit('show_global_snackbar',{
+                text:"按下\"Alt+m\"开关菜单栏",
+                show:true,
+                success: null,
+                timeout: 2000
+              });
+              that.$store.commit('toggle_drawer');
 
+            }
+          });
+        }
       }
     }
 </script>

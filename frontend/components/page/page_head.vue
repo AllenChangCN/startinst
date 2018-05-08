@@ -15,12 +15,13 @@
             </div>
             <div style="flex: 5;text-align: right;">
               <v-btn
+                title="按下ESC键退出"
                 small
+                v-if="$store.state.page.sort_mode"
                 color="primary"
                 id="exit_sortmode"
                 depressed
-                @click.stop="$store.commit('toggle_page_sortmode')"
-                v-if="$store.state.page.sort_mode"
+                @click.stop="exitSortmode"
               > <v-icon small color="white">close</v-icon>关闭排序模式</v-btn>
               <v-tooltip bottom v-if="!$store.state.page.sort_mode">
                 <v-icon slot="activator" small @click.stop="settingsClick()">arrow_back</v-icon>
@@ -74,9 +75,46 @@
 <script>
     export default {
       name: "page_head",
+      mounted(){
+        this.addEvent();
+      },
       methods:{
         settingsClick:function () {
 
+        },
+        exitSortmode:function () {
+          this.$store.commit('toggle_page_sortmode')
+        },
+        addEvent:function(){
+          var that = this;
+          window.addEventListener('keyup', function(event) {
+            // If down arrow was pressed...
+            if (event.keyCode === 27&& that.$store.state.page.sort_mode) {
+              that.$store.commit('toggle_page_sortmode');
+              that.$store.commit('show_global_snackbar',{
+                text:"按下\"Esc\"退出排序模式",
+                show:true,
+                success: null,
+                timeout: 2000
+              });
+            }
+            if(event.keyCode===39){
+              that.$store.commit('show_global_snackbar',{
+                text:"按下\"→\"键到下一页",
+                show:true,
+                success: null,
+                timeout: 2000
+              });
+            }
+            if(event.keyCode===37){
+              that.$store.commit('show_global_snackbar',{
+                text:"按下\"←\"键到上一页",
+                show:true,
+                success: null,
+                timeout: 2000
+              });
+            }
+          });
         }
       }
     }

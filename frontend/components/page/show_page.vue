@@ -7,12 +7,12 @@
 
 
     <!--排序模式-->
-    <v-layout wrap v-if="$store.state.page.sort_mode">
+    <v-layout wrap v-if="$store.state.page.sort_mode" @keyup.27="$store.commit('toggle_page_sortmode')">
       <v-flex lg12>
         <page_head/>
       </v-flex>
       <!--遍历列-->
-      <v-flex lg3 v-for="widget_column in widgets" :key="widget_column.column_idx">
+      <v-flex lg3 v-for="widget_column in widgets" :key="widget_column.column_idx" style="min-height: 10px;">
         <!--遍历Widget-->
         <draggable v-model="widgets"
                    :list="widget_column.data"
@@ -60,6 +60,9 @@
 
   export default {
     name: "page",
+    mounted(){
+      // this.addEvent();
+    },
     components: {
       widget,page_head,draggable, Sortable
     },
@@ -70,20 +73,10 @@
       columnLeave:function () {   // 隐藏添加Widget的按钮
         this.column_over_idx = null;
       },
-      add: function(){
-        this.list.push(  {idx: 2, title: 'test2',type:'bookmark',description:'描述'});
-      },
-      replace: function(){
-        this.list=[  {idx: 2, title: 'test2',type:'bookmark',description:'描述',},]
-      },
-      clone: function(el){
-        return {
-          name : el.name + ' cloned'
-        }
-      },
       log: function (evt){
         console.log(evt)
       }
+
     },
     data: () => ({
       column_over_idx: null,

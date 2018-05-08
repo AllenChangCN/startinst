@@ -36,11 +36,11 @@
       <v-text-field
         solo-inverted
         flat
-        autocomplete="false"
         type="text"
-        label="Search"
+        label=""
         v-model="keywords"
         prepend-icon="search"
+        ref="search_bar"
         @keyup.13="search(keywords, $store.state.layout.seacher.url)"
       />
       <div style="width: 26px;"></div>
@@ -155,6 +155,7 @@
       },
       mounted() {
         this.engine_switcher = false;
+        this.addEvent();
       },
       methods: {
         add_new_page:function () {
@@ -176,7 +177,24 @@
           window.open(active_seacher_url + keywords, '_blank')
         },
         logout:function(){
-        }
+        },
+        addEvent:function(){
+          let that = this;
+          window.addEventListener('keyup', function(event) {
+            if (event.keyCode === 73&& event.altKey) {  // Tab
+              event.preventDefault();
+              that.$store.commit('show_global_snackbar',{
+                text:"按下\"Alt+i\"，开始新的搜索",
+                show:true,
+                success: null,
+                timeout: 1300
+              });
+              that.$refs.search_bar.value = '';
+              that.$refs.search_bar.focus();
+            }
+          });
+        },
+
       },
       components: {
         edit_page_dialog,signin,signup
