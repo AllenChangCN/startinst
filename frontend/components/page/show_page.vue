@@ -22,9 +22,6 @@
             <widget :data="widget" :column_idx="widget_column.column_idx"/>
           </div>
         </draggable>
-        <div v-if="column_over_idx===widget_column.column_idx" style="text-align: center;">
-          <v-btn flat icon><v-icon size="44px" class="grey--text lighten-4">add</v-icon></v-btn>
-        </div>
       </v-flex>
     </v-layout>
 
@@ -44,7 +41,8 @@
         <div v-for="widget in widget_column.data" :key="widget.idx" style="margin-bottom: 13px;">
           <widget :data="widget" :column_idx="widget_column.column_idx"/>
         </div>
-        <div v-if="column_over_idx===widget_column.column_idx" style="text-align: center;">
+        <div v-if="column_over_idx===widget_column.column_idx"
+             style="text-align: center;">
             <v-btn flat icon><v-icon size="44px" class="grey--text lighten-4">add</v-icon></v-btn>
         </div>
       </v-flex>
