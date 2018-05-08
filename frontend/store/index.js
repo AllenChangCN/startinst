@@ -34,8 +34,11 @@ const createStore = () => {
         }
       },
       page:{
-        sort_mode:true,
-        editable: false
+        current:{
+          sort_mode:false,
+          editable: false
+        }
+
       }
     },
     mutations

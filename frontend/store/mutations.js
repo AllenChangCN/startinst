@@ -13,10 +13,10 @@ const mutations = {
     state.layout.dialog.page_edit = params
   },
   toggle_page_sortmode(state){
-    state.page.sort_mode = !state.page.sort_mode;
+    state.page.current.sort_mode = !state.page.current.sort_mode;
   },
   toggle_page_editable(state){
-    state.page.editable = !state.page.editable;
+    state.page.current.editable = !state.page.current.editable;
   }
 };
 

@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-toolbar color="amber" app absolute clipped-left>
-      <v-toolbar-side-icon @click.native="$store.commit('toggle_drawer')"/>
+      <v-toolbar-side-icon @click.native="toggleDrawer()"/>
       <!--Logo-->
       <span class="title ml-3 mr-5"><nuxt-link to="/" style="color: black;text-decoration: none;">{{$store.state.layout.title}}</nuxt-link></span>
       <!--搜索框-->
@@ -194,7 +194,15 @@
             }
           });
         },
-
+        toggleDrawer:function () {
+          this.$store.commit('toggle_drawer');
+          this.$store.commit('show_global_snackbar',{
+            text:"按下\"Alt+m\"开关菜单栏",
+            show:true,
+            success: null,
+            timeout: 2000
+          });
+        }
       },
       components: {
         edit_page_dialog,signin,signup

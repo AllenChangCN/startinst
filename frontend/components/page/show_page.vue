@@ -7,18 +7,22 @@
 
 
     <!--排序模式-->
-    <v-layout wrap v-if="$store.state.page.sort_mode" @keyup.27="$store.commit('toggle_page_sortmode')">
+    <v-layout wrap v-if="$store.state.page.current.sort_mode" @keyup.27="$store.commit('toggle_page_sortmode')">
       <v-flex lg12>
         <page_head/>
       </v-flex>
       <!--遍历列-->
-      <v-flex lg3 v-for="widget_column in widgets" :key="widget_column.column_idx" style="min-height: 10px;">
+      <v-flex lg3
+              v-for="widget_column in widgets"
+              :key="widget_column.column_idx"
+      >
         <!--遍历Widget-->
         <draggable v-model="widgets"
                    :list="widget_column.data"
                    :options="{group:'widgets', animation: 100}"
                    @start="drag=true"
                    @change="log"
+                   style="min-height: 16px;"
                    @end="drag=false">
           <div v-for="widget in widget_column.data" :key="widget.idx" style="margin-bottom: 13px;">
             <widget :data="widget" :column_idx="widget_column.column_idx"/>
@@ -30,7 +34,7 @@
 
 
     <!--正常展示模式-->
-    <v-layout wrap v-if="!$store.state.page.sort_mode">
+    <v-layout wrap v-if="!$store.state.page.current.sort_mode">
       <v-flex lg12>
         <page_head/>
       </v-flex>

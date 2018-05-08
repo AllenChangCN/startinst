@@ -2,7 +2,7 @@
 
 
   <!--Widget排序模式-->
-  <div class="widget sortmode" v-if="$store.state.page.sort_mode">
+  <div class="widget sortmode" v-if="$store.state.page.current.sort_mode">
     <v-card v-if="data.type==='ad'" class="ad">
       <v-card-title><v-icon size="19px">monetization_on</v-icon> &nbsp;&nbsp;<b>赞助商</b></v-card-title>
     </v-card>
@@ -92,7 +92,7 @@
           <span v-html="data.content"></span>
         </div>
         <div v-else>
-          笔记为空
+          暂无内容
         </div>
       </v-card-text>
     </v-card>
