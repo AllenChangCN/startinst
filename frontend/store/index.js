@@ -36,7 +36,8 @@ const createStore = () => {
       page:{
         current:{
           sort_mode:false,
-          editable: false
+          editable: false,
+          is_owner: false
         }
 
       }

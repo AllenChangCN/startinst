@@ -6,7 +6,6 @@
     <v-card v-if="data.type==='ad'" class="ad">
       <v-card-title>
         <v-icon size="19px">monetization_on</v-icon> &nbsp;&nbsp;<b>赞助商</b>
-
       </v-card-title>
     </v-card>
     <v-card v-else>
