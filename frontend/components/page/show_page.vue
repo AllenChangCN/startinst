@@ -3,9 +3,8 @@
     grid-list-lg
     align-start
     fluid
+    @contextmenu.prevent="$store.commit('show_context_menu',$event)"
   >
-
-
     <!--排序模式-->
     <v-layout wrap v-if="$store.state.page.current.sort_mode" @keyup.27="$store.commit('toggle_page_sortmode')">
       <v-flex lg12>
@@ -31,12 +30,14 @@
       </v-flex>
     </v-layout>
 
+    <context-menu/>
 
 
     <!--正常展示模式-->
     <v-layout wrap v-if="!$store.state.page.current.sort_mode">
       <v-flex lg12>
         <page_head/>
+
       </v-flex>
       <!--遍历列-->
       <v-flex lg3 v-for="widget_column in widgets" :key="widget_column.column_idx"
@@ -52,7 +53,9 @@
             <v-btn flat icon><v-icon size="44px" class="grey--text lighten-4">add</v-icon></v-btn>
         </div>
       </v-flex>
+
     </v-layout>
+
   </v-container>
 </template>
 
@@ -61,6 +64,7 @@
   import page_head from "./page_head"
   import draggable from 'vuedraggable'
   import Sortable from 'sortablejs'
+  import contextMenu from './context_menu'
 
   export default {
     name: "page",
@@ -68,7 +72,7 @@
       // this.addEvent();
     },
     components: {
-      widget,page_head,draggable, Sortable
+      widget,page_head,draggable, Sortable,contextMenu
     },
     methods: {
       columnEnter:function (column_idx) {   // 显示添加Widget的按钮
@@ -79,11 +83,14 @@
       },
       log: function (evt){
         console.log(evt)
-      }
+      },
+
 
     },
     data: () => ({
       column_over_idx: null,
+      x:0,
+      y:0,
       widgets: [
           {
             column_idx:1,

@@ -26,6 +26,9 @@
 
   <!--正常模式-->
   <div class="widget" v-else>
+
+
+
     <!--广告Widget-->
     <v-card v-if="data.type==='ad'">
       <v-card-title>
@@ -83,9 +86,14 @@
       </v-card-title>
       <v-card-text v-if="data.type==='bookmark'"> <!-- 书签 -->
         <div v-if="data.content">
+          <!--拖拽排序Link-->
           <draggable v-model="data.content" :options="{group:'people'}" @start="drag=true" @end="drag=false">
             <div v-for="item in data.content" :key="item.idx">
-              <a :href="item.url" :target="$store.state.page.open_link_in_new_tab?'_blank':'_top'">{{ item.title }}</a>
+              <a :href="item.url"
+                 @contextmenu.prevent="linkContextMenu(item)"
+                 :target="$store.state.page.open_link_in_new_tab?'_blank':'_top'">
+                {{ item.title }}
+              </a>
             </div>
           </draggable>
         </div>
@@ -103,13 +111,14 @@
       </v-card-text>
     </v-card>
   </div>
+
 </template>
 
 <script>
   import draggable from 'vuedraggable'
   import Sortable from 'sortablejs'
   export default {
-    name: "bookmark",
+    name: "widget",
     components: {
       draggable, Sortable
     },
@@ -128,6 +137,12 @@
       },
       widgetMenu:function () {
 
+      },
+      linkContextMenu:function (e,item) {
+        console.log(e);
+        console.log(item)
+        // e.preventDefault();
+        // console.log(item);
       }
 
     },

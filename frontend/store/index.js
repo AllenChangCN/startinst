@@ -7,14 +7,25 @@ const createStore = () => {
     state: {
       layout:{
         title: "StartInst.",
-        drawer: false,
-        global_snackbar:{
+        drawer: false,// 左侧菜单栏
+
+        global_snackbar:{ // 右下角的通知
           text:"默认通知",
           show:false,
           timeout:600,
           success: true
         },
-        seacher: {
+        contextmenu:{     // 右键菜单
+          show_menu:false,
+          x:0,
+          y:0,
+          items: [
+            { title: 'Java' ,icon:'edit'},
+            { title: 'Python' ,icon:'settings'},
+            { title: 'PHP' ,icon:'add'}
+          ]
+        },
+        seacher: {      // 搜索框
           title:"Google",
           url:"https://www.google.com/search?q="
         },
@@ -51,7 +62,7 @@ export const state = () => ({
   locales: ['en', 'fr'],
   locale: 'en',
 
-})
+});
 
 // export const mutations = {
 //   SET_LANG(state, locale) {
