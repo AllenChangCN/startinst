@@ -17,6 +17,9 @@ const mutations = {
   },
   toggle_page_editable(state){
     state.page.current.editable = !state.page.current.editable;
+  },
+  toggle_open_link_in_new_tab(state){
+    state.page.open_link_in_new_tab = !state.page.open_link_in_new_tab;
   }
 };
 

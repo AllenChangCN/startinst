@@ -64,6 +64,8 @@
       </v-tooltip>
       &nbsp;
       &nbsp;
+
+
       <!--账户菜单-->
       <v-menu
         offset-y
@@ -100,16 +102,18 @@
           <v-list>
             <v-list-tile>
               <v-list-tile-action>
-                <v-switch color="purple"/>
+                <v-switch color="primary"
+                          v-model="$store.state.page.open_link_in_new_tab"
+                          @click.stop="$store.commit('toggle_open_link_in_new_tab')"/>
               </v-list-tile-action>
-              <v-list-tile-title>新标签打开页面</v-list-tile-title>
+              <v-list-tile-title>新标签打开链接</v-list-tile-title>
             </v-list-tile>
             <v-list-tile to="/mine/account-settings">
               <v-list-tile-action>
                 <v-icon>settings</v-icon>
               </v-list-tile-action>
               <v-list-tile-content>
-                <v-list-tile-title>账号安全设置</v-list-tile-title>
+                <v-list-tile-title>安全设置</v-list-tile-title>
               </v-list-tile-content>
             </v-list-tile>
             <v-list-tile @click.native="logout()" to="/logout">
@@ -118,7 +122,7 @@
                 </v-icon>
               </v-list-tile-action>
               <v-list-tile-content>
-                <v-list-tile-title>退出登录</v-list-tile-title>
+                <v-list-tile-title>退出StartInst.</v-list-tile-title>
               </v-list-tile-content>
             </v-list-tile>
           </v-list>

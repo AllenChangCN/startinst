@@ -34,6 +34,7 @@ const createStore = () => {
         }
       },
       page:{
+        open_link_in_new_tab:true,
         current:{
           sort_mode:false,
           editable: false,

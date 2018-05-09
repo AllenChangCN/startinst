@@ -85,7 +85,7 @@
         <div v-if="data.content">
           <draggable v-model="data.content" :options="{group:'people'}" @start="drag=true" @end="drag=false">
             <div v-for="item in data.content" :key="item.idx">
-              <a :href="item.url" target="_blank">{{ item.title }}</a>
+              <a :href="item.url" :target="$store.state.page.open_link_in_new_tab?'_blank':'_top'">{{ item.title }}</a>
             </div>
           </draggable>
         </div>
