@@ -21,6 +21,7 @@
     "node-sass": "^4.8.3",
     "nuxt": "^1.4.0",
     "sass-loader": "^6.0.7",
+    "vue-context-menu": "^2.0.6",
     "vue-i18n": "^7.5.0",
     "vue-style-loader": "^4.1.0",
     "vuedraggable": "^2.16.0",
