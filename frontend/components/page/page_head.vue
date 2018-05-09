@@ -44,7 +44,7 @@
                 <span>键盘"→"键</span>
               </v-tooltip>
             </div>
-            <div style="width: 90px;text-align: right" v-if="!$store.state.page.current.sort_mode">
+            <div style="width: 125px;text-align: right" v-if="!$store.state.page.current.sort_mode">
               <v-tooltip bottom>
                 <v-icon slot="activator" size="20px" @click.stop="$store.commit('toggle_page_sortmode')">sort</v-icon>
                 <span>Widget排序</span>
@@ -56,6 +56,10 @@
               <v-tooltip bottom>
                 <v-icon slot="activator" small @click.stop="settingsClick()">favorite</v-icon>
                 <span>收藏页面</span>
+              </v-tooltip>
+              <v-tooltip bottom>
+                <v-icon slot="activator" small @click.stop="settingsClick()">lock_open</v-icon>
+                <span>公开访问</span>
               </v-tooltip>
 
             </div>

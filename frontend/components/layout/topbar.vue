@@ -188,7 +188,7 @@
             if (event.keyCode === 73&& event.altKey) {  // Tab
               event.preventDefault();
               that.$store.commit('show_global_snackbar',{
-                text:"按下\"Alt+i\"，开始新的搜索",
+                text:"按下\"Alt+I\"，开始新的搜索",
                 show:true,
                 success: null,
                 timeout: 1300
@@ -196,12 +196,17 @@
               that.$refs.search_bar.value = '';
               that.$refs.search_bar.focus();
             }
+            if (event.keyCode === 77&& event.altKey) {  // Tab
+              event.preventDefault();
+              that.toggleDrawer();
+
+            }
           });
         },
         toggleDrawer:function () {
           this.$store.commit('toggle_drawer');
           this.$store.commit('show_global_snackbar',{
-            text:"按下\"Alt+m\"开关菜单栏",
+            text:"按下\"Alt+M\"开关菜单栏",
             show:true,
             success: null,
             timeout: 2000
