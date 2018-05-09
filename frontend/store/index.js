@@ -20,9 +20,9 @@ const createStore = () => {
           x:0,
           y:0,
           items: [
-            { title: 'Java' ,icon:'edit'},
-            { title: 'Python' ,icon:'settings'},
-            { title: 'PHP' ,icon:'add'}
+            { title: 'Java' ,icon:'edit' ,action:'toggle_drawer'},
+            { title: 'Python' ,icon:'settings',action:'toggle_drawer'},
+            { title: 'PHP' ,icon:'add',action:'toggle_drawer'}
           ]
         },
         seacher: {      // 搜索框

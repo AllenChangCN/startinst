@@ -205,12 +205,7 @@
         },
         toggleDrawer:function () {
           this.$store.commit('toggle_drawer');
-          this.$store.commit('show_global_snackbar',{
-            text:"按下\"Alt+M\"开关菜单栏",
-            show:true,
-            success: null,
-            timeout: 2000
-          });
+
         }
       },
       components: {

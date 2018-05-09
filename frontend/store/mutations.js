@@ -4,7 +4,13 @@ const mutations = {
     state.layout.title = new_title;
   },
   toggle_drawer(state){
-    state.layout.drawer = !state.layout.drawer
+    state.layout.drawer = !state.layout.drawer;
+    this.commit('show_global_snackbar',{
+      text:"按下\"Alt+M\"开关菜单栏",
+      show:true,
+      success: null,
+      timeout: 2000
+    });
   },
   show_global_snackbar(state,params){    // 右下角通知框
     state.layout.global_snackbar = params;

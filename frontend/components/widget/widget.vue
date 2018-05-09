@@ -160,7 +160,7 @@
   .widget .material-icons{margin-top: -1px;}
   .widget .material-icons:hover{color: black;}
   .widget .tooltip--right .material-icons:hover{cursor: pointer;}
-  .widget_menu_list .list__tile{height: 23px;font-size: 14px;padding: 0 8px;}
+  .widget_menu_list .list__tile{height: 26px;font-size: 14px;padding: 0 10px;}
   .sortmode {cursor: move;}
   .sortmode .ad{cursor: not-allowed}
 </style>

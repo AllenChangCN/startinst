@@ -5,11 +5,12 @@
     :position-y="$store.state.layout.contextmenu.y"
     offset-y
     close-on-content-click
+    transition="scale-transition"
     absolute
     style="display: none;"
   >
     <v-list id="contextmenu">
-      <v-list-tile v-for="item in $store.state.layout.contextmenu.items" :key="item.title" @click.stop="0===0">
+      <v-list-tile v-for="item in $store.state.layout.contextmenu.items" :key="item.title" @click="$store.commit(item.action)">
         <v-list-tile-title icon>
           <v-icon small>{{ item.icon }}</v-icon> {{ item.title }}</v-list-tile-title>
       </v-list-tile>
@@ -24,7 +25,9 @@
 
       }),
       methods: {
+        menu:function () {
 
+        }
       },
       mounted(){
         // console.log('hello context')
