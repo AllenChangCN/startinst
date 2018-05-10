@@ -1,6 +1,6 @@
 <template>
     <div>
-
+      通过用户画像和人工智能推荐
     </div>
 </template>
 

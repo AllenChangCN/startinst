@@ -61,6 +61,7 @@
                 offset-y
                 open-on-hover
                 lazy
+                transition="scale-transition"
                 :open-delay="200"
               >
                 <!--<v-btn slot="activator" color="primary" dark>Dropdown</v-btn>-->
@@ -124,9 +125,8 @@
       widget_over_idx: null,
       column_over_idx: null,
       link_contextmenu_items:[
-        { title: 'HHH' ,icon:'edit' ,mutation:'toggle_drawer'},
-        { title: 'Python' ,icon:'settings',mutation:'toggle_drawer'},
-        { title: 'PHP' ,icon:'add',mutation:'toggle_drawer'}
+        { title: '编辑' ,icon:'edit' ,mutation:'toggle_drawer'},
+        { title: '删除' ,icon:'delete',mutation:'toggle_drawer'}
       ]
     }),
     methods: {
