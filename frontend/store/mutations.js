@@ -30,10 +30,12 @@ const mutations = {
     state.page.open_link_in_new_tab = !state.page.open_link_in_new_tab;
   },
   // 显示右键菜单
-  show_context_menu(state,e){
-    state.layout.contextmenu.x = e.clientX;
-    state.layout.contextmenu.y = e.clientY;
-    state.layout.contextmenu.show_menu = true
+  show_context_menu(state,data){
+    state.layout.contextmenu.items = data.items;
+    state.layout.contextmenu.x = data.e.clientX;
+    state.layout.contextmenu.y = data.e.clientY;
+    state.layout.contextmenu.show_menu = true;
+
   }
 };
 

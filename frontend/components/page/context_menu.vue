@@ -10,7 +10,7 @@
     style="display: none;"
   >
     <v-list id="contextmenu">
-      <v-list-tile v-for="item in $store.state.layout.contextmenu.items" :key="item.title" @click="$store.commit(item.action)">
+      <v-list-tile v-for="item in $store.state.layout.contextmenu.items" :key="item.title" @click="$store.commit(item.mutation)">
         <v-list-tile-title icon>
           <v-icon small>{{ item.icon }}</v-icon> {{ item.title }}</v-list-tile-title>
       </v-list-tile>

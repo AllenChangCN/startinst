@@ -19,11 +19,7 @@ const createStore = () => {
           show_menu:false,
           x:0,
           y:0,
-          items: [
-            { title: 'Java' ,icon:'edit' ,action:'toggle_drawer'},
-            { title: 'Python' ,icon:'settings',action:'toggle_drawer'},
-            { title: 'PHP' ,icon:'add',action:'toggle_drawer'}
-          ]
+          items:[]  // 菜单列表
         },
         seacher: {      // 搜索框
           title:"Google",

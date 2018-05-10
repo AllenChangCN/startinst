@@ -3,7 +3,6 @@
     grid-list-lg
     align-start
     fluid
-    @contextmenu.prevent="$store.commit('show_context_menu',$event)"
   >
     <!--排序模式-->
     <v-layout wrap v-if="$store.state.page.current.sort_mode" @keyup.27="$store.commit('toggle_page_sortmode')">

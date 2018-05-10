@@ -27,8 +27,6 @@
   <!--正常模式-->
   <div class="widget" v-else>
 
-
-
     <!--广告Widget-->
     <v-card v-if="data.type==='ad'">
       <v-card-title>
@@ -90,7 +88,7 @@
           <draggable v-model="data.content" :options="{group:'people'}" @start="drag=true" @end="drag=false">
             <div v-for="item in data.content" :key="item.idx">
               <a :href="item.url"
-                 @contextmenu.prevent="linkContextMenu(item)"
+                 @contextmenu.prevent="$store.commit('show_context_menu',{e:$event,items:link_contextmenu_items})"
                  :target="$store.state.page.open_link_in_new_tab?'_blank':'_top'">
                 {{ item.title }}
               </a>
@@ -124,7 +122,12 @@
     },
     data: () => ({
       widget_over_idx: null,
-      column_over_idx: null
+      column_over_idx: null,
+      link_contextmenu_items:[
+        { title: 'HHH' ,icon:'edit' ,mutation:'toggle_drawer'},
+        { title: 'Python' ,icon:'settings',mutation:'toggle_drawer'},
+        { title: 'PHP' ,icon:'add',mutation:'toggle_drawer'}
+      ]
     }),
     methods: {
       widgetEnter:function () {
