@@ -5,7 +5,7 @@ import mutations from './mutations'
 const createStore = () => {
   return new Vuex.Store({
     state: {
-      layout:{
+      global:{
         title: "StartInst.",
         drawer: false,// 左侧菜单栏
 

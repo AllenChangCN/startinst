@@ -1,13 +1,13 @@
 <template>
   <v-layout row justify-center>
     <v-dialog
-      v-model="$store.state.layout.dialog.page_edit.visible"
+      v-model="$store.state.global.dialog.page_edit.visible"
       origin="left top"
       max-width="500px"
     >
       <v-card>
         <v-card-title>
-          <span class="headline">{{$store.state.layout.dialog.page_edit.title}}</span>
+          <span class="headline">{{$store.state.global.dialog.page_edit.title}}</span>
         </v-card-title>
         <v-card-text>
           <v-container grid-list-md>

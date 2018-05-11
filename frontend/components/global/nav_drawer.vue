@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-navigation-drawer
-      v-model="$store.state.layout.drawer"
+      v-model="$store.state.global.drawer"
       clipped
       fixed
       class="grey lighten-5"

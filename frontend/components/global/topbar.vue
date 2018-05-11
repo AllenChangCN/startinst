@@ -3,13 +3,13 @@
     <v-toolbar color="amber" app absolute clipped-left>
       <v-toolbar-side-icon @click.native="toggleDrawer()"/>
       <!--Logo-->
-      <span class="title ml-3 mr-5"><nuxt-link to="/" style="color: black;text-decoration: none;">{{$store.state.layout.title}}</nuxt-link></span>
+      <span class="title ml-3 mr-5"><nuxt-link to="/" style="color: black;text-decoration: none;">{{$store.state.global.title}}</nuxt-link></span>
       <!--搜索框-->
       <v-dialog v-model="engine_switcher"
                 transition="dialog-bottom-transition"
                 max-width="600"
       >
-        <v-btn slot="activator" large flat>{{$store.state.layout.seacher.title}} &nbsp;<v-icon>expand_more</v-icon></v-btn>
+        <v-btn slot="activator" large flat>{{$store.state.global.seacher.title}} &nbsp;<v-icon>expand_more</v-icon></v-btn>
         <v-list>
           <v-subheader>切换搜索引擎</v-subheader>
           <v-list-tile
@@ -41,7 +41,7 @@
         v-model="keywords"
         prepend-icon="search"
         ref="search_bar"
-        @keyup.13="search(keywords, $store.state.layout.seacher.url)"
+        @keyup.13="search(keywords, $store.state.global.seacher.url)"
       />
       <div style="width: 26px;"></div>
       <v-tooltip bottom>
@@ -142,8 +142,8 @@
 <script>
     import { mapMutations,store } from 'vuex'
     import edit_page_dialog from '../page/edit_page'
-    import signin from '../layout/signin'
-    import signup from '../layout/signup'
+    import signin from './/signin'
+    import signup from './/signup'
     export default {
       name: "search",
       data: () => {

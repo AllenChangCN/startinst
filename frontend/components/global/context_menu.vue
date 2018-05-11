@@ -1,8 +1,8 @@
 <template>
   <v-menu
-    v-model="$store.state.layout.contextmenu.show_menu"
-    :position-x="$store.state.layout.contextmenu.x"
-    :position-y="$store.state.layout.contextmenu.y"
+    v-model="$store.state.global.contextmenu.show_menu"
+    :position-x="$store.state.global.contextmenu.x"
+    :position-y="$store.state.global.contextmenu.y"
     offset-y
     close-on-content-click
     transition="scale-transition"
@@ -10,7 +10,7 @@
     style="display: none;"
   >
     <v-list id="contextmenu">
-      <v-list-tile v-for="item in $store.state.layout.contextmenu.items" :key="item.title" @click="$store.commit(item.mutation)">
+      <v-list-tile v-for="item in $store.state.global.contextmenu.items" :key="item.title" @click="$store.commit(item.mutation)">
         <v-list-tile-title icon>
           <v-icon small>{{ item.icon }}</v-icon> {{ item.title }}</v-list-tile-title>
       </v-list-tile>

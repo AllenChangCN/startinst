@@ -1,18 +1,18 @@
 <template>
   <v-snackbar
-    :timeout="$store.state.layout.global_snackbar.timeout"
-    v-model="$store.state.layout.global_snackbar.show"
+    :timeout="$store.state.global.global_snackbar.timeout"
+    v-model="$store.state.global.global_snackbar.show"
     @click="$store.commit('show_global_snackbar',{
         show:false
     })"
     right
     bottom
   >
-    <span>{{ $store.state.layout.global_snackbar.text }}</span>
-    <span v-if="$store.state.layout.global_snackbar.success">
+    <span>{{ $store.state.global.global_snackbar.text }}</span>
+    <span v-if="$store.state.global.global_snackbar.success">
       <v-icon color="white">check</v-icon>
     </span>
-    <span v-else-if="$store.state.layout.global_snackbar.success===false">
+    <span v-else-if="$store.state.global.global_snackbar.success===false">
        <v-icon color="white">clear</v-icon>
     </span>
     <span v-else>

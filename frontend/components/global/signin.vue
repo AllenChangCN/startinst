@@ -1,6 +1,6 @@
 <template>
   <v-layout row justify-center>
-    <v-dialog v-model="$store.state.layout.dialog.signin.visible" max-width="500px">
+    <v-dialog v-model="$store.state.global.dialog.signin.visible" max-width="500px">
       <v-card>
         <v-card-title>
           <span class="headline">登录 StartInst.</span>

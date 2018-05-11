@@ -16,11 +16,11 @@
 </template>
 
 <script>
-  import topbar from "../components/layout/topbar"
-  import nav_drawer from "../components/layout/nav_drawer"
-  import global_snackbar from "../components/layout/global_snackbar"
-  import global_dialog_confirm from "../components/layout/global_dialog_confirm"
-  import contextMenu from '../components/layout/context_menu'
+  import topbar from "../components/global/topbar"
+  import nav_drawer from "../components/global/nav_drawer"
+  import global_snackbar from "../components/global/snackbar"
+  import global_dialog_confirm from "../components/global/dialog_confirm"
+  import contextMenu from '../components/global/context_menu'
 
   export default {
     data: () => ({
