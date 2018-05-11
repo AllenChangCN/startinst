@@ -68,7 +68,7 @@
                 <v-icon slot="activator" @click="widgetMenu()" size="22px">menu</v-icon>
                 <v-list class="widget_menu_list">
                   <v-list-tile @click="widgetMenu()">
-                    <v-list-tile-title><v-icon size="small">edit</v-icon> 编辑</v-list-tile-title>
+                    <v-list-tile-title><v-icon size="small">settings</v-icon> 面板设置</v-list-tile-title>
                   </v-list-tile>
                   <v-list-tile @click="widgetMenu()">
                     <v-list-tile-title><v-icon size="small">input</v-icon> 复制到</v-list-tile-title>
