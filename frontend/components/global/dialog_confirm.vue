@@ -16,7 +16,7 @@
     export default {
       name: "global_dialog_confirm",
       data:()=>({
-        dialog: true
+        dialog: false
       })
     }
 </script>

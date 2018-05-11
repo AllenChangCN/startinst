@@ -10,7 +10,11 @@
     style="display: none;"
   >
     <v-list id="contextmenu">
-      <v-list-tile v-for="item in $store.state.global.contextmenu.items" :key="item.title" @click="$store.commit(item.mutation)">
+      <v-list-tile
+        v-for="item in $store.state.global.contextmenu.items"
+        :key="item.title"
+        @click="menu_item_click(item)"
+      >
         <v-list-tile-title icon>
           <v-icon small>{{ item.icon }}</v-icon> {{ item.title }}</v-list-tile-title>
       </v-list-tile>
@@ -25,8 +29,17 @@
 
       }),
       methods: {
-        menu:function () {
-
+        menu_item_click:function (item) {
+          if(item.mutation){
+            this.$store.commit(item.mutation,item.params);
+          }else{
+            this.$store.commit('show_global_snackbar',{
+              text:"错误的菜单操作",
+              show:true,
+              success: null,
+              timeout: 2000
+            });
+          }
         }
       },
       mounted(){
