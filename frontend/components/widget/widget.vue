@@ -77,7 +77,7 @@
                     <v-list-tile-title><v-icon size="small">sort</v-icon> 排序</v-list-tile-title>
                   </v-list-tile>
                   <v-list-tile @click="widgetMenu()">
-                    <v-list-tile-title><v-icon size="small">delete</v-icon> 删除Widget</v-list-tile-title>
+                    <v-list-tile-title><v-icon size="small">delete</v-icon> 删除面板</v-list-tile-title>
                   </v-list-tile>
                 </v-list>
 
@@ -131,8 +131,8 @@
       link_contextmenu_items:[
         { title: '新页面打开' ,icon:'open_in_new' ,mutation:'toggle_drawer'},
         { title: '当前页面打开' ,icon:'open_in_browser' ,mutation:'toggle_drawer'},
-        { title: '编辑' ,icon:'edit' ,mutation:'toggle_drawer'},
-        { title: '删除' ,icon:'delete',mutation:'toggle_drawer'}
+        { title: '编辑书签' ,icon:'edit' ,mutation:'toggle_drawer'},
+        { title: '删除书签' ,icon:'delete',mutation:'toggle_drawer'}
       ]
     }),
     methods: {

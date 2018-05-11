@@ -29,8 +29,8 @@
               </v-flex>
               <v-flex lg12>
                 <v-checkbox
-                  :label="(pageForm.isPublic===true?'公开':'私有')+'页面'"
-                  v-model="pageForm.isPublic"
+                  :label="(page_form.is_public===true?'公开':'私有')+'页面'"
+                  v-model="page_form.is_public"
                 />
               </v-flex>
             </v-layout>
@@ -54,8 +54,8 @@
     name: 'edit',
     data: () => ({
       dialog: false,
-      pageForm:{
-        isPublic: true
+      page_form:{
+        is_public: true
       }
     })
   }
