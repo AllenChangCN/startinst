@@ -29,9 +29,6 @@
       </v-flex>
     </v-layout>
 
-    <context-menu/>
-
-
     <!--正常展示模式-->
     <v-layout wrap v-if="!$store.state.page.current.sort_mode">
       <v-flex lg12>
@@ -63,7 +60,6 @@
   import page_head from "./page_head"
   import draggable from 'vuedraggable'
   import Sortable from 'sortablejs'
-  import contextMenu from './context_menu'
 
   export default {
     name: "page",
@@ -71,7 +67,7 @@
       // this.addEvent();
     },
     components: {
-      widget,page_head,draggable, Sortable,contextMenu
+      widget,page_head,draggable, Sortable
     },
     methods: {
       columnEnter:function (column_idx) {   // 显示添加Widget的按钮

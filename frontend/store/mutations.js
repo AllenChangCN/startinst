@@ -1,4 +1,5 @@
-const mutations = {
+import muations_widget from "./muations-widget"
+let mutations_layout = {
   // 切换显示左侧菜单
   set_layout_title(state,new_title){
     state.layout.title = new_title;
@@ -38,5 +39,6 @@ const mutations = {
 
   }
 };
+const mutations = Object.assign(mutations_layout,muations_widget);
 
 export default mutations
