@@ -8,7 +8,6 @@ const createStore = () => {
       global:{
         title: "StartInst.",
         drawer: false,// 左侧菜单栏
-
         global_snackbar:{ // 右下角的通知
           text:"默认通知",
           show:false,

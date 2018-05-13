@@ -15,15 +15,24 @@ export default {
   show_global_snackbar(state,params){    // 右下角通知框
     state.global.global_snackbar = params;
   },
-  toggle_editpage_dialog(state,params){     // 页面编辑Dialog
-    state.global.dialog.page_edit = params
-  },
   // 显示右键菜单
-  show_context_menu(state,data){
-    state.global.contextmenu.items = data.items;
-    state.global.contextmenu.x = data.e.clientX;
-    state.global.contextmenu.y = data.e.clientY;
+  show_context_menu(state,params){
+    state.global.contextmenu.items = params.items;
+    state.global.contextmenu.x = params.e.clientX;
+    state.global.contextmenu.y = params.e.clientY;
     state.global.contextmenu.show_menu = true;
-
+  },
+  // 显示确认框
+  show_global_confirm(state, params){
+    state.global.dialog.confirm.visible = params.visible;
+    state.global.dialog.confirm.title = params.title;
+    state.global.dialog.confirm.content = params.content;
+    state.global.dialog.confirm.btn_action.cancel.muation = params
+    if(params.btn_click==='confirm'){
+      this.commit(params.muation,params.params);
+    }
+    if(params.btn_click==='cancel'){
+      this.commit(params.cancel_muation,params.params)
+    }
   }
 }

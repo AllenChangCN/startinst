@@ -21,7 +21,7 @@
                 color="primary"
                 id="exit_sortmode"
                 depressed
-                @click.stop="exitSortmode"
+                @click.stop="exit_sortmode"
               > <v-icon small color="white">close</v-icon>关闭排序模式</v-btn>
               <v-tooltip bottom v-if="!$store.state.page.current.sort_mode">
                 <v-icon slot="activator" small @click.stop="settingsClick()">arrow_back</v-icon>
@@ -58,7 +58,7 @@
                 <span>收藏页面</span>
               </v-tooltip>
               <v-tooltip bottom>
-                <v-icon slot="activator" small @click.stop="settingsClick()">lock_open</v-icon>
+                <v-icon slot="activator" small @click.stop="switch_page_protect()">lock_open</v-icon>
                 <span>公开访问</span>
               </v-tooltip>
 
@@ -86,7 +86,11 @@
         settingsClick:function () {
 
         },
-        exitSortmode:function () {
+        switch_page_protect:function () {    // 切换页面，当前页面是否允许其他人访问，并收藏
+
+
+        },
+        exit_sortmode:function () {
           this.$store.commit('show_global_snackbar',{
             text:"按下\"Esc\"退出排序模式",
             show:true,
@@ -100,7 +104,7 @@
           window.addEventListener('keyup', function(event) {
             // If down arrow was pressed...
             if (event.keyCode === 27&& that.$store.state.page.current.sort_mode) {
-              that.exitSortmode();
+              that.exit_sortmode();
             }
             if(event.keyCode===39){
               that.$store.commit('show_global_snackbar',{
