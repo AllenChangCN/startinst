@@ -14,12 +14,6 @@ const createStore = () => {
           timeout:600,
           success: true
         },
-        contextmenu:{     // 右键菜单
-          show_menu:false,
-          x:0,
-          y:0,
-          items:[]  // 菜单列表
-        },
         seacher: {      // 搜索框
           title:"Google",
           url:"https://www.google.com/search?q="
@@ -51,7 +45,16 @@ const createStore = () => {
           sort_mode:false,
           editable: false,
           is_owner: false
-        }
+        },
+        contextmenu:{     // 右键菜单
+          show_menu:false,
+          x:0,
+          y:0,
+          items:[]  // 菜单列表
+        },
+
+      },
+      widget:{
 
       }
     },

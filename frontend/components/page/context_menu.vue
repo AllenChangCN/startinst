@@ -1,8 +1,8 @@
 <template>
   <v-menu
-    v-model="$store.state.global.contextmenu.show_menu"
-    :position-x="$store.state.global.contextmenu.x"
-    :position-y="$store.state.global.contextmenu.y"
+    v-model="$store.state.page.contextmenu.show_menu"
+    :position-x="$store.state.page.contextmenu.x"
+    :position-y="$store.state.page.contextmenu.y"
     offset-y
     close-on-content-click
     transition="scale-transition"
@@ -11,7 +11,7 @@
   >
     <v-list id="contextmenu">
       <v-list-tile
-        v-for="item in $store.state.global.contextmenu.items"
+        v-for="item in $store.state.page.contextmenu.items"
         :key="item.title"
         @click="menu_item_click(item)"
       >

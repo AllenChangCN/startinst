@@ -5,8 +5,8 @@
         <v-card-text>{{$store.state.global.dialog.confirm.content}}</v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="green darken-1" flat="flat" @click.native="cancel_click()">取消</v-btn>
-          <v-btn color="green darken-1" flat="flat" @click.native="confirm_click()">确认</v-btn>
+          <v-btn color="primary darken-1" flat="flat" @click.native="cancel_click()">取消</v-btn>
+          <v-btn color="primary darken-1" @click.native="confirm_click()">确认</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>

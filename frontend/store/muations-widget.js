@@ -3,10 +3,10 @@ export default {
   toggle_open_link_in_new_tab(state){
     state.page.open_link_in_new_tab = !state.page.open_link_in_new_tab;
   },
-  bookmark_openlink(state,param){
+  bookmark_openlink(state,params){
     let target = '';
-    if(param.force_new_tab!==null){
-      if(param.force_new_tab===true){
+    if(params.force_new_tab!==null){
+      if(params.force_new_tab===true){
         target = '_blank';
       }else{
         target = '_top';
@@ -18,6 +18,14 @@ export default {
         target = '_top'
       }
     }
-    window.open(param.item.url,target)
+    window.open(params.item.url,target)
+  },
+  bookmark_deletelink(state,params){
+    this.commit('show_global_snackbar',{
+      text:"链接已删除",
+      show:true,
+      success: null,
+      timeout: 2000
+    });
   }
 }

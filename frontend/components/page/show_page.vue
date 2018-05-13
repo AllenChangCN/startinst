@@ -51,7 +51,7 @@
       </v-flex>
 
     </v-layout>
-
+    <context_menu style="display: none;"/>
   </v-container>
 </template>
 
@@ -60,6 +60,8 @@
   import page_head from "./page_head"
   import draggable from 'vuedraggable'
   import Sortable from 'sortablejs'
+  import context_menu from '../page/context_menu'
+
 
   export default {
     name: "page",
@@ -67,7 +69,7 @@
       // this.addEvent();
     },
     components: {
-      widget,page_head,draggable, Sortable
+      widget,page_head,draggable, Sortable,context_menu
     },
     methods: {
       columnEnter:function (column_idx) {   // 显示添加Widget的按钮

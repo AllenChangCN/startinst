@@ -15,13 +15,7 @@ export default {
   show_global_snackbar(state,params){    // 右下角通知框
     state.global.global_snackbar = params;
   },
-  // 显示右键菜单
-  show_context_menu(state,params){
-    state.global.contextmenu.items = params.items;
-    state.global.contextmenu.x = params.e.clientX;
-    state.global.contextmenu.y = params.e.clientY;
-    state.global.contextmenu.show_menu = true;
-  },
+
   // 显示确认框
   show_global_confirm(state, params){
     state.global.dialog.confirm.visible = params.visible;

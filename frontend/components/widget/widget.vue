@@ -134,7 +134,7 @@
         { title: '新页面打开' ,icon:'open_in_new' ,mutation:'bookmark_openlink',params:{force_new_tab:true}},
         { title: '当前页面打开' ,icon:'open_in_browser' ,mutation:'bookmark_openlink',params:{force_new_tab:false}},
         { title: '编辑书签' ,icon:'edit' ,mutation:false,params:{}},
-        { title: '删除书签' ,icon:'delete',mutation:false,params:{}}
+        { title: '删除书签' ,icon:'delete',mutation:'bookmark_deletelink',params:{}}
       ]
     }),
     methods: {
@@ -156,7 +156,7 @@
       widgetMenu:function () {
 
       },
-      linkContextMenu:function (e,item) {
+      link_context_menu:function (e,item) {
         console.log(e);
         console.log(item)
         // e.preventDefault();
