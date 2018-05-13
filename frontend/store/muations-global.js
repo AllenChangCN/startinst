@@ -27,12 +27,6 @@ export default {
     state.global.dialog.confirm.visible = params.visible;
     state.global.dialog.confirm.title = params.title;
     state.global.dialog.confirm.content = params.content;
-    state.global.dialog.confirm.btn_action.cancel.muation = params
-    if(params.btn_click==='confirm'){
-      this.commit(params.muation,params.params);
-    }
-    if(params.btn_click==='cancel'){
-      this.commit(params.cancel_muation,params.params)
-    }
+    state.global.dialog.btn_actions = params.btn_actions;
   }
 }

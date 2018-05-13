@@ -25,6 +25,12 @@ const createStore = () => {
           url:"https://www.google.com/search?q="
         },
         dialog: {
+          confirm:{
+            visible:true,
+            title: '确认框',
+            content: '确认内容',
+            btn_actions:{}
+          },
           page_edit:{
             visible:false,
             title:"添加页面",
