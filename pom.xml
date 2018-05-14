@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.tenstone</groupId>
-	<artifactId>pagepots</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>startinst</artifactId>
+	<version>0.0.1.dev-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>pagepots</name>
-	<description>pagepots is a project like bookmarks.</description>
+	<name>startinst</name>
+	<description>startinst is a project like bookmarks.</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -88,11 +88,10 @@
 			<artifactId>springfox-swagger-ui</artifactId>
 			<version>2.2.2</version>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>gs-spring-boot-docker</artifactId>
-			<version>0.1.0</version>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>org.springframework</groupId>-->
+			<!--<artifactId>gs-spring-boot-docker</artifactId>-->
+		<!--</dependency>-->
 	</dependencies>
 
 	<build>
