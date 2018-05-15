@@ -24,6 +24,6 @@ public class HomeController {
 
     @GetMapping("")
     public String login(){
-        return "Default Page.";
+        return "Home Page1.";
     }
 }
