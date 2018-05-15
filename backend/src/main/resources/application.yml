@@ -5,7 +5,7 @@ spring:
   profiles:
     active: dev
   datasource:
-    url: jdbc:mysql://localhost:3306/pagepots?characterEncoding=utf8&useSSL=false
+    url: jdbc:mysql://localhost:3306/startinst?characterEncoding=utf8&useSSL=false
     driver-class-name: com.mysql.jdbc.Driver
     username: root
     password:
@@ -26,7 +26,7 @@ spring:
     password:
 
 
-pagepots:
+startinst:
   server:
     datacenterid: 1
     machineid: 1

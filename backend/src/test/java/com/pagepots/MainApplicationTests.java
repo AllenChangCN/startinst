@@ -1,4 +1,4 @@
-package backend.src.test.java.com.pagepots;
+package backend.src.test.java.com.startinst;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

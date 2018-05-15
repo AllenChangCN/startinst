@@ -1,4 +1,4 @@
-package com.startinst.filter;
+package com.startinst.domain.filter;
 
 import java.util.Arrays;
 

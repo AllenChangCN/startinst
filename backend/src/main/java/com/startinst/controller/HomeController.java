@@ -6,6 +6,7 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,18 +18,12 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @Api(value="Auth认证API",description = "用户认证的所有需求")
-@RequestMapping(value = "/api/auth")
-public class AuthController {
-    private static Logger logger = LoggerFactory.getLogger(AuthController.class);
+@RequestMapping(value = "/")
+public class HomeController {
+    private static Logger logger = LoggerFactory.getLogger(HomeController.class);
 
-    @ApiOperation(value = "用户登录",notes = "需要输入用户名和密码")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "username",required = true,dataType = "String"),
-            @ApiImplicitParam(name = "password",required = true,dataType = "String")
-    })
-    @PostMapping(value = "login")
+    @GetMapping("")
     public String login(){
-        logger.error("infomation");
-        return "sadf";
+        return "Default Page.";
     }
 }

@@ -39,12 +39,12 @@ public class SnowFlakeUtil {
     /**
      * 数据中心Id
      */
-    @Value("${pagepots.server.datacenterid}")
+    @Value("${startinst.server.datacenterid}")
     private long datacenterId;
     /**
      * 机器Id
      */
-    @Value("${pagepots.server.machineid}")
+    @Value("${startinst.server.machineid}")
     private long machineId;
     /**
      *  序列号
