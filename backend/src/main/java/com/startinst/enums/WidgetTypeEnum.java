@@ -1,5 +1,5 @@
 package com.startinst.enums;
 
-public enum WidgetEnum {
+public enum WidgetTypeEnum {
     BOOKMARK,NOTES
 }
