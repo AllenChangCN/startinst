@@ -1,4 +1,4 @@
-package backend.src.test.java.com.startinst;
+package com.startinst;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,6 +11,7 @@ public class MainApplicationTests {
 
 	@Test
 	public void contextLoads() {
+
 	}
 
 }
