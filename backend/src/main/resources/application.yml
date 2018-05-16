@@ -12,13 +12,7 @@ spring:
   data:
     rest:
       base-path: /api
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+
   redis:
     database: 0
     host: localhost
@@ -55,7 +49,7 @@ security:
       userInfoUri: https://graph.facebook.com/me
 
 mybatis:
-  mapper-locations:
-  config-location: classpath:mybatis/mybatis-config.xml
+#  mapper-locations: classpath:dao/mapper
+#  config-location: classpath:mybatis/mybatis-config.xml
 
 

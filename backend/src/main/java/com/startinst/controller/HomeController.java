@@ -17,13 +17,14 @@ import org.springframework.web.bind.annotation.RestController;
  * @author liuyuancheng
  */
 @RestController
-@Api(value="Auth认证API",description = "用户认证的所有需求")
+@Api(value="Home",description = "默认页面")
 @RequestMapping(value = "/")
 public class HomeController {
     private static Logger logger = LoggerFactory.getLogger(HomeController.class);
 
-    @GetMapping("")
+    @GetMapping("/")
     public String login(){
-        return "Home Page1.";
+        logger.info("show home page");
+        return "Home Page.";
     }
 }

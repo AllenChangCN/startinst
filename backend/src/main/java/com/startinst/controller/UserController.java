@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value = "/api/users")
 public class UserController {
 
-
     @ApiImplicitParam(name = "user_id", value = "用户ID", required = true, dataType = "Integer")
     @ApiOperation(value = "获取用户信息")
     @GetMapping(value = "/{user_id}/info")
