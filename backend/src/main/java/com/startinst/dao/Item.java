@@ -2,6 +2,7 @@ package com.startinst.dao;
 
 
 import com.startinst.enums.ItemTypeEnum;
+import com.startinst.utils.SnowFlakeUtil;
 
 import java.util.Date;
 
@@ -18,7 +19,7 @@ public class Item {
 
     private ItemTypeEnum itemType;
 
-    private Date updateAt;
+    private Date updatedAt;
 
     private Date createdAt;
 
@@ -26,8 +27,8 @@ public class Item {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setId() {
+        this.id = SnowFlakeUtil.getId();
     }
 
     public ItemTypeEnum getItemType() {
@@ -42,7 +43,7 @@ public class Item {
         return widgetId;
     }
 
-    public void setWidgetId(long widgetId) {
+    public void setWidgetId(Long widgetId) {
         this.widgetId = widgetId;
     }
 
@@ -54,12 +55,12 @@ public class Item {
         this.createdAt = createdAt;
     }
 
-    public Date getUpdateAt() {
-        return updateAt;
+    public Date getupdatedAt() {
+        return updatedAt;
     }
 
-    public void setUpdateAt(Date updateAt) {
-        this.updateAt = updateAt;
+    public void setupdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     public String getContent() {
