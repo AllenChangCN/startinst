@@ -9,25 +9,19 @@ import java.util.Date;
 /**
  * @author liuyuancheng
  */
-public class Item {
+public class User {
 
     private Long id;
 
-    private Long widgetId;
+    private String username;
 
-    private String title;
-
-    private String description;
+    private String password;
 
     private String content;
-
-    private ItemTypeEnum itemType;
 
     private Date updatedAt;
 
     private Date createdAt;
-
-    private Date deletedAt;
 
     public long getId() {
         return id;
@@ -46,22 +40,6 @@ public class Item {
      */
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public ItemTypeEnum getItemType() {
-        return itemType;
-    }
-
-    public void setItemType(ItemTypeEnum itemType) {
-        this.itemType = itemType;
-    }
-
-    public long getWidgetId() {
-        return widgetId;
-    }
-
-    public void setWidgetId(Long widgetId) {
-        this.widgetId = widgetId;
     }
 
     public Date getCreatedAt() {
@@ -91,36 +69,24 @@ public class Item {
     @Override
     public String toString() {
         return  "Id: "+this.id+", "+
-                "widgetId: "+this.widgetId+", "+
-                "itemType: "+this.itemType+", "+
-                "title: "+this.title+", "+
-                "description: "+this.description+", "+
                 "content: "+this.content+", "+
                 "createdAt: "+this.createdAt+", "+
                 "updatedAt: "+this.updatedAt+"\n";
     }
 
-    public String getTitle() {
-        return title;
+    public String getUsername() {
+        return username;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getDescription() {
-        return description;
+    public String getPassword() {
+        return password;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Date getDeletedAt() {
-        return deletedAt;
-    }
-
-    public void setDeletedAt(Date deletedAt) {
-        this.deletedAt = deletedAt;
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

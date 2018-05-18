@@ -28,13 +28,13 @@ public class ItemMapperTest {
     @Test
     public void curd() {
         // 先删除已有的测试Id
-        ItemMapper.delete(testId);
+        ItemMapper.forceDelete(testId);
 
         // 添加一条数据
         Item item = new Item();
         item.setId(testId);
         item.setContent("content");
-        item.setItemType(ItemTypeEnum.BOOKMARK);
+        item.setItemType(ItemTypeEnum.LINK);
         item.setUpdatedAt(null);
         item.setWidgetId(1L);
         item.setCreatedAt(new Date());
@@ -61,7 +61,8 @@ public class ItemMapperTest {
         System.out.println(Arrays.toString(items.toArray()));
 
         // 删除数据
-        effectLine = ItemMapper.delete(testId);
+        ItemMapper.delete(testId, new Date());
+        effectLine = ItemMapper.forceDelete(testId);
         assertEquals(effectLine, 1);  // 删除
     }
 

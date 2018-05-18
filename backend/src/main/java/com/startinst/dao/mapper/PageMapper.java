@@ -3,13 +3,12 @@ package com.startinst.dao.mapper;
 import com.startinst.dao.Item;
 import org.apache.ibatis.annotations.*;
 
-import java.util.Date;
 import java.util.List;
 
 /**
  * @author liuyuancheng
  */
-public interface ItemMapper {
+public interface PageMapper {
     @Select("SELECT * FROM items WHERE widget_id = #{widget_id}")
     List<Item> findByWidgetId(@Param("widget_id") Long widgetId);
 
@@ -23,8 +22,8 @@ public interface ItemMapper {
     @Update("UPDATE items SET content=#{content},title=#{title},description=#{description},updated_at=#{updatedAt} WHERE id =#{id}")
     int updateContent(Item item);
 
-    @Update("Update items SET deleted_at=#{deletedAt}")
-    int delete(@Param(value = "id") Long id, @Param(value = "deletedAt") Date deletedAt);
+    @Update("Update items SET deleted=1")
+    int delete(Long id);
 
     @Delete("DELETE FROM items WHERE id=#{id}")
     int forceDelete(Long id);

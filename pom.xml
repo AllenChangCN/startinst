@@ -91,10 +91,10 @@
 			<optional>true</optional>
             <scope>true</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>org.springframework.boot</groupId>-->
+			<!--<artifactId>spring-boot-starter-actuator</artifactId>-->
+		<!--</dependency>-->
 		<!--<dependency>-->
 			<!--<groupId>javax.servlet</groupId>-->
 			<!--<artifactId>javax.servlet-api</artifactId>-->
@@ -117,11 +117,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-logging</artifactId>
         </dependency>
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-api</artifactId>
-			<scope>test</scope>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>org.junit.jupiter</groupId>-->
+			<!--<artifactId>junit-jupiter-api</artifactId>-->
+			<!--<scope>test</scope>-->
+		<!--</dependency>-->
 	</dependencies>
 
 	<build>

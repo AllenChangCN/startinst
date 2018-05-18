@@ -2,6 +2,7 @@ package com.startinst.dao;
 
 
 import com.startinst.enums.ItemTypeEnum;
+import com.startinst.enums.WidgetTypeEnum;
 import com.startinst.utils.SnowFlakeUtil;
 
 import java.util.Date;
@@ -9,19 +10,25 @@ import java.util.Date;
 /**
  * @author liuyuancheng
  */
-public class Item {
+public class Widget {
 
     private Long id;
 
-    private Long widgetId;
+    private Long pageId;
 
     private String title;
 
     private String description;
 
-    private String content;
+    /**
+     * Item数据的排布，矩阵数组排布，值为Item的Id
+     */
+    private String itemsSort;
 
-    private ItemTypeEnum itemType;
+    /**
+     * Widget的类型，书签、笔记、广告
+     */
+    private WidgetTypeEnum widgetType;
 
     private Date updatedAt;
 
@@ -48,22 +55,6 @@ public class Item {
         this.id = id;
     }
 
-    public ItemTypeEnum getItemType() {
-        return itemType;
-    }
-
-    public void setItemType(ItemTypeEnum itemType) {
-        this.itemType = itemType;
-    }
-
-    public long getWidgetId() {
-        return widgetId;
-    }
-
-    public void setWidgetId(Long widgetId) {
-        this.widgetId = widgetId;
-    }
-
     public Date getCreatedAt() {
         return createdAt;
     }
@@ -80,22 +71,13 @@ public class Item {
         this.updatedAt = updatedAt;
     }
 
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
     @Override
     public String toString() {
         return  "Id: "+this.id+", "+
-                "widgetId: "+this.widgetId+", "+
-                "itemType: "+this.itemType+", "+
+                "widgetId: "+this.pageId+", "+
+                "itemType: "+this.widgetType+", "+
                 "title: "+this.title+", "+
                 "description: "+this.description+", "+
-                "content: "+this.content+", "+
                 "createdAt: "+this.createdAt+", "+
                 "updatedAt: "+this.updatedAt+"\n";
     }
@@ -116,11 +98,35 @@ public class Item {
         this.description = description;
     }
 
+    public WidgetTypeEnum getWidgetType() {
+        return widgetType;
+    }
+
+    public void setWidgetType(WidgetTypeEnum widgetType) {
+        this.widgetType = widgetType;
+    }
+
+    public Long getPageId() {
+        return pageId;
+    }
+
+    public void setPageId(Long pageId) {
+        this.pageId = pageId;
+    }
+
     public Date getDeletedAt() {
         return deletedAt;
     }
 
     public void setDeletedAt(Date deletedAt) {
         this.deletedAt = deletedAt;
+    }
+
+    public String getItemsSort() {
+        return itemsSort;
+    }
+
+    public void setItemsSort(String itemsSort) {
+        this.itemsSort = itemsSort;
     }
 }

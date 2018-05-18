@@ -1,27 +1,34 @@
 package com.startinst.dao;
 
 
-import com.startinst.enums.ItemTypeEnum;
+import com.startinst.enums.WidgetTypeEnum;
 import com.startinst.utils.SnowFlakeUtil;
+import springfox.documentation.spring.web.json.Json;
 
 import java.util.Date;
 
 /**
  * @author liuyuancheng
  */
-public class Item {
+public class Page {
 
     private Long id;
 
-    private Long widgetId;
+    private Long userId;
+
+    /**
+     * 最常用的页面，在用户首页轮播显示；0-排在首页其余依次，默认为null
+     */
+    private Integer favorite;
 
     private String title;
 
     private String description;
 
-    private String content;
-
-    private ItemTypeEnum itemType;
+    /**
+     * widgetId组成的行列矩阵，记录排位信息
+     */
+    private String widgetsSort;
 
     private Date updatedAt;
 
@@ -48,22 +55,6 @@ public class Item {
         this.id = id;
     }
 
-    public ItemTypeEnum getItemType() {
-        return itemType;
-    }
-
-    public void setItemType(ItemTypeEnum itemType) {
-        this.itemType = itemType;
-    }
-
-    public long getWidgetId() {
-        return widgetId;
-    }
-
-    public void setWidgetId(Long widgetId) {
-        this.widgetId = widgetId;
-    }
-
     public Date getCreatedAt() {
         return createdAt;
     }
@@ -80,22 +71,11 @@ public class Item {
         this.updatedAt = updatedAt;
     }
 
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
     @Override
     public String toString() {
         return  "Id: "+this.id+", "+
-                "widgetId: "+this.widgetId+", "+
-                "itemType: "+this.itemType+", "+
                 "title: "+this.title+", "+
                 "description: "+this.description+", "+
-                "content: "+this.content+", "+
                 "createdAt: "+this.createdAt+", "+
                 "updatedAt: "+this.updatedAt+"\n";
     }
@@ -122,5 +102,29 @@ public class Item {
 
     public void setDeletedAt(Date deletedAt) {
         this.deletedAt = deletedAt;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public Integer getFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(Integer favorite) {
+        this.favorite = favorite;
+    }
+
+    public String getWidgetsSort() {
+        return widgetsSort;
+    }
+
+    public void setWidgetsSort(String widgetsSort) {
+        this.widgetsSort = widgetsSort;
     }
 }

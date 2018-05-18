@@ -5,7 +5,13 @@ package com.startinst.enums;
  */
 
 public enum ItemTypeEnum {
-    BOOKMARK,
-    NOTES,
-    AD
+    // 超链接
+    LINK,
+    // 笔记
+    NOTE,
+    AD,
+    // 整个Widget的图片
+    IMAGE,
+    // 小程序、公众号二维码等
+    LINK_IMAGE,
 }
