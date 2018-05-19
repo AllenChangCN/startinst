@@ -2,6 +2,9 @@ package com.startinst.dao;
 
 import java.util.Date;
 
+/**
+ * @author liuyuancheng
+ */
 public class SysRole {
     private Long id;
 
@@ -101,5 +104,10 @@ public class SysRole {
 
     public void setUpdateAt(Date updateAt) {
         this.updateAt = updateAt;
+    }
+
+    @Override
+    public String toString() {
+        return "name: "+this.getName();
     }
 }

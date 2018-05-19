@@ -2,7 +2,7 @@ package com.startinst.dao;
 
 import java.util.Date;
 
-public class SysResource {
+public class SysPermission {
     private Long id;
 
     private String type;

@@ -1,25 +1,15 @@
 package com.startinst.dao.mapper;
 
-import com.startinst.dao.Item;
-import com.startinst.dao.SysRole;
 import com.startinst.dao.SysUser;
-import com.startinst.enums.ItemTypeEnum;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
-public class SysUserMapperTest {
+public class SysRoleMapperTest {
 
     Long testId = 999999999999999999L;
 
@@ -33,9 +23,9 @@ public class SysUserMapperTest {
     }
 
     @Test
-    public void findRolesById() {
-        List<SysRole> roles = sysUserMapper.findRolesByUserId(1L);
-        System.out.println(roles);
+    public void getRoles() {
+        SysUser sysUser = sysUserMapper.findUserById(1L);
+//        sysUserMapper.getRoles();
     }
 
 

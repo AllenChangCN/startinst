@@ -1,5 +1,7 @@
 package com.startinst.shiro;
 
+import com.startinst.dao.SysPermission;
+import com.startinst.dao.SysRole;
 import com.startinst.dao.SysUser;
 import com.startinst.dao.mapper.SysRoleMapper;
 import com.startinst.dao.mapper.SysUserMapper;
@@ -113,14 +115,14 @@ public class MyShiroRealm extends AuthorizingRealm {
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
 
         //设置相应角色的权限信息
-//        for (SysRole role : sysUserMapper.getRoles(sysUser)) {
-//            //设置角色
-//            authorizationInfo.addRole(role.getRole());
-//            for (Permission p : role.getPermissions()) {
-//                //设置权限
-//                authorizationInfo.addStringPermission(p.getPermission());
-//            }
-//        }
+        for (SysRole role : sysUserMapper.findRolesByUserId(sysUser.getId())) {
+            //设置角色
+            authorizationInfo.addRole(sysRoleMapper.findRoleById(role.getId()).getName());
+            for (SysPermission p : sysRoleMapper.findPermissionsByRoleId(role.getId())) {
+                //设置权限
+                authorizationInfo.addStringPermission(p.getPermission());
+            }
+        }
         return authorizationInfo;
     }
 

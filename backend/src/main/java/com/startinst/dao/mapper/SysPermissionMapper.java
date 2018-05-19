@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * @author liuyuancheng
  */
-public interface SysResourceMapper {
+public interface SysPermissionMapper {
     @Select("SELECT * FROM items WHERE id = #{id}")
     List<SysRole> getRoles(@Param("id") Long id);
 }
