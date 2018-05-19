@@ -17,7 +17,7 @@ public class User {
 
     private String password;
 
-    private String content;
+    private String email;
 
     private Date updatedAt;
 
@@ -58,18 +58,9 @@ public class User {
         this.updatedAt = updatedAt;
     }
 
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
     @Override
     public String toString() {
         return  "Id: "+this.id+", "+
-                "content: "+this.content+", "+
                 "createdAt: "+this.createdAt+", "+
                 "updatedAt: "+this.updatedAt+"\n";
     }
@@ -88,5 +79,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

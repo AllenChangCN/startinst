@@ -25,6 +25,6 @@ public class HomeController {
     @GetMapping("/")
     public String login(){
         logger.info("show home page");
-        return "Home Page.";
+        return "Home Page2.";
     }
 }
