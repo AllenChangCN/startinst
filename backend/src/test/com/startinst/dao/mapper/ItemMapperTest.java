@@ -23,12 +23,12 @@ public class ItemMapperTest {
     Long testId = 999999999999999999L;
 
     @Autowired(required = true)
-    private ItemMapper ItemMapper;
+    private ItemMapper itemMapper;
 
     @Test
     public void curd() {
         // 先删除已有的测试Id
-        ItemMapper.forceDelete(testId);
+        itemMapper.forceDelete(testId);
 
         // 添加一条数据
         Item item = new Item();
@@ -38,11 +38,11 @@ public class ItemMapperTest {
         item.setUpdatedAt(null);
         item.setWidgetId(1L);
         item.setCreatedAt(new Date());
-        int effectLine = ItemMapper.insert(item);
+        int effectLine = itemMapper.insert(item);
         assertEquals(effectLine, 1);
 
         // 查询一条数据
-        Item find_item = ItemMapper.findOne(testId);
+        Item find_item = itemMapper.findOne(testId);
         assertTrue("ItemMapper.findOne出错",find_item.toString().length() > 7);
 
         // 更新一条数据
@@ -52,17 +52,17 @@ public class ItemMapperTest {
         item1.setTitle("new title");
         item1.setDescription("my description");
         item1.setUpdatedAt(new Date());
-        effectLine = ItemMapper.updateContent(item1);
+        effectLine = itemMapper.updateContent(item1);
         assertEquals(effectLine,1);
 
         // findByWidgetId
-        List<Item> items = ItemMapper.findByWidgetId(1L);
+        List<Item> items = itemMapper.findByWidgetId(1L);
         assertTrue(items.size() >= 1);
         System.out.println(Arrays.toString(items.toArray()));
 
         // 删除数据
-        ItemMapper.delete(testId, new Date());
-        effectLine = ItemMapper.forceDelete(testId);
+        itemMapper.delete(testId, new Date());
+        effectLine = itemMapper.forceDelete(testId);
         assertEquals(effectLine, 1);  // 删除
     }
 
