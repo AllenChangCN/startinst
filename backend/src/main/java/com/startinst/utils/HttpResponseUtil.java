@@ -1,6 +1,7 @@
 package com.startinst.utils;
 
 import com.startinst.domain.HttpResponse;
+import com.startinst.enums.HttpResponseCodeEnum;
 
 /**
  * @author liuyuancheng
@@ -9,8 +10,8 @@ public class HttpResponseUtil {
 
     public static HttpResponse success(Object object) {
         HttpResponse result = new HttpResponse();
-        result.setCode(0);
-        result.setMessage("SUCCESS");
+        result.setCode(HttpResponseCodeEnum.SUCCESS.getCode());
+        result.setMessage(HttpResponseCodeEnum.SUCCESS);
         result.setData(object);
         return result;
     }
@@ -19,9 +20,9 @@ public class HttpResponseUtil {
         return success(null);
     }
 
-    public static HttpResponse error(int code, String msg) {
+    public static HttpResponse error(HttpResponseCodeEnum msg) {
         HttpResponse result = new HttpResponse();
-        result.setCode(code);
+        result.setCode(msg.getCode());
         result.setMessage(msg);
         return result;
     }

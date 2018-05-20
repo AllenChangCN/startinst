@@ -1,5 +1,7 @@
 package com.startinst.domain;
 
+import com.startinst.enums.HttpResponseCodeEnum;
+
 /**
  * Http 返回对象
  * @param <T>
@@ -11,7 +13,7 @@ public class HttpResponse<T> {
     private Integer code;
 
     /** 提示信息. */
-    private String message;
+    private HttpResponseCodeEnum message;
 
     private Integer status = 200;
 
@@ -27,11 +29,11 @@ public class HttpResponse<T> {
         this.code = code;
     }
 
-    public String getMessage() {
+    public HttpResponseCodeEnum getMessage() {
         return message;
     }
 
-    public void setMessage(String message) {
+    public void setMessage(HttpResponseCodeEnum message) {
         this.message = message;
     }
 

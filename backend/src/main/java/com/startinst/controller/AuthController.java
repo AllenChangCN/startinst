@@ -3,6 +3,7 @@ package com.startinst.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.startinst.domain.HttpResponse;
 import com.startinst.domain.model.LoginModel;
+import com.startinst.enums.HttpResponseCodeEnum;
 import com.startinst.utils.HttpResponseUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -24,6 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Api(value="Auth认证API",description = "用户认证的所有需求")
 @RequestMapping(value = "/api/auth")
 public class AuthController {
+
     private static Logger logger = LoggerFactory.getLogger(AuthController.class);
 
     @ApiOperation(value = "用户登录", notes = "需要输入用户名和密码")
