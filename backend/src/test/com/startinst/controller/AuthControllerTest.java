@@ -36,9 +36,11 @@ class AuthControllerTest {
     @Test
     void login() throws Exception{
         Map<String, Object> map = new HashMap<>();
-        map.put("username", "合肥");
-        map.put("password", "测试");
-        MvcResult result = this.mockMvc.perform(post("/api/auth/login").contentType(MediaType.APPLICATION_JSON)
+        map.put("username", "maolyc");
+        map.put("password", "test");
+        MvcResult result = this.mockMvc.perform(post("/api/auth/login")
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
                 .content(JSONObject.toJSONString(map)))
                 .andExpect(status().isOk())
                 .andReturn();

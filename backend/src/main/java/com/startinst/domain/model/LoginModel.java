@@ -10,7 +10,7 @@ public class LoginModel {
     private String password;
 
     public String getUsername() {
-        return username;
+        return username.trim();
     }
 
     public void setUsername(String username) {
@@ -18,7 +18,7 @@ public class LoginModel {
     }
 
     public String getPassword() {
-        return password;
+        return password.trim();
     }
 
     public void setPassword(String password) {

@@ -36,6 +36,13 @@ public class AuthController {
     @PostMapping(value = "login")
     public HttpResponse login(@ModelAttribute LoginModel loginModel){
         logger.info("登录");
+        // 检查密码合法性
+        if(loginModel.getUsername() == null || loginModel.getUsername().isEmpty()){
+            return HttpResponseUtil.error(HttpResponseCodeEnum.ERR_USERNAME_CANNOT_BE_EMPTY);
+        }
+        if(loginModel.getPassword() == null || loginModel.getPassword().isEmpty()){
+            return HttpResponseUtil.error(HttpResponseCodeEnum.ERR_PASSWORD_CANNOT_BE_EMPTY);
+        }
         return HttpResponseUtil.success(loginModel.getUsername() + "登录成功");
     }
 }
