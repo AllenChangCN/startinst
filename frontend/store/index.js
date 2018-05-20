@@ -20,7 +20,7 @@ const createStore = () => {
         },
         dialog: {
           confirm:{
-            visible:true,
+            visible:false,
             title: '确认框',
             content: '确认内容',
             btn_actions:{}

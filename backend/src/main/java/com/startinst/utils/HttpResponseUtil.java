@@ -19,7 +19,7 @@ public class HttpResponseUtil {
         return success(null);
     }
 
-    public static HttpResponse error(Integer code, String msg) {
+    public static HttpResponse error(int code, String msg) {
         HttpResponse result = new HttpResponse();
         result.setCode(code);
         result.setMessage(msg);

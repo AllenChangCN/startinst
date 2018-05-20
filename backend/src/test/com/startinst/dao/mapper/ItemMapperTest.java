@@ -2,31 +2,30 @@ package com.startinst.dao.mapper;
 
 import com.startinst.dao.Item;
 import com.startinst.enums.ItemTypeEnum;
-import org.junit.Test;
 
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+@ExtendWith(SpringExtension.class)
 @SpringBootTest
-public class ItemMapperTest {
+class ItemMapperTest {
 
-    Long testId = 999999999999999999L;
+    private Long testId = 999999999999999999L;
 
     @Autowired(required = true)
     private ItemMapper itemMapper;
 
     @Test
-    public void curd() {
+    void curd() {
         // 先删除已有的测试Id
         itemMapper.forceDelete(testId);
 
@@ -43,7 +42,7 @@ public class ItemMapperTest {
 
         // 查询一条数据
         Item find_item = itemMapper.findOne(testId);
-        assertTrue("ItemMapper.findOne出错",find_item.toString().length() > 7);
+        assertTrue(find_item.toString().length() > 7);
 
         // 更新一条数据
         Item item1 = new Item();

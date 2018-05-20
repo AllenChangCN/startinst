@@ -16,7 +16,6 @@ public class HttpResponse<T> {
     private Integer status = 200;
 
 
-
     /** 具体的内容. */
     private T data;
 
