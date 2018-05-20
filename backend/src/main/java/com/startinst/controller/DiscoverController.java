@@ -4,6 +4,7 @@ import com.startinst.domain.HttpResponse;
 import com.startinst.utils.HttpResponseUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @Api(value = "Discover资源API",description = "")
 @RequestMapping("/api/discovers")
-
+//@RequiresAuthentication
 public class DiscoverController {
 
     @ApiOperation(value = "发现网页")
