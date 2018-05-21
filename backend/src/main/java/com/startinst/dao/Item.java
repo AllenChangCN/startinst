@@ -15,6 +15,8 @@ public class Item {
 
     private Long widgetId;
 
+    private Long pageId;
+
     private String title;
 
     private String description;
@@ -36,8 +38,9 @@ public class Item {
     /**
      * Snowflake算法生成Id
      */
-    public void setId() {
+    public Long setId() {
         this.id = SnowFlakeUtil.getId();
+        return this.id;
     }
 
     /**
@@ -92,6 +95,7 @@ public class Item {
     public String toString() {
         return  "Id: "+this.id+", "+
                 "widgetId: "+this.widgetId+", "+
+                "pageId: "+this.pageId+", "+
                 "itemType: "+this.itemType+", "+
                 "title: "+this.title+", "+
                 "description: "+this.description+", "+
@@ -122,5 +126,13 @@ public class Item {
 
     public void setDeletedAt(Date deletedAt) {
         this.deletedAt = deletedAt;
+    }
+
+    public Long getPageId() {
+        return pageId;
+    }
+
+    public void setPageId(Long pageId) {
+        this.pageId = pageId;
     }
 }

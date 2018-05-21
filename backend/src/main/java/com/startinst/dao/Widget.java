@@ -42,16 +42,18 @@ public class Widget {
     /**
      * Snowflake算法生成Id
      */
-    public void setId() {
+    public Long setId() {
         this.id = SnowFlakeUtil.getId();
+        return this.id;
     }
 
     /**
      * 指定Id
      * @param id
      */
-    public void setId(Long id) {
+    public Long setId(Long id) {
         this.id = id;
+        return id;
     }
 
     public Date getCreatedAt() {
@@ -109,8 +111,9 @@ public class Widget {
         return pageId;
     }
 
-    public void setPageId(Long pageId) {
+    public Long setPageId(Long pageId) {
         this.pageId = pageId;
+        return pageId;
     }
 
     public Date getDeletedAt() {
