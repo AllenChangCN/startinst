@@ -36,13 +36,12 @@ class WidgetMapperTest {
         item.setTitle("widget title");
         item.setDescription("widget desc");
         item.setContent("content item");
-        item.setItemType(ItemTypeEnum.LINK);
+        item.setItemType(ItemTypeEnum.NOTE);
         item.setCreatedAt(new Date());
         itemMapper.insert(item);
         Widget widget1 = widgetMapper.findById(999999999999999998L);
         System.out.println("==============================");
         System.out.println(widget1.toString());
-        System.out.println(widget1.getItemList().toString());
     }
 
     @Test
