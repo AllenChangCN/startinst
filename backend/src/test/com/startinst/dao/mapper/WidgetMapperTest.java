@@ -20,6 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class WidgetMapperTest {
 
     Long testPageId = 999999999999999999L;
+    Long testWidgetId = 999999999999999999L;
 
     @Autowired
     private WidgetMapper widgetMapper;
@@ -32,16 +33,19 @@ class WidgetMapperTest {
     {
         Item item = new Item();
         item.setId();
-        item.setWidgetId(999999999999999998L);
+        item.setWidgetId(testWidgetId);
         item.setTitle("widget title");
         item.setDescription("widget desc");
         item.setContent("content item");
         item.setItemType(ItemTypeEnum.NOTE);
         item.setCreatedAt(new Date());
         itemMapper.insert(item);
-        Widget widget1 = widgetMapper.findById(999999999999999998L);
-        System.out.println("==============================");
-        System.out.println(widget1.toString());
+        Widget widget1 = widgetMapper.findById(testWidgetId);
+        assertTrue(widget1 != null);
+        if(widget1 != null)
+        {
+            System.out.println(widget1.getItemList());
+        }
     }
 
     @Test
