@@ -81,6 +81,7 @@ public class Widget {
                 "itemType: "+this.widgetType+", "+
                 "title: "+this.title+", "+
                 "description: "+this.description+", "+
+                "itemList: "+this.getItemList()+", "+
                 "createdAt: "+this.createdAt+", "+
                 "updatedAt: "+this.updatedAt+"\n";
     }
