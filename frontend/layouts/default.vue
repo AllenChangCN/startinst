@@ -26,9 +26,9 @@
     }),
     head () {
       return {
-        title:'StartInst. - 上网，从这里开始',
+        title:'StartInst. - 让连接创造更大的价值',
         meta: [
-          { hid: 'description', name: 'description', content: 'My custom description' }
+          { hid: 'description', name: 'description', content: '网络连接器' }
         ]
       }
     },
