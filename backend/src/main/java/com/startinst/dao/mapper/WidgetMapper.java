@@ -12,9 +12,23 @@ import java.util.List;
  */
 public interface WidgetMapper {
 
+    /**
+     * 根据WidgetId查询Widget
+     * @param id
+     * @return
+     */
     @Select("SELECT * FROM widgets WHERE id = #{id}")
-    Widget findOne(@Param("id") Long id);
+    @Results({
+        @Result(property="itemList",column="id",javaType=List.class,
+                many=@Many(select="com.startinst.dao.mapper.ItemMapper.findByWidgetId"))
+    })
+    Widget findById(@Param("id") Long id);
 
+    /**
+     * 插入一个Widget
+     * @param widget
+     * @return
+     */
     @Insert("INSERT INTO widgets(id,page_id,widget_type,title,description,created_at) " +
             "VALUES(#{id},#{pageId},#{widgetType},#{title},#{description}, #{createdAt})")
     int insert(Widget widget);

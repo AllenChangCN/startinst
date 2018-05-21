@@ -10,10 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import javax.validation.constraints.AssertTrue;
-import java.util.Arrays;
 import java.util.Date;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -27,11 +24,33 @@ class WidgetMapperTest {
     @Autowired
     private WidgetMapper widgetMapper;
 
+    @Autowired
+    private ItemMapper itemMapper;
+
+    @Test
+    void findWidgetById()
+    {
+        Item item = new Item();
+        item.setId();
+        item.setWidgetId(999999999999999998L);
+        item.setTitle("widget title");
+        item.setDescription("widget desc");
+        item.setContent("content item");
+        item.setItemType(ItemTypeEnum.LINK);
+        item.setCreatedAt(new Date());
+        itemMapper.insert(item);
+        Widget widget1 = widgetMapper.findById(999999999999999998L);
+        System.out.println("==============================");
+        System.out.println(widget1.toString());
+        System.out.println(widget1.getItemList().toString());
+    }
+
     @Test
     void insertAndUpdate() {
         // insert
         Widget widget = new Widget();
-        Long testWidgetId = widget.setId();
+        widget.setId();
+        Long testWidgetId = widget.getId();
         widget.setTitle("测试Widget Title");
         widget.setPageId(testPageId);
         widget.setWidgetType(WidgetTypeEnum.NOTE);
@@ -39,7 +58,7 @@ class WidgetMapperTest {
         widget.setCreatedAt(new Date());
         widgetMapper.insert(widget);
         // update
-        Widget widget2 = widgetMapper.findOne(testWidgetId);
+        Widget widget2 = widgetMapper.findById(testWidgetId);
         widget2.setTitle("title_update_test");
         assertTrue(widget2.toString().indexOf("title_update_test") > 0);
     }

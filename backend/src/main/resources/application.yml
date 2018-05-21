@@ -34,6 +34,9 @@ logging:
     org.springframework:
       data: INFO
       security: INFO
+    com.startinst.dao.mapper.WidgetMapper: DEBUG
+    com.startinst.dao.mapper.ItemMapper: DEBUG
+
 
 security:
   oauth2:
@@ -51,6 +54,7 @@ security:
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
+
 
 
 

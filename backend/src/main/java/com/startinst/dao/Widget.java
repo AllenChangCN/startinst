@@ -5,6 +5,7 @@ import com.startinst.enums.WidgetTypeEnum;
 import com.startinst.utils.SnowFlakeUtil;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author liuyuancheng
@@ -16,6 +17,8 @@ public class Widget {
     private Long pageId;
 
     private String title;
+
+    private List<Item> itemList;
 
     private String description;
 
@@ -35,6 +38,7 @@ public class Widget {
 
     private Date deletedAt;
 
+
     public long getId() {
         return id;
     }
@@ -42,18 +46,16 @@ public class Widget {
     /**
      * Snowflake算法生成Id
      */
-    public Long setId() {
+    public void setId() {
         this.id = SnowFlakeUtil.getId();
-        return this.id;
     }
 
     /**
      * 指定Id
      * @param id
      */
-    public Long setId(Long id) {
+    public void setId(Long id) {
         this.id = id;
-        return id;
     }
 
     public Date getCreatedAt() {
@@ -111,9 +113,8 @@ public class Widget {
         return pageId;
     }
 
-    public Long setPageId(Long pageId) {
+    public void setPageId(Long pageId) {
         this.pageId = pageId;
-        return pageId;
     }
 
     public Date getDeletedAt() {
@@ -130,5 +131,13 @@ public class Widget {
 
     public void setItemsSort(String itemsSort) {
         this.itemsSort = itemsSort;
+    }
+
+    public List<Item> getItemList() {
+        return itemList;
+    }
+
+    public void setItemList(List<Item> itemList) {
+        this.itemList = itemList;
     }
 }

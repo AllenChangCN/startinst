@@ -31,7 +31,8 @@ class ItemMapperTest {
 
         // 添加一条数据
         Item item = new Item();
-        Long testItemId = item.setId();
+        item.setId();
+        Long testItemId = item.getId();
         item.setContent("content");
         item.setItemType(ItemTypeEnum.LINK);
         item.setUpdatedAt(null);

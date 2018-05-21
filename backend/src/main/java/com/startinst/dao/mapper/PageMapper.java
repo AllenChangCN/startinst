@@ -12,7 +12,6 @@ import java.util.List;
  */
 public interface PageMapper {
     @Select("SELECT * FROM items WHERE widget_id = #{widget_id}")
-    // 多对多
     List<Widget> findByWidgetId(@Param("widgetId") Long widgetId);
 
     @Select("SELECT * FROM items WHERE id = #{id}")

@@ -1,6 +1,7 @@
 package com.startinst.dao.mapper;
 
 import com.startinst.dao.Item;
+import com.startinst.dao.Widget;
 import org.apache.ibatis.annotations.*;
 
 import java.util.Date;
@@ -11,6 +12,11 @@ import java.util.List;
  */
 public interface ItemMapper {
     @Select("SELECT * FROM items WHERE widget_id = #{widgetId}")
+    @Results({
+            @Result(id=true,property="id",column="id"),
+            @Result(property="widget",column="widget_id",javaType=Widget.class,
+                    one=@One(select="com.startinst.dao.mapper.WidgetMapper.findById"))
+    })
     List<Item> findByWidgetId(@Param("widgetId") Long widgetId);
 
     @Select("SELECT * FROM items WHERE id = #{id}")
