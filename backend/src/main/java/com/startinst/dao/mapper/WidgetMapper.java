@@ -1,6 +1,7 @@
 package com.startinst.dao.mapper;
 
 import com.startinst.dao.Item;
+import com.startinst.dao.Page;
 import com.startinst.dao.Widget;
 import org.apache.ibatis.annotations.*;
 
@@ -20,9 +21,21 @@ public interface WidgetMapper {
     @Select("SELECT * FROM widgets WHERE id = #{id}")
     @Results({
         @Result(property="itemList",column="id",javaType=List.class,
-                many=@Many(select="com.startinst.dao.mapper.ItemMapper.findByWidgetId"))
+                many=@Many(select="com.startinst.dao.mapper.ItemMapper.findByWidgetId")),
     })
     Widget findById(@Param("id") Long id);
+
+    /**
+     * 根据页面Id获得Widget List
+     * @param pageId
+     * @return
+     */
+    @Select("SELECT * FROM widgets WHERE page_id=#{pageId}")
+    @Results({
+        @Result(property="page",column="page_id",javaType=Page.class,
+                one=@One(select="com.startinst.dao.mapper.PageMapper.findById"))
+    })
+    List<Widget> findByPageId(@Param("pageId") Long pageId);
 
     /**
      * 插入一个Widget

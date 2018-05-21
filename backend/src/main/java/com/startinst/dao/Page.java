@@ -4,6 +4,7 @@ package com.startinst.dao;
 import com.startinst.utils.SnowFlakeUtil;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author liuyuancheng
@@ -22,6 +23,8 @@ public class Page {
     private String title;
 
     private String description;
+
+    private List<Widget> widgetList;
 
     /**
      * widgetId组成的行列矩阵，记录排位信息
@@ -74,6 +77,7 @@ public class Page {
         return  "Id: "+this.id+", "+
                 "title: "+this.title+", "+
                 "description: "+this.description+", "+
+                "widgetList: "+this.getWidgetList()+", "+
                 "createdAt: "+this.createdAt+", "+
                 "updatedAt: "+this.updatedAt+"\n";
     }
@@ -124,5 +128,13 @@ public class Page {
 
     public void setWidgetsSort(String widgetsSort) {
         this.widgetsSort = widgetsSort;
+    }
+
+    public List<Widget> getWidgetList() {
+        return widgetList;
+    }
+
+    public void setWidgetList(List<Widget> widgetList) {
+        this.widgetList = widgetList;
     }
 }

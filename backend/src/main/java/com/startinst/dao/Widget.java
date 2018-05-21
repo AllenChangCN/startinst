@@ -20,6 +20,8 @@ public class Widget {
 
     private List<Item> itemList;
 
+    private Page page;
+
     private String description;
 
     /**
@@ -140,5 +142,13 @@ public class Widget {
 
     public void setItemList(List<Item> itemList) {
         this.itemList = itemList;
+    }
+
+    public Page getPage() {
+        return page;
+    }
+
+    public void setPage(Page page) {
+        this.page = page;
     }
 }

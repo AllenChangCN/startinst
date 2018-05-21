@@ -36,6 +36,7 @@ logging:
       security: INFO
     com.startinst.dao.mapper.WidgetMapper: DEBUG
     com.startinst.dao.mapper.ItemMapper: DEBUG
+    com.startinst.dao.mapper.PageMapper: DEBUG
 
 
 security:

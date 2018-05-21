@@ -14,9 +14,8 @@ public interface ItemMapper {
 
     @Select("SELECT * FROM items WHERE widget_id = #{widgetId}")
     @Results({
-            @Result(id=true,property="id",column="id"),
-            @Result(property="widget",column="widget_id",javaType=Widget.class,
-                    one=@One(select="com.startinst.dao.mapper.WidgetMapper.findById"))
+        @Result(property="widget",column="widget_id",javaType=Widget.class,
+                one=@One(select="com.startinst.dao.mapper.WidgetMapper.findById"))
     })
     List<Item> findByWidgetId(@Param("widgetId") Long widgetId);
 
