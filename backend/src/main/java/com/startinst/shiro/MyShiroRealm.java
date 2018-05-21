@@ -5,7 +5,7 @@ import com.startinst.dao.SysRole;
 import com.startinst.dao.SysUser;
 import com.startinst.dao.mapper.SysRoleMapper;
 import com.startinst.dao.mapper.SysUserMapper;
-import com.startinst.service.SysUserService;
+import com.startinst.service.UserService;
 import com.startinst.utils.JWTUtil;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
@@ -28,7 +28,7 @@ public class MyShiroRealm extends AuthorizingRealm {
     private static final Logger _logger = LoggerFactory.getLogger(MyShiroRealm.class);
 
     @Autowired
-    SysUserService sysUserService;
+    UserService userService;
 
     @Autowired
     SysUserMapper sysUserMapper;
@@ -71,7 +71,7 @@ public class MyShiroRealm extends AuthorizingRealm {
 
         //通过username从数据库中查找 ManagerInfo对象
         //实际项目中，这里可以根据实际情况做缓存，如果不做，Shiro自己也是有时间间隔机制，2分钟内不会重复执行该方法
-        SysUser managerInfo = sysUserService.findByUsername(username);
+        SysUser managerInfo = userService.findByUsername(username);
 
         if (managerInfo == null) {
             throw new AuthenticationException("用户不存在!");
@@ -110,7 +110,7 @@ public class MyShiroRealm extends AuthorizingRealm {
         String username = JWTUtil.getUsername(principals.toString());
 
         // 下面的可以使用缓存提升速度
-        SysUser sysUser = sysUserService.findByUsername(username);
+        SysUser sysUser = userService.findByUsername(username);
 
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
 

@@ -3,6 +3,7 @@ package com.startinst.service;
 import com.startinst.dao.SysRole;
 import com.startinst.dao.SysUser;
 import com.startinst.dao.mapper.SysUserMapper;
+import com.startinst.domain.HttpResponse;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ import java.util.List;
  * @author liuyuancheng
  */
 @Service
-public class SysUserService {
+public class UserService {
     /**
      * 通过名称查找用户
      *
@@ -37,5 +38,6 @@ public class SysUserService {
 //        return sysUser;
         return sysUserMapper.findUserById(1L);
     }
+
 
 }

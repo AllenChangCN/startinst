@@ -15,8 +15,6 @@ public class HttpResponse<T> {
     /** 提示信息. */
     private HttpResponseCodeEnum message;
 
-    private Integer status = 200;
-
 
     /** 具体的内容. */
     private T data;
@@ -45,12 +43,4 @@ public class HttpResponse<T> {
         this.data = data;
     }
 
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
 }
