@@ -1,7 +1,6 @@
 package com.startinst.service;
 
-import com.startinst.dao.Page;
-import com.startinst.domain.HttpResponse;
+import com.startinst.model.HttpResponse;
 import com.startinst.utils.HttpResponseUtil;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +18,7 @@ public class PageService {
      */
     public HttpResponse findPageById()
     {
+        //  关联映射的方式，获得Wdiget数据
         return HttpResponseUtil.success();
     }
 

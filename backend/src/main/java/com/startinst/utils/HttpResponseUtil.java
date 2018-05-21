@@ -1,6 +1,6 @@
 package com.startinst.utils;
 
-import com.startinst.domain.HttpResponse;
+import com.startinst.model.HttpResponse;
 import com.startinst.enums.HttpResponseCodeEnum;
 
 /**

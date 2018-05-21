@@ -1,4 +1,4 @@
-package com.startinst.domain.model;
+package com.startinst.model;
 
 /**
  * @author liuyuancheng

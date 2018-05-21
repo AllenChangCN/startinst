@@ -1,6 +1,6 @@
 package com.startinst.controller;
 
-import com.startinst.domain.HttpResponse;
+import com.startinst.model.HttpResponse;
 import com.startinst.utils.HttpResponseUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;

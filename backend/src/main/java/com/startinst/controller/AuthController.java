@@ -1,8 +1,7 @@
 package com.startinst.controller;
 
-import com.alibaba.fastjson.JSONObject;
-import com.startinst.domain.HttpResponse;
-import com.startinst.domain.model.LoginModel;
+import com.startinst.model.HttpResponse;
+import com.startinst.model.LoginModel;
 import com.startinst.enums.HttpResponseCodeEnum;
 import com.startinst.utils.HttpResponseUtil;
 import io.swagger.annotations.Api;

@@ -1,14 +1,8 @@
 package com.startinst.service;
 
-import com.startinst.dao.SysRole;
 import com.startinst.dao.SysUser;
 import com.startinst.dao.mapper.SysUserMapper;
-import com.startinst.domain.HttpResponse;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * @author liuyuancheng

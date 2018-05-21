@@ -1,4 +1,4 @@
-package com.startinst.domain;
+package com.startinst.model;
 
 import com.startinst.enums.HttpResponseCodeEnum;
 
