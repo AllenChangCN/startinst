@@ -51,6 +51,7 @@ class WidgetMapperTest {
 
     @Test
     void insertAndUpdate() {
+        int effect;
         // insert
         Widget widget = new Widget();
         widget.setId();
@@ -60,17 +61,29 @@ class WidgetMapperTest {
         widget.setWidgetType(WidgetTypeEnum.NOTE);
         widget.setDescription("测试Widget Desc");
         widget.setCreatedAt(new Date());
-        widgetMapper.insert(widget);
+
+        // 判断是否插入重构
+        effect = widgetMapper.insert(widget);
+        assertTrue(effect > 0);
+
         // update
         Widget widget2 = widgetMapper.findById(testWidgetId);
         widget2.setTitle("title_update_test");
-        assertTrue(widget2.toString().indexOf("title_update_test") > 0);
+        widget2.setUpdatedAt(new Date());
+        System.out.println(widget2);
+        assertTrue(widget2.getId() > 0L);
+        effect = widgetMapper.updateInfo(widget2);
+        assertTrue(effect > 0);
+
+        // 验证沟通成果
+        Widget widget3 = widgetMapper.findById(widget.getId());
+        assertTrue(widget3.toString().indexOf("title_update_test") > 0);
     }
 
     @Test
-    void sortWidgetById(){
+    void updateWidgetPosById(){
         Random random = new Random(100);
-        int effect = widgetMapper.sortWidgetById(testWidgetId,random.nextInt(100),random.nextInt(100));
+        int effect = widgetMapper.updateWidgetPosById(testWidgetId,random.nextInt(100),random.nextInt(100));
         assertTrue(effect > 0);
     }
 

@@ -47,7 +47,7 @@ public class Widget {
 
 
     public long getId() {
-        return id;
+        return this.id;
     }
 
     /**

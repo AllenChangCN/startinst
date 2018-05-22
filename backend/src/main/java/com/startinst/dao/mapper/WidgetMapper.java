@@ -20,6 +20,7 @@ public interface WidgetMapper {
      */
     @Select("SELECT * FROM widgets WHERE id = #{id}")
     @Results({
+        @Result(property = "id",column = "id"),
         @Result(property="itemList",column="id",javaType=List.class,
                 many=@Many(select="com.startinst.dao.mapper.ItemMapper.findByWidgetId")),
     })
@@ -32,13 +33,14 @@ public interface WidgetMapper {
      */
     @Select("SELECT * FROM widgets WHERE page_id=#{pageId}")
     @Results({
+            @Result(property = "id",column = "id"),
         @Result(property="page",column="page_id",javaType=Page.class,
                 one=@One(select="com.startinst.dao.mapper.PageMapper.findById"))
     })
     List<Widget> findByPageId(@Param("pageId") Long pageId);
 
     /**
-     * 插入一个Widget
+     * 插入一条
      * @param widget
      * @return
      */
@@ -46,13 +48,31 @@ public interface WidgetMapper {
             "VALUES(#{id},#{pageId},#{widgetType},#{title},#{description}, #{createdAt})")
     int insert(Widget widget);
 
-    @Update("UPDATE items SET content=#{content},title=#{title},description=#{description},updated_at=#{updatedAt} WHERE id =#{id}")
-    int updateContent(Widget widget);
+    /**
+     * 更新基本信息
+     *
+     * @param widget
+     * @return
+     */
+    @Update("UPDATE widgets SET title=#{title},description=#{description},updated_at=#{updatedAt} WHERE id=#{id} LIMIT 1")
+    int updateInfo(Widget widget);
 
-    @Update("UPDATE items SET deleted_at=#{deletedAt} WHERE id=#{id} LIMIT 1;")
+    /**
+     * 软删除
+     *
+     * @param id
+     * @param deletedAt
+     * @return
+     */
+    @Update("UPDATE widgets SET deleted_at=#{deletedAt} WHERE id=#{id} LIMIT 1")
     int softDelete(@Param("id") Long id, @Param("deletedAt") Date deletedAt);
 
-    @Delete("DELETE FROM items WHERE id=#{id} LIMIT 1")
+    /**
+     * 彻底删除一条数据
+     * @param id
+     * @return
+     */
+    @Delete("DELETE FROM widgets WHERE id=#{id} LIMIT 1")
     int delete(@Param("id") Long id);
 
     /**
@@ -64,5 +84,5 @@ public interface WidgetMapper {
      * @return
      */
     @Update("UPDATE widgets SET pos_x=#{posX},pos_y=#{posY} WHERE id=#{id} LIMIT 1")
-    int sortWidgetById(@Param("id") Long id,@Param("posX") Integer posX, @Param("posY") Integer posY);
+    int updateWidgetPosById(@Param("id") Long id,@Param("posX") Integer posX, @Param("posY") Integer posY);
 }

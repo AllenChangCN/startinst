@@ -15,6 +15,7 @@ public interface PageMapper {
 
     @Select("SELECT * FROM pages WHERE id = #{id}")
     @Results({
+            @Result(property = "id",column = "id"),
         @Result(property="widgetList",column="id",javaType=List.class,
                 many=@Many(select="com.startinst.dao.mapper.WidgetMapper.findByPageId"))
     })
@@ -30,9 +31,9 @@ public interface PageMapper {
     @Update("UPDATE pages SET content=#{content},title=#{title},description=#{description},updated_at=#{updatedAt} WHERE id=#{id}")
     int update(Item item);
 
-    @Update("UPDATE pages SET deleted_at=#{deletedAt} WHERE id=#{id}")
+    @Update("UPDATE pages SET deleted_at=#{deletedAt} WHERE id=#{id} LIMIT 1")
     int softDelete(@Param("id") Long id, @Param("deletedAt") Date deletedAt);
 
-    @Delete("DELETE FROM items WHERE id=#{id}")
+    @Delete("DELETE FROM items WHERE id=#{id} LIMIT 1")
     int delete(@Param("id") Long id);
 }
