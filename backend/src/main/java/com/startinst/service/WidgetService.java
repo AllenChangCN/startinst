@@ -1,5 +1,6 @@
 package com.startinst.service;
 
+import com.startinst.dao.Widget;
 import com.startinst.dao.mapper.WidgetMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,6 +26,18 @@ public class WidgetService {
     {
         //  关联映射的方式，获得Widget数据
 
+        return "";
+    }
+
+    /**
+     * 移动Widget的位置
+     *
+     * @param originWidget
+     * @param targetWdiget
+     * @return
+     */
+    public String moveWidgetPos(Widget originWidget,Widget targetWdiget)
+    {
         return "";
     }
 

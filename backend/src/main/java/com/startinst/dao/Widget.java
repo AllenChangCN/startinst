@@ -84,7 +84,7 @@ public class Widget {
     @Override
     public String toString() {
         return  "Id: "+this.id+", "+
-                "widgetId: "+this.pageId+", "+
+                "pageId: "+this.pageId+", "+
                 "itemType: "+this.widgetType+", "+
                 "title: "+this.title+", "+
                 "description: "+this.description+", "+

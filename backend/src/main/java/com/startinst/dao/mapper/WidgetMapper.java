@@ -34,6 +34,9 @@ public interface WidgetMapper {
     @Select("SELECT * FROM widgets WHERE page_id=#{pageId}")
     @Results({
             @Result(property = "id",column = "id"),
+            @Result(property = "pageId",column = "page_id"),
+            @Result(property="itemList",column="id",javaType=List.class,
+                    many=@Many(select="com.startinst.dao.mapper.ItemMapper.findByWidgetId")),
             @Result(property="page",column="page_id",javaType=Page.class,
                     one=@One(select="com.startinst.dao.mapper.PageMapper.findById"))
     })
