@@ -16,6 +16,16 @@ public class Widget {
 
     private Long pageId;
 
+    /**
+     * Widget在第几列
+     */
+    private Integer posX;
+
+    /**
+     * Widget在第几行
+     */
+    private Integer posY;
+
     private String title;
 
     private List<Item> itemList;
@@ -23,11 +33,6 @@ public class Widget {
     private Page page;
 
     private String description;
-
-    /**
-     * Item数据的排布，矩阵数组排布，值为Item的Id
-     */
-    private String itemsSort;
 
     /**
      * Widget的类型，书签、笔记、广告
@@ -128,14 +133,6 @@ public class Widget {
         this.deletedAt = deletedAt;
     }
 
-    public String getItemsSort() {
-        return itemsSort;
-    }
-
-    public void setItemsSort(String itemsSort) {
-        this.itemsSort = itemsSort;
-    }
-
     public List<Item> getItemList() {
         return itemList;
     }
@@ -150,5 +147,21 @@ public class Widget {
 
     public void setPage(Page page) {
         this.page = page;
+    }
+
+    public Integer getPosX() {
+        return posX;
+    }
+
+    public void setPosX(Integer posX) {
+        this.posX = posX;
+    }
+
+    public Integer getPosY() {
+        return posY;
+    }
+
+    public void setPosY(Integer posY) {
+        this.posY = posY;
     }
 }

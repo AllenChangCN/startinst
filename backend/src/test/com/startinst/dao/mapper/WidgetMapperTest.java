@@ -11,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.Date;
+import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -64,6 +65,13 @@ class WidgetMapperTest {
         Widget widget2 = widgetMapper.findById(testWidgetId);
         widget2.setTitle("title_update_test");
         assertTrue(widget2.toString().indexOf("title_update_test") > 0);
+    }
+
+    @Test
+    void sortWidgetById(){
+        Random random = new Random(100);
+        int effect = widgetMapper.sortWidgetById(testWidgetId,random.nextInt(100),random.nextInt(100));
+        assertTrue(effect > 0);
     }
 
 

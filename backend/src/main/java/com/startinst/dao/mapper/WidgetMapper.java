@@ -54,4 +54,15 @@ public interface WidgetMapper {
 
     @Delete("DELETE FROM items WHERE id=#{id} LIMIT 1")
     int delete(@Param("id") Long id);
+
+    /**
+     * 更新Widget位置
+     *
+     * @param id
+     * @param posX
+     * @param posY
+     * @return
+     */
+    @Update("UPDATE widgets SET pos_x=#{posX},pos_y=#{posY} WHERE id=#{id} LIMIT 1")
+    int sortWidgetById(@Param("id") Long id,@Param("posX") Integer posX, @Param("posY") Integer posY);
 }
