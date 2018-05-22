@@ -35,11 +35,11 @@ public class PageService {
 
     /**
      * 创建一个页面
-     * @return HttpResponse
+     * @return
      */
-    public String editPage() throws RuntimeException
+    public Boolean updatePageInfo() throws RuntimeException
     {
-        return "";
+        return true;
     }
 
 }
