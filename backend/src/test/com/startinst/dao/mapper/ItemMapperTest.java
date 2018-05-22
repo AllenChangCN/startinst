@@ -25,7 +25,7 @@ class ItemMapperTest {
     private ItemMapper itemMapper;
 
     @Test
-    void curd() {
+    void insertDeleteUpdate() {
         // 先删除已有的测试Id
         itemMapper.deleteItemByWidgetId(testWidgetId);
 
@@ -41,8 +41,6 @@ class ItemMapperTest {
         item.setCreatedAt(new Date());
         int effectLine = itemMapper.insert(item);
         assertEquals(effectLine, 1);
-
-
 
         // 更新一条数据
         Item item1 = new Item();

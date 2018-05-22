@@ -32,6 +32,4 @@ class SysUserMapperTest {
         System.out.println(roles);
     }
 
-
-
 }

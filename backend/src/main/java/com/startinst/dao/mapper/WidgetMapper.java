@@ -20,8 +20,8 @@ public interface WidgetMapper {
      */
     @Select("SELECT * FROM widgets WHERE id = #{id}")
     @Results({
-        @Result(property = "id",column = "id"),
-        @Result(property="itemList",column="id",javaType=List.class,
+            @Result(property = "id",column = "id"),
+            @Result(property="itemList",column="id",javaType=List.class,
                 many=@Many(select="com.startinst.dao.mapper.ItemMapper.findByWidgetId")),
     })
     Widget findById(@Param("id") Long id);
@@ -34,8 +34,8 @@ public interface WidgetMapper {
     @Select("SELECT * FROM widgets WHERE page_id=#{pageId}")
     @Results({
             @Result(property = "id",column = "id"),
-        @Result(property="page",column="page_id",javaType=Page.class,
-                one=@One(select="com.startinst.dao.mapper.PageMapper.findById"))
+            @Result(property="page",column="page_id",javaType=Page.class,
+                    one=@One(select="com.startinst.dao.mapper.PageMapper.findById"))
     })
     List<Widget> findByPageId(@Param("pageId") Long pageId);
 
