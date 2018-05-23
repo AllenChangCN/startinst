@@ -18,8 +18,8 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 
 @Configuration
-//@EnableCaching //开启缓存支持
-class RedisConfig extends CachingConfigurerSupport{
+@EnableCaching //开启缓存支持
+class CacheConfig extends CachingConfigurerSupport{
 
     @Bean
     LettuceConnectionFactory connectionFactory() {

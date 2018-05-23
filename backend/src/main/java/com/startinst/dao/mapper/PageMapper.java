@@ -6,7 +6,10 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.startinst.dao.Item;
 import com.startinst.dao.Page;
 import com.startinst.dao.Widget;
+import com.startinst.utils.RedisCache;
 import org.apache.ibatis.annotations.*;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 
 import java.util.Date;
 import java.util.List;
@@ -14,6 +17,7 @@ import java.util.List;
 /**
  * @author liuyuancheng
  */
+@CacheNamespace(implementation = RedisCache.class)
 public interface PageMapper {
 
     @Select("SELECT * FROM pages WHERE id = #{id}")
@@ -25,6 +29,7 @@ public interface PageMapper {
             @Result(property="widgetList",column="id",javaType=List.class,
                     many=@Many(select="com.startinst.dao.mapper.WidgetMapper.findByPageIdWithItemList"))
     })
+    @Options(useCache = true)
     Page findByIdWithWidgetNestData(@Param("id") Long id);
 
     @Select("SELECT * FROM pages WHERE user_id=#{userId}")
