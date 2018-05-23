@@ -32,10 +32,11 @@ class PageMapperTest {
     private PageMapper pageMapper;
 
     @Test
-    void findByPageId()
+    void findByIdWithWidgetNestData()
     {
-        Page page = pageMapper.findById(testPageId);
-        System.out.println(page.getWidgetList());
+        Page page = pageMapper.findByIdWithWidgetNestData(testPageId);
+        assertTrue(page.getWidgetList().size() >= 0);
+        System.out.println(page);
     }
 
 

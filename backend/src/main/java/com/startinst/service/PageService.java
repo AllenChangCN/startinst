@@ -31,12 +31,12 @@ public class PageService {
 
     /**
      * 根据PageId获取Page的Json Content
-     * @return Map<Integer, Widget>[][] 二维数组
+     * @return Page
      */
     public Page fetchFullContentByPageId(Long id)
     {
         //  关联映射的方式，获得Widget数据
-        return pageMapper.findByIdWithNestData(id);
+        return pageMapper.findByIdWithWidgetNestData(id);
     }
 
     /**
