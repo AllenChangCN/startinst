@@ -23,6 +23,12 @@ public interface PageMapper {
     @Select("SELECT * FROM pages WHERE id = #{id}")
     Page findById(@Param("id") Long id);
 
+    /**
+     * 获得页面中所有的Widget和Item数据
+     *
+     * @param id
+     * @return
+     */
     @Select("SELECT * FROM pages WHERE id = #{id} LIMIT 1")
     @Results({
             @Result(property = "id",column = "id"),

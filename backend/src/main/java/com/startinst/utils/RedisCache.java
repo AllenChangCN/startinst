@@ -65,6 +65,8 @@ public class RedisCache implements Cache {
      */
     @Override
     public Object getObject(Object key) {
+        System.out.println("================");
+        System.out.println(key);
         try {
             RedisTemplate redisTemplate = getRedisTemplate();
             ValueOperations opsForValue = redisTemplate.opsForValue();
