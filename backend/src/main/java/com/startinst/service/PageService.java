@@ -3,6 +3,7 @@ package com.startinst.service;
 import com.startinst.dao.Item;
 import com.startinst.dao.Page;
 import com.startinst.dao.Widget;
+import com.startinst.dao.mapper.PageMapper;
 import com.startinst.dao.mapper.WidgetMapper;
 import com.startinst.model.HttpResponse;
 import com.startinst.utils.HttpResponseUtil;
@@ -21,16 +22,21 @@ import java.util.Map;
 @Service
 public class PageService {
 
+
     @Autowired
     WidgetMapper widgetMapper;
+
+    @Autowired
+    PageMapper pageMapper;
+
     /**
      * 根据PageId获取Page的Json Content
      * @return Map<Integer, Widget>[][] 二维数组
      */
-    protected List<Widget> fetchFullContentByPageId(Long id)
+    public Page fetchFullContentByPageId(Long id)
     {
         //  关联映射的方式，获得Widget数据
-        return widgetMapper.findByPageId(id);
+        return pageMapper.findByIdWithNestData(id);
     }
 
     /**

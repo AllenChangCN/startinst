@@ -53,7 +53,7 @@ class ItemMapperTest {
         assertTrue(effectLine > 0);
 
         // 查询一条数据
-        Item find_item = itemMapper.findById(testItemId);
+        Item find_item = itemMapper.findByIdWithWidget(testItemId);
         // 看有没有查询到数据
         assertTrue(find_item != null);
         assertTrue(find_item.toString().length() > 7);

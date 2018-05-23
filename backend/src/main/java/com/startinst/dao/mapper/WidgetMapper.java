@@ -1,5 +1,6 @@
 package com.startinst.dao.mapper;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.startinst.dao.Item;
 import com.startinst.dao.Page;
 import com.startinst.dao.Widget;
@@ -18,29 +19,35 @@ public interface WidgetMapper {
      * @param id
      * @return
      */
-    @Select("SELECT * FROM widgets WHERE id = #{id}")
-    @Results({
-            @Result(property = "id",column = "id"),
-            @Result(property="itemList",column="id",javaType=List.class,
-                many=@Many(select="com.startinst.dao.mapper.ItemMapper.findByWidgetId")),
-    })
+    @Select("SELECT * FROM widgets WHERE id = #{id} LIMIT 1")
     Widget findById(@Param("id") Long id);
 
     /**
-     * 根据页面Id获得Widget List
+     * 根据WidgetId查询Widget
+     * @param id
+     * @return
+     */
+    @Select("SELECT * FROM widgets WHERE id = #{id} LIMIT 1")
+    @Results({
+            @Result(property = "id",column = "id"),
+            @Result(property="itemList",column="id",javaType=List.class,
+                    many=@Many(select="com.startinst.dao.mapper.ItemMapper.findByWidgetId")),
+    })
+    Widget findByIdWithItemList(@Param("id") Long id);
+
+    /**
+     * 根据页面Id获得Widget List，包含Item List数据
      * @param pageId
      * @return
      */
-    @Select("SELECT * FROM widgets WHERE page_id=#{pageId}")
+    @Select("SELECT * FROM widgets WHERE page_id=#{pageId} LIMIT 400")
     @Results({
             @Result(property = "id",column = "id"),
             @Result(property = "pageId",column = "page_id"),
             @Result(property="itemList",column="id",javaType=List.class,
                     many=@Many(select="com.startinst.dao.mapper.ItemMapper.findByWidgetId")),
-            @Result(property="page",column="page_id",javaType=Page.class,
-                    one=@One(select="com.startinst.dao.mapper.PageMapper.findById"))
     })
-    List<Widget> findByPageId(@Param("pageId") Long pageId);
+    List<Widget> findByPageIdWithItemList(@Param("pageId") Long pageId);
 
     /**
      * 插入一条

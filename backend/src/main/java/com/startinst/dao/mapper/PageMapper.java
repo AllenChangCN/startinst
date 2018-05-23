@@ -1,5 +1,8 @@
 package com.startinst.dao.mapper;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.startinst.dao.Item;
 import com.startinst.dao.Page;
 import com.startinst.dao.Widget;
@@ -14,12 +17,15 @@ import java.util.List;
 public interface PageMapper {
 
     @Select("SELECT * FROM pages WHERE id = #{id}")
+    Page findById(@Param("id") Long id);
+
+    @Select("SELECT * FROM pages WHERE id = #{id} LIMIT 1")
     @Results({
             @Result(property = "id",column = "id"),
-        @Result(property="widgetList",column="id",javaType=List.class,
-                many=@Many(select="com.startinst.dao.mapper.WidgetMapper.findByPageId"))
+            @Result(property="widgetList",column="id",javaType=List.class,
+                    many=@Many(select="com.startinst.dao.mapper.WidgetMapper.findByPageIdWithItemList"))
     })
-    Page findById(@Param("id") Long id);
+    Page findByIdWithNestData(@Param("id") Long id);
 
     @Select("SELECT * FROM pages WHERE user_id=#{userId}")
     List<Page> findByUserId(@Param("userId") Long userId);

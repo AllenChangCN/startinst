@@ -1,6 +1,7 @@
 package com.startinst.dao;
 
 
+import com.fasterxml.jackson.annotation.*;
 import com.startinst.utils.SnowFlakeUtil;
 
 import java.util.Date;
@@ -9,6 +10,7 @@ import java.util.List;
 /**
  * @author liuyuancheng
  */
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id")
 public class Page {
 
     private Long id;
@@ -25,11 +27,6 @@ public class Page {
     private String description;
 
     private List<Widget> widgetList;
-
-    /**
-     * widgetId组成的行列矩阵，记录排位信息
-     */
-    private String widgetsSort;
 
     private Date updatedAt;
 
@@ -120,14 +117,6 @@ public class Page {
 
     public void setFavorite(Integer favorite) {
         this.favorite = favorite;
-    }
-
-    public String getWidgetsSort() {
-        return widgetsSort;
-    }
-
-    public void setWidgetsSort(String widgetsSort) {
-        this.widgetsSort = widgetsSort;
     }
 
     public List<Widget> getWidgetList() {

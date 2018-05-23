@@ -1,5 +1,6 @@
 package com.startinst.dao.mapper;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.startinst.dao.Item;
 import com.startinst.dao.Widget;
 import org.apache.ibatis.annotations.*;
@@ -13,15 +14,20 @@ import java.util.List;
 public interface ItemMapper {
 
     @Select("SELECT * FROM items WHERE widget_id = #{widgetId}")
+    List<Item> findByWidgetId(@Param("widgetId") Long widgetId);
+
+    /**
+     * 获取Item信息，要带Widget信息
+     * @param id
+     * @return
+     */
     @Results({
             @Result(property = "id",column = "id"),
             @Result(property="widget",column="widget_id",javaType=Widget.class,
                     one=@One(select="com.startinst.dao.mapper.WidgetMapper.findById"))
     })
-    List<Item> findByWidgetId(@Param("widgetId") Long widgetId);
-
     @Select("SELECT * FROM items WHERE id = #{id}")
-    Item findById(@Param("id") Long id);
+    Item findByIdWithWidget(@Param("id") Long id);
 
     @Insert("INSERT INTO items(id,widget_id,title,item_type,description,content,created_at) " +
             "VALUES(#{id}, #{widgetId},#{title},#{itemType},#{description}, #{content}, #{createdAt})")

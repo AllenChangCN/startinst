@@ -1,5 +1,6 @@
 package com.startinst.service;
 
+import com.startinst.dao.Page;
 import com.startinst.dao.Widget;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -21,7 +22,7 @@ public class PageServiceTest {
     @Test
     void fetchFullContentByPageId()
     {
-        List<Widget> widgetList = pageService.fetchFullContentByPageId(testPageId);
+        Page widgetList = pageService.fetchFullContentByPageId(testPageId);
         System.out.println(widgetList);
     }
 }

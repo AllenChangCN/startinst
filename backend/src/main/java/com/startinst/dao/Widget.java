@@ -1,8 +1,10 @@
 package com.startinst.dao;
 
 
+import com.fasterxml.jackson.annotation.*;
 import com.startinst.enums.WidgetTypeEnum;
 import com.startinst.utils.SnowFlakeUtil;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import java.util.Date;
 import java.util.List;
@@ -10,6 +12,7 @@ import java.util.List;
 /**
  * @author liuyuancheng
  */
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id")
 public class Widget {
 
     private Long id;
