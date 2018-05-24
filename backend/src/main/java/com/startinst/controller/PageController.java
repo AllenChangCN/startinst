@@ -34,7 +34,6 @@ public class PageController {
     @GetMapping("{page_id}")
     public HttpResponse showPage(@PathVariable("page_id") Long pageId){
         Page pageData = pageService.fetchFullContentByPageId(pageId);
-        System.out.println(pageData);
         return HttpResponseUtil.success(pageData);
     }
 

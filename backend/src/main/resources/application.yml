@@ -12,6 +12,8 @@ spring:
   data:
     rest:
       base-path: /api
+  cache:
+    type: redis
 
   redis:
     database: 0
