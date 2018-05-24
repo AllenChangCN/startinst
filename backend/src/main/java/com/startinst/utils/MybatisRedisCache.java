@@ -32,7 +32,7 @@ public class MybatisRedisCache implements Cache {
     /**
      *  redis过期时间
      */
-    private static final long EXPIRE_TIME_IN_MINUTES = 30;
+    private static final long EXPIRE_TIME_IN_MINUTES = 60;
 
 
     /**

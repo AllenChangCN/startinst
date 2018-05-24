@@ -29,7 +29,6 @@ public interface PageMapper {
             @Result(property="widgetList",column="id",javaType=List.class,
                     many=@Many(select="com.startinst.dao.mapper.WidgetMapper.findByPageIdWithItemList"))
     })
-    @Options(useCache = true)
     Page findByIdWithWidgetNestData(@Param("id") Long id);
 
     /**
