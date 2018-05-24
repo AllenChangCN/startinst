@@ -1,15 +1,9 @@
 package com.startinst.dao.mapper;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.startinst.dao.Item;
 import com.startinst.dao.Page;
-import com.startinst.dao.Widget;
-import com.startinst.utils.RedisCache;
+import com.startinst.utils.MybatisRedisCache;
 import org.apache.ibatis.annotations.*;
-import org.springframework.cache.annotation.CacheConfig;
-import org.springframework.cache.annotation.Cacheable;
 
 import java.util.Date;
 import java.util.List;
@@ -17,7 +11,7 @@ import java.util.List;
 /**
  * @author liuyuancheng
  */
-@CacheNamespace(implementation = RedisCache.class)
+@CacheNamespace(implementation = MybatisRedisCache.class)
 public interface PageMapper {
 
     @Select("SELECT * FROM pages WHERE id = #{id}")
@@ -38,6 +32,11 @@ public interface PageMapper {
     @Options(useCache = true)
     Page findByIdWithWidgetNestData(@Param("id") Long id);
 
+    /**
+     * 根据用户ID获得Page列表
+     * @param userId
+     * @return
+     */
     @Select("SELECT * FROM pages WHERE user_id=#{userId}")
     List<Page> findByUserId(@Param("userId") Long userId);
 

@@ -34,6 +34,7 @@ public class PageService {
      * 根据PageId获取Page的Json Content
      * @return Page
      */
+
     public Page fetchFullContentByPageId(Long id)
     {
         //  关联映射的方式，获得Widget数据
@@ -42,7 +43,7 @@ public class PageService {
 
     /**
      * 创建一个页面
-     * @return
+     * @return Boolean
      */
     public Boolean updatePageInfo() throws RuntimeException
     {

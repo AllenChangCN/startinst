@@ -12,20 +12,39 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
-public class RedisCache implements Cache {
-    private static final Logger logger = LoggerFactory.getLogger(RedisCache.class);
+/**
+ * MyBatis数据库二级缓存
+ * @author liuyuancheng
+ */
+public class MybatisRedisCache implements Cache {
+
+    private static final Logger logger = LoggerFactory.getLogger(MybatisRedisCache.class);
 
     private final ReadWriteLock readWriteLock = new ReentrantReadWriteLock();
 
-    // cache instance id
+    /**
+     *  cache instance id
+     */
     private final String id;
 
     private RedisTemplate redisTemplate;
 
-    // redis过期时间
+    /**
+     *  redis过期时间
+     */
     private static final long EXPIRE_TIME_IN_MINUTES = 30;
 
-    public RedisCache(String id) {
+
+    /**
+     * 将Key转换为指定格式的字符串
+     * @param key
+     * @return CacheKey
+     */
+    private String keyToString(Object key){
+        return key.toString();
+    }
+
+    public MybatisRedisCache(String id) {
         if (id == null) {
             throw new IllegalArgumentException("Cache instances require an ID");
         }
@@ -44,12 +63,12 @@ public class RedisCache implements Cache {
      * @param value
      */
     @Override
-    @SuppressWarnings("unchecked")
     public void putObject(Object key, Object value) {
+        String strKey = this.keyToString(key);
         try {
             RedisTemplate redisTemplate = getRedisTemplate();
             ValueOperations opsForValue = redisTemplate.opsForValue();
-            opsForValue.set(key, value, EXPIRE_TIME_IN_MINUTES, TimeUnit.MINUTES);
+            opsForValue.set(strKey, value, EXPIRE_TIME_IN_MINUTES, TimeUnit.MINUTES);
             logger.debug("Put query result to redis");
         }
         catch (Throwable t) {
@@ -65,13 +84,12 @@ public class RedisCache implements Cache {
      */
     @Override
     public Object getObject(Object key) {
-        System.out.println("================");
-        System.out.println(key);
+        String strKey = this.keyToString(key);
         try {
             RedisTemplate redisTemplate = getRedisTemplate();
             ValueOperations opsForValue = redisTemplate.opsForValue();
             logger.debug("Get cached query result from redis");
-            return opsForValue.get(key);
+            return opsForValue.get(strKey);
         }
         catch (Throwable t) {
             logger.error("Redis get failed, fail over to db", t);
@@ -86,11 +104,11 @@ public class RedisCache implements Cache {
      * @return
      */
     @Override
-    @SuppressWarnings("unchecked")
     public Object removeObject(Object key) {
+        String strKey = this.keyToString(key);
         try {
             RedisTemplate redisTemplate = getRedisTemplate();
-            redisTemplate.delete(key);
+            redisTemplate.delete(strKey);
             logger.debug("Remove cached query result from redis");
         }
         catch (Throwable t) {

@@ -1,9 +1,7 @@
 package com.startinst.dao.mapper;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.startinst.dao.Item;
-import com.startinst.dao.Page;
 import com.startinst.dao.Widget;
+import com.startinst.utils.MybatisRedisCache;
 import org.apache.ibatis.annotations.*;
 
 import java.util.Date;
@@ -12,6 +10,7 @@ import java.util.List;
 /**
  * @author liuyuancheng
  */
+@CacheNamespace(implementation = MybatisRedisCache.class)
 public interface WidgetMapper {
 
     /**

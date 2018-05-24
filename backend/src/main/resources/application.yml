@@ -55,7 +55,7 @@ security:
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
-
+    cache-enabled: true
 
 
 

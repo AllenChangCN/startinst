@@ -6,13 +6,14 @@ import com.startinst.enums.ItemTypeEnum;
 import com.startinst.utils.SnowFlakeUtil;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * @author liuyuancheng
  */
 @JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id")
-public class Item {
+public class Item implements Serializable{
 
     private Long id;
 
