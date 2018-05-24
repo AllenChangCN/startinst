@@ -1,4 +1,4 @@
-package com.startinst.utils;
+package com.startinst.cache;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

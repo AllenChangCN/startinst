@@ -1,4 +1,4 @@
-package com.startinst.utils;
+package com.startinst.cache;
 
 
 import org.apache.ibatis.cache.Cache;

@@ -2,7 +2,7 @@ package com.startinst.dao.mapper;
 
 import com.startinst.dao.Item;
 import com.startinst.dao.Widget;
-import com.startinst.utils.MybatisRedisCache;
+import com.startinst.cache.MybatisRedisCache;
 import org.apache.ibatis.annotations.*;
 
 import java.util.Date;
