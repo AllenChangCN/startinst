@@ -20,6 +20,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ItemMapperTest {
 
     private Long testWidgetId = 999999999999999999L;
+    Long testPageId = 999999999999999999L;
 
     @Autowired(required = true)
     private ItemMapper itemMapper;
@@ -68,6 +69,13 @@ class ItemMapperTest {
         itemMapper.softDelete(testWidgetId, new Date());
         effectLine = itemMapper.deleteItemByWidgetId(testWidgetId);
         assertTrue(effectLine > 0);  // 删除
+    }
+
+    @Test
+    void findByPageId()
+    {
+        List<Item> items = itemMapper.findByPageId(testPageId);
+        assertTrue(items.size() > 0);
     }
 
 

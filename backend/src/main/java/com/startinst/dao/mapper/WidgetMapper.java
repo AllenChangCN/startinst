@@ -49,6 +49,18 @@ public interface WidgetMapper {
     List<Widget> findByPageIdWithItemList(@Param("pageId") Long pageId);
 
     /**
+     * 获取不包含Item数据的Widget列表
+     * @param pageId
+     * @return
+     */
+    @Select("SELECT * FROM widgets WHERE page_id=#{pageId} LIMIT 400")
+    @Results({
+            @Result(property = "id",column = "id"),
+            @Result(property = "pageId",column = "page_id"),
+    })
+    List<Widget> findByPageId(@Param("pageId") Long pageId);
+
+    /**
      * 插入一条
      * @param widget
      * @return
@@ -94,4 +106,12 @@ public interface WidgetMapper {
      */
     @Update("UPDATE widgets SET pos_x=#{posX},pos_y=#{posY} WHERE id=#{id} LIMIT 1")
     int updateWidgetPosById(@Param("id") Long id,@Param("posX") Integer posX, @Param("posY") Integer posY);
+
+    /**
+     * 更新widget 的Size
+     * @param widgetId
+     * @return
+     */
+    @Update("UPDATE widgets SET size=(SELECT COUNT(id) FROM items WHERE widget_id=#{widgetId}) WHERE id=#{widgetId} LIMIT 1")
+    int updateWidgetSize(@Param("widgetId") Long widgetId);
 }

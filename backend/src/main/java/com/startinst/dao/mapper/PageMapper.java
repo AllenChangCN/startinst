@@ -27,9 +27,9 @@ public interface PageMapper {
     @Results({
             @Result(property = "id",column = "id"),
             @Result(property="widgetList",column="id",javaType=List.class,
-                    many=@Many(select="com.startinst.dao.mapper.WidgetMapper.findByPageIdWithItemList"))
+                    many=@Many(select="com.startinst.dao.mapper.WidgetMapper.findByPageId"))
     })
-    Page findByIdWithWidgetNestData(@Param("id") Long id);
+    Page findByIdWithWidget(@Param("id") Long id);
 
     /**
      * 根据用户ID获得Page列表

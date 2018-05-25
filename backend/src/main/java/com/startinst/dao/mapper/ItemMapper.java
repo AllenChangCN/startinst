@@ -14,8 +14,22 @@ import java.util.List;
 @CacheNamespace(implementation = MybatisRedisCache.class)
 public interface ItemMapper {
 
+    /**
+     * 通过Widget Id获得items
+     * @param widgetId
+     * @return
+     */
     @Select("SELECT * FROM items WHERE widget_id = #{widgetId}")
     List<Item> findByWidgetId(@Param("widgetId") Long widgetId);
+
+    /**
+     * 通过page id获得Item
+     *
+     * @param pageId
+     * @return
+     */
+    @Select("SELECT * FROM items WHERE page_id = #{pageId}")
+    List<Item> findByPageId(@Param("pageId") Long pageId);
 
     /**
      * 获取Item信息，要带Widget信息
@@ -30,8 +44,13 @@ public interface ItemMapper {
     @Select("SELECT * FROM items WHERE id = #{id}")
     Item findByIdWithWidget(@Param("id") Long id);
 
-    @Insert("INSERT INTO items(id,widget_id,title,item_type,description,content,created_at) " +
-            "VALUES(#{id}, #{widgetId},#{title},#{itemType},#{description}, #{content}, #{createdAt})")
+    /**
+     * 插入一条数据
+     * @param item
+     * @return
+     */
+    @Insert("INSERT INTO items(id,widget_id,page_id,title,item_type,description,content,created_at) " +
+            "VALUES(#{id}, #{widgetId},#{pageId},#{title},#{itemType},#{description}, #{content}, #{createdAt})")
     int insert(Item item);
 
     @Update("UPDATE items SET content=#{content},title=#{title},description=#{description},updated_at=#{updatedAt} WHERE id =#{id}")

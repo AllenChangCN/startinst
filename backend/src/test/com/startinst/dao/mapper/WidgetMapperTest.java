@@ -87,5 +87,12 @@ class WidgetMapperTest {
         assertTrue(effect > 0);
     }
 
+    @Test
+    void updateWidgetSize()
+    {
+        int effect = widgetMapper.updateWidgetSize(testWidgetId);
+        assertTrue(effect >= 0);
+    }
+
 
 }

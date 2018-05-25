@@ -34,6 +34,11 @@ public class Widget implements Serializable{
 
     private List<Item> itemList;
 
+    /**
+     * widget中Item的数量
+     */
+    private Integer size;
+
     private Page page;
 
     private String description;
@@ -167,5 +172,13 @@ public class Widget implements Serializable{
 
     public void setPosY(Integer posY) {
         this.posY = posY;
+    }
+
+    public Integer getSize() {
+        return size;
+    }
+
+    public void setSize(Integer size) {
+        this.size = size;
     }
 }

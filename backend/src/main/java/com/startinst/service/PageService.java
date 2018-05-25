@@ -38,7 +38,7 @@ public class PageService {
     public Page fetchFullContentByPageId(Long id)
     {
         //  关联映射的方式，获得Widget数据
-        return pageMapper.findByIdWithWidgetNestData(id);
+        return pageMapper.findByIdWithWidget(id);
     }
 
     /**

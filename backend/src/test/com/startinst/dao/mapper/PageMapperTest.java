@@ -34,7 +34,7 @@ class PageMapperTest {
     @Test
     void findByIdWithWidgetNestData()
     {
-        Page page = pageMapper.findByIdWithWidgetNestData(testPageId);
+        Page page = pageMapper.findByIdWithWidget(testPageId);
         assertTrue(page.getWidgetList().size() >= 0);
         System.out.println(page);
     }
