@@ -33,6 +33,7 @@ public class ItemService {
      * @param widgetId
      * @return Item[]
      */
+//    @Cacheable(value = "itemOfOneWidget",key = "#widgetId")
     public List<Item> fetchItemOfOneWidget(Long widgetId)
     {
         return itemMapper.findByWidgetId(widgetId);

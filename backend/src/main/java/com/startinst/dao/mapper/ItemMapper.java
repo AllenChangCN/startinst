@@ -11,7 +11,6 @@ import java.util.List;
 /**
  * @author liuyuancheng
  */
-@CacheNamespace(implementation = MybatisRedisCache.class)
 public interface ItemMapper {
 
     /**

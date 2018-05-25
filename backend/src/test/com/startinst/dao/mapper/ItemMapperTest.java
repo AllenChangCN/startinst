@@ -42,6 +42,7 @@ class ItemMapperTest {
         return testItemId;
     }
 
+    @Test
     void insert()
     {
         this.func_insert();
