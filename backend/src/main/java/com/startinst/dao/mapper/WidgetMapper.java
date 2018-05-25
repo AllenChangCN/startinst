@@ -18,7 +18,7 @@ public interface WidgetMapper {
      * @param id
      * @return
      */
-    @Select("SELECT * FROM widgets WHERE id = #{id} LIMIT 1")
+    @Select("SELECT * FROM widgets WHERE id = #{id} AND deleted_at IS NULL LIMIT 1")
     Widget findById(@Param("id") Long id);
 
     /**
@@ -26,7 +26,7 @@ public interface WidgetMapper {
      * @param id
      * @return
      */
-    @Select("SELECT * FROM widgets WHERE id = #{id} LIMIT 1")
+    @Select("SELECT * FROM widgets WHERE id = #{id} AND deleted_at IS NULL LIMIT 1")
     @Results({
             @Result(property = "id",column = "id"),
             @Result(property="itemList",column="id",javaType=List.class,
@@ -35,11 +35,20 @@ public interface WidgetMapper {
     Widget findByIdWithItemList(@Param("id") Long id);
 
     /**
+     * 获取页面中Widget的Id 列表
+     *
+     * @param pageId
+     * @return
+     */
+    @Select("SELECT id FROM widgets WHERE page_id=#{pageId}")
+    List<Long> findWidgetIdListByPageId(@Param("pageId") Long pageId);
+
+    /**
      * 根据页面Id获得Widget List，包含Item List数据
      * @param pageId
      * @return
      */
-    @Select("SELECT * FROM widgets WHERE page_id=#{pageId} LIMIT 400")
+    @Select("SELECT * FROM widgets WHERE page_id=#{pageId} AND deleted_at IS NULL LIMIT 400")
     @Results({
             @Result(property = "id",column = "id"),
             @Result(property = "pageId",column = "page_id"),
@@ -53,7 +62,7 @@ public interface WidgetMapper {
      * @param pageId
      * @return
      */
-    @Select("SELECT * FROM widgets WHERE page_id=#{pageId} LIMIT 400")
+    @Select("SELECT * FROM widgets WHERE page_id=#{pageId} AND deleted_at IS NULL LIMIT 400")
     @Results({
             @Result(property = "id",column = "id"),
             @Result(property = "pageId",column = "page_id"),
@@ -112,6 +121,6 @@ public interface WidgetMapper {
      * @param widgetId
      * @return
      */
-    @Update("UPDATE widgets SET size=(SELECT COUNT(id) FROM items WHERE widget_id=#{widgetId}) WHERE id=#{widgetId} LIMIT 1")
+    @Update("UPDATE widgets SET size=(SELECT COUNT(id) FROM items WHERE widget_id=#{widgetId} AND deleted_at IS NULL) WHERE id=#{widgetId} LIMIT 1")
     int updateWidgetSize(@Param("widgetId") Long widgetId);
 }

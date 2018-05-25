@@ -25,11 +25,8 @@ class ItemMapperTest {
     @Autowired(required = true)
     private ItemMapper itemMapper;
 
-    @Test
-    void insertDeleteUpdate() {
-        // 先删除已有的测试Id
-        itemMapper.deleteItemByWidgetId(testWidgetId);
-
+    Long func_insert()
+    {
         // 添加一条数据
         Item item = new Item();
         item.setId();
@@ -37,11 +34,25 @@ class ItemMapperTest {
         item.setContent("content");
         item.setItemType(ItemTypeEnum.LINK);
         item.setUpdatedAt(null);
+        item.setPageId(testPageId);
         item.setWidgetId(testWidgetId);
-        item.setPageId(testWidgetId);
         item.setCreatedAt(new Date());
         int effectLine = itemMapper.insert(item);
         assertEquals(effectLine, 1);
+        return testItemId;
+    }
+
+    void insert()
+    {
+        this.func_insert();
+    }
+
+    @Test
+    void insertDeleteUpdate() {
+        // 先删除已有的测试Id
+        itemMapper.deleteItemByWidgetId(testWidgetId);
+
+        Long testItemId = this.func_insert();
 
         // 更新一条数据
         Item item1 = new Item();
@@ -50,7 +61,7 @@ class ItemMapperTest {
         item1.setTitle("new title");
         item1.setDescription("update_item_test");
         item1.setUpdatedAt(new Date());
-        effectLine = itemMapper.updateContent(item1);
+        int effectLine = itemMapper.updateContent(item1);
         assertTrue(effectLine > 0);
 
         // 查询一条数据
@@ -69,6 +80,7 @@ class ItemMapperTest {
         itemMapper.softDelete(testWidgetId, new Date());
         effectLine = itemMapper.deleteItemByWidgetId(testWidgetId);
         assertTrue(effectLine > 0);  // 删除
+        this.func_insert();
     }
 
     @Test

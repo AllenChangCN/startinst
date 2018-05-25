@@ -11,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -92,6 +93,13 @@ class WidgetMapperTest {
     {
         int effect = widgetMapper.updateWidgetSize(testWidgetId);
         assertTrue(effect >= 0);
+    }
+
+    @Test
+    void findWidgetIdListByPageId()
+    {
+        List<Long> widgetIdList = widgetMapper.findWidgetIdListByPageId(testPageId);
+        System.out.println(widgetIdList);
     }
 
 
