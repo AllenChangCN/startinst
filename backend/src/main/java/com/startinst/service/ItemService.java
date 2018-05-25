@@ -5,8 +5,10 @@ import com.startinst.dao.Widget;
 import com.startinst.dao.mapper.ItemMapper;
 import com.startinst.dao.mapper.WidgetMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -33,7 +35,7 @@ public class ItemService {
      * @param widgetId
      * @return Item[]
      */
-//    @Cacheable(value = "itemOfOneWidget",key = "#widgetId")
+    @Cacheable(value = "items", key = "#widgetId")
     public List<Item> fetchItemOfOneWidget(Long widgetId)
     {
         return itemMapper.findByWidgetId(widgetId);
