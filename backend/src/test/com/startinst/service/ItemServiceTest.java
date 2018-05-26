@@ -15,6 +15,7 @@ import java.util.Map;
 public class ItemServiceTest {
 
     private Long testWidgetId = 999999999999999999L;
+
     private Long testPageId = 999999999999999999L;
 
     @Autowired

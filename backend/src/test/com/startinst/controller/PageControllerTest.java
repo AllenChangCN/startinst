@@ -35,7 +35,7 @@ class PageControllerTest {
     @Test
     void showPage() throws Exception{
 
-        MvcResult result = this.mockMvc.perform(get("/api/pages/999999999999999999"))
+        MvcResult result = this.mockMvc.perform(get("/api/page/999999999999999999/info"))
 //                .andExpect(status().isOk())
                 .andExpect(content().json("{'code':0}"))
                 .andReturn();
