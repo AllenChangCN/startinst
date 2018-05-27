@@ -5,7 +5,13 @@
 </template>
 <script>
   import page_display from "../components/page/show_page"
+  import axios from 'axios'
   export default {
+    async asyncData ({ params }) {
+      let { data } = await axios.get("http://localhost:8080/api/page/999999999999999999/info");
+      console.log(data)
+      return { title: data.title }
+    },
     data: () => ({
 
     }),
