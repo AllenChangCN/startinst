@@ -31,7 +31,8 @@ public class PageController {
 
     @Autowired
     private PageService pageService;
-//    @Autowired
+
+    @Autowired
     private ItemService itemService;
 
     @ApiOperation(value="页面的内容")

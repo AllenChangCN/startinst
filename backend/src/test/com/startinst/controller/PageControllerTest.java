@@ -42,6 +42,15 @@ class PageControllerTest {
         System.out.println(result.getResponse().getContentAsString());
     }
 
+    @Test
+    void showPageItems() throws Exception{
+        MvcResult result = this.mockMvc.perform(get("/api/page/999999999999999999/items"))
+//                .andExpect(status().isOk())
+                .andExpect(content().json("{'code':0}"))
+                .andReturn();
+        System.out.println(result.getResponse().getContentAsString());
+    }
+
 
 
 }

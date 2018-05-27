@@ -14,16 +14,18 @@ spring:
       base-path: /api
   cache:
     type: redis
-
   redis:
     database: 0
     host: localhost
     port: 6379
     password:
-
   devtools:
     restart:
       enabled: true
+  mvc:
+    throw-exception-if-no-handler-found: true
+  resources:
+    add-mappings: false
 
 
 startinst:
