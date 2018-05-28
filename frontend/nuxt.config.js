@@ -3,6 +3,19 @@ module.exports = {
     'vuetify/dist/vuetify.min.css',
     'material-design-icons-iconfont/dist/material-design-icons.scss',
   ],
+  modules: [
+    '@nuxtjs/axios',
+    '@nuxtjs/proxy'
+  ],
+  proxy: [
+  [
+    '/api',
+    {
+      target: 'http://localhost:8080', // api主机
+      pathRewrite: { '^/api' : '/' }
+    }
+  ]
+  ],
   /*
   ** Headers of the page
   */
@@ -30,6 +43,7 @@ module.exports = {
   loading: { color: '#333',height:'3px',failedColor:'red' },
   plugins: [
     '~/plugins/vuetify',
+    '~/plugins/axios'
   ],
   performance:{
     gzip: true,

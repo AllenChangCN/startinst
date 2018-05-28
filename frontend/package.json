@@ -14,7 +14,8 @@
   },
   "dependencies": {
     "babel-loader": "^7.1.4",
-    "@nuxtjs/axios": "^4.0.0",
+    "@nuxtjs/axios": "^5.0.0",
+    "@nuxtjs/proxy": "^1.1.2",
     "babel-polyfill": "^6.26.0",
     "css-loader": "^0.28.11",
     "marked": "^0.3.19",

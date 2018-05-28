@@ -60,7 +60,6 @@
   import draggable from 'vuedraggable'
   import Sortable from 'sortablejs'
   import context_menu from '../page/context_menu'
-  import axios from 'axios'
   export default {
     name: "page",
 
@@ -82,8 +81,7 @@
         console.log(evt)
       },
       async fetchPageData() {
-        console.log(axios);
-        let ip = await axios.get('http://localhost:8080/api/page/999999999999999999/info');
+        let ip = await this.$axios.$get('http://localhost:8080/api/page/999999999999999999/info');
         console.log(ip);
       }
     },
