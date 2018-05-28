@@ -31,7 +31,7 @@
 
 <script>
     export default {
-      name: "inst-page",
+      name: "page_discover",
       data () {
         return {
           headers: [

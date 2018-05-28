@@ -65,10 +65,9 @@
         items: [
           { heading: '导航菜单' },
 
-          { icon: 'home', text: '我的首页' ,path: '/'},
-          { icon: 'book', text: '页面管理' ,path: '/mine/page-mgr'},
-          { icon: 'explore', text: '发现页面' ,path: '/discover/inst-page'},
-          // { icon: 'apps', text: '热门应用',path: '/discover/hot-apps' },
+          { icon: 'home', text: '我的首页' ,path: '/home'},
+          { icon: 'book', text: '页面管理' ,path: '/page/collection'},
+          { icon: 'explore', text: '发现页面' ,path: '/page/discover'},
           { icon: 'extension', text: '浏览器插件' ,path: '/help/extension'},
 
           { divider: true },
