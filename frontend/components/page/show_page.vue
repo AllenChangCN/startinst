@@ -60,12 +60,13 @@
   import draggable from 'vuedraggable'
   import Sortable from 'sortablejs'
   import context_menu from '../page/context_menu'
+  import axios from 'axios'
   export default {
     name: "page",
 
     mounted(){
       // 获取初始化数据
-      // this.addEvent();
+      this.fetchPageData();
     },
     components: {
       widget,page_head,draggable, Sortable,context_menu
@@ -80,6 +81,11 @@
       log: function (evt){
         console.log(evt)
       },
+      async fetchPageData() {
+        console.log(axios);
+        let ip = await axios.get('http://localhost:8080/api/page/999999999999999999/info');
+        console.log(ip);
+      }
     },
     data: () => ({
       column_over_idx: null,

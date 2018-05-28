@@ -1,5 +1,4 @@
 import Vuex from 'vuex'
-
 import mutations from './mutations'
 
 const createStore = () => {
@@ -61,7 +60,7 @@ const createStore = () => {
     },
     mutations
   })
-}
+};
 
 export const state = () => ({
   locales: ['en', 'fr'],

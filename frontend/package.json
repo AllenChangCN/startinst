@@ -13,8 +13,8 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
-    "axios": "^0.18.0",
     "babel-loader": "^7.1.4",
+    "@nuxtjs/axios": "^4.0.0",
     "babel-polyfill": "^6.26.0",
     "css-loader": "^0.28.11",
     "marked": "^0.3.19",
