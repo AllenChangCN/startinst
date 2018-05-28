@@ -66,8 +66,8 @@
           { heading: '导航菜单' },
 
           { icon: 'home', text: '我的首页' ,path: '/home'},
-          { icon: 'book', text: '页面管理' ,path: '/page/collection'},
-          { icon: 'explore', text: '发现页面' ,path: '/page/discover'},
+          { icon: 'book', text: '页面管理' ,path: '/page/mylist'},
+          { icon: 'explore', text: '发现页面' ,path: '/discover'},
           { icon: 'extension', text: '浏览器插件' ,path: '/help/extension'},
 
           { divider: true },
