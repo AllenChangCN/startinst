@@ -5,12 +5,12 @@
     fluid
   >
     <!--排序模式-->
-    <v-layout wrap v-if="$store.state.page.current.sort_mode" @keyup.27="$store.commit('toggle_page_sortmode')">
-      <v-flex lg12>
+    <v-layout row wrap v-if="$store.state.page.current.sort_mode" @keyup.27="$store.commit('toggle_page_sortmode')">
+      <v-flex lg12 xs12 md12>
         <page_head/>
       </v-flex>
       <!--遍历列-->
-      <v-flex lg3
+      <v-flex lg3 xs6 md3
               v-for="widget_column in widgets"
               :key="widget_column.column_idx"
       >
@@ -31,12 +31,11 @@
 
     <!--正常展示模式-->
     <v-layout wrap v-if="!$store.state.page.current.sort_mode">
-      <v-flex lg12>
+      <v-flex lg12 xs12 md12>
         <page_head/>
-
       </v-flex>
       <!--遍历列-->
-      <v-flex lg3 v-for="widget_column in widgets" :key="widget_column.column_idx"
+      <v-flex lg3 xs6 md3 v-for="widget_column in widgets" :key="widget_column.column_idx"
               @mouseenter="columnEnter(widget_column.column_idx)"
               @mouseleave="columnLeave()"
       >
@@ -61,11 +60,11 @@
   import draggable from 'vuedraggable'
   import Sortable from 'sortablejs'
   import context_menu from '../page/context_menu'
-
-
   export default {
     name: "page",
+
     mounted(){
+      // 获取初始化数据
       // this.addEvent();
     },
     components: {
@@ -81,8 +80,6 @@
       log: function (evt){
         console.log(evt)
       },
-
-
     },
     data: () => ({
       column_over_idx: null,

@@ -1,8 +1,8 @@
 module.exports = {
-    css: [
-      'vuetify/dist/vuetify.min.css',
-      'material-design-icons-iconfont/dist/material-design-icons.scss',
-    ],
+  css: [
+    'vuetify/dist/vuetify.min.css',
+    'material-design-icons-iconfont/dist/material-design-icons.scss',
+  ],
   /*
   ** Headers of the page
   */
@@ -20,36 +20,49 @@ module.exports = {
     ],
 
   },
-
+  cache: {
+    max: 1000,
+    maxAge: 900000
+  },
+  // modules: [
+  //   '@nuxtjs/axios',
+  // ],
+  // axios: {
+  //   // proxyHeaders: false
+  // },
   /*
   ** Customize the progress bar color
   */
-  loading: { color: '#333' },
+  loading: { color: '#333',height:'3px',failedColor:'red' },
   plugins: [
     '~/plugins/vuetify'
   ],
+  performance:{
+    gzip: true,
+    prefetch: true
+  },
 
-    /*
-    ** Build configuration
-    */
+  /*
+  ** Build configuration
+  */
 
-    build: {
-        vendor: ['axios'],
-        /*
-        ** Run ESLint on save
-        */
-        extend (config, { isDev, isClient }) {
-          if (isDev && isClient) {
-            config.module.rules.push({
-              enforce: 'pre',
-              test: /\.(js|vue)$/,
-              loader: 'eslint-loader',
-              exclude: /(node_modules)/
-            })
-          }
-        },
-        router: {
-            base: '/client/'
+  build: {
+      vendor: ['axios'],
+      /*
+      ** Run ESLint on save
+      */
+      extend (config, { isDev, isClient }) {
+        if (isDev && isClient) {
+          config.module.rules.push({
+            enforce: 'pre',
+            test: /\.(js|vue)$/,
+            loader: 'eslint-loader',
+            exclude: /(node_modules)/
+          })
         }
+      },
+      router: {
+          base: '/client/'
+      }
   },
 }
