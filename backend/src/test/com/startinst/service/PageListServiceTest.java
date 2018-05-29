@@ -1,7 +1,6 @@
 package com.startinst.service;
 
 import com.startinst.dao.Page;
-import com.startinst.dao.Widget;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,21 +11,20 @@ import java.util.List;
 
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
-public class PageServiceTest {
+public class PageListServiceTest {
 
     @Autowired
-    private PageService pageService;
+    private PageListService pageListService;
 
     private Long testPageId = 999999999999999999L;
 
-    private Long testUserid = 999999999999999999L;
+    private Long testUserId = 999999999999999999L;
 
     @Test
-    void fetchFullContentByPageId()
+    void fetchPageListByUserId()
     {
-        Page widgetList = pageService.fetchPageInfo(testPageId);
-        System.out.println(widgetList);
+        List<Page> pageList = pageListService.fetchPageListByUserId(testUserId);
+        System.out.println(pageList);
     }
-
 
 }

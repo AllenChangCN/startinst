@@ -2,6 +2,7 @@ package com.startinst.service;
 
 import com.startinst.dao.Item;
 import com.startinst.dao.Page;
+import com.startinst.dao.UserFavorPage;
 import com.startinst.dao.Widget;
 import com.startinst.dao.mapper.ItemMapper;
 import com.startinst.dao.mapper.PageMapper;

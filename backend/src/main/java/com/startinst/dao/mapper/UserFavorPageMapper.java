@@ -26,7 +26,7 @@ public interface UserFavorPageMapper {
             @Result(property = "page",column = "page_id",javaType = Page.class,
                     one = @One(select = "com.startinst.dao.mapper.PageMapper.findById"))
     })
-    List<Page> findUserFavorPageByUserId(@Param("userId") Long userId);
+    List<UserFavorPage> findUserFavorPageByUserId(@Param("userId") Long userId);
 
     /**
      * 添加新的Page
