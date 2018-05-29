@@ -7,15 +7,10 @@ module.exports = {
     '@nuxtjs/axios',
     '@nuxtjs/proxy'
   ],
-  proxy: [
-  [
-    '/api',
-    {
-      target: 'http://localhost:8080', // api主机
-      pathRewrite: { '^/api' : '/' }
-    }
-  ]
-  ],
+  axios: {
+    baseURL: "http://localhost:8080/api",
+    // proxy: true // Can be also an object with default options
+  },
   /*
   ** Headers of the page
   */
