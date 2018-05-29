@@ -17,13 +17,11 @@ public class Tag implements Serializable{
 
     private Long id;
 
-    private Long type;
+    private Integer type;
 
-    private String title;
+    private String name;
 
-    private String content;
-
-    private String description;
+    private Integer userCount;
 
     private Date createdAt;
 
@@ -46,50 +44,38 @@ public class Tag implements Serializable{
         this.id = id;
     }
 
-
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
     @Override
     public String toString() {
         return  "Id: "+this.id+", "+
-                "title: "+this.title+", "+
-                "description: "+this.description+", "+
-                "content: "+this.content+", "+
+                "title: "+this.name+", "+
                 "createdAt: "+this.createdAt;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Long getType() {
+    public Integer getType() {
         return type;
     }
 
-    public void setType(Long type) {
+    public void setType(Integer type) {
         this.type = type;
     }
 
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public Integer getUserCount() {
+        return userCount;
+    }
+
+    public void setUserCount(Integer userCount) {
+        this.userCount = userCount;
     }
 }

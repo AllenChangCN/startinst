@@ -15,21 +15,36 @@ import java.util.List;
 public interface TagMapper {
 
     /**
+     * 查看tag
+     * @param id
+     * @return
+     */
+    @Select("SELECT * FROM tags WHERE id=#{id} LIMIT 1")
+    Tag findById(Long id);
+
+    /**
      * 添加新的Tag
      * @param tag
      * @return
      */
-    @Insert("INSERT INTO tags(id,widget_id,title,description,content,created_at,updated_at) " +
-            "VALUES(#{id}, #{widgetId},#{title},#{description}, #{content}, #{createdAt},#{updatedAt})")
+    @Insert("INSERT INTO tags(id,type,name,created_at) VALUES(#{id},#{type},#{name},#{createdAt})")
     int insert(Tag tag);
 
     /**
      * 更新Tag数据
-     * @param item
+     * @param tag
      * @return
      */
-    @Update("UPDATE tags SET content=#{content},title=#{title},description=#{description},updated_at=#{updatedAt} WHERE id=#{id}")
-    int update(Item item);
+    @Update("UPDATE tags SET name=#{name} WHERE id=#{id}")
+    int update(Tag tag);
+
+    /**
+     * 更新tag使用量
+     * @param tagId
+     * @return
+     */
+    @Update("UPDATE tags SET use_count=(SELECT COUNT(id) FROM page_tag WHERE tag_id=#{tagId}) LIMIT 1")
+    int updateUseCount(Long tagId);
 
     /**
      * Tag软删除
