@@ -15,7 +15,7 @@ public enum  HttpResponseCodeEnum {
     // 用户名不能为空
     ERR_USERNAME_CANNOT_BE_EMPTY(-3),
     ERR_PAGE_NOT_FOUND(-404),
-    ERR_INTERNAL_SERVER_ERROR(-505)
+    ERR_INTERNAL_SERVER_ERROR(-500)
     ;
 
     private Integer code;

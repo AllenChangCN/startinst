@@ -5,6 +5,16 @@
     fluid
   >
     <!--通过用户画像和人工智能推荐-->
+    <v-breadcrumbs>
+      <v-icon slot="divider">forward</v-icon>
+      <v-breadcrumbs-item
+        v-for="item in [{text:'首页',disabled:false},{text:'页面管理',disabled:false}]"
+        :key="item.text"
+        :disabled="item.disabled"
+      >
+        {{ item.text }}
+      </v-breadcrumbs-item>
+    </v-breadcrumbs>
     <v-data-table
       :headers="headers"
       :items="desserts"
