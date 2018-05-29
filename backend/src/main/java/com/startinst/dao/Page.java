@@ -17,6 +17,8 @@ public class Page implements Serializable{
 
     private Long id;
 
+    private Integer isOpen;
+
     private Long userId;
 
     /**
@@ -127,5 +129,13 @@ public class Page implements Serializable{
 
     public void setWidgetList(List<Widget> widgetList) {
         this.widgetList = widgetList;
+    }
+
+    public Integer getIsOpen() {
+        return isOpen;
+    }
+
+    public void setIsOpen(Integer isOpen) {
+        this.isOpen = isOpen;
     }
 }
