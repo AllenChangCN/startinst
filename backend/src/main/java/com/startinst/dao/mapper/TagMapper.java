@@ -2,7 +2,7 @@ package com.startinst.dao.mapper;
 
 import com.startinst.cache.MybatisRedisCache;
 import com.startinst.dao.Item;
-import com.startinst.dao.Page;
+import com.startinst.dao.Tag;
 import org.apache.ibatis.annotations.*;
 
 import java.util.Date;
@@ -15,29 +15,29 @@ import java.util.List;
 public interface TagMapper {
 
     /**
-     * 添加新的Page
-     * @param page
+     * 添加新的Tag
+     * @param tag
      * @return
      */
-    @Insert("INSERT INTO pages(id,widget_id,title,description,content,created_at,updated_at) " +
+    @Insert("INSERT INTO tags(id,widget_id,title,description,content,created_at,updated_at) " +
             "VALUES(#{id}, #{widgetId},#{title},#{description}, #{content}, #{createdAt},#{updatedAt})")
-    int insert(Page page);
+    int insert(Tag tag);
 
     /**
-     * 更新Page数据
+     * 更新Tag数据
      * @param item
      * @return
      */
-    @Update("UPDATE pages SET content=#{content},title=#{title},description=#{description},updated_at=#{updatedAt} WHERE id=#{id}")
+    @Update("UPDATE tags SET content=#{content},title=#{title},description=#{description},updated_at=#{updatedAt} WHERE id=#{id}")
     int update(Item item);
 
     /**
-     * Page软删除
+     * Tag软删除
      * @param id
      * @param deletedAt
      * @return
      */
-    @Update("UPDATE pages SET deleted_at=#{deletedAt} WHERE id=#{id} LIMIT 1")
+    @Update("UPDATE tags SET deleted_at=#{deletedAt} WHERE id=#{id} LIMIT 1")
     int softDelete(@Param("id") Long id, @Param("deletedAt") Date deletedAt);
 
     /**
