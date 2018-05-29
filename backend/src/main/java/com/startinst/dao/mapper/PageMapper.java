@@ -37,7 +37,7 @@ public interface PageMapper {
      * @return
      */
     @Select("SELECT * FROM pages WHERE user_id=#{userId}")
-    List<Page> findByUserId(@Param("userId") Long userId);
+    List<Page> findPageListByUserId(@Param("userId") Long userId);
 
     /**
      * 添加新的Page

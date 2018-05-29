@@ -22,7 +22,7 @@ public class PageServiceTest {
     private Long testUserid = 999999999999999999L;
 
     @Test
-    void fetchFullContentByPageId()
+    void fetchPageInfo()
     {
         Page widgetList = pageService.fetchPageInfo(testPageId);
         System.out.println(widgetList);

@@ -20,10 +20,11 @@ public class HttpResponseUtil {
         return success(null);
     }
 
-    public static HttpResponse error(HttpResponseCodeEnum msg) {
+    public static HttpResponse error(HttpResponseCodeEnum msg,String desc) {
         HttpResponse result = new HttpResponse();
         result.setCode(msg.getCode());
         result.setMessage(msg);
+        result.setData(desc);
         return result;
     }
 }

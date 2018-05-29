@@ -6,6 +6,7 @@ import com.startinst.dao.Page;
 import com.startinst.dao.Widget;
 import com.startinst.model.HttpResponse;
 import com.startinst.service.ItemService;
+import com.startinst.service.PageListService;
 import com.startinst.service.PageService;
 import com.startinst.utils.HttpResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,9 @@ public class PageController {
     private PageService pageService;
 
     @Autowired
+    private PageListService pageListService;
+
+    @Autowired
     private ItemService itemService;
 
     @GetMapping("{page_id}/info")
@@ -41,6 +45,13 @@ public class PageController {
     public HttpResponse pageItem(@PathVariable("page_id") Long pageId){
         Map<Long,List<Item>> pageData = itemService.fetchWidgetListWithItems(pageId);
         return HttpResponseUtil.success(pageData);
+    }
+
+    @GetMapping("mylist/for-user/{user_id}")
+    public HttpResponse pageMyList(@PathVariable("user_id") Long userId)
+    {
+        List<Page> myListData = pageListService.fetchPageListByUserId(userId);
+        return HttpResponseUtil.success(myListData);
     }
 
     @GetMapping("{page_id}/edit-logs")

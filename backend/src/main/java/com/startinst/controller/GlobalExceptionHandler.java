@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
 import java.sql.SQLException;
+import java.util.Arrays;
 
 /**
  * @author liuyuancheng
@@ -25,7 +26,7 @@ public class GlobalExceptionHandler {
     @ResponseStatus(value= HttpStatus.NOT_FOUND)
     @ResponseBody
     public HttpResponse requestHandlingNoHandlerFound() {
-        return HttpResponseUtil.error(HttpResponseCodeEnum.ERR_PAGE_NOT_FOUND);
+        return HttpResponseUtil.error(HttpResponseCodeEnum.ERR_PAGE_NOT_FOUND,"");
     }
 
     /**
@@ -35,7 +36,8 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     @ResponseStatus(value= HttpStatus.INTERNAL_SERVER_ERROR)
     @ResponseBody
-    public HttpResponse requestHandlingInternalServerError() {
-        return HttpResponseUtil.error(HttpResponseCodeEnum.ERR_INTERNAL_SERVER_ERROR);
+    public HttpResponse requestHandlingInternalServerError(Exception ex) {
+        return HttpResponseUtil.error(HttpResponseCodeEnum.ERR_INTERNAL_SERVER_ERROR ,
+                ex.getMessage()+"\n"+Arrays.toString(ex.getStackTrace()));
     }
 }

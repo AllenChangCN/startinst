@@ -42,9 +42,9 @@ class PageMapperTest {
     }
 
     @Test
-    void findByUserId()
+    void findPageListByUserId()
     {
-        List<Page> pageList= pageMapper.findByUserId(testUserId);
+        List<Page> pageList= pageMapper.findPageListByUserId(testUserId);
         System.out.println(pageList);
     }
 

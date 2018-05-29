@@ -27,9 +27,14 @@ public class PageListService {
     @Autowired
     UserFavorPageMapper userFavorPageMapper;
 
+    /**
+     * 根据用户Id获取Page列表
+     * @param userId
+     * @return
+     */
     public List<Page> fetchPageListByUserId(Long userId)
     {
-        List<Page> userPageList = pageMapper.findByUserId(userId);
+        List<Page> userPageList = pageMapper.findPageListByUserId(userId);
         return userPageList;
     }
 
