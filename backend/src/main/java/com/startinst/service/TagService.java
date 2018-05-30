@@ -23,6 +23,11 @@ public class TagService {
     @Autowired
     TagMapper tagMapper;
 
+    public boolean isTagExists(Long id)
+    {
+        return tagMapper.findById(id)!=null;
+    }
+
     /**
      * 创建一个新的Tag
      *

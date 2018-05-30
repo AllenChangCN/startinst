@@ -1,19 +1,14 @@
 package com.startinst.controller;
 
-import com.alibaba.fastjson.JSON;
 import com.startinst.dao.Item;
 import com.startinst.dao.Page;
-import com.startinst.dao.Widget;
 import com.startinst.model.HttpResponse;
+import com.startinst.model.PageCreateModel;
 import com.startinst.service.ItemService;
-import com.startinst.service.PageListService;
 import com.startinst.service.PageService;
 import com.startinst.utils.HttpResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -39,9 +34,17 @@ public class PageController {
     }
 
     @GetMapping("{page_id}/items")
-    public HttpResponse pageItem(@PathVariable("page_id") Long pageId){
+    public HttpResponse pageItem(@PathVariable("page_id") Long pageId)
+    {
         Map<Long,List<Item>> pageData = itemService.fetchWidgetListWithItems(pageId);
         return HttpResponseUtil.success(pageData);
+    }
+
+    @PostMapping("create")
+    @ResponseBody
+    public HttpResponse createPage(@RequestBody PageCreateModel pageCreateModel)
+    {
+        return HttpResponseUtil.success(pageCreateModel);
     }
 
     @GetMapping("{page_id}/edit-logs")

@@ -26,6 +26,13 @@ class TagsMapperTest {
     private TagMapper tagMapper;
 
     @Test
+    void findById()
+    {
+        Tag tag = tagMapper.findById(11111111L);
+        assertTrue("",tag == null);
+    }
+
+    @Test
     void insert()
     {
         tagMapper.softDelete(testId,new Date());

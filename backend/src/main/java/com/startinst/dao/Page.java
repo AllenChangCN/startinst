@@ -17,6 +17,9 @@ public class Page implements Serializable{
 
     private Long id;
 
+    /**
+     * 页面是否公开访问
+     */
     private Integer isOpen;
 
     private Long userId;

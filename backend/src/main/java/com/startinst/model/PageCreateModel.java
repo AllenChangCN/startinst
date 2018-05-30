@@ -7,15 +7,17 @@ import java.util.List;
 /**
  * @author liuyuancheng
  */
-public class PageModel {
+public class PageCreateModel {
+
+    private Long userId;
 
     private String title;
-
-    private List<Tag> tagList;
 
     private String description;
 
     private Integer isOpen;
+
+    private List<Long> tagIdList;
 
     public String getTitle() {
         return title;
@@ -23,14 +25,6 @@ public class PageModel {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public List<Tag> getTagList() {
-        return tagList;
-    }
-
-    public void setTagList(List<Tag> tagList) {
-        this.tagList = tagList;
     }
 
     public String getDescription() {
@@ -41,11 +35,27 @@ public class PageModel {
         this.description = description;
     }
 
-    public Integer isOpen() {
+    public Integer getIsOpen() {
         return isOpen;
     }
 
-    public void setOpen(int open) {
-        isOpen = open;
+    public void setIsOpen(int isOpen) {
+        this.isOpen = isOpen;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public List<Long> getTagIdList() {
+        return tagIdList;
+    }
+
+    public void setTagIdList(List<Long> tagIdList) {
+        this.tagIdList = tagIdList;
     }
 }
