@@ -56,7 +56,7 @@ class PageControllerTest {
     @Test
     void postCreatePage() throws Exception
     {
-        String str = "{\"userId\":2323,\"title\":\"34234234\",\"description\":\"34234234\",\"tagIdList\":[111,333]}";
+        String str = "{\"userId\":2323,\"title\":\"34234234\",\"isOpen\":\"1\",\"description\":\"34234234\",\"tagIdList\":[111,333]}";
         MvcResult result = this.mockMvc.perform(post("/api/page/create")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(str)

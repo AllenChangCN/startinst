@@ -5,7 +5,7 @@ import com.startinst.dao.SysRole;
 import com.startinst.dao.SysUser;
 import com.startinst.dao.mapper.SysRoleMapper;
 import com.startinst.dao.mapper.SysUserMapper;
-import com.startinst.service.UserService;
+import com.startinst.service.impl.UserServiceImpl;
 import com.startinst.utils.JWTUtil;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
@@ -28,7 +28,7 @@ public class MyShiroRealm extends AuthorizingRealm {
     private static final Logger _logger = LoggerFactory.getLogger(MyShiroRealm.class);
 
     @Autowired
-    UserService userService;
+    UserServiceImpl userService;
 
     @Autowired
     SysUserMapper sysUserMapper;

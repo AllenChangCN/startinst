@@ -1,6 +1,7 @@
 package com.startinst.service;
 
 import com.startinst.dao.Page;
+import com.startinst.service.impl.PageListServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ import java.util.List;
 public class PageListServiceTest {
 
     @Autowired
-    private PageListService pageListService;
+    private PageListServiceImpl pageListService;
 
     private Long testPageId = 999999999999999999L;
 
