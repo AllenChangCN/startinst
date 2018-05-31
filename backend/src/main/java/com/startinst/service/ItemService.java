@@ -1,9 +1,8 @@
-package com.startinst.service.impl;
+package com.startinst.service;
 
 import com.startinst.dao.Item;
 import com.startinst.dao.mapper.ItemMapper;
 import com.startinst.dao.mapper.WidgetMapper;
-import com.startinst.service.IService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -18,7 +17,7 @@ import java.util.Map;
  * @author liuyuancheng
  */
 @Service
-public class ItemServiceImpl implements IService {
+public class ItemService {
 
     @Autowired
     WidgetMapper widgetMapper;

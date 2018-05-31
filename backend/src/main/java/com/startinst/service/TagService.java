@@ -1,4 +1,4 @@
-package com.startinst.service.impl;
+package com.startinst.service;
 
 import com.startinst.dao.Item;
 import com.startinst.dao.Tag;
@@ -18,7 +18,8 @@ import java.util.Map;
  * @author liuyuancheng
  */
 @Service
-public class TagServiceImpl {
+public class TagService
+{
 
     @Autowired
     TagMapper tagMapper;

@@ -4,8 +4,8 @@ import com.startinst.dao.Item;
 import com.startinst.dao.Page;
 import com.startinst.model.HttpResponse;
 import com.startinst.model.PageCreateModel;
-import com.startinst.service.impl.ItemServiceImpl;
-import com.startinst.service.impl.PageServiceImpl;
+import com.startinst.service.ItemService;
+import com.startinst.service.PageService;
 import com.startinst.utils.HttpResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -21,9 +21,11 @@ import java.util.Map;
 @RequestMapping("/api/page")
 public class PageController {
 
-    private PageServiceImpl pageService;
+    @Autowired
+    private PageService pageService;
 
-    private ItemServiceImpl itemService;
+    @Autowired
+    private ItemService itemService;
 
     @GetMapping("{page_id}/info")
     public HttpResponse pageInfo(@PathVariable("page_id") Long pageId){

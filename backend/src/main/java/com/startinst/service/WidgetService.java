@@ -1,4 +1,4 @@
-package com.startinst.service.impl;
+package com.startinst.service;
 
 import com.startinst.dao.Item;
 import com.startinst.dao.Widget;
@@ -19,7 +19,7 @@ import java.util.Map;
  * @author liuyuancheng
  */
 @Service
-public class WidgetServiceImpl {
+public class WidgetService {
 
     @Autowired
     WidgetMapper widgetMapper;

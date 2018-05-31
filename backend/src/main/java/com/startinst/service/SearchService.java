@@ -1,4 +1,4 @@
-package com.startinst.service.impl;
+package com.startinst.service;
 
 import com.startinst.dao.Widget;
 import com.startinst.dao.mapper.WidgetMapper;
@@ -13,7 +13,7 @@ import java.util.List;
  * @author liuyuancheng
  */
 @Service
-public class SearchServiceImpl
+public class SearchService
 {
 
 

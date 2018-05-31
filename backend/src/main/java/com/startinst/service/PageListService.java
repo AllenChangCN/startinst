@@ -1,4 +1,4 @@
-package com.startinst.service.impl;
+package com.startinst.service;
 
 import com.startinst.dao.Page;
 import com.startinst.dao.UserFavorPage;
@@ -18,7 +18,8 @@ import java.util.List;
  * @author liuyuancheng
  */
 @Service
-public class PageListServiceImpl {
+public class PageListService
+{
 
 
     @Autowired

@@ -1,6 +1,5 @@
 package com.startinst.service;
 
-import com.startinst.service.impl.WidgetServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 public class WidgetServiceTest {
 
     @Autowired
-    private WidgetServiceImpl widgetService;
+    private WidgetService widgetService;
 
     @Test
     void findPageByIds()

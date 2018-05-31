@@ -9,6 +9,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     username: root
     password:
+
   data:
     rest:
       base-path: /api
@@ -28,7 +29,9 @@ spring:
     add-mappings: false
   aop:
     auto: true  #开启对AOP的支持
-    proxy-target-class: false #设置代理模式 true（cglib） false(java JDK代理)
+    proxy-target-class: true #设置代理模式 true（cglib） false(java JDK代理)
+
+
 
 
 

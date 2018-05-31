@@ -1,4 +1,4 @@
-package com.startinst.service.impl;
+package com.startinst.service;
 
 import com.startinst.dao.SysUser;
 import com.startinst.dao.mapper.SysUserMapper;
@@ -8,7 +8,8 @@ import org.springframework.stereotype.Service;
  * @author liuyuancheng
  */
 @Service
-public class UserServiceImpl {
+public class UserService
+{
     /**
      * 通过名称查找用户
      *

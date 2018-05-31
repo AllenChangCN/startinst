@@ -2,7 +2,7 @@ package com.startinst.controller;
 
 import com.startinst.dao.Page;
 import com.startinst.model.HttpResponse;
-import com.startinst.service.impl.PageListServiceImpl;
+import com.startinst.service.PageListService;
 import com.startinst.utils.HttpResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +21,7 @@ import java.util.List;
 public class PageListController {
 
     @Autowired
-    private PageListServiceImpl pageListService;
+    private PageListService pageListService;
 
     @GetMapping("mylist/for-user/{user_id}")
     public HttpResponse pageMyList(@PathVariable("user_id") Long userId)

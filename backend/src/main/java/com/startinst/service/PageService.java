@@ -1,4 +1,4 @@
-package com.startinst.service.impl;
+package com.startinst.service;
 
 import com.startinst.dao.Page;
 import com.startinst.dao.Widget;
@@ -7,8 +7,8 @@ import com.startinst.dao.mapper.PageMapper;
 import com.startinst.dao.mapper.PageTagMapper;
 import com.startinst.dao.mapper.WidgetMapper;
 import com.startinst.model.PageCreateModel;
-import com.startinst.service.IService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,7 +20,8 @@ import java.util.List;
  *
  * @author liuyuancheng
  */
-public class PageServiceImpl implements IService
+@Service
+public class PageService
 {
 
 

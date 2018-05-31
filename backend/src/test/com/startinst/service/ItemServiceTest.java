@@ -1,7 +1,6 @@
 package com.startinst.service;
 
 import com.startinst.dao.Item;
-import com.startinst.service.impl.ItemServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +18,8 @@ public class ItemServiceTest {
 
     private Long testPageId = 999999999999999999L;
 
-    private ItemServiceImpl itemService;
+    @Autowired
+    private ItemService itemService;
 
     @Test
     void fetchWidgetListWithItems()

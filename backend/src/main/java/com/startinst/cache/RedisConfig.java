@@ -20,7 +20,6 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 /**
  * @author liuyuancheng
  */
-@EnableCaching(mode = AdviceMode.PROXY,proxyTargetClass = true)
 @Configuration
 @ConditionalOnClass(RedisOperations.class)
 @EnableConfigurationProperties(RedisProperties.class)
