@@ -1,7 +1,12 @@
 package com.startinst.dao;
 
+import com.alibaba.fastjson.JSON;
+
 import java.util.Date;
 
+/**
+ * @author liuyuancheng
+ */
 public class SysPermission {
     private Long id;
 
@@ -141,5 +146,11 @@ public class SysPermission {
 
     public void setUpdateAt(Date updateAt) {
         this.updateAt = updateAt;
+    }
+
+    @Override
+    public String toString() {
+        return JSON.toJSONString(this);
+
     }
 }

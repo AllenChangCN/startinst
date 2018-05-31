@@ -1,6 +1,7 @@
 package com.startinst.dao;
 
 
+import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.startinst.dao.Page;
@@ -52,9 +53,7 @@ public class PageTag implements Serializable{
 
     @Override
     public String toString() {
-        return  "Id: "+this.id+", "+
-                "pageId:"+ this.pageId+", "+
-                "createdAt: "+this.createdAt;
+        return JSON.toJSONString(this);
     }
 
 

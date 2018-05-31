@@ -1,5 +1,6 @@
 package com.startinst.service;
 
+import com.alibaba.fastjson.JSON;
 import com.startinst.dao.Page;
 import com.startinst.model.PageCreateModel;
 import org.junit.jupiter.api.Test;
@@ -31,7 +32,7 @@ public class PageServiceTest {
     }
 
     @Test
-//    @Transactional
+    @Transactional
     void createPage()
     {
         List<Long> tagIdList = new ArrayList<>();
@@ -43,7 +44,8 @@ public class PageServiceTest {
         pageCreateModel.setTagIdList(tagIdList);
         pageCreateModel.setTitle("title");
         pageCreateModel.setUserId(testUserid);
-        pageService.create(pageCreateModel);
+        Page page = pageService.create(pageCreateModel);
+        System.out.println(page);
     }
 
 

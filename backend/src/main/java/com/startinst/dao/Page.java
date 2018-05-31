@@ -1,6 +1,7 @@
 package com.startinst.dao;
 
 
+import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.annotation.*;
 import com.startinst.utils.SnowFlakeUtil;
 import org.springframework.data.annotation.Id;
@@ -80,12 +81,7 @@ public class Page implements Serializable{
 
     @Override
     public String toString() {
-        return  "Id: "+this.id+", "+
-                "title: "+this.title+", "+
-                "description: "+this.description+", "+
-                "widgetList: "+this.getWidgetList()+", "+
-                "createdAt: "+this.createdAt+", "+
-                "updatedAt: "+this.updatedAt+"\n";
+        return JSON.toJSONString(this);
     }
 
     public String getTitle() {

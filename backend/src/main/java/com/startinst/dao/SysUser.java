@@ -1,5 +1,7 @@
 package com.startinst.dao;
 
+import com.alibaba.fastjson.JSON;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -206,7 +208,6 @@ public class SysUser implements Serializable{
 
     @Override
     public String toString() {
-        return "username: "+this.username+", \n"+
-                "phone"+this.phone+"\n";
+        return JSON.toJSONString(this);
     }
 }

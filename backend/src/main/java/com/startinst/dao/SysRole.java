@@ -1,5 +1,7 @@
 package com.startinst.dao;
 
+import com.alibaba.fastjson.JSON;
+
 import java.util.Date;
 
 /**
@@ -108,6 +110,6 @@ public class SysRole {
 
     @Override
     public String toString() {
-        return "name: "+this.getName();
+        return JSON.toJSONString(this);
     }
 }

@@ -1,6 +1,7 @@
 package com.startinst.dao;
 
 
+import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.annotation.*;
 import com.startinst.enums.WidgetTypeEnum;
 import com.startinst.utils.SnowFlakeUtil;
@@ -92,14 +93,7 @@ public class Widget implements Serializable{
 
     @Override
     public String toString() {
-        return  "Id: "+this.id+", "+
-                "pageId: "+this.pageId+", "+
-                "itemType: "+this.widgetType+", "+
-                "title: "+this.title+", "+
-                "description: "+this.description+", "+
-                "itemList: "+this.getItemList()+", "+
-                "createdAt: "+this.createdAt+", "+
-                "updatedAt: "+this.updatedAt+"\n";
+        return JSON.toJSONString(this);
     }
 
     public String getTitle() {

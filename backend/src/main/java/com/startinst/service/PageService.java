@@ -61,7 +61,7 @@ public class PageService
      * 创建一个页面(包含Tag等信息)
      */
     @Transactional(rollbackFor = RuntimeException.class)
-    public Integer create(PageCreateModel pageCreateModel) throws RuntimeException
+    public Page create(PageCreateModel pageCreateModel) throws RuntimeException
     {
         List<Tag> tagList = new ArrayList<Tag>();
 
@@ -84,7 +84,12 @@ public class PageService
         page.setTitle(pageCreateModel.getTitle());
         page.setDescription(pageCreateModel.getDescription());
         page.setUserId(pageCreateModel.getUserId());
-        return pageMapper.insert(page);
+        if (pageMapper.insert(page) > 0)
+        {
+            return page;
+        } else {
+            return null;
+        }
     }
 
 }

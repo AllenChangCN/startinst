@@ -1,6 +1,7 @@
 package com.startinst.dao;
 
 
+import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.startinst.enums.ItemTypeEnum;
@@ -46,9 +47,7 @@ public class Tag implements Serializable{
 
     @Override
     public String toString() {
-        return  "Id: "+this.id+", "+
-                "title: "+this.name+", "+
-                "createdAt: "+this.createdAt;
+        return JSON.toJSONString(this);
     }
 
     public String getName() {
