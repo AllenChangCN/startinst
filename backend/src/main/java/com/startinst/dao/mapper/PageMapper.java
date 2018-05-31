@@ -44,8 +44,8 @@ public interface PageMapper {
      * @param page
      * @return
      */
-    @Insert("INSERT INTO pages(id,widget_id,title,description,content,created_at,updated_at) " +
-            "VALUES(#{id}, #{widgetId},#{title},#{description}, #{content}, #{createdAt},#{updatedAt})")
+    @Insert("INSERT INTO pages(id,user_id,is_open,title,description,favorite,created_at,updated_at) " +
+            "VALUES(#{id},#{userId},#{isOpen},#{title},#{description}, #{favorite},#{createdAt},#{updatedAt})")
     int insert(Page page);
 
     /**

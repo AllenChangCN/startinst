@@ -35,6 +35,8 @@ public class Page implements Serializable{
 
     private List<Widget> widgetList;
 
+    private List<Tag> tagList;
+
     private Date updatedAt;
 
     private Date createdAt;
@@ -140,5 +142,13 @@ public class Page implements Serializable{
 
     public void setIsOpen(Integer isOpen) {
         this.isOpen = isOpen;
+    }
+
+    public List<Tag> getTagList() {
+        return tagList;
+    }
+
+    public void setTagList(List<Tag> tagList) {
+        this.tagList = tagList;
     }
 }

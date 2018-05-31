@@ -24,9 +24,9 @@ public class TagService
     @Autowired
     TagMapper tagMapper;
 
-    public boolean isTagExists(Long id)
+    public Tag findTagById(Long id)
     {
-        return tagMapper.findById(id)!=null;
+        return tagMapper.findById(id);
     }
 
     /**

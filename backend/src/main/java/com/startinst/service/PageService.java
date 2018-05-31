@@ -1,6 +1,7 @@
 package com.startinst.service;
 
 import com.startinst.dao.Page;
+import com.startinst.dao.Tag;
 import com.startinst.dao.Widget;
 import com.startinst.dao.mapper.ItemMapper;
 import com.startinst.dao.mapper.PageMapper;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -37,6 +39,9 @@ public class PageService
     @Autowired
     PageTagMapper pageTagMapper;
 
+    @Autowired
+    TagService tagService;
+
     /**
      * 根据PageId获取Page的Json Content
      * @return Page
@@ -56,16 +61,30 @@ public class PageService
      * 创建一个页面(包含Tag等信息)
      */
     @Transactional(rollbackFor = RuntimeException.class)
-    public void create(PageCreateModel pageCreateModel) throws RuntimeException
+    public Integer create(PageCreateModel pageCreateModel) throws RuntimeException
     {
+        List<Tag> tagList = new ArrayList<Tag>();
+
+        System.out.println(pageCreateModel.getTagIdList());
+
+        for (Long tagId : pageCreateModel.getTagIdList())
+        {
+            Tag tag = tagService.findTagById(tagId);
+            if(tag != null)
+            {
+                tagList.add(tag);
+            }
+        }
+
         Page page = new Page();
         page.setCreatedAt(new Date());
         page.setId();
+        page.setTagList(tagList);
         page.setIsOpen(pageCreateModel.getIsOpen());
         page.setTitle(pageCreateModel.getTitle());
         page.setDescription(pageCreateModel.getDescription());
         page.setUserId(pageCreateModel.getUserId());
-        pageMapper.insert(page);
+        return pageMapper.insert(page);
     }
 
 }

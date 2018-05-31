@@ -44,6 +44,7 @@ public class PageController {
     @ResponseBody
     public HttpResponse createPage(@RequestBody PageCreateModel pageCreateModel)
     {
+        pageService.create(pageCreateModel);
         return HttpResponseUtil.success(pageCreateModel);
     }
 

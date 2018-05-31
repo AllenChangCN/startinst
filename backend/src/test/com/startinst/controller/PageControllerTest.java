@@ -11,6 +11,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.context.WebApplicationContext;
 
@@ -54,6 +55,7 @@ class PageControllerTest {
     }
 
     @Test
+    @Transactional
     void postCreatePage() throws Exception
     {
         String str = "{\"userId\":2323,\"title\":\"34234234\",\"isOpen\":\"1\",\"description\":\"34234234\",\"tagIdList\":[111,333]}";
