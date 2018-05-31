@@ -9,7 +9,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author liuyuancheng
  */
 @SpringBootApplication
-@MapperScan("com.startinst.dao.mapper")
 public class MainApplication
 {
 
