@@ -1,6 +1,7 @@
 package com.startinst.service;
 
 import com.startinst.dao.Page;
+import com.startinst.dao.PageTag;
 import com.startinst.dao.Tag;
 import com.startinst.dao.Widget;
 import com.startinst.dao.mapper.ItemMapper;
@@ -63,33 +64,45 @@ public class PageService
     @Transactional(rollbackFor = RuntimeException.class)
     public Page create(PageCreateModel pageCreateModel) throws RuntimeException
     {
-        List<Tag> tagList = new ArrayList<Tag>();
-
-        System.out.println(pageCreateModel.getTagIdList());
-
-        for (Long tagId : pageCreateModel.getTagIdList())
-        {
-            Tag tag = tagService.findTagById(tagId);
-            if(tag != null)
-            {
-                tagList.add(tag);
-            }
-        }
-
+        // 添加页面
         Page page = new Page();
         page.setCreatedAt(new Date());
         page.setId();
-        page.setTagList(tagList);
         page.setIsOpen(pageCreateModel.getIsOpen());
         page.setTitle(pageCreateModel.getTitle());
         page.setDescription(pageCreateModel.getDescription());
         page.setUserId(pageCreateModel.getUserId());
+        page.setFavorite(0);
         if (pageMapper.insert(page) > 0)
         {
+            // 关联Page Tag, 如果Tag不存在就忽略
+            for (Long tagId : pageCreateModel.getTagIdList())
+            {
+                Tag tag = tagService.findTagById(tagId);
+                if(tag != null)
+                {
+                    PageTag pageTag = new PageTag();
+                    pageTag.setTagId(tagId);
+                    pageTag.setPageId(page.getId());
+                    pageTag.setCreatedAt(new Date());
+                    pageTagMapper.insert(pageTag);
+                }
+            }
             return page;
         } else {
-            return null;
+            throw new RuntimeException("订单创建失败");
         }
+    }
+
+    /**
+     * 删除一个Page
+     * @param pageId
+     */
+    @Transactional(rollbackFor = RuntimeException.class)
+    public void forceDelete(Long pageId)
+    {
+        pageMapper.delete(pageId);
+        pageTagMapper.delete(pageId);
     }
 
 }

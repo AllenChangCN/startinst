@@ -45,7 +45,7 @@ public class Page implements Serializable{
     private Date deletedAt;
 
     public long getId() {
-        return id;
+        return this.id;
     }
 
     /**

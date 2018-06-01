@@ -4,6 +4,7 @@ import com.startinst.dao.Item;
 import com.startinst.dao.Page;
 import com.startinst.cache.MybatisRedisCache;
 import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.mapping.FetchType;
 
 import java.util.Date;
 import java.util.List;
@@ -12,7 +13,8 @@ import java.util.List;
  * @author liuyuancheng
  */
 @CacheNamespace(implementation = MybatisRedisCache.class)
-public interface PageMapper {
+public interface PageMapper
+{
 
     @Select("SELECT * FROM pages WHERE id = #{id}")
     Page findById(@Param("id") Long id);
@@ -37,6 +39,11 @@ public interface PageMapper {
      * @return
      */
     @Select("SELECT * FROM pages WHERE user_id=#{userId}")
+    @Results({
+            @Result(property = "id", column = "id"),
+            @Result(property = "tagList", column = "id",javaType = List.class,
+                    many=@Many(select = "com.startinst.dao.mapper.TagMapper.findTagListByPageId", fetchType = FetchType.LAZY))
+    })
     List<Page> findPageListByUserId(@Param("userId") Long userId);
 
     /**

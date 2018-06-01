@@ -1,5 +1,6 @@
 package com.startinst.model;
 
+import com.alibaba.fastjson.JSON;
 import com.startinst.dao.Tag;
 
 import java.util.List;
@@ -57,5 +58,10 @@ public class PageCreateModel {
 
     public void setTagIdList(List<Long> tagIdList) {
         this.tagIdList = tagIdList;
+    }
+
+    @Override
+    public String toString() {
+        return JSON.toJSONString(this);
     }
 }

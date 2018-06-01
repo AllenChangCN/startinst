@@ -3,9 +3,11 @@ package com.startinst.dao.mapper;
 import com.startinst.cache.MybatisRedisCache;
 import com.startinst.dao.Item;
 import com.startinst.dao.Page;
+import com.startinst.dao.PageTag;
 import org.apache.ibatis.annotations.*;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author liuyuancheng
@@ -13,37 +15,23 @@ import java.util.Date;
 @CacheNamespace(implementation = MybatisRedisCache.class)
 public interface PageTagMapper {
 
+    @Select("SELECT * FROM page_tag WHERE page_id=#{pageId}")
+    List<PageTag> findByPageId(Long pageId);
+
     /**
      * 添加新的Page
-     * @param page
+     * @param pageTag
      * @return
      */
-    @Insert("INSERT INTO pages(id,widget_id,title,description,content,created_at,updated_at) " +
-            "VALUES(#{id}, #{widgetId},#{title},#{description}, #{content}, #{createdAt},#{updatedAt})")
-    int insert(Page page);
-
-    /**
-     * 更新Page数据
-     * @param item
-     * @return
-     */
-    @Update("UPDATE pages SET content=#{content},title=#{title},description=#{description},updated_at=#{updatedAt} WHERE id=#{id}")
-    int update(Item item);
-
-    /**
-     * Page软删除
-     * @param id
-     * @param deletedAt
-     * @return
-     */
-    @Update("UPDATE pages SET deleted_at=#{deletedAt} WHERE id=#{id} LIMIT 1")
-    int softDelete(@Param("id") Long id, @Param("deletedAt") Date deletedAt);
+    @Insert("INSERT INTO page_tag(page_id,tag_id,created_at) " +
+            "VALUES(#{pageId},#{tagId}, #{createdAt})")
+    int insert(PageTag pageTag);
 
     /**
      * 删除一条数据
-     * @param id
+     * @param pageId
      * @return
      */
-    @Delete("DELETE FROM tags WHERE id=#{id} LIMIT 1")
-    int delete(@Param("id") Long id);
+    @Delete("DELETE FROM page_tag WHERE page_id=#{pageId} LIMIT 1")
+    int delete(@Param("pageId") Long pageId);
 }

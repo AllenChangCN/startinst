@@ -2,6 +2,7 @@ package com.startinst.dao.mapper;
 
 import com.startinst.dao.Item;
 import com.startinst.dao.Page;
+import com.startinst.dao.Tag;
 import com.startinst.dao.Widget;
 import com.startinst.enums.ItemTypeEnum;
 import com.startinst.enums.WidgetTypeEnum;
@@ -45,6 +46,8 @@ class PageMapperTest {
     void findPageListByUserId()
     {
         List<Page> pageList= pageMapper.findPageListByUserId(testUserId);
+        List<Tag> tags = pageList.get(0).getTagList();
+        assertTrue(tags.size() >= 0);
         System.out.println(pageList);
     }
 

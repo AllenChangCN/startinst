@@ -16,32 +16,12 @@ import java.util.Date;
 @JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id")
 public class PageTag implements Serializable{
 
-    private Long id;
 
     private Long tagId;
 
     private Long pageId;
 
     private Date createdAt;
-
-    public long getId() {
-        return id;
-    }
-
-    /**
-     * Snowflake算法生成Id
-     */
-    public void setId() {
-        this.id = SnowFlakeUtil.getId();
-    }
-
-    /**
-     * 指定Id
-     * @param id
-     */
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Date getCreatedAt() {
         return createdAt;

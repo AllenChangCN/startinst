@@ -23,6 +23,14 @@ public interface TagMapper {
     Tag findById(Long id);
 
     /**
+     * 根据pageId获取Tag列表
+     * @param id
+     * @return
+     */
+    @Select("SELECT * FROM tags WHERE id IN (SELECT tag_id FROM page_tag WHERE page_id=#{id})")
+    List<Tag> findTagListByPageId(Long id);
+
+    /**
      * 添加新的Tag
      * @param tag
      * @return
