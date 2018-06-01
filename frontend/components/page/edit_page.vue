@@ -19,18 +19,20 @@
                 <v-select
                   :loading="loading"
                   :items="items"
-                  :rules="[() => select.length > 0 || '选择1~3个标签']"
+                  :rules="[() => (select.length > 0 && select.length <= 3) || '请选择1-3个标签']"
                   :search-input.sync="search"
                   v-model="select"
-                  label="设置标签（最多3个）"
+                  label="设置标签"
                   autocomplete
                   multiple
                   cache-items
+                  hide-selected
+                  deletable-chips
                   chips
-                  close
                   item-text="name"
                   item-value="id"
                   required
+                  @keyup.enter="createNewTag"
                 />
               </v-flex>
               <v-flex lg12>
@@ -40,8 +42,8 @@
               </v-flex>
               <v-flex lg12>
                 <v-checkbox
-                  :label="(pageForm.isPublic===true?'公开':'私有')+'页面'"
-                  v-model="pageForm.isPublic"
+                  :label="(pageForm.isOpen===true?'公开':'私有')+'页面'"
+                  v-model="pageForm.isOpen"
                 />
               </v-flex>
             </v-layout>
@@ -63,6 +65,9 @@
 <script>
   export default {
     name: 'edit',
+    mounted(){
+      this.querySelections('');
+    },
     data: () => ({
       dialog: false,
       loading: false,
@@ -70,7 +75,7 @@
       search: null,
       select: [],
       pageForm:{
-        isPublic: true
+        isOpen: true
       }
     }),
     watch: {
@@ -84,8 +89,10 @@
         this.loading = true;
         let tagList = await (this.$axios.get('/tag/search?keyword='+v));
         this.items = tagList.data.data;
-        console.log(this.items);
         this.loading = false
+      },
+      createNewTag(){  // 添加一个新的Tag并选中
+        console.log(this.search)
       }
     }
   }

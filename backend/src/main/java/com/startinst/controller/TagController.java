@@ -2,6 +2,7 @@ package com.startinst.controller;
 
 import com.startinst.dao.Tag;
 import com.startinst.model.HttpResponse;
+import com.startinst.model.TagCreateModel;
 import com.startinst.service.TagService;
 import com.startinst.utils.HttpResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,7 @@ public class TagController {
      * @param keyword
      * @return
      */
-    @GetMapping(value = "/search")
+    @GetMapping(value = "search")
     public HttpResponse searchKeyword(@RequestParam(value = "keyword",required = true) String keyword)
     {
         List<Tag> tagList = new ArrayList<>();
@@ -37,5 +38,12 @@ public class TagController {
         }
         return HttpResponseUtil.success(tagList);
     }
+
+    @PostMapping(value = "create")
+    public HttpResponse create(@RequestBody TagCreateModel tagCreateModel)
+    {
+        return HttpResponseUtil.success(tagService.create(tagCreateModel));
+    }
+
 
 }

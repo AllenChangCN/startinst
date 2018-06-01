@@ -5,9 +5,11 @@ import com.startinst.dao.Tag;
 import com.startinst.dao.mapper.ItemMapper;
 import com.startinst.dao.mapper.TagMapper;
 import com.startinst.dao.mapper.WidgetMapper;
+import com.startinst.model.TagCreateModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,11 +34,23 @@ public class TagService
     /**
      * 创建一个新的Tag
      *
-     * @param tag
+     * @param tagCreateModel
      */
-    public void create(Tag tag)
+    public Tag create(TagCreateModel tagCreateModel) throws RuntimeException
     {
-
+        Tag tag = new Tag();
+        tag.setName(tagCreateModel.getName());
+        tag.setCreatedAt(new Date());
+        tag.setId();
+        tag.setUseCount(0);
+        tag.setType(0);
+        int effect = tagMapper.insert(tag);
+        if (effect > 0)
+        {
+            return tag;
+        }else{
+            throw new RuntimeException("创建Tag失败");
+        }
     }
 
     /**
