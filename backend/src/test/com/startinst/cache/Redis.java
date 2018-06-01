@@ -12,6 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 public class Redis {
+
     @Autowired
     private RedisTemplate redisTemplate;
 

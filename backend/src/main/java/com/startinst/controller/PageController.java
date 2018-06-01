@@ -7,7 +7,9 @@ import com.startinst.model.PageCreateModel;
 import com.startinst.service.ItemService;
 import com.startinst.service.PageService;
 import com.startinst.utils.HttpResponseUtil;
+import com.startinst.utils.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,6 +29,9 @@ public class PageController {
     @Autowired
     private ItemService itemService;
 
+    @Autowired
+    private RedisTemplate redisTemplate;
+
     @GetMapping("{page_id}/info")
     public HttpResponse pageInfo(@PathVariable("page_id") Long pageId){
         Page pageData = pageService.fetchPageInfo(pageId);
@@ -40,12 +45,16 @@ public class PageController {
         return HttpResponseUtil.success(pageData);
     }
 
+    /**
+     * 创建一个页面
+     * @param pageCreateModel
+     * @return
+     */
     @PostMapping("create")
-    @ResponseBody
     public HttpResponse createPage(@RequestBody PageCreateModel pageCreateModel)
     {
-        pageService.create(pageCreateModel);
-        return HttpResponseUtil.success(pageCreateModel);
+        Page page = pageService.create(pageCreateModel);
+        return HttpResponseUtil.success(page);
     }
 
     @GetMapping("{page_id}/edit-logs")

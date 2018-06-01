@@ -48,7 +48,7 @@ public class PageServiceTest {
         tagIdList.add(testPageId);
         tagIdList.add(222L);
         PageCreateModel pageCreateModel = new PageCreateModel();
-        pageCreateModel.setIsOpen(0);
+        pageCreateModel.setIsOpen(false);
         pageCreateModel.setDescription("desc");
         pageCreateModel.setTagIdList(tagIdList);
         pageCreateModel.setTitle("title");

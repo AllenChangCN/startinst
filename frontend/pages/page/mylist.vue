@@ -27,6 +27,7 @@
             <v-chip :key="tag.id" outline color="primary" v-for="tag in props.item.tagList">{{tag.name}}</v-chip>
           </td>
           <td>{{ props.item.description }}</td>
+          <td>{{ props.item.view }}</td>
           <td>{{ props.item.favorite }}</td>
           <td>{{ props.item.createdAt }}</td>
         </tr>
@@ -50,6 +51,7 @@
           { text: '页面标题', value: 'title' },
           { text: '标签', value: 'tagList' },
           { text: '页面描述', value: 'description' },
+          { text: '浏览量', value: 'view' },
           { text: '收藏量', value: 'favorite' },
           { text: '创建时间', value: 'createdAt' }
         ]

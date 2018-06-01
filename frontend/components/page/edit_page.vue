@@ -13,15 +13,15 @@
           <v-container grid-list-md>
             <v-layout wrap>
               <v-flex lg12 md12>
-                <v-text-field label="页面名称" required v-model="pageForm.name"/>
+                <v-text-field label="页面名称" required v-model="pageForm.title"/>
               </v-flex>
               <v-flex lg12 md12>
                 <v-select
                   :loading="loading"
                   :items="items"
-                  :rules="[() => (pageForm.tagList.length > 0 && pageForm.tagList.length <= 3) || '请选择1-3个标签']"
+                  :rules="[() => (pageForm.tagIdList.length > 0 && pageForm.tagIdList.length <= 3) || '请选择1-3个标签']"
                   :search-input.sync="search"
-                  v-model="pageForm.tagList"
+                  v-model="pageForm.tagIdList"
                   label="设置标签"
                   autocomplete
                   multiple
@@ -77,10 +77,11 @@
       items: [],
       search: '',
       pageForm:{
-        name:"",
+        title:"",
         isOpen: true,
-        tagList: [],
-        description:""
+        tagIdList: [],
+        description:"",
+        userId: "999999999999999999"
       }
     }),
     watch: {
@@ -103,7 +104,7 @@
           this.search = '';
           console.log(newTag.data.data);
           this.items.push(newTag.data.data);
-          this.pageForm.tagList.push(newTag.data.data);
+          this.pageForm.tagIdList.push(newTag.data.data);
           this.$store.commit('show_global_snackbar',{
             text:"创建新标签",
             show:true,
@@ -117,6 +118,8 @@
       // 创建新页面
       async createNewPage(){
         console.log(this.pageForm);
+        let newPage = await (this.$axios.post('/page/create',this.pageForm));
+        console.log(newPage);
         this.$store.commit('show_global_snackbar',{
           text:"创建新页面",
           show:true,

@@ -42,7 +42,7 @@ public interface PageMapper
     @Results({
             @Result(property = "id", column = "id"),
             @Result(property = "tagList", column = "id",javaType = List.class,
-                    many=@Many(select = "com.startinst.dao.mapper.TagMapper.findTagListByPageId", fetchType = FetchType.LAZY))
+                    many=@Many(select = "com.startinst.dao.mapper.TagMapper.findTagListByPageId", fetchType = FetchType.EAGER))
     })
     List<Page> findPageListByUserId(@Param("userId") Long userId);
 

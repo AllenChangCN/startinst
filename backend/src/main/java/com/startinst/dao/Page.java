@@ -19,9 +19,11 @@ public class Page implements Serializable{
     /**
      * 页面是否公开访问
      */
-    private Integer isOpen;
+    private Boolean isOpen;
 
     private Long userId;
+
+    private Integer view;
 
     /**
      * 最常用的页面，在用户首页轮播显示；0-排在首页其余依次，默认为null
@@ -130,11 +132,11 @@ public class Page implements Serializable{
         this.widgetList = widgetList;
     }
 
-    public Integer getIsOpen() {
+    public Boolean getIsOpen() {
         return isOpen;
     }
 
-    public void setIsOpen(Integer isOpen) {
+    public void setIsOpen(Boolean isOpen) {
         this.isOpen = isOpen;
     }
 
@@ -144,5 +146,13 @@ public class Page implements Serializable{
 
     public void setTagList(List<Tag> tagList) {
         this.tagList = tagList;
+    }
+
+    public Integer getView() {
+        return view;
+    }
+
+    public void setView(Integer view) {
+        this.view = view;
     }
 }

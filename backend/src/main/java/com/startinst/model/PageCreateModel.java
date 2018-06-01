@@ -16,7 +16,7 @@ public class PageCreateModel {
 
     private String description;
 
-    private Integer isOpen;
+    private Boolean isOpen;
 
     private List<Long> tagIdList;
 
@@ -36,11 +36,11 @@ public class PageCreateModel {
         this.description = description;
     }
 
-    public Integer getIsOpen() {
+    public Boolean getIsOpen() {
         return isOpen;
     }
 
-    public void setIsOpen(int isOpen) {
+    public void setIsOpen(Boolean isOpen) {
         this.isOpen = isOpen;
     }
 
