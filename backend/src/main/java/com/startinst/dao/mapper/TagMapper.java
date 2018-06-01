@@ -31,6 +31,14 @@ public interface TagMapper {
     List<Tag> findTagListByPageId(Long id);
 
     /**
+     * tag useCount递增1
+     * @param id
+     * @return
+     */
+    @Update("UPDATE tags SET use_count = (SELECT COUNT(id) from page_tag WHERE tag_id=#{id}) WHERE id=#{id}")
+    int refreshUseCount(Long id);
+
+    /**
      * 添加新的Tag
      * @param tag
      * @return

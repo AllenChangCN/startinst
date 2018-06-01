@@ -4,10 +4,7 @@ import com.startinst.dao.Page;
 import com.startinst.dao.PageTag;
 import com.startinst.dao.Tag;
 import com.startinst.dao.Widget;
-import com.startinst.dao.mapper.ItemMapper;
-import com.startinst.dao.mapper.PageMapper;
-import com.startinst.dao.mapper.PageTagMapper;
-import com.startinst.dao.mapper.WidgetMapper;
+import com.startinst.dao.mapper.*;
 import com.startinst.model.PageCreateModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -33,6 +30,9 @@ public class PageService
 
     @Autowired
     PageMapper pageMapper;
+
+    @Autowired
+    TagMapper tagMapper;
 
     @Autowired
     ItemMapper itemMapper;
@@ -81,11 +81,14 @@ public class PageService
                 Tag tag = tagService.findTagById(tagId);
                 if(tag != null)
                 {
+                    // 关联对应的Tag
                     PageTag pageTag = new PageTag();
                     pageTag.setTagId(tagId);
                     pageTag.setPageId(page.getId());
                     pageTag.setCreatedAt(new Date());
                     pageTagMapper.insert(pageTag);
+                    // 刷新Tag使用量
+                    tagMapper.refreshUseCount(tagId);
                 }
             }
             return page;

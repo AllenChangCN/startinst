@@ -59,6 +59,14 @@ class TagsMapperTest {
     }
 
     @Test
+    void refreshUseCount()
+    {
+        Tag tag = tagMapper.findById(testId);
+        System.out.println(tag.getUseCount());
+        tagMapper.refreshUseCount(testId);
+    }
+
+    @Test
     void updateUseCount()
     {
         tagMapper.updateUseCount(testId);

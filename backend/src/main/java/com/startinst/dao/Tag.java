@@ -14,7 +14,8 @@ import java.util.Date;
  * @author liuyuancheng
  */
 @JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id")
-public class Tag implements Serializable{
+public class Tag implements Serializable
+{
 
     private Long id;
 
@@ -22,7 +23,7 @@ public class Tag implements Serializable{
 
     private String name;
 
-    private Integer userCount;
+    private Integer useCount;
 
     private Date createdAt;
 
@@ -70,11 +71,11 @@ public class Tag implements Serializable{
         this.createdAt = createdAt;
     }
 
-    public Integer getUserCount() {
-        return userCount;
+    public Integer getUseCount() {
+        return useCount;
     }
 
-    public void setUserCount(Integer userCount) {
-        this.userCount = userCount;
+    public void setUseCount(Integer useCount) {
+        this.useCount = useCount;
     }
 }
