@@ -58,7 +58,6 @@
         async fetchMyList() {
           let mylist = await this.$axios.$get('/page/mylist/for-user/999999999999999999');
           this.mylist.desserts = mylist.data;
-          console.log(mylist.data)
         }
       }
     }

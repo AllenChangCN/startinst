@@ -17,8 +17,17 @@
               </v-flex>
               <v-flex lg12>
                 <v-select
-                  :items="['0-17', '18-29', '30-54', '54+']"
+                  :loading="loading"
+                  :items="items"
+                  :rules="[() => select.length > 0 || 'You must choose at least one']"
+                  :search-input.sync="search"
+                  :clearable="true"
+                  v-model="select"
                   label="设置标签（最多3个）"
+                  autocomplete
+                  multiple
+                  cache-items
+                  chips
                   required
                 />
               </v-flex>
@@ -54,10 +63,36 @@
     name: 'edit',
     data: () => ({
       dialog: false,
+      loading: false,
+      items: [],
+      search: null,
+      select: [],
       pageForm:{
         isPublic: true
       }
-    })
+    }),
+    watch: {
+      search (val) {
+        // val && this.querySelections(val)
+        this.querySelections(val)
+      }
+    },
+    methods:{
+      async querySelections (v) {
+        var items = [];
+        this.loading = true;
+        let tagList = await (this.$axios.get('/tag/search?keyword='+v));
+        tagList.data.data.forEach(function (elem,i) {
+          items.push(elem.name);
+        });
+        this.items = items;
+        // this.items = tagList;
+        // tagList.each(function (i,elem) {
+        //   console.log(elem);
+        // });
+        this.loading = false
+      }
+    }
   }
 </script>
 

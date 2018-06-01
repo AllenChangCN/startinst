@@ -31,6 +31,21 @@ public interface TagMapper {
     List<Tag> findTagListByPageId(Long id);
 
     /**
+     * 获取
+     * @return
+     */
+    @Select("SELECT * FROM tags ORDER BY use_count DESC LIMIT 10")
+    List<Tag> findTagListOfTop10Usage();
+
+    /**
+     * 根据关键字获取Tag
+     * @param keyword
+     * @return
+     */
+    @Select("SELECT * FROM tags WHERE name LIKE #{keyword} ORDER BY use_count DESC LIMIT 10")
+    List<Tag> findTagListByKeyword(String keyword);
+
+    /**
      * tag useCount递增1
      * @param id
      * @return

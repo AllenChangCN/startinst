@@ -67,6 +67,20 @@ class TagsMapperTest {
     }
 
     @Test
+    void findTagListOfTop10Usage()
+    {
+        List<Tag>tagList  = tagMapper.findTagListOfTop10Usage();
+        System.out.println(tagList);
+    }
+
+    @Test
+    void findTagListByKeyword()
+    {
+        List<Tag>tagList = tagMapper.findTagListByKeyword("技术大%");
+        System.out.println(tagList);
+    }
+
+    @Test
     void updateUseCount()
     {
         tagMapper.updateUseCount(testId);

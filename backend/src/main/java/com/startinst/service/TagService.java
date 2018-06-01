@@ -41,16 +41,16 @@ public class TagService
 
     /**
      * 根据关键词推荐Tag列表
-     * @param keywords
+     * @param keyword
      */
-    public void keywordRecommend(String keywords)
+    public List<Tag> keywordList(String keyword)
     {
-
+        return tagMapper.findTagListByKeyword(keyword+'%');
     }
 
-    public void hotRecommend()
+    public List<Tag> hotList()
     {
-
+        return tagMapper.findTagListOfTop10Usage();
     }
 
 }
