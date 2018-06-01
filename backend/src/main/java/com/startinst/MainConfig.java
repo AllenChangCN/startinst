@@ -1,11 +1,10 @@
 package com.startinst;
 
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.cache.annotation.EnableCaching;
-import org.springframework.context.annotation.AdviceMode;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.context.annotation.*;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
@@ -17,4 +16,13 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableCaching(mode = AdviceMode.ASPECTJ,proxyTargetClass = true)
 @ComponentScan("com.startinst")
 @MapperScan("com.startinst.dao.mapper")
-public class MainConfig {}
+public class MainConfig {
+    @Bean
+    public ObjectMapper ObjectMapper()
+    {
+        ObjectMapper objectMapper = new ObjectMapper();
+        // 配置，对象序列化时，所有的Long转换为String
+        objectMapper.configure(JsonGenerator.Feature.WRITE_NUMBERS_AS_STRINGS,true);
+        return objectMapper;
+    }
+}

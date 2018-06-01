@@ -19,15 +19,17 @@
                 <v-select
                   :loading="loading"
                   :items="items"
-                  :rules="[() => select.length > 0 || 'You must choose at least one']"
+                  :rules="[() => select.length > 0 || '选择1~3个标签']"
                   :search-input.sync="search"
-                  :clearable="true"
                   v-model="select"
                   label="设置标签（最多3个）"
                   autocomplete
                   multiple
                   cache-items
                   chips
+                  close
+                  item-text="name"
+                  item-value="id"
                   required
                 />
               </v-flex>
@@ -79,17 +81,10 @@
     },
     methods:{
       async querySelections (v) {
-        var items = [];
         this.loading = true;
         let tagList = await (this.$axios.get('/tag/search?keyword='+v));
-        tagList.data.data.forEach(function (elem,i) {
-          items.push(elem.name);
-        });
-        this.items = items;
-        // this.items = tagList;
-        // tagList.each(function (i,elem) {
-        //   console.log(elem);
-        // });
+        this.items = tagList.data.data;
+        console.log(this.items);
         this.loading = false
       }
     }

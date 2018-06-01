@@ -45,7 +45,7 @@ public class TagService
      */
     public List<Tag> keywordList(String keyword)
     {
-        return tagMapper.findTagListByKeyword(keyword+'%');
+        return tagMapper.findTagListByKeyword(keyword.trim()+'%');
     }
 
     public List<Tag> hotList()
