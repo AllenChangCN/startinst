@@ -14,6 +14,18 @@
         {{ item.text }}
       </v-breadcrumbs-item>
     </v-breadcrumbs>
+    <v-card>
+      <v-card-title>
+        <h3>关键字搜索</h3>
+        <v-spacer/>
+        <v-text-field
+          v-model="search"
+          append-icon="search"
+          label="页面搜索"
+          single-line
+          hide-details
+        />
+      </v-card-title>
     <v-data-table
       :headers="mylist.headers"
       :items="mylist.desserts"
@@ -27,12 +39,12 @@
             <v-chip :key="tag.id" outline color="primary" v-for="tag in props.item.tagList">{{tag.name}}</v-chip>
           </td>
           <td>{{ props.item.description }}</td>
-          <td>{{ props.item.view }}</td>
-          <td>{{ props.item.favorite }}</td>
-          <td>{{ props.item.createdAt }}</td>
+          <td>{{ props.item.view }} / {{ props.item.comment }} / {{ props.item.favorite }}</td>
+          <td>{{ props.item.createdAt | timeFormat }}</td>
         </tr>
       </template>
     </v-data-table>
+    </v-card>
   </v-container>
 </template>
 
@@ -51,8 +63,7 @@
           { text: '页面标题', value: 'title' },
           { text: '标签', value: 'tagList' },
           { text: '页面描述', value: 'description' },
-          { text: '浏览量', value: 'view' },
-          { text: '收藏量', value: 'favorite' },
+          { text: '浏览/留言/收藏', value: 'view' },
           { text: '创建时间', value: 'createdAt' }
         ]
       },

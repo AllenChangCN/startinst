@@ -38,7 +38,8 @@ module.exports = {
   loading: { color: '#333',height:'3px',failedColor:'red' },
   plugins: [
     '~/plugins/vuetify',
-    '~/plugins/axios'
+    '~/plugins/axios',
+    '~/plugins/filters'
   ],
   performance:{
     gzip: true,

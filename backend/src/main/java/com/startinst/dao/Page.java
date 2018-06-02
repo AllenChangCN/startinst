@@ -30,6 +30,8 @@ public class Page implements Serializable{
      */
     private Integer favorite;
 
+    private Integer comment;
+
     private String title;
 
     private String description;
@@ -154,5 +156,13 @@ public class Page implements Serializable{
 
     public void setView(Integer view) {
         this.view = view;
+    }
+
+    public Integer getComment() {
+        return comment;
+    }
+
+    public void setComment(Integer comment) {
+        this.comment = comment;
     }
 }
