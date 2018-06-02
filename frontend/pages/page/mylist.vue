@@ -5,18 +5,18 @@
     fluid
   >
     <!--通过用户画像和人工智能推荐-->
-    <v-breadcrumbs divider="/">
-      <v-breadcrumbs-item
-        v-for="item in [{text:'首页',disabled:false},{text:'页面管理',disabled:false}]"
-        :key="item.text"
-        :disabled="item.disabled"
-      >
-        {{ item.text }}
-      </v-breadcrumbs-item>
-    </v-breadcrumbs>
     <v-card>
       <v-card-title>
-        <h3>关键字搜索</h3>
+        <div>
+          <v-btn color="success">
+            参与编辑&nbsp;
+            <v-icon dark small>add</v-icon>
+          </v-btn>
+          <v-btn color="info" disabled>
+            我的收藏&nbsp;
+            <v-icon dark small>favorite</v-icon>
+          </v-btn>
+        </div>
         <v-spacer/>
         <v-text-field
           v-model="search"
@@ -54,17 +54,18 @@
       data () {
         return {
           mylist:{headers:[],desserts:[]},
+          search: ''
         }
       },
       mounted(){
         this.$store.commit('set_layout_title','页面管理')
         this.fetchMyList();
         this.mylist.headers = [
-          { text: '页面标题', value: 'title' },
+          { text: '标题', value: 'title' },
           { text: '标签', value: 'tagList' },
           { text: '页面描述', value: 'description' },
           { text: '浏览/留言/收藏', value: 'view' },
-          { text: '创建时间', value: 'createdAt' }
+          { text: '创建于', value: 'createdAt' }
         ]
       },
       methods:{
