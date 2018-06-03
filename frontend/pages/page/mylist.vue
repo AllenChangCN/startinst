@@ -18,18 +18,20 @@
             light
           >
             <v-btn slot="activator" color="primary" dark small>参与编辑 <v-icon small>arrow_drop_down</v-icon></v-btn>
-            <v-list>
-              <v-list-tile>
+            <v-list
+              class="mylist-menu"
+            >
+              <v-list-tile @click="test">
                 <v-list-tile-title>
                   <v-icon small>favorite</v-icon> 常用页面
                 </v-list-tile-title>
               </v-list-tile>
-              <v-list-tile>
+              <v-list-tile @click="test">
                 <v-list-tile-title>
                   <v-icon small>edit</v-icon> 参与编辑
                 </v-list-tile-title>
               </v-list-tile>
-              <v-list-tile>
+              <v-list-tile @click="test">
                 <v-list-tile-title>
                   <v-icon small>star</v-icon> 收藏页面
                 </v-list-tile-title>
@@ -131,6 +133,7 @@
         ]
       },
       methods:{
+        test(){},
         openOnNewTag(page_id){
           window.open("/page/"+page_id,"_blank")
         },
@@ -168,6 +171,7 @@
     }
 </script>
 
-<style scoped>
-
+<style>
+  .mylist-menu .list__tile{height: 36px;}
+  .mylist-menu .list__tile__title{}
 </style>
