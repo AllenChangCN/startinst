@@ -24,13 +24,14 @@
           label="页面搜索"
           single-line
           hide-details
+          @keyup.enter="fetchMyList()"
         />
       </v-card-title>
       <v-data-table
         :headers="table.headers"
         :items="table.desserts"
         item-key="id"
-        :must-sort="false"
+        :must-sort="true"
         hide-actions
         :loading="loading"
         :pagination.sync="pagination"
@@ -56,13 +57,13 @@
             </td>
           </tr>
         </template>
-        <v-alert slot="no-results" :value="true" color="error" icon="warning">
-          Your search for "{{ search }}" found no results.
-        </v-alert>
+        <!--<v-alert slot="no-results" :value="true" color="error" icon="warning">-->
+          <!--Your search for "{{ search }}" found no results.-->
+        <!--</v-alert>-->
       </v-data-table>
       <v-card-actions>
           <v-spacer/>
-          <v-pagination circle v-model="pagination.page" :length="pagination.pages"/>
+          <v-pagination circle v-model="pagination.pageNum" :length="pagination.pages"/>
       </v-card-actions>
     </v-card>
 
@@ -71,35 +72,28 @@
 
 <script>
     export default {
-      name: "extension",
+      name: "mylist",
       data () {
         return {
           table:{headers:[],desserts:[],totalDesserts:null},
           search: '',
           loading:false,
           pagination: {
-            page:0,
+            pageNum:1,
             pages:0,   //页面总数
           },
         }
       },
       watch: {
-        "pagination.page": {
+        "pagination.pageNum": {
+        // "pagination.page": {
           handler (val,oldVal) {
-            console.log(val,oldVal);
-            this.fetchMyList(this.pagination.page)
-              .then(data => {
-                this.table.desserts = data.list;
-                this.table.totalDesserts = data.total;
-                this.pagination.totalItems = data.total;
-                this.pagination.pages = parseInt(data.pages);
-                this.loading = false;
-              })
-          },
+            this.fetchMyList();
+          }
         }
       },
       mounted(){
-        this.pagination.page = 1;
+        this.fetchMyList();
         this.$store.commit('set_layout_title','页面管理');
         this.table.headers = [
           { text: '标题', value: 'title' },
@@ -111,11 +105,23 @@
         ]
       },
       methods:{
+        fetchMyList(){
+          this.fetchMyListFromApi()
+            .then(data => {
+              this.table.desserts = data.list;
+              this.table.totalDesserts = data.total;
+              this.pagination.totalItems = data.total;
+              this.pagination.pages = parseInt(data.pages);
+              this.pagination.pageNum = parseInt(data.pageNum);
+              this.loading = false;
+            })
+        },
         // 获取page列表
-        async fetchMyList(page) {
+        async fetchMyListFromApi() {
           this.loading = true;
-          let mylist = await this.$axios.$get('/page/mylist/for-user/999999999999999999?page='+page+'&pageSize=5');
-          return mylist.data;
+          let a = await (this.$axios.$get('/page/mylist/for-user/999999999999999999?page='+
+            this.pagination.pageNum+'&pageSize=5'));
+          return a.data;
         },
       }
     }
