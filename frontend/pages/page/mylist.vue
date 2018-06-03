@@ -86,7 +86,6 @@
       },
       watch: {
         "pagination.pageNum": {
-        // "pagination.page": {
           handler (val,oldVal) {
             this.fetchMyList();
           }
@@ -120,7 +119,8 @@
         async fetchMyListFromApi() {
           this.loading = true;
           let a = await (this.$axios.$get('/page/mylist/for-user/999999999999999999?page='+
-            this.pagination.pageNum+'&pageSize=5'));
+            this.pagination.pageNum+'&pageSize=5'+
+            "&search="+this.search));
           return a.data;
         },
       }

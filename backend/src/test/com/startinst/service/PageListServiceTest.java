@@ -23,7 +23,7 @@ public class PageListServiceTest {
     @Test
     void fetchPageListByUserId()
     {
-        List<Page> pageList = pageListService.fetchPageListByUserId(testUserId);
+        List<Page> pageList = pageListService.fetchPageListByUserId(testUserId,"");
         System.out.println(pageList);
     }
 

@@ -38,6 +38,20 @@ public interface PageMapper
      * @param userId
      * @return
      */
+    @Select("SELECT * FROM pages WHERE user_id=#{userId} AND title LIKE #{search} LIMIT 20")
+    @Results({
+            @Result(property = "id", column = "id"),
+            @Result(property = "tagList", column = "id",javaType = List.class,
+                    many=@Many(select = "com.startinst.dao.mapper.TagMapper.findTagListByPageId", fetchType = FetchType.EAGER))
+    })
+    List<Page> findPageListByUserIdAndSearch(@Param("userId") Long userId, @Param("search") String search);
+
+
+    /**
+     * 根据用户ID获得Page列表
+     * @param userId
+     * @return
+     */
     @Select("SELECT * FROM pages WHERE user_id=#{userId}")
     @Results({
             @Result(property = "id", column = "id"),

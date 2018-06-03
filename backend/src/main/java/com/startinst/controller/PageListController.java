@@ -30,16 +30,17 @@ public class PageListController {
     @GetMapping("mylist/for-user/{user_id}")
     public HttpResponse pageMyList(@PathVariable("user_id") Long userId, HttpServletRequest request)
     {
-        //获取前端的请求参数
+        // 准备参数
         String pages = request.getParameter("page");
         String pageSizes = request.getParameter("pageSize");
+        String search = request.getParameter("search");
         pages = pages == null || pages.trim().length() == 0 ? "1":pages;
         pageSizes = pageSizes == null || pageSizes.trim().length() == 0 ? "20":pageSizes;
         Integer page = Integer.parseInt(pages);
         Integer pageSize = Integer.parseInt(pageSizes);
         // startPage(第几页, 多少条数据)
         PageHelper.startPage(page, pageSize);
-        List<Page> pageList = pageListService.fetchPageListByUserId(userId);
+        List<Page> pageList = pageListService.fetchPageListByUserId(userId,search);
         return HttpResponseUtil.success(new PageInfo<Page>(pageList));
     }
 

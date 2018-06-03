@@ -10,6 +10,7 @@ import com.startinst.dao.mapper.WidgetMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -31,11 +32,18 @@ public class PageListService
     /**
      * 根据用户Id获取Page列表
      * @param userId
+     * @param search
      * @return
      */
-    public List<Page> fetchPageListByUserId(Long userId)
+
+    public List<Page> fetchPageListByUserId(Long userId,String search)
     {
-        List<Page> userPageList = pageMapper.findPageListByUserId(userId);
+        List<Page> userPageList = new ArrayList<Page>();
+        if(search.isEmpty()){
+            userPageList = pageMapper.findPageListByUserId(userId);
+        }else{
+            userPageList = pageMapper.findPageListByUserIdAndSearch(userId,"%"+search+"%");
+        }
         return userPageList;
     }
 
