@@ -61,7 +61,7 @@
   import Sortable from 'sortablejs'
   import context_menu from '../page/context_menu'
   export default {
-    name: "page",
+    name: "show_page",
 
     mounted(){
       // 获取初始化数据
@@ -81,7 +81,7 @@
         console.log(evt)
       },
       async fetchPageData() {
-        let ip = await this.$axios.$get('http://localhost:8080/api/page/999999999999999999/info');
+        let ip = await this.$axios.$get('/page/'+this.page_id+'/info');
         console.log(ip);
       }
     },
@@ -139,7 +139,10 @@
             ]},
 
       ]
-    })
+    }),
+    props:[
+      'page_id'
+    ],
   }
 </script>
 

@@ -69,8 +69,8 @@
             <td>{{ props.item.view }} / {{ props.item.comment }} / {{ props.item.favorite }}</td>
             <td>{{ props.item.createdAt | timeFormat }}</td>
             <td class="justify-center layout px-0">
-              <v-btn flat outline icon color="blue">
-                <v-icon color="blue" small>remove_red_eye</v-icon>
+              <v-btn flat outline icon color="blue" @click="openOnNewTag(props.item.id)">
+                <v-icon color="blue" small>open_in_new</v-icon>
               </v-btn>
               <v-btn flat outline icon color="blue">
                 <v-icon color="blue" small>edit</v-icon>
@@ -131,6 +131,10 @@
         ]
       },
       methods:{
+        openOnNewTag(page_id){
+          window.open("/page/"+page_id,"_blank")
+        },
+        // 刷新数据
         refreshMylist(){
           this.fetchMyList();
           this.$store.commit('show_global_snackbar',{
@@ -140,6 +144,7 @@
             timeout: 2000
           });
         },
+        // 获取数据
         fetchMyList(){
           this.fetchMyListFromApi()
             .then(data => {
@@ -151,7 +156,7 @@
               this.loading = false;
             })
         },
-        // 获取page列表
+        // 获取数据（底层方法）
         async fetchMyListFromApi() {
           this.loading = true;
           let a = await (this.$axios.$get('/page/mylist/for-user/999999999999999999?page='+

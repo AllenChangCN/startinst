@@ -5,7 +5,6 @@
 </template>
 <script>
   import page_display from "../../components/page/show_page"
-  import axios from 'axios'
   export default {
     data: () => ({
 
