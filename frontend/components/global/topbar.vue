@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-toolbar color="amber" app absolute clipped-left>
+    <v-toolbar color="lime" app absolute clipped-left>
       <v-toolbar-side-icon @click.native="toggleDrawer()"/>
       <!--Logo-->
       <span class="title ml-3 mr-5"><nuxt-link to="/home" style="color: black;text-decoration: none;">{{$store.state.global.title}}</nuxt-link></span>

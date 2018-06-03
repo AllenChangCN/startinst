@@ -35,7 +35,7 @@ module.exports = {
   /*
   ** Customize the progress bar color
   */
-  loading: { color: '#333',height:'3px',failedColor:'red' },
+  loading: { color: '#43A047',height:'1px',failedColor:'red' },
   plugins: [
     '~/plugins/vuetify',
     '~/plugins/axios',

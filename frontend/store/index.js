@@ -27,7 +27,7 @@ const createStore = () => {
           },
           page_edit:{
             visible:false,
-            title:"添加页面",
+            title:"创建页面",
             page_id:0
           },
           notification:{visible:false},
