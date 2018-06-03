@@ -68,6 +68,12 @@ mybatis:
     map-underscore-to-camel-case: true
     cache-enabled: true
 
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
+
 
 
 

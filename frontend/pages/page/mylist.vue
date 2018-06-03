@@ -27,8 +27,8 @@
         />
       </v-card-title>
       <v-data-table
-        :headers="headers"
-        :items="desserts"
+        :headers="table.headers"
+        :items="table.desserts"
         item-key="id"
         :must-sort="false"
         hide-actions
@@ -62,7 +62,7 @@
       </v-data-table>
       <v-card-actions>
           <v-spacer/>
-          <v-pagination v-model="pagination.page" :length="pages"/>
+          <v-pagination circle v-model="pagination.page" :length="pagination.pages"/>
       </v-card-actions>
     </v-card>
 
@@ -74,41 +74,34 @@
       name: "extension",
       data () {
         return {
-          headers:[],desserts:[],totalDesserts:null,
+          table:{headers:[],desserts:[],totalDesserts:null},
           search: '',
           loading:false,
-          pagination: {},
-        }
-      },
-      computed: {
-        pages () {
-          if (this.pagination.rowsPerPage == null ||
-            this.pagination.totalItems == null
-          ) return 0;
-          return Math.ceil(this.pagination.totalItems / this.pagination.rowsPerPage)
+          pagination: {
+            page:0,
+            pages:0,   //页面总数
+          },
         }
       },
       watch: {
-        pagination: {
-          handler () {
-            this.fetchMyList()
+        "pagination.page": {
+          handler (val,oldVal) {
+            console.log(val,oldVal);
+            this.fetchMyList(this.pagination.page)
               .then(data => {
-                this.desserts = data;
-                this.totalDesserts = 20;
+                this.table.desserts = data.list;
+                this.table.totalDesserts = data.total;
+                this.pagination.totalItems = data.total;
+                this.pagination.pages = parseInt(data.pages);
+                this.loading = false;
               })
           },
-          deep: true
         }
       },
       mounted(){
-        this.$store.commit('set_layout_title','页面管理')
-        this.fetchMyList()
-          .then(data => {
-            console.log(data);
-            this.desserts = data;
-            this.totalDesserts = 20;
-          });
-        this.headers = [
+        this.pagination.page = 1;
+        this.$store.commit('set_layout_title','页面管理');
+        this.table.headers = [
           { text: '标题', value: 'title' },
           { text: '标签', value: 'tagList' },
           { text: '页面描述', value: 'description' },
@@ -118,9 +111,10 @@
         ]
       },
       methods:{
-        async fetchMyList() {
+        // 获取page列表
+        async fetchMyList(page) {
           this.loading = true;
-          let mylist = await this.$axios.$get('/page/mylist/for-user/999999999999999999');
+          let mylist = await this.$axios.$get('/page/mylist/for-user/999999999999999999?page='+page+'&pageSize=5');
           return mylist.data;
         },
       }
