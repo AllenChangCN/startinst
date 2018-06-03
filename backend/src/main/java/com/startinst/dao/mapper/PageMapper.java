@@ -38,7 +38,7 @@ public interface PageMapper
      * @param userId
      * @return
      */
-    @Select("SELECT * FROM pages WHERE user_id=#{userId} AND title LIKE #{search} LIMIT 20")
+    @Select("SELECT * FROM pages WHERE user_id=#{userId} AND title LIKE #{search}")
     @Results({
             @Result(property = "id", column = "id"),
             @Result(property = "tagList", column = "id",javaType = List.class,

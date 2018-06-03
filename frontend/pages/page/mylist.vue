@@ -8,14 +8,35 @@
     <v-card>
       <v-card-title>
         <div>
-          <v-btn color="success" small>
-            参与编辑&nbsp;
-            <v-icon dark small>edit</v-icon>
+          <v-btn small color="primary" flat icon @click="refreshMylist()">
+            <v-icon>refresh</v-icon>
           </v-btn>
-          <v-btn color="info" small>
-            我的收藏&nbsp;
-            <v-icon dark small>favorite</v-icon>
-          </v-btn>
+          <v-menu
+            offset-y
+            open-on-hover
+            :dense="true"
+            light
+          >
+            <v-btn slot="activator" color="primary" dark small>参与编辑 <v-icon small>arrow_drop_down</v-icon></v-btn>
+            <v-list>
+              <v-list-tile>
+                <v-list-tile-title>
+                  <v-icon small>favorite</v-icon> 常用页面
+                </v-list-tile-title>
+              </v-list-tile>
+              <v-list-tile>
+                <v-list-tile-title>
+                  <v-icon small>edit</v-icon> 参与编辑
+                </v-list-tile-title>
+              </v-list-tile>
+              <v-list-tile>
+                <v-list-tile-title>
+                  <v-icon small>star</v-icon> 收藏页面
+                </v-list-tile-title>
+              </v-list-tile>
+            </v-list>
+          </v-menu>
+
         </div>
         <v-spacer/>
         <v-text-field
@@ -49,10 +70,16 @@
             <td>{{ props.item.createdAt | timeFormat }}</td>
             <td class="justify-center layout px-0">
               <v-btn flat outline icon color="blue">
+                <v-icon color="blue" small>remove_red_eye</v-icon>
+              </v-btn>
+              <v-btn flat outline icon color="blue">
                 <v-icon color="blue" small>edit</v-icon>
               </v-btn>
               <v-btn flat outline icon color="indigo">
-                <v-icon color="indigo" small>delete</v-icon>
+                <v-icon color="indigo" small>group</v-icon>
+              </v-btn>
+              <v-btn flat outline icon color="indigo">
+                <v-icon color="indigo" small>favorite</v-icon>
               </v-btn>
             </td>
           </tr>
@@ -104,6 +131,15 @@
         ]
       },
       methods:{
+        refreshMylist(){
+          this.fetchMyList();
+          this.$store.commit('show_global_snackbar',{
+            text:"数据已刷新",
+            show:true,
+            success: null,
+            timeout: 2000
+          });
+        },
         fetchMyList(){
           this.fetchMyListFromApi()
             .then(data => {
@@ -119,7 +155,7 @@
         async fetchMyListFromApi() {
           this.loading = true;
           let a = await (this.$axios.$get('/page/mylist/for-user/999999999999999999?page='+
-            this.pagination.pageNum+'&pageSize=5'+
+            this.pagination.pageNum+'&pageSize=8'+
             "&search="+this.search));
           return a.data;
         },

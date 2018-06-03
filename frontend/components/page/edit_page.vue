@@ -126,6 +126,9 @@
           success: null,
           timeout: 2000
         });
+        this.$store.commit('toggle_editpage_dialog',{
+          visible:false
+        })
       }
     }
   }
