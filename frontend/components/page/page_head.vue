@@ -22,27 +22,28 @@
                 id="exit_sortmode"
                 depressed
                 @click.stop="exit_sortmode"
-              > <v-icon small color="white">close</v-icon>关闭排序模式</v-btn>
-              <v-tooltip bottom v-if="!$store.state.page.current.sort_mode">
-                <v-icon slot="activator" small @click.stop="settingsClick()">arrow_back</v-icon>
-                <span>键盘"←"键</span>
-              </v-tooltip>
-              <v-tooltip bottom v-if="!$store.state.page.current.sort_mode">
-                <v-icon slot="activator" small @click.stop="settingsClick()">radio_button_checked</v-icon>
-                <span>王的导航</span>
-              </v-tooltip>
-              <v-tooltip bottom v-if="!$store.state.page.current.sort_mode">
-                <v-icon slot="activator" small @click.stop="settingsClick()">radio_button_unchecked</v-icon>
-                <span>天地一体</span>
-              </v-tooltip>
-              <v-tooltip bottom v-if="!$store.state.page.current.sort_mode">
-                <v-icon slot="activator" small @click.stop="settingsClick()">radio_button_unchecked</v-icon>
-                <span>天地一体</span>
-              </v-tooltip>
-              <v-tooltip bottom v-if="!$store.state.page.current.sort_mode">
-                <v-icon slot="activator" small @click.stop="settingsClick()">arrow_forward</v-icon>
-                <span>键盘"→"键</span>
-              </v-tooltip>
+              >
+                <v-icon small color="white">close</v-icon>关闭排序模式
+              </v-btn>
+              <!--HomePage切换-->
+              <div v-if="homepage">
+                <v-tooltip bottom v-if="!$store.state.page.current.sort_mode">
+                  <v-icon slot="activator" small @click.stop="settingsClick()">arrow_back</v-icon>
+                  <span>键盘"←"键</span>
+                </v-tooltip>
+                <v-tooltip bottom v-if="!$store.state.page.current.sort_mode" v-for="item in [
+                  {name:'网的导航', id:1,checked:true},
+                  {name:'指令下', id:2,checked:false}
+                ]" :key="item.id">
+                  <v-icon slot="activator" small @click.stop="settingsClick()" v-if="item.checked">radio_button_checked</v-icon>
+                  <v-icon slot="activator" small @click.stop="settingsClick()" v-else>radio_button_unchecked</v-icon>
+                  <span>{{item.name}}</span>
+                </v-tooltip>
+                <v-tooltip bottom v-if="!$store.state.page.current.sort_mode">
+                  <v-icon slot="activator" small @click.stop="settingsClick()">arrow_forward</v-icon>
+                  <span>键盘"→"键</span>
+                </v-tooltip>
+              </div>
             </div>
             <div style="width: 125px;text-align: right" v-if="!$store.state.page.current.sort_mode">
               <v-tooltip bottom>
@@ -57,17 +58,14 @@
                 <v-icon slot="activator" small @click.stop="settingsClick()">favorite</v-icon>
                 <span>收藏页面</span>
               </v-tooltip>
+              <!--私有、公有按钮-->
               <v-tooltip bottom>
                 <v-icon
                   v-if="getPropFromPageInfo('isOpen')==='true'||getPropFromPageInfo('isOpen')===true"
                         slot="activator" small @click.stop="switch_page_protect()">lock_open</v-icon>
                 <v-icon v-else slot="activator" small @click.stop="switch_page_protect()">lock</v-icon>
-                <span
-                  v-if="getPropFromPageInfo('isOpen')==='true'||getPropFromPageInfo('isOpen')===true"
-                >公开</span>
-                <span
-                  v-if="getPropFromPageInfo('isOpen')==='true'||getPropFromPageInfo('isOpen')===true">
-                  私有</span>
+                <span v-if="getPropFromPageInfo('isOpen')==='true'||getPropFromPageInfo('isOpen')===true">公开</span>
+                <span v-else>私有</span>
               </v-tooltip>
             </div>
           </div>
@@ -87,6 +85,9 @@
       mounted(){
         this.addEvent();
       },
+      props:[
+        'homepage'
+      ],
       methods:{
         // 从store里获取页面数据
         getPropFromPageInfo(prop){

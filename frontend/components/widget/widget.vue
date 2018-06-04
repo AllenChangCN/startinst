@@ -1,9 +1,7 @@
 <template>
-
-
   <!--Widget排序模式-->
   <div class="widget sortmode" v-if="$store.state.page.current.sort_mode">
-    <v-card v-if="data.type==='ad'" class="ad">
+    <v-card v-if="data.widgetType==='ad'" class="ad">
       <v-card-title>
         <v-icon size="19px">monetization_on</v-icon> &nbsp;&nbsp;<b>赞助商</b>
       </v-card-title>
@@ -13,8 +11,8 @@
         <div style="width: 100%;">
           <div style="display: flex;">
             <div style="flex: 100%;">
-              <v-icon v-if="data.type==='note'" size="19px">event_note</v-icon>
-              <v-icon v-if="data.type==='bookmark'" size="19px">bookmark_border</v-icon>
+              <v-icon v-if="data.widgetType==='note'" size="19px">event_note</v-icon>
+              <v-icon v-if="data.widgetType==='bookmark'" size="19px">bookmark_border</v-icon>
               &nbsp;<b>{{data.title}}</b>
             </div>
           </div>
@@ -26,7 +24,7 @@
   <div class="widget" v-else>
 
     <!--广告Widget-->
-    <v-card v-if="data.type==='ad'">
+    <v-card v-if="data.widgetType==='ad'">
       <v-card-title>
         <v-icon size="19px">monetization_on</v-icon> &nbsp;&nbsp;<b>赞助商</b>
         <span style="font-size: 11px;"
@@ -39,20 +37,20 @@
         <div style="width: 100%;">
           <div style="display: flex;">
             <div style="flex: 100%;">
-              <v-icon v-if="data.type==='note'" size="19px">event_note</v-icon>
-              <v-icon v-if="data.type==='bookmark'" size="19px">bookmark_border</v-icon>
+              <v-icon v-if="data.widgetType==='note'" size="19px">event_note</v-icon>
+              <v-icon v-if="data.widgetType==='bookmark'" size="19px">bookmark_border</v-icon>
               &nbsp;<b>{{data.title}}</b>
             </div>
             <div style="flex: 1;min-width: 80px;text-align: right;margin-right: 6px;">
               <v-tooltip right>
-                <v-icon slot="activator" size="18px" v-if="data.type==='note'&&column_idx+'_'+data.idx===column_over_idx+'_'+widget_over_idx">
+                <v-icon slot="activator" size="18px" v-if="data.widgetType==='note'&&posX+'_'+data.idx===column_over_idx+'_'+widget_over_idx">
                  edit
                 </v-icon>
-                <span v-if="data.type==='note'">编辑</span>
-                <v-icon slot="activator" size="22px" v-if="data.type==='bookmark'&&column_idx+'_'+data.idx===column_over_idx+'_'+widget_over_idx">
+                <span v-if="data.widgetType==='note'">编辑</span>
+                <v-icon slot="activator" size="22px" v-if="data.widgetType==='bookmark'&&posX+'_'+data.idx===column_over_idx+'_'+widget_over_idx">
                   add
                 </v-icon>
-                <span v-if="data.type==='bookmark'">添加</span>
+                <span v-if="data.widgetType==='bookmark'">添加</span>
               </v-tooltip>
               &nbsp;
               <v-menu
@@ -85,7 +83,7 @@
           <span class="grey--text" v-if="data.description">{{data.description}}</span>
         </div>
       </v-card-title>
-      <v-card-text v-if="data.type==='bookmark'"> <!-- 书签 -->
+      <v-card-text v-if="data.widgetType==='bookmark'"> <!-- 书签 -->
         <div v-if="data.content">
           <!--拖拽排序Link-->
           <draggable v-model="data.content" :options="{group:'people'}" @start="drag=true" @end="drag=false">
@@ -104,7 +102,7 @@
           暂无书签
         </div>
       </v-card-text>
-      <v-card-text v-if="data.type === 'note'">
+      <v-card-text v-if="data.widgetType === 'note'">
         <div v-if="data.content">
           <span v-html="data.content"></span>
         </div>
@@ -135,6 +133,9 @@
         { title: '删除书签' ,icon:'delete',mutation:'bookmark_deletelink',params:{}}
       ]
     }),
+    mounted(){
+      console.log(this.data);
+    },
     methods: {
       open_context_menu:function (e,item) {
         let that = this;
@@ -145,7 +146,7 @@
       },
       widgetEnter:function () {
         this.widget_over_idx = this.data.idx;
-        this.column_over_idx = this.column_idx;
+        this.column_over_idx = this.posX;
       },
       widgetLeave:function () {
         this.widget_over_idx = null;
@@ -163,7 +164,7 @@
 
     },
     props:[
-      'data','column_idx'
+      'data','posX'
     ],
 
   }

@@ -1,6 +1,8 @@
 <template>
     <div>
-      <show_page :page_id="page_id"/>
+      <show_page
+        :page_id="page_id"
+        :homepage="false"/>
     </div>
 </template>
 

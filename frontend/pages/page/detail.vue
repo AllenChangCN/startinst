@@ -1,6 +1,6 @@
 <template>
   <div>
-    <page_display/>
+    <page_display :homepage="true"/>
   </div>
 </template>
 <script>
