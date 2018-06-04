@@ -22,8 +22,6 @@
       </v-card-title>
     </v-card>
   </div>
-
-
   <!--正常模式-->
   <div class="widget" v-else>
 

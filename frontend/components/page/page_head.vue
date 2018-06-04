@@ -8,7 +8,7 @@
         <div slot="header" id="title">
           <div style="display: flex;">
             <div style="flex:5">
-              <b><v-icon small>title</v-icon> / 王的导航</b>
+              <b><v-icon small>title</v-icon> / {{getPropFromPageInfo('title')}}</b>
               <span v-if="!$store.state.page.current.sort_mode"
                     style="font-size: 11px;"
                     class="grey--text" >&nbsp; | &nbsp;查看更多</span>
@@ -58,18 +58,18 @@
                 <span>收藏页面</span>
               </v-tooltip>
               <v-tooltip bottom>
-                <v-icon slot="activator" small @click.stop="switch_page_protect()">lock_open</v-icon>
+                <v-icon
+                  v-if="getPropFromPageInfo('isOpen')==='true'||getPropFromPageInfo('isOpen')===true"
+                        slot="activator" small @click.stop="switch_page_protect()">lock_open</v-icon>
+                <v-icon v-else slot="activator" small @click.stop="switch_page_protect()">lock</v-icon>
                 <span>公开访问</span>
               </v-tooltip>
-
             </div>
           </div>
         </div>
         <v-card>
           <v-card-text class="grey lighten-3" v-if="!$store.state.page.current.sort_mode">
-            困难像弹簧，你强他就弱，你弱他就强。<br>
-            页面描述、浏览量、收藏量信息 <br>
-            帮助 <br>
+            {{getPropFromPageInfo('description')}}
           </v-card-text>
         </v-card>
       </v-expansion-panel-content>
@@ -82,7 +82,17 @@
       mounted(){
         this.addEvent();
       },
+      props:[
+        "pageInfo"
+      ],
       methods:{
+        getPropFromPageInfo(prop){
+          if(this.$store.state.page.current.page_info == null){
+            return '';
+          }else{
+            return this.$store.state.page.current.page_info[prop];
+          }
+        },
         settingsClick:function () {
 
         },
@@ -130,6 +140,7 @@
             }
           });
         },
+
         destroyed(){
           window.removeEventListener('keyup');
         }

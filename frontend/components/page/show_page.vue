@@ -62,7 +62,6 @@
   import context_menu from '../page/context_menu'
   export default {
     name: "show_page",
-
     mounted(){
       // 获取初始化数据
       this.fetchPageData();
@@ -81,8 +80,8 @@
         console.log(evt)
       },
       async fetchPageData() {
-        let ip = await this.$axios.$get('/page/'+this.page_id+'/info');
-        console.log(ip);
+        let pageInfo = (await this.$axios.$get('/page/'+this.page_id+'/info')).data;
+        this.$store.commit('set_page_info',pageInfo);
       }
     },
     data: () => ({

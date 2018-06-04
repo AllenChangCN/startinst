@@ -47,7 +47,8 @@ const createStore = () => {
         current:{
           sort_mode:false,
           editable: false,
-          is_owner: false
+          is_owner: false,
+          page_info: null
         },
         contextmenu:{     // 右键菜单
           show_menu:false,
