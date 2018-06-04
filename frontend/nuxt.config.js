@@ -9,6 +9,9 @@ module.exports = {
   ],
   axios: {
     baseURL: "http://localhost:8080/api",
+    headers:{
+      common:Authorization = "C"
+    }
     // proxy: true // Can be also an object with default options
   },
   /*
@@ -38,8 +41,8 @@ module.exports = {
   loading: { color: '#43A047',height:'1px',failedColor:'red' },
   plugins: [
     '~/plugins/vuetify',
-    '~/plugins/axios',
-    '~/plugins/filters'
+    {src:'~/plugins/http',ssr:true},
+    '~/plugins/filters',
   ],
   performance:{
     gzip: true,

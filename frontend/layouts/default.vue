@@ -19,8 +19,12 @@
   import nav_drawer from "../components/global/nav_drawer"
   import global_snackbar from "../components/global/snackbar"
   import global_dialog_confirm from "../components/global/dialog_confirm"
+  import http from "../components/global/http"
 
   export default {
+    mounted(){
+
+    },
     data: () => ({
 
     }),
@@ -33,10 +37,7 @@
       }
     },
     components:{
-      topbar,nav_drawer,global_snackbar,global_dialog_confirm
-    },
-    props: {
-      source: String
+      topbar,nav_drawer,global_snackbar,global_dialog_confirm,http
     }
   }
 </script>

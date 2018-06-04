@@ -5,6 +5,9 @@ const createStore = () => {
   return new Vuex.Store({
     state: {
       global:{
+        userinfo:{
+          userId: '',
+        },
         title: "StartInst.",
         authenticated:false,
         drawer: false,// 左侧菜单栏
