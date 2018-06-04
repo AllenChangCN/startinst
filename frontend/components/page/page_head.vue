@@ -62,7 +62,12 @@
                   v-if="getPropFromPageInfo('isOpen')==='true'||getPropFromPageInfo('isOpen')===true"
                         slot="activator" small @click.stop="switch_page_protect()">lock_open</v-icon>
                 <v-icon v-else slot="activator" small @click.stop="switch_page_protect()">lock</v-icon>
-                <span>公开访问</span>
+                <span
+                  v-if="getPropFromPageInfo('isOpen')==='true'||getPropFromPageInfo('isOpen')===true"
+                >公开</span>
+                <span
+                  v-if="getPropFromPageInfo('isOpen')==='true'||getPropFromPageInfo('isOpen')===true">
+                  私有</span>
               </v-tooltip>
             </div>
           </div>
@@ -82,10 +87,8 @@
       mounted(){
         this.addEvent();
       },
-      props:[
-        "pageInfo"
-      ],
       methods:{
+        // 从store里获取页面数据
         getPropFromPageInfo(prop){
           if(this.$store.state.page.current.page_info == null){
             return '';
@@ -140,7 +143,6 @@
             }
           });
         },
-
         destroyed(){
           window.removeEventListener('keyup');
         }

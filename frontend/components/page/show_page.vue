@@ -48,7 +48,6 @@
             <v-btn flat icon><v-icon size="44px" class="grey--text lighten-4">add</v-icon></v-btn>
         </div>
       </v-flex>
-
     </v-layout>
     <context_menu style="display: none;"/>
   </v-container>
