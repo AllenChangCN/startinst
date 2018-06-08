@@ -89,7 +89,6 @@
     },
     watch:{
       "$store.state.page.current.pageInfo":function(){
-        console.log('changed');
         let widgetData = {};
         let rawWidgetList = this.$store.state.page.current.pageInfo.widgetList;
         rawWidgetList.forEach(function(elem,i){
@@ -98,8 +97,8 @@
           if(!widgetData[elem.posX]['posX']) widgetData[elem.posX]['posX'] = parseInt(elem.posX);
           widgetData[elem.posX]['widgetGroup'].push(elem);
         });
-        console.log(widgetData);
         this.widgets =  widgetData;
+        console.info("page info updated.");
       }
     },
     data: () => ({
