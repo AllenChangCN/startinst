@@ -18,6 +18,6 @@ export default {
     state.page.contextmenu.show_menu = true;
   },
   set_page_info(state,param){
-    state.page.current.page_info = param;
+    state.page.current.pageInfo = param;
   }
 }

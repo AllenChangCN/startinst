@@ -21,7 +21,6 @@
       },
       mounted(){
         this.$store.commit('set_layout_title','页面');
-        console.log(this.page_id)
       },
       methods:{
 

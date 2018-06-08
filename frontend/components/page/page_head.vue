@@ -91,10 +91,10 @@
       methods:{
         // 从store里获取页面数据
         getPropFromPageInfo(prop){
-          if(this.$store.state.page.current.page_info == null){
+          if(this.$store.state.page.current.pageInfo == null){
             return '';
           }else{
-            return this.$store.state.page.current.page_info[prop];
+            return this.$store.state.page.current.pageInfo[prop];
           }
         },
         settingsClick:function () {

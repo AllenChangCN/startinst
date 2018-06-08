@@ -1,117 +1,117 @@
 <template>
-  <!--Widget排序模式-->
-  <div class="widget sortmode" v-if="$store.state.page.current.sort_mode">
-    <v-card v-if="data.widgetType==='ad'" class="ad">
-      <v-card-title>
-        <v-icon size="19px">monetization_on</v-icon> &nbsp;&nbsp;<b>赞助商</b>
-      </v-card-title>
-    </v-card>
-    <v-card v-else>
-      <v-card-title>
-        <div style="width: 100%;">
-          <div style="display: flex;">
-            <div style="flex: 100%;">
-              <v-icon v-if="data.widgetType==='note'" size="19px">event_note</v-icon>
-              <v-icon v-if="data.widgetType==='bookmark'" size="19px">bookmark_border</v-icon>
-              &nbsp;<b>{{data.title}}</b>
+  <div>
+    <!--Widget排序模式-->
+    <div class="widget sortmode" v-if="$store.state.page.current.sort_mode">
+      <v-card v-if="widgetData.widgetType==='AD'" class="AD">
+        <v-card-title>
+          <v-icon size="19px">monetization_on</v-icon> &nbsp;&nbsp;<b>赞助商</b>
+        </v-card-title>
+      </v-card>
+      <v-card v-else>
+        <v-card-title>
+          <div style="width: 100%;">
+            <div style="display: flex;">
+              <div style="flex: 100%;">
+                <v-icon v-if="widgetData.widgetType==='NOTE'" size="19px">event_note</v-icon>
+                <v-icon v-if="widgetData.widgetType==='BOOKMARK'" size="19px">bookmark_border</v-icon>
+                &nbsp;<b>{{widgetData.title}}</b>
+              </div>
             </div>
           </div>
-        </div>
-      </v-card-title>
-    </v-card>
-  </div>
-  <!--正常模式-->
-  <div class="widget" v-else>
-
-    <!--广告Widget-->
-    <v-card v-if="data.widgetType==='ad'">
-      <v-card-title>
-        <v-icon size="19px">monetization_on</v-icon> &nbsp;&nbsp;<b>赞助商</b>
-        <span style="font-size: 11px;"
-              class="grey--text" >&nbsp; | &nbsp;感谢支持我们，关闭本站AdBlock</span>
-      </v-card-title>
-    </v-card>
-    <v-card v-else @mouseenter="widgetEnter()" @mouseleave="widgetLeave()">
-      <!--Widget标题-->
-      <v-card-title>
-        <div style="width: 100%;">
-          <div style="display: flex;">
-            <div style="flex: 100%;">
-              <v-icon v-if="data.widgetType==='note'" size="19px">event_note</v-icon>
-              <v-icon v-if="data.widgetType==='bookmark'" size="19px">bookmark_border</v-icon>
-              &nbsp;<b>{{data.title}}</b>
+        </v-card-title>
+      </v-card>
+    </div>
+    <!--正常模式-->
+    <div class="widget" v-if="!$store.state.page.current.sort_mode">
+      <!--广告Widget-->
+      <v-card v-if="widgetData.widgetType ==='AD'">
+        <v-card-title>
+          <v-icon size="19px">monetization_on</v-icon> &nbsp;&nbsp;<b>赞助商</b>
+        </v-card-title>
+      </v-card>
+      <v-card v-else @mouseenter="widgetEnter()" @mouseleave="widgetLeave()">
+        <!--Widget标题-->
+        <v-card-title>
+          <div style="width: 100%;">
+            <div style="display: flex;">
+              <div style="flex: 100%;">
+                <v-icon v-if="widgetData.widgetType==='NOTE'" size="19px">event_note</v-icon>
+                <v-icon v-if="widgetData.widgetType==='BOOKMARK'" size="19px">bookmark_border</v-icon>
+                &nbsp;<b>{{widgetData.title}}</b>
+              </div>
+              <!--Widget菜单-->
+              <div style="flex: 1;min-width: 80px;text-align: right;margin-right: 6px;">
+                <v-tooltip right>
+                  <v-icon slot="activator" size="18px" v-if="widgetData.widgetType==='NOTE'&&posX+'_'+widgetData.posY===columnOverIdx+'_'+widgetOverIdx">
+                    edit
+                  </v-icon>
+                  <span v-if="widgetData.widgetType==='NOTE'">编辑</span>
+                  <v-icon slot="activator" size="22px" v-if="widgetData.widgetType==='BOOKMARK'&&posX+'_'+widgetData.posY===columnOverIdx+'_'+widgetOverIdx">
+                    add
+                  </v-icon>
+                  <span v-if="widgetData.widgetType==='BOOKMARK'">添加</span>
+                </v-tooltip>
+                &nbsp;
+                <v-menu
+                  offset-y
+                  open-on-hover
+                  lazy
+                  transition="scale-transition"
+                  :open-delay="200"
+                >
+                  <!--<v-btn slot="activator" color="primary" dark>Dropdown</v-btn>-->
+                  <v-icon slot="activator" @click="widgetMenu()" size="22px">menu</v-icon>
+                  <v-list class="widget_menu_list">
+                    <v-list-tile @click="widgetMenu()">
+                      <v-list-tile-title><v-icon size="small">settings</v-icon> 面板设置</v-list-tile-title>
+                    </v-list-tile>
+                    <v-list-tile @click="widgetMenu()">
+                      <v-list-tile-title><v-icon size="small">input</v-icon> 复制到</v-list-tile-title>
+                    </v-list-tile>
+                    <v-list-tile @click="widgetMenu()">
+                      <v-list-tile-title><v-icon size="small">sort</v-icon> 排序</v-list-tile-title>
+                    </v-list-tile>
+                    <v-list-tile @click="widgetMenu()">
+                      <v-list-tile-title><v-icon size="small">delete</v-icon> 删除面板</v-list-tile-title>
+                    </v-list-tile>
+                  </v-list>
+                </v-menu>
+              </div>
             </div>
-            <div style="flex: 1;min-width: 80px;text-align: right;margin-right: 6px;">
-              <v-tooltip right>
-                <v-icon slot="activator" size="18px" v-if="data.widgetType==='note'&&posX+'_'+data.idx===column_over_idx+'_'+widget_over_idx">
-                 edit
-                </v-icon>
-                <span v-if="data.widgetType==='note'">编辑</span>
-                <v-icon slot="activator" size="22px" v-if="data.widgetType==='bookmark'&&posX+'_'+data.idx===column_over_idx+'_'+widget_over_idx">
-                  add
-                </v-icon>
-                <span v-if="data.widgetType==='bookmark'">添加</span>
-              </v-tooltip>
-              &nbsp;
-              <v-menu
-                offset-y
-                open-on-hover
-                lazy
-                transition="scale-transition"
-                :open-delay="200"
-              >
-                <!--<v-btn slot="activator" color="primary" dark>Dropdown</v-btn>-->
-                <v-icon slot="activator" @click="widgetMenu()" size="22px">menu</v-icon>
-                <v-list class="widget_menu_list">
-                  <v-list-tile @click="widgetMenu()">
-                    <v-list-tile-title><v-icon size="small">settings</v-icon> 面板设置</v-list-tile-title>
-                  </v-list-tile>
-                  <v-list-tile @click="widgetMenu()">
-                    <v-list-tile-title><v-icon size="small">input</v-icon> 复制到</v-list-tile-title>
-                  </v-list-tile>
-                  <v-list-tile @click="widgetMenu()">
-                    <v-list-tile-title><v-icon size="small">sort</v-icon> 排序</v-list-tile-title>
-                  </v-list-tile>
-                  <v-list-tile @click="widgetMenu()">
-                    <v-list-tile-title><v-icon size="small">delete</v-icon> 删除面板</v-list-tile-title>
-                  </v-list-tile>
-                </v-list>
-
-              </v-menu>
-            </div>
+            <span class="grey--text" v-if="widgetData.description">{{widgetData.description}}posX:{{widgetData.posX}},posY:{{widgetData.posY}}</span>
           </div>
-          <span class="grey--text" v-if="data.description">{{data.description}}</span>
-        </div>
-      </v-card-title>
-      <v-card-text v-if="data.widgetType==='bookmark'"> <!-- 书签 -->
-        <div v-if="data.content">
-          <!--拖拽排序Link-->
-          <draggable v-model="data.content" :options="{group:'people'}" @start="drag=true" @end="drag=false">
-            <div v-for="item in data.content" :key="item.idx">
+        </v-card-title>
+        <v-card-text v-if="widgetData.widgetType==='BOOKMARK'"> <!-- 书签 -->
+          <div v-if="widgetData.content">
+            <!--拖拽排序Link-->
+            <draggable v-model="widgetData.content" :options="{group:'people'}" @start="drag=true" @end="drag=false">
+              <div v-for="item in widgetData.content" :key="item.id">
               <span
                 class="link"
-                @click.stop="$store.commit('bookmark_openlink',{item:item,force_new_tab:null})"
-                @contextmenu.prevent="open_context_menu($event,item)"
+                @click.stop="$store.commit('BOOKMARK_openlink',{item:item,force_new_tab:null})"
+                @contextmenu.prevent="openContextMenu($event,item)"
               >
                 {{ item.title }}
               </span>
-            </div>
-          </draggable>
-        </div>
-        <div v-else>
-          暂无书签
-        </div>
-      </v-card-text>
-      <v-card-text v-if="data.widgetType === 'note'">
-        <div v-if="data.content">
-          <span v-html="data.content"></span>
-        </div>
-        <div v-else>
-          暂无内容
-        </div>
-      </v-card-text>
-    </v-card>
+              </div>
+            </draggable>
+          </div>
+          <div v-else>
+            暂无书签
+          </div>
+        </v-card-text>
+        <v-card-text v-if="widgetData.widgetType === 'NOTE'">
+          <div v-if="widgetData.content">
+            <span v-html="widgetData.content"></span>
+          </div>
+          <div v-else>
+            暂无内容
+          </div>
+        </v-card-text>
+      </v-card>
+    </div>
   </div>
+
 
 </template>
 
@@ -123,50 +123,47 @@
     components: {
       draggable, Sortable
     },
+    mounted(){
+      // console.log(this.widgetData);
+    },
     data: () => ({
-      widget_over_idx: null,
-      column_over_idx: null,
-      link_contextmenu_items:[
-        { title: '新页面打开' ,icon:'open_in_new' ,mutation:'bookmark_openlink',params:{force_new_tab:true}},
-        { title: '当前页面打开' ,icon:'open_in_browser' ,mutation:'bookmark_openlink',params:{force_new_tab:false}},
+      widgetOverIdx: null,
+      columnOverIdx: null,
+      linkContextmenuItems:[
+        { title: '新页面打开' ,icon:'open_in_new' ,mutation:'BOOKMARK_openlink',params:{force_new_tab:true}},
+        { title: '当前页面打开' ,icon:'open_in_browser' ,mutation:'BOOKMARK_openlink',params:{force_new_tab:false}},
         { title: '编辑书签' ,icon:'edit' ,mutation:false,params:{}},
-        { title: '删除书签' ,icon:'delete',mutation:'bookmark_deletelink',params:{}}
+        { title: '删除书签' ,icon:'delete',mutation:'BOOKMARK_deletelink',params:{}}
       ]
     }),
-    mounted(){
-      console.log(this.data);
+    watch:{
+      widgetData:function () {
+        console.log(this.widgetData)
+      }
     },
     methods: {
-      open_context_menu:function (e,item) {
+      openContextMenu:function (e,item) {
         let that = this;
-        this.link_contextmenu_items.forEach(function (elem,i) {
-          that.link_contextmenu_items[i].params['item'] = item;
+        this.linkContextmenuItems.forEach(function (elem,i) {
+          that.linkContextmenuItems[i].params['item'] = item;
         });
-        this.$store.commit('show_context_menu',{e:e,items:this.link_contextmenu_items})
+        this.$store.commit('show_context_menu',{e:e,items:this.linkContextmenuItems})
       },
       widgetEnter:function () {
-        this.widget_over_idx = this.data.idx;
-        this.column_over_idx = this.posX;
+        this.widgetOverIdx = this.widgetData.posY;
+        this.columnOverIdx = this.posX;
       },
       widgetLeave:function () {
-        this.widget_over_idx = null;
-        this.column_over_idx = null;
+        this.widgetOverIdx = null;
+        this.columnOverIdx = null;
       },
       widgetMenu:function () {
 
-      },
-      link_context_menu:function (e,item) {
-        console.log(e);
-        console.log(item)
-        // e.preventDefault();
-        // console.log(item);
       }
-
     },
     props:[
-      'data','posX'
+      'widgetData','posX'
     ],
-
   }
 </script>
 
@@ -181,5 +178,5 @@
   .widget .link{cursor: pointer;color: #3d3d3d;}
   .widget .link:hover{text-decoration: underline;}
   .sortmode {cursor: move;}
-  .sortmode .ad{cursor: not-allowed}
+  .sortmode .AD{cursor: not-allowed}
 </style>

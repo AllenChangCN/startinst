@@ -7,7 +7,7 @@
     <!--排序模式-->
     <v-layout row wrap v-if="$store.state.page.current.sort_mode" @keyup.27="$store.commit('toggle_page_sortmode')">
       <v-flex lg12 xs12 md12>
-        <page_head/>
+        <page_heAD/>
       </v-flex>
       <!--遍历列-->
       <v-flex lg3 xs6 md3
@@ -16,14 +16,14 @@
       >
         <!--遍历Widget-->
         <draggable v-model="widgets"
-                   :list="widget_column.data"
+                   :list="widget_column.widgetGroup"
                    :options="{group:'widgets', animation: 100}"
                    @start="drag=true"
                    @change="log"
                    style="min-height: 16px;"
                    @end="drag=false">
-          <div v-for="widget in widget_column.data" :key="widget.idx" style="margin-bottom: 13px;">
-            <widget :data="widget" :posX="widget_column.posX"/>
+          <div v-for="widget in widget_column.widgetGroup" :key="widget.posY" style="margin-bottom: 13px;">
+            <widget :widgetData="widget" :posX="widget_column.posX"/>
           </div>
         </draggable>
       </v-flex>
@@ -32,7 +32,7 @@
     <!--正常展示模式-->
     <v-layout wrap v-if="!$store.state.page.current.sort_mode">
       <v-flex lg12 xs12 md12>
-        <page_head/>
+        <page_heAD/>
       </v-flex>
       <!--遍历列-->
       <v-flex lg3 xs6 md3 v-for="widget_column in widgets" :key="widget_column.posX"
@@ -40,10 +40,10 @@
               @mouseleave="columnLeave()"
       >
         <!--遍历Widget-->
-        <div v-for="widget in widget_column.data" :key="widget.idx" style="margin-bottom: 13px;">
-          <widget :data="widget" :posX="widget_column.posX"/>
+        <div v-for="widget in widget_column.widgetGroup" :key="widget.posY" style="margin-bottom: 13px;">
+          <widget :widgetData="widget" :posX="widget_column.posX"/>
         </div>
-        <div v-if="column_over_idx===widget_column.posX"
+        <div v-if="columnOverIdx===widget_column.posX"
              style="text-align: center;">
             <v-btn flat icon><v-icon size="44px" class="grey--text lighten-4">add</v-icon></v-btn>
         </div>
@@ -55,7 +55,7 @@
 
 <script>
   import widget from "../widget/widget"
-  import page_head from "./page_head"
+  import page_heAD from "./page_heAD"
   import draggable from 'vuedraggable'
   import Sortable from 'sortablejs'
   import context_menu from '../page/context_menu'
@@ -64,16 +64,17 @@
     mounted(){
       // 获取初始化数据
       this.fetchPageData();
+      // console.log(this.widgets)
     },
     components: {
-      widget,page_head,draggable, Sortable,context_menu
+      widget,page_heAD,draggable, Sortable,context_menu
     },
     methods: {
       columnEnter:function (posX) {   // 显示添加Widget的按钮
-        this.column_over_idx = posX;
+        this.columnOverIdx = posX;
       },
       columnLeave:function () {   // 隐藏添加Widget的按钮
-        this.column_over_idx = null;
+        this.columnOverIdx = null;
       },
       log: function (evt){
         console.log(evt)
@@ -81,61 +82,39 @@
       async fetchPageData() {
         let pageInfo = (await this.$axios.$get('/page/'+this.page_id+'/info')).data;
         this.$store.commit('set_page_info',pageInfo);
+      },
+    },
+    computed:{
+
+    },
+    watch:{
+      "$store.state.page.current.pageInfo":function(){
+        console.log('changed');
+        let widgetData = {};
+        let rawWidgetList = this.$store.state.page.current.pageInfo.widgetList;
+        rawWidgetList.forEach(function(elem,i){
+          if(!widgetData[elem.posX]) widgetData[elem.posX] = {};
+          if(!widgetData[elem.posX]['widgetGroup']) widgetData[elem.posX]['widgetGroup'] = [];
+          if(!widgetData[elem.posX]['posX']) widgetData[elem.posX]['posX'] = parseInt(elem.posX);
+          widgetData[elem.posX]['widgetGroup'].push(elem);
+        });
+        console.log(widgetData);
+        this.widgets =  widgetData;
       }
     },
     data: () => ({
-      column_over_idx: null,
-      x:0,
-      y:0,
-      widgets: [
-          {
-            posX:1,
-            name:'',
-            data:[
-              {idx: 1, title: '赞助商',widgetType:'ad',description:'先保存在终端，然后再统一上传，减少并发',},
-              {idx: 2, title: '岁吧点点', description:'',widgetType:'bookmark',
-                content:[
-                  {idx:1,icon:'',title:'百度搜索引擎',url:'https://www.baidu.com'},
-                  {idx:2,icon:'',title:'谷歌搜索引擎',url:'https://www.baidu.com'},
-                ]
-              },
-              {idx: 3, title: 'test2',description:'描述2',widgetType:'bookmark',
-                content:[
-                  {idx:1, icon:'',title: '腾讯网',url:'http://www.qq.com'},
-                  {idx:2,icon:'',title: '腾讯网2',url:'http://www.qq.com'},
-                  {idx:3,icon:'',title: '腾讯网3',url:'http://www.qq.com'},
-                ]
-              },
-            ]},
-          {
-            posX:2,
-            name:'',
-            data: [
-              {idx: 2, title: 'test2',widgetType:'note',description:'描述',
-                content:'<h2>一去二三里</h2>烟村四五家，亭台六七座<br/>支持MarkDown'
-              },
-              {idx: 3, title: 'test2',type:'bookmark',description:'描述',}
-            ]},
-          {
-            posX:3,
-            name:'',
-            data: [
-              {idx: 1, title: 'test1',widgetType:'note',description:'',},
-              {idx: 2, title: 'test2',widgetType:'bookmark',description:'描述',},
-              {idx: 3, title: 'test2',widgetType:'bookmark',description:'描述',},
-              {idx: 4, title: 'test2',widgetType:'bookmark',description:'描述',}
-          ]},
-          {
-            posX:4,
-            name:'',
-            data: [
-              {idx: 1, title: 'test1',widgetType:'bookmark',description:'描述',},
-              {idx: 2, title: 'test2',widgetType:'bookmark',description:'描述',},
-              {idx: 3, title: 'test2',widgetType:'bookmark',description:'描述',},
-              {idx: 4, title: 'test2',widgetType:'bookmark',description:'描述',},
-              {idx: 5, title: 'test2',widgetType:'bookmark',description:'描述',},
-            ]},
-      ]
+      columnOverIdx: null,
+      widgets:[{posX:1,widgetGroup:[]}],
+      // widgets: [
+      //     {
+      //       posX:1,
+      //       widgetGroup:[
+      //         {posY: 1, title: '赞助商',widgetType:'AD', description:'先保存在终端，然后再统一上传，减少并发'},
+      //         {posY: 2, title: '岁吧点点',widgetType:'BOOKMARK', description:''},
+      //         {posY: 3, title: 'test2',widgetType:'BOOKMARK',description:'描述2'},
+      //       ]
+      //     }
+      // ]
     }),
     props:[
       'page_id','homepage','is_owner'
