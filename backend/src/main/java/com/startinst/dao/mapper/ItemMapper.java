@@ -36,13 +36,8 @@ public interface ItemMapper {
      * @param id
      * @return
      */
-    @Results({
-            @Result(property = "id",column = "id"),
-            @Result(property="widget",column="widget_id",javaType=Widget.class,
-                    one=@One(select="com.startinst.dao.mapper.WidgetMapper.findById"))
-    })
     @Select("SELECT * FROM items WHERE id = #{id}")
-    Item findByIdWithWidget(@Param("id") Long id);
+    Item findById(@Param("id") Long id);
 
     /**
      * 插入一条数据

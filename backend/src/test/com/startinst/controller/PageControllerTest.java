@@ -39,8 +39,8 @@ class PageControllerTest {
     void showPageInfo() throws Exception{
 
         MvcResult result = this.mockMvc.perform(get("/api/page/999999999999999999/info"))
-//                .andExpect(status().isOk())
-                .andExpect(content().json("{'code':0}"))
+                .andExpect(status().isOk())
+//                .andExpect(content().json("{'code':0}"))
                 .andReturn();
         System.out.println(result.getResponse().getContentAsString());
     }
@@ -48,8 +48,7 @@ class PageControllerTest {
     @Test
     void showPageItems() throws Exception{
         MvcResult result = this.mockMvc.perform(get("/api/page/999999999999999999/items"))
-//                .andExpect(status().isOk())
-                .andExpect(content().json("{'code':0}"))
+                .andExpect(status().isOk())
                 .andReturn();
         System.out.println(result.getResponse().getContentAsString());
     }
@@ -58,7 +57,7 @@ class PageControllerTest {
     @Transactional
     void postCreatePage() throws Exception
     {
-        String str = "{\"userId\":2323,\"title\":\"34234234\",\"isOpen\":\"1\",\"description\":\"34234234\",\"tagIdList\":[111,333]}";
+        String str = "{\"userId\":2323,\"title\":\"34234234\",\"isOpen\":true,\"description\":\"34234234\",\"tagIdList\":[\"111\",\"333\"]}";
         MvcResult result = this.mockMvc.perform(post("/api/page/create")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(str)

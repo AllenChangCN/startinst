@@ -102,9 +102,8 @@
         if(this.search != null && this.search.length >= 3){
           let newTag = await (this.$axios.post('/tag/create', {name: this.search}));
           this.search = '';
-          console.log(newTag.data.data);
           this.items.push(newTag.data.data);
-          this.pageForm.tagIdList.push(newTag.data.data);
+          this.pageForm.tagIdList.push(newTag.data.data.id);
           this.$store.commit('show_global_snackbar',{
             text:"创建新标签",
             show:true,
@@ -121,8 +120,8 @@
         let newPage = await (this.$axios.post('/page/create',this.pageForm));
         console.log(newPage);
         this.$store.commit('show_global_snackbar',{
-          text:"创建新页面",
-          show:true,
+          text: "创建新页面",
+          show: true,
           success: null,
           timeout: 2000
         });

@@ -40,11 +40,10 @@ class UserFavorPageMapperTest {
     @Test
     void insert()
     {
-        int affect = userFavorPageMapper.delete(testFavorId);
+        int affect = userFavorPageMapper.delete(testUserId,testPageId);
         assertTrue(affect >= 0);
 
         UserFavorPage userFavorPage = new UserFavorPage();
-        userFavorPage.setId(testFavorId);
         userFavorPage.setUserId(testFavorId);
         userFavorPage.setPageId(testPageId);
         userFavorPage.setCreatedAt(new Date());

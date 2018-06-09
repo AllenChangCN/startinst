@@ -9,6 +9,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
@@ -37,6 +38,7 @@ class WidgetMapperTest {
         item.setId();
         item.setWidgetId(testWidgetId);
         item.setTitle("widget title");
+        item.setPageId(testPageId);
         item.setDescription("widget desc");
         item.setContent("content item");
         item.setItemType(ItemTypeEnum.NOTE);
@@ -51,6 +53,7 @@ class WidgetMapperTest {
     }
 
     @Test
+    @Transactional
     void insertAndUpdate() {
         int effect;
         // insert
@@ -59,6 +62,8 @@ class WidgetMapperTest {
         Long testWidgetId = widget.getId();
         widget.setTitle("测试Widget Title");
         widget.setPageId(testPageId);
+        widget.setPosX(3);
+        widget.setPosY(widgetMapper.getMaxPosY(testPageId,3) + 1);
         widget.setWidgetType(WidgetTypeEnum.NOTE);
         widget.setDescription("测试Widget Desc");
         widget.setCreatedAt(new Date());

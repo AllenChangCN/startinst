@@ -20,9 +20,8 @@ public interface UserFavorPageMapper {
      * @param userId
      * @return
      */
-    @Select("SELECT id,page_id,created_at FROM page_user_favor where user_id=#{userId}")
+    @Select("SELECT page_id,created_at FROM page_user_favor where user_id=#{userId}")
     @Results({
-            @Result(property = "id",column = "id"),
             @Result(property = "page",column = "page_id",javaType = Page.class,
                     one = @One(select = "com.startinst.dao.mapper.PageMapper.findById"))
     })
@@ -33,15 +32,16 @@ public interface UserFavorPageMapper {
      * @param userFavorPage
      * @return
      */
-    @Insert("INSERT INTO page_user_favor(id,page_id,user_id,created_at) " +
-            "VALUES(#{id}, #{pageId},#{userId},#{createdAt})")
+    @Insert("INSERT INTO page_user_favor(page_id,user_id,created_at) " +
+            "VALUES(#{pageId},#{userId},#{createdAt})")
     int insert(UserFavorPage userFavorPage);
 
     /**
      * 删除一条数据
-     * @param id
+     * @param userId
+     * @param pageId
      * @return
      */
-    @Delete("DELETE FROM page_user_favor WHERE id=#{id} LIMIT 1")
-    int delete(@Param("id") Long id);
+    @Delete("DELETE FROM page_user_favor WHERE user_id=#{userId} AND page_id=#{pageId} LIMIT 1")
+    int delete(@Param("userId") Long userId,@Param("pageId") Long pageId);
 }

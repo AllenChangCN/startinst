@@ -40,7 +40,7 @@ public interface WidgetMapper {
      * @param pageId
      * @return
      */
-    @Select("SELECT id FROM widgets WHERE page_id=#{pageId} ORDER BY posY ASC,posX ASC")
+    @Select("SELECT id FROM widgets WHERE page_id=#{pageId} ORDER BY pos_y ASC,pos_x ASC")
     List<Long> findWidgetIdListByPageId(@Param("pageId") Long pageId);
 
     /**

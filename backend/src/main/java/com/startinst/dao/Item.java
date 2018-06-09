@@ -2,10 +2,10 @@ package com.startinst.dao;
 
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.annotation.*;
 import com.startinst.enums.ItemTypeEnum;
 import com.startinst.utils.SnowFlakeUtil;
-import org.springframework.web.bind.annotation.ModelAttribute;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -14,7 +14,8 @@ import java.util.Date;
  * @author liuyuancheng
  */
 @JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id")
-public class Item implements Serializable{
+public class Item implements Serializable
+{
 
     private Long id;
 
@@ -66,7 +67,7 @@ public class Item implements Serializable{
     }
 
     public long getWidgetId() {
-        return widgetId;
+        return this.widgetId;
     }
 
     public void setWidgetId(Long widgetId) {
@@ -95,12 +96,6 @@ public class Item implements Serializable{
 
     public void setContent(String content) {
         this.content = content;
-    }
-
-    @Override
-    public String toString() {
-        return JSON.toJSONString(this);
-
     }
 
     public String getTitle() {
@@ -141,5 +136,10 @@ public class Item implements Serializable{
 
     public void setWidget(Widget widget) {
         this.widget = widget;
+    }
+
+    @Override
+    public String toString() {
+        return JSON.toJSONString(this);
     }
 }
