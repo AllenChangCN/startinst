@@ -73,7 +73,7 @@ class WidgetMapperTest {
         widget2.setUpdatedAt(new Date());
         System.out.println(widget2);
         assertTrue(widget2.getId() > 0L);
-        effect = widgetMapper.updateInfo(widget2);
+        effect = widgetMapper.update(widget2);
         assertTrue(effect > 0);
 
         // 验证沟通成果

@@ -74,8 +74,8 @@ public interface WidgetMapper {
      * @param widget
      * @return
      */
-    @Insert("INSERT INTO widgets(id,page_id,widget_type,title,description,created_at) " +
-            "VALUES(#{id},#{pageId},#{widgetType},#{title},#{description}, #{createdAt})")
+    @Insert("INSERT INTO widgets(id,page_id,widget_type,title,description,created_at,pos_x,pos_y) " +
+            "VALUES(#{id},#{pageId},#{widgetType},#{title},#{description}, #{createdAt},#{posX},#{posY})")
     int insert(Widget widget);
 
     /**
@@ -85,7 +85,7 @@ public interface WidgetMapper {
      * @return
      */
     @Update("UPDATE widgets SET title=#{title},description=#{description},updated_at=#{updatedAt} WHERE id=#{id} LIMIT 1")
-    int updateInfo(Widget widget);
+    int update(Widget widget);
 
     /**
      * 软删除
@@ -115,6 +115,15 @@ public interface WidgetMapper {
      */
     @Update("UPDATE widgets SET pos_x=#{posX},pos_y=#{posY} WHERE id=#{id} LIMIT 1")
     int updateWidgetPosById(@Param("id") Long id,@Param("posX") Integer posX, @Param("posY") Integer posY);
+
+    /**
+     * 获取Widget的PosY最大值
+     * @param id
+     * @param posX
+     * @return
+     */
+    @Select("SELECT MAX(pos_y) FROM widgets WHERE page_id=#{pageId} AND pos_x=#{posX}")
+    int getMaxPosY(@Param("pageId") Long id,@Param("posX") Integer posX);
 
     /**
      * 更新widget 的Size

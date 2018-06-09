@@ -1,7 +1,9 @@
 package com.startinst.model;
 
 import com.alibaba.fastjson.JSON;
+import com.startinst.enums.WidgetTypeEnum;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -9,15 +11,21 @@ import java.util.List;
  */
 public class WidgetModel {
 
-    private Long userId;
+    private Long id;
 
     private String title;
 
     private String description;
 
-    private Boolean isOpen;
+    private Integer posX;
 
-    private List<Long> tagIdList;
+    private Integer posY;
+
+    private Long pageId;
+
+    private WidgetTypeEnum widgetType;
+
+    private Date createdAt;
 
     public String getTitle() {
         return title;
@@ -35,32 +43,56 @@ public class WidgetModel {
         this.description = description;
     }
 
-    public Boolean getIsOpen() {
-        return isOpen;
-    }
-
-    public void setIsOpen(Boolean isOpen) {
-        this.isOpen = isOpen;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
-    public List<Long> getTagIdList() {
-        return tagIdList;
-    }
-
-    public void setTagIdList(List<Long> tagIdList) {
-        this.tagIdList = tagIdList;
-    }
-
     @Override
     public String toString() {
         return JSON.toJSONString(this);
+    }
+
+    public Integer getPosX() {
+        return posX;
+    }
+
+    public void setPosX(Integer posX) {
+        this.posX = posX;
+    }
+
+    public Integer getPosY() {
+        return posY;
+    }
+
+    public void setPosY(Integer posY) {
+        this.posY = posY;
+    }
+
+    public Long getPageId() {
+        return pageId;
+    }
+
+    public void setPageId(Long pageId) {
+        this.pageId = pageId;
+    }
+
+    public WidgetTypeEnum getWidgetType() {
+        return widgetType;
+    }
+
+    public void setWidgetType(WidgetTypeEnum widgetType) {
+        this.widgetType = widgetType;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 }

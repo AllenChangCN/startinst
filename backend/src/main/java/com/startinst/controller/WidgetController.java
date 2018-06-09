@@ -2,7 +2,9 @@ package com.startinst.controller;
 
 import com.startinst.model.HttpResponse;
 import com.startinst.model.WidgetModel;
+import com.startinst.service.WidgetService;
 import com.startinst.utils.HttpResponseUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -14,6 +16,9 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value = "/api/widgets")
 public class WidgetController {
 
+    @Autowired
+    private WidgetService widgetService;
+
     /**
      * 创建一个Widget
      * @param widgetModel
@@ -22,7 +27,7 @@ public class WidgetController {
     @PostMapping(value = "create")
     public HttpResponse create(@RequestBody WidgetModel widgetModel)
     {
-        return HttpResponseUtil.success();
+        return HttpResponseUtil.success(widgetService.create(widgetModel));
     }
 
     /**
