@@ -69,7 +69,6 @@
   export default {
     name: 'edit',
     mounted(){
-      this.querySelections('');
     },
     data: () => ({
       dialog: false,
@@ -87,7 +86,8 @@
     watch: {
       search (val) {
         // val && this.querySelections(val)
-        this.querySelections(val)
+        if(this.$store.state.global.dialog.page_edit.visible)
+          this.querySelections(val);
       }
     },
     methods:{
