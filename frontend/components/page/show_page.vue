@@ -84,9 +84,6 @@
         this.$store.commit('set_page_info',pageInfo);
       },
     },
-    computed:{
-
-    },
     watch:{
       "$store.state.page.current.pageInfo":function(){
         let widgetData = {};
@@ -98,7 +95,7 @@
           widgetData[elem.posX]['widgetGroup'].push(elem);
         });
         this.widgets =  widgetData;
-        console.info("page info updated.");
+        console.info("page info updated.")
       }
     },
     data: () => ({

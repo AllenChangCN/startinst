@@ -5,13 +5,11 @@ import com.startinst.dao.PageTag;
 import com.startinst.dao.Tag;
 import com.startinst.dao.Widget;
 import com.startinst.dao.mapper.*;
-import com.startinst.model.PageCreateModel;
+import com.startinst.model.PageModel;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -62,7 +60,7 @@ public class PageService
      * 创建一个页面(包含Tag等信息)
      */
     @Transactional(rollbackFor = RuntimeException.class)
-    public Page create(PageCreateModel pageCreateModel) throws RuntimeException
+    public Page create(PageModel pageCreateModel) throws RuntimeException
     {
         // 添加页面
         Page page = new Page();

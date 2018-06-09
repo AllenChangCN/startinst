@@ -1,10 +1,9 @@
 package com.startinst.service;
 
-import com.alibaba.fastjson.JSON;
 import com.startinst.dao.Page;
 import com.startinst.dao.PageTag;
 import com.startinst.dao.mapper.PageTagMapper;
-import com.startinst.model.PageCreateModel;
+import com.startinst.model.PageModel;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +46,7 @@ public class PageServiceTest {
         List<Long> tagIdList = new ArrayList<>();
         tagIdList.add(testPageId);
         tagIdList.add(222L);
-        PageCreateModel pageCreateModel = new PageCreateModel();
+        PageModel pageCreateModel = new PageModel();
         pageCreateModel.setIsOpen(false);
         pageCreateModel.setDescription("desc");
         pageCreateModel.setTagIdList(tagIdList);

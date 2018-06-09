@@ -3,11 +3,10 @@ package com.startinst.controller;
 import com.startinst.dao.Item;
 import com.startinst.dao.Page;
 import com.startinst.model.HttpResponse;
-import com.startinst.model.PageCreateModel;
+import com.startinst.model.PageModel;
 import com.startinst.service.ItemService;
 import com.startinst.service.PageService;
 import com.startinst.utils.HttpResponseUtil;
-import com.startinst.utils.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
@@ -51,7 +50,7 @@ public class PageController {
      * @return
      */
     @PostMapping("create")
-    public HttpResponse createPage(@RequestBody PageCreateModel pageCreateModel)
+    public HttpResponse createPage(@RequestBody PageModel pageCreateModel)
     {
         Page page = pageService.create(pageCreateModel);
         return HttpResponseUtil.success(page);

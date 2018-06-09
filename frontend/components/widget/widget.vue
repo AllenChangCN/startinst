@@ -2,7 +2,7 @@
   <div>
     <!--Widget排序模式-->
     <div class="widget sortmode" v-if="$store.state.page.current.sort_mode">
-      <v-card v-if="widgetData.widgetType==='AD'" class="AD">
+      <v-card v-if="widgetData.widgetType==='AD'" class="ad">
         <v-card-title>
           <v-icon size="19px">monetization_on</v-icon> &nbsp;&nbsp;<b>赞助商</b>
         </v-card-title>
@@ -12,6 +12,7 @@
           <div style="width: 100%;">
             <div style="display: flex;">
               <div style="flex: 100%;">
+                <!--idget图标-->
                 <v-icon v-if="widgetData.widgetType==='NOTE'" size="19px">event_note</v-icon>
                 <v-icon v-if="widgetData.widgetType==='BOOKMARK'" size="19px">bookmark_border</v-icon>
                 &nbsp;<b>{{widgetData.title}}</b>
@@ -178,5 +179,5 @@
   .widget .link{cursor: pointer;color: #3d3d3d;}
   .widget .link:hover{text-decoration: underline;}
   .sortmode {cursor: move;}
-  .sortmode .AD{cursor: not-allowed}
+  .sortmode .ad{cursor: not-allowed}
 </style>

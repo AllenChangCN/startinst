@@ -43,7 +43,7 @@ module.exports = {
     '~/plugins/vuetify',
     {src:'~/plugins/http',ssr:true},
     '~/plugins/filters',
-    {src:'~/plugins/localStorage',ssr:false}
+    // {src:'~/plugins/localStorage',ssr:false}
   ],
   performance:{
     gzip: true,
