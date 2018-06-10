@@ -40,7 +40,7 @@ public class WidgetController {
     public HttpResponse delete(@PathVariable("widget_id") Long widgetId)
     {
         if(widgetService.delete(widgetId) > 0){
-            return HttpResponseUtil.success(widgetId);
+            return HttpResponseUtil.success("widget id:"+ widgetId + " deleted.");
         }else{
             return HttpResponseUtil.error(HttpResponseCodeEnum.ERR_ACTION_FAILED,"delete error.");
         }

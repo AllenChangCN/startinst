@@ -31,11 +31,23 @@ export default {
   },
   // Widget编辑菜单
   menu_widget_delete_click(state, params){
+    let that = this;
     state.page.current.pageInfo.widgetList.forEach(function(elem,i){
       if(elem.id === params.id){  // 删除与选定widget ID相等的
-        let ret = state.page.current.pageInfo.widgetList.splice(i, 1);
-        console.log('splice widget id: ',ret[0].id);
-        axios.post('widgets/'+ret[0].id+'/delete');
+        axios.post('widgets/'+elem.id+'/delete').then(function(response)
+        {
+          if(response.data.code === "0") // 从服务器上删除成功
+          {
+            let ret = state.page.current.pageInfo.widgetList.splice(i, 1);
+            console.log('splice widget id: ',ret[0].id);
+            that.commit('show_global_snackbar',{
+              text:"Widget 已删除",
+              show:true,
+              success: null,
+              timeout: 2000
+            });
+          }
+        });
       }
     })
   }
