@@ -48,7 +48,7 @@ const createStore = () => {
           sort_mode:false,
           editable: false,
           is_owner: false,
-          pageInfo: null
+          pageInfo: {widgetList:[]}
         },
         contextmenu:{     // 右键菜单
           show_menu:false,

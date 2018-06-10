@@ -69,10 +69,7 @@
                     <v-list-tile @click="widgetMenu()">
                       <v-list-tile-title><v-icon size="small">input</v-icon> 复制到</v-list-tile-title>
                     </v-list-tile>
-                    <v-list-tile @click="widgetMenu()">
-                      <v-list-tile-title><v-icon size="small">sort</v-icon> 排序</v-list-tile-title>
-                    </v-list-tile>
-                    <v-list-tile @click="widgetMenu()">
+                    <v-list-tile @click="widgetMenuDelete(widgetData)">
                       <v-list-tile-title><v-icon size="small">delete</v-icon> 删除面板</v-list-tile-title>
                     </v-list-tile>
                   </v-list>
@@ -131,10 +128,10 @@
       widgetOverIdx: null,
       columnOverIdx: null,
       linkContextmenuItems:[
-        { title: '新页面打开' ,icon:'open_in_new' ,mutation:'BOOKMARK_openlink',params:{force_new_tab:true}},
-        { title: '当前页面打开' ,icon:'open_in_browser' ,mutation:'BOOKMARK_openlink',params:{force_new_tab:false}},
+        { title: '新页面打开' ,icon:'open_in_new' ,mutation:'bookmark_openlink',params:{force_new_tab:true}},
+        { title: '当前页面打开' ,icon:'open_in_browser' ,mutation:'bookmark_openlink',params:{force_new_tab:false}},
         { title: '编辑书签' ,icon:'edit' ,mutation:false,params:{}},
-        { title: '删除书签' ,icon:'delete',mutation:'BOOKMARK_deletelink',params:{}}
+        { title: '删除书签' ,icon:'delete',mutation:'bookmark_deletelink',params:{}}
       ]
     }),
     watch:{
@@ -160,6 +157,9 @@
       },
       widgetMenu:function () {
 
+      },
+      widgetMenuDelete:function (widgetData) {
+        this.$store.commit("menu_widget_delete_click", widgetData);
       }
     },
     props:[

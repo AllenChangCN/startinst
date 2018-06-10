@@ -1,5 +1,6 @@
 package com.startinst.controller;
 
+import com.startinst.enums.HttpResponseCodeEnum;
 import com.startinst.model.HttpResponse;
 import com.startinst.model.WidgetModel;
 import com.startinst.service.WidgetService;
@@ -38,7 +39,11 @@ public class WidgetController {
     @PostMapping(value = "{widget_id}/delete")
     public HttpResponse delete(@PathVariable("widget_id") Long widgetId)
     {
-        return HttpResponseUtil.success(widgetId);
+        if(widgetService.delete(widgetId) > 0){
+            return HttpResponseUtil.success(widgetId);
+        }else{
+            return HttpResponseUtil.error(HttpResponseCodeEnum.ERR_ACTION_FAILED,"delete error.");
+        }
     }
 
     /**

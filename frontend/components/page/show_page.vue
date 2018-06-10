@@ -85,7 +85,7 @@
       },
     },
     watch:{
-      "$store.state.page.current.pageInfo":function(){
+      "$store.state.page.current.pageInfo.widgetList":function(){
         let widgetData = {};
         let rawWidgetList = this.$store.state.page.current.pageInfo.widgetList;
         rawWidgetList.forEach(function(elem,i){

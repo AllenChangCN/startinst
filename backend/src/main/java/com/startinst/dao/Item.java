@@ -25,6 +25,8 @@ public class Item implements Serializable
 
     private Widget widget;
 
+    private Integer pos;
+
     private String title;
 
     private String description;
@@ -141,5 +143,13 @@ public class Item implements Serializable
     @Override
     public String toString() {
         return JSON.toJSONString(this);
+    }
+
+    public Integer getPos() {
+        return pos;
+    }
+
+    public void setPos(Integer pos) {
+        this.pos = pos;
     }
 }
