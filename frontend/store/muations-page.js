@@ -1,3 +1,4 @@
+import axios from '~/plugins/axios'
 export default {
   toggle_page_sortmode(state){     // 页面的widget是否在排序模式
     state.page.current.sort_mode = !state.page.current.sort_mode;
@@ -19,5 +20,20 @@ export default {
   },
   set_page_info(state,param){
     state.page.current.pageInfo = param;
-  }
+  },
+  // 加载当前页面的数据
+  load_current_page(state,param){
+    let that = this;
+    axios.get('/page/'+param.page_id+'/info').then(function(response){
+      that.commit('set_page_info',response.data.data);
+    });
+  },
+  // 删除Widget的确认框
+  toggle_widget_delete_dialog(state,param){
+    if(param.action === 'confirm')   // action: confirm、show、close
+    {
+      this.commit("menu_widget_delete",state.widget.current);
+    }
+    state.page.current.widget_delete_dialog = !state.page.current.widget_delete_dialog;
+  },
 }

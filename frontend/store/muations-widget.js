@@ -29,6 +29,10 @@ export default {
       timeout: 2000
     });
   },
+  // 设置当前操作的Widget的数据
+  set_widget_current_data(state, param){
+    state.widget.current = param;
+  },
   // Widget编辑菜单
   menu_widget_delete(state, params){
     let that = this;

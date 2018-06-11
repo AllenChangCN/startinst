@@ -83,8 +83,12 @@
         });
         this.$store.commit('show_context_menu',{e:e,items:this.linkContextmenuItems})
       },
+      widgetMenu:function(){
+
+      },
       widgetMenuDelete:function (widgetData) {
-        this.$store.commit("menu_widget_delete", widgetData);
+        this.$store.commit("set_widget_current_data",widgetData);
+        this.$store.commit("toggle_widget_delete_dialog",{action:'show'});
       }
     },
     props:[

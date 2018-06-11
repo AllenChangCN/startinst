@@ -50,6 +50,19 @@
       </v-flex>
     </v-layout>
     <context_menu style="display: none;"/>
+
+    <!--Widget 删除确认框-->
+    <v-dialog v-model="$store.state.page.current.widget_delete_dialog" max-width="290">
+      <v-card>
+        <v-card-title class="headline">确认要删除面板？</v-card-title>
+        <v-card-text>面板删除后不可恢复。</v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="gray lighten-1" flat="flat" @click="$store.commit('toggle_widget_delete_dialog',{action:'close'})">关闭</v-btn>
+          <v-btn color="green darken-1" flat="flat" @click="$store.commit('toggle_widget_delete_dialog',{action:'confirm'})">确认</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </v-container>
 </template>
 
@@ -79,9 +92,8 @@
       log: function (evt){
         console.log(evt)
       },
-      async fetchPageData() {
-        let pageInfo = (await this.$axios.$get('/page/'+this.page_id+'/info')).data;
-        this.$store.commit('set_page_info',pageInfo);
+      fetchPageData() {
+        this.$store.commit('load_current_page',{page_id:this.page_id});
       },
     },
     watch:{
@@ -99,6 +111,7 @@
       }
     },
     data: () => ({
+      deleteDialog: true,
       columnOverIdx: null,
       widgets:[{posX:1,widgetGroup:[]}],
       // widgets: [
