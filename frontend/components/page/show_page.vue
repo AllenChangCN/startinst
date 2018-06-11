@@ -43,9 +43,10 @@
         <div v-for="widget in widget_column.widgetGroup" :key="widget.posY" style="margin-bottom: 13px;">
           <widget :widgetData="widget" :posX="widget_column.posX"/>
         </div>
+        <!--鼠标划过时显示添加Widget按钮-->
         <div v-if="columnOverIdx===widget_column.posX" style="text-align: center;">
           <!--在当前列添加新的Widget-->
-          <v-btn flat icon><v-icon size="44px" class="grey--text lighten-4">add</v-icon></v-btn>
+          <v-btn flat icon @click="createWidget(widget_column.posX)"><v-icon size="44px" class="grey--text lighten-4">add</v-icon></v-btn>
         </div>
       </v-flex>
     </v-layout>
@@ -96,6 +97,11 @@
       fetchPageData() {
         this.$store.commit('load_current_page',{page_id:this.page_id});
       },
+      createWidget(posX){   // 添加一个Widget
+        this.$store.state.page.current.widget_edit_form.posX = posX;
+        this.$store.state.page.current.widget_edit_form.pageId = this.$store.state.page.current.pageInfo.id;
+        this.$store.commit('toggle_widget_edit_dialog',{action:'show'});
+      }
     },
     watch:{
       "$store.state.page.current.pageInfo.widgetList":function(){

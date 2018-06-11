@@ -33,6 +33,14 @@ export default {
   set_widget_current_data(state, param){
     state.widget.current = param;
   },
+  // 创建Widget
+  create_widget(state){
+    console.log(state.page.current.widget_edit_form);
+    axios.post('widgets/create',state.page.current.widget_edit_form).then(function(response)
+    {
+      console.log(response);
+    })
+  },
   // Widget编辑菜单
   menu_widget_delete(state, params){
     let that = this;

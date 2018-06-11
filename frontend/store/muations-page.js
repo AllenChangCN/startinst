@@ -36,4 +36,12 @@ export default {
     }
     state.page.current.widget_delete_dialog = !state.page.current.widget_delete_dialog;
   },
+  // 切换Widget对话框的可见性
+  toggle_widget_edit_dialog(state,param){
+    if(param.action === 'save')   // action: show/save/close
+    {
+      this.commit('create_widget');
+    }
+    state.page.current.widget_edit_dialog = !state.page.current.widget_edit_dialog;
+  }
 }

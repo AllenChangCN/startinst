@@ -36,8 +36,8 @@ public class WidgetService {
         widget.setCreatedAt(new Date());
         widget.setPageId(widgetModel.getPageId());
         widget.setTitle(widgetModel.getTitle());
-        widget.setPosX(3);
-        widget.setPosY(widgetMapper.getMaxPosY(widgetModel.getPageId(),3) + 1);
+        widget.setPosX(widgetModel.getPosX());
+        widget.setPosY(widgetMapper.getMaxPosY(widgetModel.getPageId(),widgetModel.getPosX()) + 1);
         widget.setPageId(widgetModel.getPageId());
         widget.setDescription(widgetModel.getDescription());
         int effect = widgetMapper.insert(widget);

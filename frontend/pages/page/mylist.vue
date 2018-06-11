@@ -100,75 +100,75 @@
 </template>
 
 <script>
-    export default {
-      name: "mylist",
-      data () {
-        return {
-          table:{headers:[],desserts:[],totalDesserts:null},
-          search: '',
-          loading:false,
-          pagination: {
-            pageNum:1,
-            pages:0,   //页面总数
-          },
-        }
-      },
-      watch: {
-        "pagination.pageNum": {
-          handler (val,oldVal) {
-            this.fetchMyList();
-          }
-        }
-      },
-      mounted(){
-        this.fetchMyList();
-        this.$store.commit('set_layout_title','页面管理');
-        this.table.headers = [
-          { text: '标题', value: 'title' },
-          { text: '标签', value: 'tagList' },
-          { text: '页面描述', value: 'description' },
-          { text: '浏览/留言/收藏', value: 'view' },
-          { text: '创建于', value: 'createdAt' },
-          { text: '操作', value: 'actions' }
-        ]
-      },
-      methods:{
-        test(){},
-        openOnNewTag(page_id){
-          window.open("/page/"+page_id,"_blank")
-        },
-        // 刷新数据
-        refreshMylist(){
-          this.fetchMyList();
-          this.$store.commit('show_global_snackbar',{
-            text:"数据已刷新",
-            show:true,
-            success: null,
-            timeout: 2000
-          });
-        },
-        // 获取数据
-        fetchMyList(){
-          this.fetchMyListFromApi()
-            .then(data => {
-              this.table.desserts = data.list;
-              this.table.totalDesserts = data.total;
-              this.pagination.totalItems = data.total;
-              this.pagination.pages = parseInt(data.pages);
-              this.pagination.pageNum = parseInt(data.pageNum);
-              this.loading = false;
-            })
-        },
-        // 获取数据（底层方法）
-        async fetchMyListFromApi() {
-          this.loading = true;
-          let a = await (this.$axios.$get('/page/mylist/for-user/999999999999999999?page='+
-            this.pagination.pageNum+'&pageSize=8'+
-            "&search="+this.search));
-          return a.data;
+  import axios from "~/plugins/axios"
+  export default {
+    name: "mylist",
+    data () {
+      return {
+        table:{headers:[],desserts:[],totalDesserts:null},
+        search: '',
+        loading:false,
+        pagination: {
+          pageNum:1,
+          pages:0,   //页面总数
         },
       }
+    },
+    watch: {
+      "pagination.pageNum": {
+        handler (val,oldVal) {
+          this.fetchMyList();
+        }
+      }
+    },
+    mounted(){
+      this.fetchMyList();
+      this.$store.commit('set_layout_title','页面管理');
+      this.table.headers = [
+        { text: '标题', value: 'title' },
+        { text: '标签', value: 'tagList' },
+        { text: '页面描述', value: 'description' },
+        { text: '浏览/留言/收藏', value: 'view' },
+        { text: '创建于', value: 'createdAt' },
+        { text: '操作', value: 'actions' }
+      ]
+    },
+    methods:{
+      test(){},
+      openOnNewTag(page_id){
+        window.open("/page/"+page_id,"_blank")
+      },
+      // 刷新数据
+      refreshMylist(){
+        this.fetchMyList();
+        this.$store.commit('show_global_snackbar',{
+          text:"数据已刷新",
+          show:true,
+          success: null,
+          timeout: 2000
+        });
+      },
+      // 获取数据
+      fetchMyList(){
+        this.fetchMyListFromApi()
+          .then(data => {
+            this.table.desserts = data.data.list;
+            this.table.totalDesserts = data.data.total;
+            this.pagination.totalItems = data.data.total;
+            this.pagination.pages = parseInt(data.data.pages);
+            this.pagination.pageNum = parseInt(data.data.pageNum);
+            this.loading = false;
+          })
+      },
+      // 获取数据（底层方法）
+      async fetchMyListFromApi() {
+        this.loading = true;
+        let a = await (axios.get('/page/mylist/for-user/999999999999999999?page='+ this.pagination.pageNum+'&pageSize=8'+
+          "&search="+this.search));
+        return a.data;
+      },
     }
+  }
 </script>
 
 <style>
