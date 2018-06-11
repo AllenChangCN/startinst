@@ -21,11 +21,17 @@ export default {
   set_page_info(state,param){
     state.page.current.pageInfo = param;
   },
+  set_page_widget_items(state,param){
+    state.page.current.page_widget_items = param;
+  },
   // 加载当前页面的数据
   load_current_page(state,param){
     let that = this;
     axios.get('/page/'+param.page_id+'/info').then(function(response){
       that.commit('set_page_info',response.data.data);
+    });
+    axios.get('/page/'+param.page_id+'/items').then(function(response){
+      that.commit('set_page_widget_items',response.data.data);
     });
   },
   // 删除Widget的确认框

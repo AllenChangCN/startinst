@@ -49,6 +49,7 @@ const createStore = () => {
           editable: false,
           is_owner: false,
           pageInfo: {widgetList:[]},
+          page_widget_items:{},
           widget_delete_dialog: false,
           widget_edit_dialog:false,
           widget_edit_form: {

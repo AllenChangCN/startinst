@@ -35,10 +35,16 @@ export default {
   },
   // 创建Widget
   create_widget(state){
-    console.log(state.page.current.widget_edit_form);
+    let that = this;
     axios.post('widgets/create',state.page.current.widget_edit_form).then(function(response)
     {
-      console.log(response);
+      state.page.current.pageInfo.widgetList.push(response.data.data);
+      that.commit('show_global_snackbar',{
+        text:"面板已创建",
+        show:true,
+        success: null,
+        timeout: 2000
+      });
     })
   },
   // Widget编辑菜单

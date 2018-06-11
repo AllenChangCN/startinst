@@ -36,8 +36,7 @@
       </v-flex>
       <!--遍历列-->
       <v-flex lg3 xs6 md3 v-for="widget_column in widgets" :key="widget_column.posX"
-              @mouseenter="columnEnter(widget_column.posX)"
-              @mouseleave="columnLeave()"
+              @mouseenter="columnEnter(widget_column.posX)" @mouseleave="columnLeave()"
       >
         <!--遍历Widget-->
         <div v-for="widget in widget_column.widgetGroup" :key="widget.posY" style="margin-bottom: 13px;">
@@ -59,7 +58,7 @@
         <v-card-title class="headline">确认要删除面板？</v-card-title>
         <v-card-text>面板删除后不可恢复。</v-card-text>
         <v-card-actions>
-          <v-spacer></v-spacer>
+          <v-spacer/>
           <v-btn color="gray lighten-1" flat="flat" @click="$store.commit('toggle_widget_delete_dialog',{action:'close'})">关闭</v-btn>
           <v-btn color="green darken-1" flat="flat" @click="$store.commit('toggle_widget_delete_dialog',{action:'confirm'})">确认</v-btn>
         </v-card-actions>
