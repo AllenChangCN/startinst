@@ -32,53 +32,7 @@
       </v-card>
       <v-card v-else @mouseenter="widgetEnter()" @mouseleave="widgetLeave()">
         <!--Widget标题-->
-        <v-card-title>
-          <div style="width: 100%;">
-            <div style="display: flex;">
-              <div style="flex: 100%;">
-                <v-icon v-if="widgetData.widgetType==='NOTE'" size="19px">event_note</v-icon>
-                <v-icon v-if="widgetData.widgetType==='BOOKMARK'" size="19px">bookmark_border</v-icon>
-                &nbsp;<b>{{widgetData.title}}</b>
-              </div>
-              <!--Widget菜单-->
-              <div style="flex: 1;min-width: 80px;text-align: right;margin-right: 6px;">
-                <v-tooltip right>
-                  <v-icon slot="activator" size="18px" v-if="widgetData.widgetType==='NOTE'&&posX+'_'+widgetData.posY===columnOverIdx+'_'+widgetOverIdx">
-                    edit
-                  </v-icon>
-                  <span v-if="widgetData.widgetType==='NOTE'">编辑</span>
-                  <v-icon slot="activator" size="22px" v-if="widgetData.widgetType==='BOOKMARK'&&posX+'_'+widgetData.posY===columnOverIdx+'_'+widgetOverIdx">
-                    add
-                  </v-icon>
-                  <span v-if="widgetData.widgetType==='BOOKMARK'">添加</span>
-                </v-tooltip>
-                &nbsp;
-                <v-menu
-                  offset-y
-                  open-on-hover
-                  lazy
-                  transition="scale-transition"
-                  :open-delay="200"
-                >
-                  <!--<v-btn slot="activator" color="primary" dark>Dropdown</v-btn>-->
-                  <v-icon slot="activator" @click="widgetMenu()" size="22px">menu</v-icon>
-                  <v-list class="widget_menu_list">
-                    <v-list-tile @click="widgetMenu()">
-                      <v-list-tile-title><v-icon size="small">settings</v-icon> 面板设置</v-list-tile-title>
-                    </v-list-tile>
-                    <v-list-tile @click="widgetMenu()">
-                      <v-list-tile-title><v-icon size="small">input</v-icon> 复制到</v-list-tile-title>
-                    </v-list-tile>
-                    <v-list-tile @click="widgetMenuDelete(widgetData)">
-                      <v-list-tile-title><v-icon size="small">delete</v-icon> 删除面板</v-list-tile-title>
-                    </v-list-tile>
-                  </v-list>
-                </v-menu>
-              </div>
-            </div>
-            <span class="grey--text" v-if="widgetData.description">{{widgetData.description}}posX:{{widgetData.posX}},posY:{{widgetData.posY}}</span>
-          </div>
-        </v-card-title>
+        <widget_head :widget-data="widgetData" :pos-x="posX"/>
         <v-card-text v-if="widgetData.widgetType==='BOOKMARK'"> <!-- 书签 -->
           <div v-if="widgetData.content">
             <!--拖拽排序Link-->
@@ -116,10 +70,11 @@
 <script>
   import draggable from 'vuedraggable'
   import Sortable from 'sortablejs'
+  import widget_head from './widget_layout_head'
   export default {
     name: "widget",
     components: {
-      draggable, Sortable
+      draggable, Sortable,widget_head
     },
     mounted(){
       // console.log(this.widgetData);
@@ -157,9 +112,6 @@
       },
       widgetMenu:function () {
 
-      },
-      widgetMenuDelete:function (widgetData) {
-        this.$store.commit("menu_widget_delete_click", widgetData);
       }
     },
     props:[

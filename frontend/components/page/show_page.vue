@@ -7,7 +7,7 @@
     <!--排序模式-->
     <v-layout row wrap v-if="$store.state.page.current.sort_mode" @keyup.27="$store.commit('toggle_page_sortmode')">
       <v-flex lg12 xs12 md12>
-        <page_heAD/>
+        <page_head/>
       </v-flex>
       <!--遍历列-->
       <v-flex lg3 xs6 md3
@@ -32,7 +32,7 @@
     <!--正常展示模式-->
     <v-layout wrap v-if="!$store.state.page.current.sort_mode">
       <v-flex lg12 xs12 md12>
-        <page_heAD/>
+        <page_head/>
       </v-flex>
       <!--遍历列-->
       <v-flex lg3 xs6 md3 v-for="widget_column in widgets" :key="widget_column.posX"
@@ -54,8 +54,8 @@
 </template>
 
 <script>
-  import widget from "../widget/widget"
-  import page_heAD from "./page_heAD"
+  import widget from "../widget/widget_layout"
+  import page_head from "./page_head"
   import draggable from 'vuedraggable'
   import Sortable from 'sortablejs'
   import context_menu from '../page/context_menu'
@@ -67,7 +67,7 @@
       // console.log(this.widgets)
     },
     components: {
-      widget,page_heAD,draggable, Sortable,context_menu
+      widget,page_head,draggable, Sortable,context_menu
     },
     methods: {
       columnEnter:function (posX) {   // 显示添加Widget的按钮
