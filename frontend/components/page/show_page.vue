@@ -43,13 +43,14 @@
         <div v-for="widget in widget_column.widgetGroup" :key="widget.posY" style="margin-bottom: 13px;">
           <widget :widgetData="widget" :posX="widget_column.posX"/>
         </div>
-        <div v-if="columnOverIdx===widget_column.posX"
-             style="text-align: center;">
-            <v-btn flat icon><v-icon size="44px" class="grey--text lighten-4">add</v-icon></v-btn>
+        <div v-if="columnOverIdx===widget_column.posX" style="text-align: center;">
+          <!--在当前列添加新的Widget-->
+          <v-btn flat icon><v-icon size="44px" class="grey--text lighten-4">add</v-icon></v-btn>
         </div>
       </v-flex>
     </v-layout>
     <context_menu style="display: none;"/>
+    <widget_add/>
 
     <!--Widget 删除确认框-->
     <v-dialog v-model="$store.state.page.current.widget_delete_dialog" max-width="290">
@@ -72,15 +73,15 @@
   import draggable from 'vuedraggable'
   import Sortable from 'sortablejs'
   import context_menu from '../page/context_menu'
+  import widget_add from "../widget/widget_add"
   export default {
     name: "show_page",
     mounted(){
       // 获取初始化数据
       this.fetchPageData();
-      // console.log(this.widgets)
     },
     components: {
-      widget,page_head,draggable, Sortable,context_menu
+      widget,page_head,draggable, Sortable,context_menu, widget_add
     },
     methods: {
       columnEnter:function (posX) {   // 显示添加Widget的按钮

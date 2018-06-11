@@ -50,6 +50,7 @@ const createStore = () => {
           is_owner: false,
           pageInfo: {widgetList:[]},
           widget_delete_dialog: false,
+          widget_add_form:false
         },
         contextmenu:{     // 右键菜单
           show_menu:false,
