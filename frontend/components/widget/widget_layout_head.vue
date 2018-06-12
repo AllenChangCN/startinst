@@ -10,11 +10,11 @@
         <!--Widget菜单-->
         <div style="flex: 1;min-width: 80px;text-align: right;margin-right: 6px;">
           <v-tooltip right>
-            <v-icon slot="activator" size="18px" v-if="widgetData.widgetType==='NOTE'&&posX+'_'+widgetData.posY===columnOverIdx+'_'+widgetOverIdx">
+            <v-icon slot="activator" size="18px" v-if="widgetData.widgetType==='NOTE' && $store.state.widget.current.id===widgetData.id">
               edit
             </v-icon>
             <span v-if="widgetData.widgetType==='NOTE'">编辑</span>
-            <v-icon slot="activator" size="22px" v-if="widgetData.widgetType==='BOOKMARK'&&posX+'_'+widgetData.posY===columnOverIdx+'_'+widgetOverIdx">
+            <v-icon slot="activator" size="22px" v-if="widgetData.widgetType==='BOOKMARK' && $store.state.widget.current.id===widgetData.id">
               add
             </v-icon>
             <span v-if="widgetData.widgetType==='BOOKMARK'">添加</span>

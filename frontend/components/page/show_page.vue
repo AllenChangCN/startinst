@@ -23,7 +23,7 @@
                    style="min-height: 16px;"
                    @end="drag=false">
           <div v-for="widget in widget_column.widgetGroup" :key="widget.posY" style="margin-bottom: 13px;">
-            <widget :widgetData="widget" :posX="widget_column.posX"/>
+            <widget :widgetData="widget" :posX="widget_column.posX" :widgetId="widget.id"/>
           </div>
         </draggable>
       </v-flex>
@@ -40,7 +40,7 @@
       >
         <!--遍历Widget-->
         <div v-for="widget in widget_column.widgetGroup" :key="widget.posY" style="margin-bottom: 13px;">
-          <widget :widgetData="widget" :posX="widget_column.posX"/>
+          <widget :widgetData="widget" :posX="widget_column.posX" :widgetId="widget.id"/>
         </div>
         <!--鼠标划过时显示添加Widget按钮-->
         <div v-if="columnOverIdx===widget_column.posX" style="text-align: center;">

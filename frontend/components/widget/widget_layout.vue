@@ -32,19 +32,18 @@
       </v-card>
       <v-card v-else @mouseenter="widgetEnter()" @mouseleave="widgetLeave()">
         <!--Widget标题-->
-        <widget_head :widget-data="widgetData" :pos-x="posX"/>
+        <widget_head :widgetData="widgetData" :posX="posX"/>
         <v-card-text v-if="widgetData.widgetType==='BOOKMARK'"> <!-- 书签 -->
           <div v-if="widgetData.content">
             <!--拖拽排序Link-->
             <draggable v-model="widgetData.content" :options="{group:'people'}" @start="drag=true" @end="drag=false">
               <div v-for="item in widgetData.content" :key="item.id">
-              <span
-                class="link"
-                @click.stop="$store.commit('BOOKMARK_openlink',{item:item,force_new_tab:null})"
-                @contextmenu.prevent="openContextMenu($event,item)"
-              >
-                {{ item.title }}
-              </span>
+                <span
+                  class="link"
+                  @click.stop="$store.commit('bookmark_openlink',{item:item,force_new_tab:null})"
+                  @contextmenu.prevent="openContextMenu($event,item)">
+                  {{ item.title }}
+                </span>
               </div>
             </draggable>
           </div>
@@ -53,8 +52,8 @@
           </div>
         </v-card-text>
         <v-card-text v-if="widgetData.widgetType === 'NOTE'">
-          <div v-if="widgetData.content">
-            <span v-html="widgetData.content"></span>
+          <div v-if="widgetContent && widgetContent.length > 0">
+            <span v-html="widgetContent[0].content"></span>
           </div>
           <div v-else>
             暂无内容
@@ -77,11 +76,11 @@
       draggable, Sortable,widget_head
     },
     mounted(){
-      // console.log(this.widgetData);
     },
     data: () => ({
       widgetOverIdx: null,
       columnOverIdx: null,
+      widgetContent:null,
       linkContextmenuItems:[
         { title: '新页面打开' ,icon:'open_in_new' ,mutation:'bookmark_openlink',params:{force_new_tab:true}},
         { title: '当前页面打开' ,icon:'open_in_browser' ,mutation:'bookmark_openlink',params:{force_new_tab:false}},
@@ -92,6 +91,9 @@
     watch:{
       widgetData:function () {
         console.log(this.widgetData)
+      },
+      "$store.state.page.current.page_widget_items":function(){
+        this.widgetContent = this.$store.state.page.current.page_widget_items[this.widgetId];
       }
     },
     methods: {
@@ -105,6 +107,7 @@
       widgetEnter:function () {
         this.widgetOverIdx = this.widgetData.posY;
         this.columnOverIdx = this.posX;
+        this.$store.commit('set_widget_current_data',this.widgetData);  // 设置当前数据
       },
       widgetLeave:function () {
         this.widgetOverIdx = null;
@@ -115,7 +118,7 @@
       }
     },
     props:[
-      'widgetData','posX'
+      'widgetData','posX','widgetId'
     ],
   }
 </script>
