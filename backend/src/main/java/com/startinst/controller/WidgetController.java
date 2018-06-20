@@ -47,7 +47,7 @@ public class WidgetController {
     }
 
     /**
-     * 编辑Widget
+     * 编辑Widget| 标题、位置、描述
      * @param widgetId
      * @param widgetModel
      * @return
@@ -55,7 +55,7 @@ public class WidgetController {
     @PostMapping(value = "{widget_id}/edit")
     public HttpResponse edit(@PathVariable("widget_id") Long widgetId, @RequestBody WidgetModel widgetModel)
     {
-        return HttpResponseUtil.success();
+        return HttpResponseUtil.success(widgetModel);
     }
 
 }

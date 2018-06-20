@@ -5,7 +5,7 @@
         <div style="flex: 100%;">
           <v-icon v-if="widgetData.widgetType==='NOTE'" size="19px">event_note</v-icon>
           <v-icon v-if="widgetData.widgetType==='BOOKMARK'" size="19px">bookmark_border</v-icon>
-          &nbsp;<click_to_edit_text>{{widgetData.title}}</click_to_edit_text>
+          &nbsp;<click_to_edit_text @text-updated="headTitleUpdated" :text="widgetData.title"/>
         </div>
         <!--Widget菜单-->
         <div style="flex: 1;min-width: 80px;text-align: right;margin-right: 6px;">
@@ -27,7 +27,6 @@
             transition="scale-transition"
             :open-delay="200"
           >
-            <!--<v-btn slot="activator" color="primary" dark>Dropdown</v-btn>-->
             <v-icon slot="activator" @click="widgetMenu()" size="22px">menu</v-icon>
             <v-list class="widget_menu_list">
               <v-list-tile @click="widgetMenu()">
@@ -51,10 +50,14 @@
 
 <script>
   import click_to_edit_text from '../global/click_to_edit_text'
+  import axios from "../../plugins/axios";
   export default {
     name: "widget_layout_head",
     components: {
       click_to_edit_text
+    },
+    created(){
+
     },
     mounted(){
       // console.log(this.widgetData);
@@ -70,11 +73,20 @@
       ]
     }),
     watch:{
-      widgetData:function () {
-        console.log(this.widgetData)
-      }
+
     },
     methods: {
+      headTitleUpdated(val){
+        let that = this;
+        this.$store.state.page.current.pageInfo.widgetList.forEach(function (elem, i) {
+          if(that.widgetData.id === elem.id){  // 遍历出修改的widget
+            that.$store.state.page.current.pageInfo.widgetList[i].title = val;
+            axios.post().then(function (response) {
+              console.log()
+            })
+          }
+        })
+      },
       openContextMenu:function (e,item) {
         let that = this;
         this.linkContextmenuItems.forEach(function (elem,i) {

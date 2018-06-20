@@ -6,7 +6,6 @@
 </template>
 <style>
   .vlabeledit,.vlabeledit-label{display: inline;}
-
 </style>
 <script>
   export default{
@@ -37,7 +36,7 @@
         // update the edit mode to false .. display div label text
         this.edit = false;
         // emit text updated callback
-        this.$emit('text-updated-blur',this.label)
+        this.$emit('text-updated',this.label)
       },
       updateTextEnter: function(){
         this.edit = false;
@@ -47,7 +46,7 @@
     computed: {
       vplaceholder: function(){
         // check if the placeholder is undefined or empty
-        if(this.placeholder==undefined || this.placeholder==''){
+        if(this.placeholder === undefined || this.placeholder === ''){
           // if it is empty or undefined, pre-populate with built-in place holder text
           return this.empty
         }else{
@@ -57,7 +56,7 @@
       vlabel: function(){
         // after text has been updated
         // return text value or place holder value depends on value of the text
-        if(this.text==undefined||this.text==''){
+        if(this.text === undefined||this.text === ''){
           return this.vplaceholder
         }else{
           return this.label
