@@ -5,7 +5,7 @@
         <div style="flex: 100%;">
           <v-icon v-if="widgetData.widgetType==='NOTE'" size="19px">event_note</v-icon>
           <v-icon v-if="widgetData.widgetType==='BOOKMARK'" size="19px">bookmark_border</v-icon>
-          &nbsp;<b>{{widgetData.title}}</b>
+          &nbsp;<click_to_edit_text>{{widgetData.title}}</click_to_edit_text>
         </div>
         <!--Widget菜单-->
         <div style="flex: 1;min-width: 80px;text-align: right;margin-right: 6px;">
@@ -50,12 +50,11 @@
 </template>
 
 <script>
-  import draggable from 'vuedraggable'
-  import Sortable from 'sortablejs'
+  import click_to_edit_text from '../global/click_to_edit_text'
   export default {
-    name: "widget",
+    name: "widget_layout_head",
     components: {
-      draggable, Sortable
+      click_to_edit_text
     },
     mounted(){
       // console.log(this.widgetData);
