@@ -56,8 +56,9 @@ public class WidgetService {
         if(widget == null){
             throw new RuntimeException("Widget Not Found.");
         }
-        widget.setWidgetType(widgetModel.getWidgetType());
-        widget.setCreatedAt(new Date());
+        //        widget.setWidgetType(widgetModel.getWidgetType());
+        //        widget.setCreatedAt(new Date());
+
         widget.setTitle(widgetModel.getTitle());
         widget.setDescription(widgetModel.getDescription());
         widget.setUpdatedAt(new Date());

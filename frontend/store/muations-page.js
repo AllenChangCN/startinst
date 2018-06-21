@@ -19,7 +19,14 @@ export default {
     state.page.contextmenu.show_menu = true;
   },
   set_page_info(state,param){
-    state.page.current.pageInfo = param;
+    // console.log(param);
+    state.page.current.pageInfo = JSON.parse(JSON.stringify(param));
+    state.page.current.pageInfo.widgetList = {};
+    let widgetListSorted = {};
+    param.widgetList.forEach(function (elem, i) {
+      widgetListSorted[elem.id] = elem;
+    });
+    state.page.current.pageInfo.widgetList = widgetListSorted;
   },
   set_page_widget_items(state,param){
     state.page.current.page_widget_items = param;

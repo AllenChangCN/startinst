@@ -77,15 +77,7 @@
     },
     methods: {
       headTitleUpdated(val){
-        let that = this;
-        this.$store.state.page.current.pageInfo.widgetList.forEach(function (elem, i) {
-          if(that.widgetData.id === elem.id){  // 遍历出修改的widget
-            that.$store.state.page.current.pageInfo.widgetList[i].title = val;
-            axios.post().then(function (response) {
-              console.log()
-            })
-          }
-        })
+        this.$store.state.page.current.pageInfo.widgetList[this.widgetData.id].title = val;
       },
       openContextMenu:function (e,item) {
         let that = this;

@@ -106,11 +106,11 @@
       "$store.state.page.current.pageInfo.widgetList":function(){
         let widgetData = {};
         let rawWidgetList = this.$store.state.page.current.pageInfo.widgetList;
-        rawWidgetList.forEach(function(elem,i){
-          if(!widgetData[elem.posX]) widgetData[elem.posX] = {};
-          if(!widgetData[elem.posX]['widgetGroup']) widgetData[elem.posX]['widgetGroup'] = [];
-          if(!widgetData[elem.posX]['posX']) widgetData[elem.posX]['posX'] = parseInt(elem.posX);
-          widgetData[elem.posX]['widgetGroup'].push(elem);
+        Object.keys(rawWidgetList).forEach(function(key){
+          if(!widgetData[rawWidgetList[key].posX]) widgetData[rawWidgetList[key].posX] = {};
+          if(!widgetData[rawWidgetList[key].posX]['widgetGroup']) widgetData[rawWidgetList[key].posX]['widgetGroup'] = [];
+          if(!widgetData[rawWidgetList[key].posX]['posX']) widgetData[rawWidgetList[key].posX]['posX'] = parseInt(rawWidgetList[key].posX);
+          widgetData[rawWidgetList[key].posX]['widgetGroup'].push(rawWidgetList[key]);
         });
         this.widgets =  widgetData;
         console.info("page info updated.")
