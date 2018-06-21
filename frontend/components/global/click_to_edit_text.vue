@@ -17,7 +17,7 @@
         empty: 'Enter', // empty place holder .. replace with your own localization for default
       }
     },
-    props: ['text','placeholder'], // parent should provide :text or :placeholder
+    props: ['text','placeholder','disabled'], // parent should provide :text or :placeholder
     methods: {
       initText: function(){
         if(this.text === ''||this.text === undefined){
@@ -28,8 +28,10 @@
       },
       // when the div label got clicked and trigger the text box
       onLabelClick: function(){
-        this.edit = true;
-        this.label = this.text;
+        if(!this.disabled){
+          this.edit = true;
+          this.label = this.text;
+        }
       },
       // trigger when textbox got lost focus
       updateTextBlur: function(){

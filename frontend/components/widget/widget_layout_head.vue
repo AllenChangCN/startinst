@@ -5,7 +5,7 @@
         <div style="flex: 100%;">
           <v-icon v-if="widgetData.widgetType==='NOTE'" size="19px">event_note</v-icon>
           <v-icon v-if="widgetData.widgetType==='BOOKMARK'" size="19px">bookmark_border</v-icon>
-          &nbsp;<click_to_edit_text @text-updated="headTitleUpdated" :text="widgetData.title"/>
+          &nbsp;<click_to_edit_text @text-updated="headTitleUpdated" :text="widgetData.title" :disabled="false"/>
         </div>
         <!--Widget菜单-->
         <div style="flex: 1;min-width: 80px;text-align: right;margin-right: 6px;">
@@ -76,9 +76,19 @@
 
     },
     methods: {
+      // 更新Widget title
       headTitleUpdated(val){
+        delete this.widgetData['@id'];
         this.$store.state.page.current.pageInfo.widgetList[this.widgetData.id].title = val;
+        axios.post('/widgets/'+this.widgetData.id+'/edit',{
+          id: this.widgetData.id,
+          title:this.widgetData.title,
+          description: this.widgetData.description
+        }).then(function (response) {
+          console.log(response);
+        })
       },
+      // Widget右键菜单
       openContextMenu:function (e,item) {
         let that = this;
         this.linkContextmenuItems.forEach(function (elem,i) {
