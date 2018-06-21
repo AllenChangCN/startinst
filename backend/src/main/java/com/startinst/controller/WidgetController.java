@@ -52,10 +52,10 @@ public class WidgetController {
      * @param widgetModel
      * @return
      */
-    @PostMapping(value = "{widget_id}/edit")
+    @PostMapping(value = "{widget_id}/edit-info")
     public HttpResponse edit(@PathVariable("widget_id") Long widgetId, @RequestBody WidgetModel widgetModel)
     {
-        if(widgetService.edit(widgetModel) != null){
+        if(widgetService.editInfo(widgetModel) != null){
             return HttpResponseUtil.success(widgetModel);
         }else{
             return HttpResponseUtil.error(HttpResponseCodeEnum.ERR_ACTION_FAILED,"edit failed.");

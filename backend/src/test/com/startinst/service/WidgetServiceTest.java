@@ -45,7 +45,7 @@ public class WidgetServiceTest {
         // 编辑
         widgetModel.setTitle("edited_title");
         widgetModel.setId(widget.getId());
-        widgetService.edit(widgetModel);
+        widgetService.editInfo(widgetModel);
         String retStr = widgetMapper.findById(widget.getId()).toString();
         assertTrue("",retStr.indexOf("edited_title") > 0);
         // 删除

@@ -50,7 +50,7 @@ public class WidgetService {
      * @throws
      * @return
      */
-    public Widget edit(WidgetModel widgetModel) throws RuntimeException
+    public Widget editInfo(WidgetModel widgetModel) throws RuntimeException
     {
         Widget widget = widgetMapper.findById(widgetModel.getId());
         if(widget == null){

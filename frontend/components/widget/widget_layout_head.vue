@@ -80,7 +80,7 @@
       headTitleUpdated(val){
         delete this.widgetData['@id'];
         this.$store.state.page.current.pageInfo.widgetList[this.widgetData.id].title = val;
-        axios.post('/widgets/'+this.widgetData.id+'/edit',{
+        axios.post('/widgets/'+this.widgetData.id+'/edit-info',{
           id: this.widgetData.id,
           title:this.widgetData.title,
           description: this.widgetData.description
