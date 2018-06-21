@@ -52,4 +52,19 @@ public class WidgetServiceTest {
         int effect = widgetService.delete(widget.getId());
         assertTrue("",effect > 0);
     }
+
+    /**
+     * 修改Widget位置
+     */
+    @Test
+    @Transactional
+    void movePos()
+    {
+        WidgetModel widgetModel= new WidgetModel();
+        widgetModel.setUpdatedAt(new Date());
+        widgetModel.setId(197350226783109120L);
+        widgetModel.setPosX(0);
+        widgetModel.setPosY(5);
+        System.out.println(widgetService.setPos(widgetModel));
+    }
 }

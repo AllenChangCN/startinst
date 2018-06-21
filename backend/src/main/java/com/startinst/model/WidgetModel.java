@@ -27,6 +27,8 @@ public class WidgetModel {
 
     private Date createdAt;
 
+    private Date updatedAt;
+
     public String getTitle() {
         return title;
     }
@@ -94,5 +96,13 @@ public class WidgetModel {
 
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }

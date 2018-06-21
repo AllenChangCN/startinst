@@ -77,12 +77,11 @@ public class WidgetService {
     /**
      * 移动Widget的位置
      *
-     * @param originWidget
-     * @param targetWdiget
+     * @param widgetModel
      * @return
      */
-    public String move(Widget originWidget,Widget targetWdiget)
+    public boolean setPos(WidgetModel widgetModel)
     {
-        return "";
+        return true;
     }
 }

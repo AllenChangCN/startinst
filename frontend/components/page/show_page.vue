@@ -19,7 +19,7 @@
                    :list="widget_column.widgetGroup"
                    :options="{group:'widgets', animation: 100}"
                    @start="drag=true"
-                   @change="log"
+                   @change="widgetMoved"
                    style="min-height: 16px;"
                    @end="drag=false">
           <div v-for="widget in widget_column.widgetGroup" :key="widget.id" style="margin-bottom: 13px;">
@@ -90,8 +90,20 @@
       columnLeave:function () {   // 隐藏添加Widget的按钮
         this.columnOverIdx = null;
       },
-      log: function (evt){
-        console.log(evt)
+      widgetMoved: function (evt){ // 排序Widget
+        if(evt.moved !== undefined){
+          console.log('moved.');
+          this.posMovedMessage.widgetId = evt.moved.element.id;
+          this.posMovedMessage.posX = evt.moved.element.posX;
+          this.posMovedMessage.posY = (parseInt(evt.moved.element.posY) + (evt.moved.newIndex - evt.moved.oldIndex)).toString();
+          console.log(this.posMovedMessage)
+        }else if(evt.added !== undefined){
+          console.log('added.');
+          console.log(evt.added);
+        }else if(evt.removed !== undefined){
+          console.log('removed.');
+          console.log(evt.removed);
+        }
       },
       fetchPageData() {
         this.$store.commit('load_current_page',{page_id:this.page_id});
@@ -119,6 +131,7 @@
     data: () => ({
       deleteDialog: true,
       columnOverIdx: null,
+      posMovedMessage:{}, // {widgetId:null,posX:null,posY:null},
       widgets:[{posX:1,widgetGroup:[]}],
       // widgets: [
       //     {
