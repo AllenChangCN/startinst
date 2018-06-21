@@ -22,7 +22,7 @@
                    @change="log"
                    style="min-height: 16px;"
                    @end="drag=false">
-          <div v-for="widget in widget_column.widgetGroup" :key="widget.posY" style="margin-bottom: 13px;">
+          <div v-for="widget in widget_column.widgetGroup" :key="widget.id" style="margin-bottom: 13px;">
             <widget :widgetData="widget" :posX="widget_column.posX" :widgetId="widget.id"/>
           </div>
         </draggable>
@@ -39,7 +39,7 @@
               @mouseenter="columnEnter(widget_column.posX)" @mouseleave="columnLeave()"
       >
         <!--遍历Widget-->
-        <div v-for="widget in widget_column.widgetGroup" :key="widget.posY" style="margin-bottom: 13px;">
+        <div v-for="widget in widget_column.widgetGroup" :key="widget.id" style="margin-bottom: 13px;">
           <widget :widgetData="widget" :posX="widget_column.posX" :widgetId="widget.id"/>
         </div>
         <!--鼠标划过时显示添加Widget按钮-->
@@ -104,7 +104,7 @@
     },
     watch:{
       "$store.state.page.current.pageInfo.widgetList":function(){
-        let widgetData = {};
+        let widgetData = [];
         let rawWidgetList = this.$store.state.page.current.pageInfo.widgetList;
         Object.keys(rawWidgetList).forEach(function(key){
           if(!widgetData[rawWidgetList[key].posX]) widgetData[rawWidgetList[key].posX] = {};

@@ -14,7 +14,7 @@
       return {
         edit: false, // define whether it is in edit mode or not
         label: '', // v-bind data model for input text
-        empty: 'Enter', // empty place holder .. replace with your own localization for default
+        empty: 'Click To Edit', // empty place holder .. replace with your own localization for default
       }
     },
     props: ['text','placeholder','disabled'], // parent should provide :text or :placeholder

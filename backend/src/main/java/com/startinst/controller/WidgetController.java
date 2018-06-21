@@ -53,8 +53,31 @@ public class WidgetController {
      * @return
      */
     @PostMapping(value = "{widget_id}/edit-info")
-    public HttpResponse edit(@PathVariable("widget_id") Long widgetId, @RequestBody WidgetModel widgetModel)
+    public HttpResponse editInfo(@PathVariable("widget_id") Long widgetId, @RequestBody WidgetModel widgetModel)
     {
+        if(widgetService.editInfo(widgetModel) != null){
+            return HttpResponseUtil.success(widgetModel);
+        }else{
+            return HttpResponseUtil.error(HttpResponseCodeEnum.ERR_ACTION_FAILED,"edit failed.");
+        }
+    }
+
+    @PostMapping(value = "{widget_id}/edit-content")
+    public HttpResponse editContent(@PathVariable("widget_id") Long widgetId, @RequestBody WidgetModel widgetModel)
+    {
+        widgetModel.setId(widgetId);
+        if(widgetService.editInfo(widgetModel) != null){
+            return HttpResponseUtil.success(widgetModel);
+        }else{
+            return HttpResponseUtil.error(HttpResponseCodeEnum.ERR_ACTION_FAILED,"edit failed.");
+        }
+    }
+
+
+    @PostMapping(value = "{widget_id}/edit-pos")
+    public HttpResponse editPos(@PathVariable("widget_id") Long widgetId, @RequestBody WidgetModel widgetModel)
+    {
+        widgetModel.setId(widgetId);
         if(widgetService.editInfo(widgetModel) != null){
             return HttpResponseUtil.success(widgetModel);
         }else{

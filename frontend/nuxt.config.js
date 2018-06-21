@@ -4,8 +4,8 @@ module.exports = {
     'material-design-icons-iconfont/dist/material-design-icons.scss',
   ],
   modules: [
-    '@nuxtjs/axios',
-    '@nuxtjs/proxy'
+    // '@nuxtjs/axios',
+    // '@nuxtjs/proxy'
   ],
   /*
   ** Headers of the page
@@ -47,7 +47,7 @@ module.exports = {
   */
 
   build: {
-      vendor: ['axios'],
+      // vendor: ['axios'],
       /*
       ** Run ESLint on save
       */
